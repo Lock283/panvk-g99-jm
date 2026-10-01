@@ -85,16 +85,58 @@ be right for the wrong reason and no descriptor would be read.
 contents, and the centre pixel moved from `191,128,0` to `64,255,0`. The values
 are read at runtime.
 
-### 3.2 Only one descriptor type was ever tested — OPEN
+### 3.2 Only one descriptor type was ever tested — RESOLVED for buffer descriptors
 
-Every 4.2 test used `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, one binding per set.
-Untested: storage buffers, combined image samplers, dynamic uniform/storage
-buffers, input attachments, multiple bindings within one set, arrays of
-descriptors.
+Every 4.2 test used `VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER`, one binding per set. That
+supported "uniform buffers across several sets work" and nothing broader.
 
-The resource-table plumbing is shared, so those probably work, but "probably"
-is the operative word. The published claim should be read as *uniform buffers
-across multiple sets work*, not *descriptor sets work*.
+`desc_types_test.c` now covers storage buffers, dynamic uniform and dynamic
+storage buffers, static and dynamic bindings mixed in one set, four bindings in
+one set, and an array of three descriptors in one binding. Each value is `k/255`,
+so the UNORM8 output equals `k` exactly and the comparison has no tolerance. All
+four channels, alpha included, are descriptor-fed in the four-binding cases.
+
+| case | what it rules out | centre | verdict |
+|---|---|---|---|
+| `static4` (UBO, SSBO, UBO, SSBO) | | 200,150,100,50 | PASS |
+| `static4_alt` | constant folding: same binary, new contents | 50,100,150,200 | PASS |
+| `dyn4` (all four dynamic) | dynamic offsets ignored: base slots hold a decoy 20 | 200,150,100,50 | PASS |
+| `dyn4_zero` | control: all offsets 0, the decoy must appear | 20,20,20,20 | PASS |
+| `mixed` (UBO, SSBO_DYN, UBO_DYN, SSBO) | offsets swapped between bindings: those slots hold traps 230/240 | 200,150,100,50 | PASS |
+| `array` (UBO x3) | | 200,150,100,255 | PASS |
+| `array_alt` | constant folding | 100,200,150,255 | PASS |
+
+3x each, identical, zero faults, 512-pixel coverage asserted in every case.
+
+`dyn4_zero` matters as much as `dyn4`: without it, `dyn4` passing could mean the
+decoy was simply unreachable. In `mixed` the two dynamic bindings get different
+offsets (4 and 6 slots), and the slot each would reach with the *other*
+binding's offset holds a trap value, so an offset consumed by the wrong binding
+would show up as 230 or 240 rather than as a plausible colour.
+
+**Negative control.** `PANVK_RESTAB_SKIP=frag` forces the fragment resource table
+to 0. Every case then fails with all descriptor-fed channels reading 0; `array`
+keeps alpha 255 only because its alpha is a shader constant.
+
+**Where dynamic descriptors live (VERIFIED-HW).** With `PANVK_DEBUG_RESTAB=1`,
+fragment stage, 32-byte descriptors (`PANVK_DESCRIPTOR_SIZE`):
+
+| case | driver set | application set 0 |
+|---|---|---|
+| `static4` | 32 B | 128 B, 4 descriptors |
+| `dyn4` | 160 B = 32 + 4 x 32 | 0 B, 0 descriptors |
+| `mixed` | 96 B = 32 + 2 x 32 | 64 B, 2 descriptors |
+| `array` | 32 B | 96 B, 3 descriptors |
+
+Dynamic buffer descriptors are not read from the application set at all. They
+are rebuilt into the driver set at draw time with the dynamic offset already
+added (`panvk_vX_cmd_desc_state.c:129-169`), which is why the offsets work
+without the application set being touched.
+
+**Still not covered:** samplers, combined image samplers, sampled and storage
+images, texel buffers and input attachments. Image descriptors belong to texture
+sampling, Phase 5, and are deliberately left to it. Also untested: dynamically
+indexed descriptor arrays, and descriptors read from the vertex stage.
 
 ### 3.3 The T4.2.4 conclusion was misread once — RESOLVED, worth recording
 

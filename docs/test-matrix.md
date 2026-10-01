@@ -19,6 +19,7 @@ actually produced, with the artifact that shows it.
 |---|---|---|---|
 | [`tests/graphics/indexed_draw_test.c`](../tests/graphics/indexed_draw_test.c) | 4.1 indexed draws, `firstIndex`, `vertexOffset` | **VERIFIED-HW** | `evidence/logs/T4.1_*` |
 | [`tests/graphics/restab_descset_test.c`](../tests/graphics/restab_descset_test.c) | 4.2 resource table, 1/2/4 and sparse descriptor sets | **VERIFIED-HW** | `evidence/logs/T4.2_*` |
+| [`tests/graphics/desc_types_test.c`](../tests/graphics/desc_types_test.c) | storage, dynamic and arrayed buffer descriptors, mixed in one set | **VERIFIED-HW** | `evidence/logs/T4.5.18_*`, `T4.5.20_*` |
 | [`tests/graphics/mrt_shape_test.c`](../tests/graphics/mrt_shape_test.c) | 4.3 two render targets, square and circle vs CPU reference | **VERIFIED-HW** | `evidence/logs/T4.3_*` |
 | [`tests/graphics/draw_indirect_test.c`](../tests/graphics/draw_indirect_test.c) | 4.4 indirect and indexed-indirect draw | **VERIFIED-HW** | `evidence/logs/T4.4.4_*`, `T4.4.5_*` |
 | [`tests/graphics/indirect_probe_test.c`](../tests/graphics/indirect_probe_test.c) | 4.4 gate probe, recorded the pre-fix behaviour | **VERIFIED-HW** | `evidence/logs/indirect_T4.4.0_*` |
