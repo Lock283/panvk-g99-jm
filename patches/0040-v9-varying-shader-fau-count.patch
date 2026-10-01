@@ -1,0 +1,21 @@
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2730,6 +2730,18 @@
+          cfg.shader = panvk_priv_mem_dev_addr(vs->spds.var);
+          cfg.thread_storage = draw->tls;
+          cfg.fau = cmdbuf->state.gfx.vs.push_uniforms;
++         /* The FAU count was missing here while the POSITION environment sets
++          * it, so the varying shader ran with a valid FAU pointer and a count
++          * of zero. Gallium sets the count for both environments (pan_jm.c,
++          * jm_emit_shader_env). Measured effect without it: every vertex
++          * shader whose FAU block was 4 words or more produced a fully black
++          * image, while the 3-word single-varying shaders used earlier in
++          * Phase 4 were unaffected. Exactly which FAU word the varying shader
++          * needs was not established. The varying shader shares the position
++          * shader's push-uniform block, so the count is the same.
++          * PANVK_VARYING_NO_FAU_COUNT reproduces the old behaviour. */
++         if (!getenv("PANVK_VARYING_NO_FAU_COUNT"))
++            cfg.fau_count = vs->fau.total_count;
+       }
+    }
+ 

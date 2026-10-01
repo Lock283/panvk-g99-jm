@@ -1,0 +1,131 @@
+=== case: d_a (direct) ===
+params      : vertexCount=3 instanceCount=1 firstVertex=0 firstInstance=0
+expectation : triangle A, cell 0
+expectation : triangle A, cell 0
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: error: kbase: MEM_ALLOC req: va_pages=32768 commit_pages=0 extension=512 flags=0x2a0f kmod_flags=0x2
+MESA: error: kbase: MEM_ALLOC req: va_pages=35157 commit_pages=0 extension=512 flags=0x2a0f kmod_flags=0x6
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x280f kmod_flags=0x0
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x280f kmod_flags=0x0
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x280f kmod_flags=0x0
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x280f kmod_flags=0x0
+[PANVK_DEBUG_BIND] image plane bind (non-sparse) base=0x6ff121a000 (mem->addr.dev=0x6ff121a000 offset=0)
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x1817 kmod_flags=0x41
+[PANVK_DEBUG_SHADERBIN] stage=VERTEX bin_size=512 bytes:
+  3c 3d 00 12 04 80 66 00 7c 7d 20 52 04 82 66 00
+  7b 0d 00 80 04 84 5e 18 43 41 00 00 00 c1 a4 00
+  42 40 00 00 00 c0 a4 00 84 00 00 00 00 c2 91 00
+  41 81 42 00 00 c1 b2 00 83 00 00 00 00 c2 91 00
+  40 80 42 00 00 c0 b2 00 85 00 00 00 00 c2 91 00
+  d0 00 00 00 00 c3 91 20 44 00 00 39 08 40 61 78
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  7c 7d 10 22 06 80 66 00 7b 0d 00 40 04 84 5e 00
+  dc 00 00 00 00 c3 91 08 40 00 00 00 00 c6 91 00
+  86 00 00 00 00 c7 91 00 87 00 00 00 00 c8 91 00
+  43 00 00 00 00 c9 91 10 04 00 00 ba 08 46 61 00
+  88 00 00 00 00 c6 91 00 c0 00 00 00 00 c7 91 00
+  04 06 07 00 00 c6 ab 01 8b 00 00 00 00 c0 91 00
+  8a 00 00 00 00 c3 91 00 89 00 00 00 00 c8 91 00
+  41 00 00 00 00 c9 91 00 43 00 00 00 00 ca 91 00
+  40 00 00 00 00 cb 91 00 06 00 00 00 00 c0 91 00
+  07 00 00 00 00 c1 91 20 40 00 00 3a 08 48 61 00
+  8c 00 00 00 00 c0 91 00 c0 00 00 00 00 c1 91 00
+  04 40 07 00 00 c0 ab 01 8f 00 00 00 00 c3 91 00
+  8e 00 00 00 00 c6 91 00 8d 00 00 00 00 c8 91 00
+  46 00 00 00 00 c9 91 00 42 00 00 00 00 ca 91 00
+  43 00 00 00 00 cb 91 08 40 00 00 7a 08 48 61 00
+  90 00 00 00 00 c0 91 00 c0 00 00 00 00 c1 91 00
+  04 40 07 00 00 c0 ab 01 91 00 00 00 00 c2 91 00
+  89 00 00 00 00 c3 91 00 86 00 00 00 00 c6 91 00
+  43 00 00 00 00 c7 91 00 42 00 00 00 00 c8 91 00
+  c0 00 00 00 00 c9 91 10 40 00 00 ba 08 46 61 00
+  92 00 00 00 00 c0 91 00 c0 00 00 00 00 c1 91 00
+  44 40 07 00 00 c0 ab 01 c0 01 00 00 00 c2 10 21
+  40 00 00 1a 02 42 61 78 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_SHADERBIN] stage=FRAGMENT bin_size=256 bytes:
+  3d 00 30 32 08 80 5c 08 3d 00 00 72 08 82 5c 10
+  43 40 00 00 10 c0 a4 68 3d 00 10 b2 08 84 5c 20
+  44 41 00 00 10 c1 a4 00 40 41 00 00 00 c0 a4 00
+  7d 00 20 32 08 86 5c 08 47 00 00 80 c0 c1 14 01
+  40 41 00 00 00 c0 a4 00 42 00 00 00 00 c1 a4 00
+  45 00 00 00 00 c2 a4 00 48 40 00 00 00 c0 a4 00
+  c0 00 40 40 02 83 5c 10 43 00 09 00 00 c3 90 00
+  41 03 c0 00 04 c1 b2 00 42 03 c0 00 04 c2 b2 00
+  40 03 c0 00 04 c4 b2 40 7c 03 ea 00 02 bc 7d 08
+  41 00 00 00 00 c0 91 00 42 00 00 00 00 c1 91 00
+  44 00 00 00 00 c2 91 48 84 00 3c b2 08 40 7f 78
+  c0 00 00 00 00 f0 10 01 c0 85 00 00 10 c1 2f 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+MESA: error: kbase: MEM_ALLOC req: va_pages=16 commit_pages=16 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=16 commit_pages=16 extension=0 flags=0x380f kmod_flags=0x40
+[PANVK_DEBUG_BLEND] rt=0 color_write_enables=0xff fmt=37 write_mask=0xf
+[PANVK_DEBUG_BLENDFIX] blend_ptr.gpu=0x6fefba5400 bd_count=1 state.blend_descs[0]=0xed00000000019
+[PANVK_DEBUG_VP] VkViewport: w=64.000000 h=64.000000 x=0.000000 y=0.000000
+[PANVK_DEBUG_VP] computed scale: x=32.000000 y=32.000000
+[PANVK_DEBUG_VP] computed offset: x=32.000000 y=32.000000
+[PANVK_DEBUG_VSFAU] gpu=0x6fefba5410 count=10 bytes=80: 00 00 00 42 00 00 00 42 00 00 80 3f 00 00 00 42 00 00 00 42 00 00 00 00 00 00 e0 40 00 00 40 c0 10 00 00 00 00 00 a0 40 00 00 30 41 00 00 80 bf 20 00 00 00 00 00 10 c1 00 00 80 40 00 00 c0 40 30 00 00 00 00 00 40 40 40 00 00 00 00 00 00 00
+[PANVK_DEBUG_FSFAU] gpu=0x6fefba5460 count=3 bytes=24: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 19 00 00 00 00 d0 0e 00
+[PANVK_DEBUG_TILERCTX] 192 byte Tiler Context desc: 00 00 00 00 00 00 00 00 ff 00 04 00 3f 00 3f 00 00 00 00 00 00 00 00 00 80 54 ba ef 6f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_TILERHEAP] 32 byte Tiler Heap desc: 29 03 00 00 00 00 00 08 00 00 c0 4a 6d 00 00 00 00 00 c0 4a 6d 00 00 00 00 00 c0 52 6d 00 00 00
+[PANVK_DEBUG_FLAGS1] sample_mask=0xffff render_target_mask=0x1 bound_attachments=0x1
+[PANVK_DEBUG_DS] 32 byte Depth/stencil desc: 07 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 c0 e4 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_BLENDRAW] 16 byte Blend desc(s): 00 0a 00 00 22 21 12 f0 19 00 00 00 00 d0 0e 00
+[PANVK_DEBUG_MVJ] sesudah pan_jc_add_job gpu=0x6fefba5580 header: type=11 (MALLOC_VERTEX == BENAR) index=1 dep1=0 dep2=0
+[PANVK_DEBUG_MVJ] dump 384 byte job descriptor:
+[PANVK_DEBUG_MVJ] +000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +016: 16 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +032: 08 80 07 00 00 00 00 00 00 00 00 00 03 00 00 00
+[PANVK_DEBUG_MVJ] +048: 01 00 00 00 54 00 44 00 c0 54 ba ef 6f 00 00 00
+[PANVK_DEBUG_MVJ] +064: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +096: 00 00 00 00 00 00 00 00 00 00 00 00 3f 00 3f 00
+[PANVK_DEBUG_MVJ] +112: 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +128: 00 00 81 00 ff ff 01 00 01 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +144: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f
+[PANVK_DEBUG_MVJ] +160: 00 00 00 00 00 00 00 00 00 57 ba ef 6f 00 00 00
+[PANVK_DEBUG_MVJ] +176: 01 54 ba ef 6f 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +192: 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +208: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +224: c4 53 ba ef 6f 00 00 00 00 61 21 f1 6f 00 00 00
+[PANVK_DEBUG_MVJ] +240: c0 50 ba ef 6f 00 00 00 60 54 ba ef 6f 00 00 00
+[PANVK_DEBUG_MVJ] +256: 00 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +272: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +288: 44 53 ba ef 6f 00 00 00 80 60 21 f1 6f 00 00 00
+[PANVK_DEBUG_MVJ] +304: c0 50 ba ef 6f 00 00 00 10 54 ba ef 6f 00 00 00
+[PANVK_DEBUG_MVJ] +320: 00 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +336: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[PANVK_DEBUG_MVJ] +352: 44 53 ba ef 6f 00 00 00 c0 60 21 f1 6f 00 00 00
+[PANVK_DEBUG_MVJ] +368: c0 50 ba ef 6f 00 00 00 10 54 ba ef 6f 00 00 00
+[PANVK_DEBUG_MVJ] jc state: first_job=0x6fefba5580 job_index=1 tiler_dep=1
+vertex buffers written: 6 vertices, 8 instance origins
+shader files: vbo_multi.vert.spv + vbo_multi.frag.spv
+shaders     : vbo_multi (5 varyings)
+calling vkCmdDraw
+[PANVK_DEBUG_RTFMT] rt=0 fmt=84 rt_count=1
+[PANVK_DEBUG_RT] linear color attachment base=0x6ff121a000 row_stride=256 surf_stride=16384
+[PANVK_DEBUG_FBD] gpu=0x6fefba5000 size=192\n[PANVK_DEBUG_FBD] +000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +016: 00 40 22 f1 6f 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +032: 3f 00 3f 00 00 00 00 00 3f 00 3f 00 80 50 00 01\n[PANVK_DEBUG_FBD] +048: 00 00 01 00 00 00 00 00 c0 54 ba ef 6f 00 00 00\n[PANVK_DEBUG_FBD] +064: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +096: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +112: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +128: 00 00 00 04 99 82 88 86 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +144: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FBD] +160: 00 a0 21 f1 6f 00 00 00 00 01 00 00 00 40 00 00\n[PANVK_DEBUG_FBD] +176: 00 00 00 ff 00 00 00 ff 00 00 00 ff 00 00 00 ff\n[PANVK_DEBUG_FBD] tagged_ptr=0x6fefba5001 stride=192
+[PANVK_DEBUG_FRAGJOB] gpu=0x6fefba5780 size=64\n[PANVK_DEBUG_FRAGJOB] +000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FRAGJOB] +016: 12 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_FRAGJOB] +032: 00 00 00 00 03 00 03 00 01 50 ba ef 6f 00 00 00\n[PANVK_DEBUG_FRAGJOB] +048: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n[PANVK_DEBUG_SUBMIT] vtc_jc ret=0
+[PANVK_DEBUG_JOBSTATUS] vtc_jc job[0] type=11 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x01 (DONE) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_JOBSTATUS] vtc_jc job[1] type=9 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x00 (NOT_STARTED) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_HEAP] SESUDAH vtc_jc (vertex+tiler) bo->flags=0x2 dev=0x6d4ac00000 size=134217728 host=0x6d4ac00000 mincore=absent -- UNREADABLE (I/O error) => halaman belum ter-commit, tiler tidak menulis apa pun
+[PANVK_DEBUG_SUBMIT] frag_jc ret=0
+[PANVK_DEBUG_JOBSTATUS] frag_jc job[0] type=11 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x01 (DONE) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_JOBSTATUS] frag_jc job[1] type=9 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x01 (DONE) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_HEAP] SESUDAH frag_jc (fragment) bo->flags=0x2 dev=0x6d4ac00000 size=134217728 host=0x6d4ac00000 mincore=absent -- UNREADABLE (I/O error) => halaman belum ter-commit, tiler tidak menulis apa pun
+vkQueueWaitIdle returned (no hang)
+
+--- result: d_a ---
+drawn pixels        : 156
+reference covered   : 156 (+0 ambiguous, not scored, min scored margin 0.2236 px)
+colour mismatches   : 0 (tolerance 2, max diff seen 0)
+stray pixels        : 0
+VBOFP d_a px=156 ref=156 bad=0 stray=0 maxd=0 verdict=PASS
+VISUAL_DUMP: /data/data/com.termux/files/home/panvk-g57/phase4/img/vbo3_m1_d_a.ppm
+DONE

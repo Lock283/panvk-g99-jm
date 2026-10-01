@@ -273,9 +273,15 @@ with vertex count:
 Byte-identical at every count, up to 90× the placeholder, zero faults. Also
 `vcount6` and `idx_count6` at 6× via the two-triangle shader.
 
-**What this still does not cover:** counts in the thousands, and any workload with
-varyings or vertex buffers, where record-time sizing genuinely does depend on the
-count. Those remain OPEN and are documented as scope.
+**What this still does not cover:** counts in the thousands.
+
+**Correction, see 5.9.** This paragraph used to say that workloads with varyings
+or vertex buffers are where record-time sizing "genuinely does depend on the
+count". That was carried over from the Bifrost design and is not true for v9:
+the MALLOC_VERTEX job has the hardware allocate varying storage, its
+`ALLOCATION` section holds only strides (`v9.xml` "Allocation"), and vertex
+buffers are described by their bound size. Nothing on the v9 path is sized from
+the vertex count. 5.9 measures it.
 
 ### 5.3 The job ordering claim was reached the wrong way — RESOLVED, then re-opened
 
@@ -468,18 +474,16 @@ results at 2, 4 and 8 can only come from the helper writing
 `INSTANCE_COUNT.count`. Indexed indirect at 4 instances gives the same hash as
 direct. 3x each, zero faults.
 
-Not covered: instance-rate vertex attributes (the shader uses no vertex buffers),
-and counts beyond 8.
+Not covered here: counts beyond 8. Instance-rate vertex attributes are covered
+in 5.9, and they turned out to be broken.
 
-### 5.6 Indexed indirect skips the min/max index scan — ACCEPTED
+### 5.6 Indexed indirect skips the min/max index scan — RESOLVED, not needed on v9
 
-Bifrost runs an index min/max search before an indexed indirect draw. That scan
-exists to size varying and attribute buffers from the range of vertices the
-indices reference. The v9 path here does not do it.
-
-That is fine for workloads with neither varyings nor vertex buffers, which is
-what was tested. It is not fine in general, and no test would currently catch the
-difference. Directly connected to 5.2's remaining gap.
+Bifrost runs an index min/max search before an indexed indirect draw, to size
+varying and attribute buffers from the range of vertices the indices reference.
+On v9 nothing is sized that way (see the correction in 5.2), so the scan has no
+job to do. Measured in 5.9: indexed indirect with vertex buffers, varyings and
+`vertexOffset` is byte-identical to the direct path.
 
 ### 5.7 The compute FAU fix has an untested edge — OPEN
 
@@ -605,13 +609,102 @@ is not exposed by this driver, so that kernel is unreachable today and untested.
 
 ---
 
+### 5.9 Vertex buffers and varyings — two real bugs found and fixed
+
+Everything before this used shaders that build positions from `gl_VertexIndex`
+and need no vertex buffer and only one varying. `vbo_varying_test.c` feeds the
+vertex shader from real vertex buffers: per-vertex position and colour on
+binding 0, a per-**instance** cell origin on binding 1. The colour goes to the
+fragment shader as a smooth varying.
+
+No expected image is hand-written. The harness rasterizes the same triangles on
+the CPU with the Vulkan coverage rule, interpolates the vertex colours
+barycentrically (w = 1, so linear interpolation is exact), and compares every
+pixel at a tolerance of 2 per channel. Pixel centres within 1e-3 px of an edge
+are reported and not scored; there were none in these layouts, and the smallest
+scored margin was 0.029 px. Pixels the reference leaves empty must be clear.
+
+**Bug 1: firstInstance ignored for instance-rate attributes, on direct draws too.**
+`emit_vs_attrib()` adds `vi.base_instance * stride` to every instance-rate
+attribute's offset, but on the v9 path nothing ever assigned
+`vi.base_instance`. The CSF path does (`csf/panvk_vX_cmd_draw.c:3593`). Before
+the fix, `vkCmdDraw(6, 2, 0, 5)` drew in cells 0 and 1 instead of 5 and 6, on
+both the direct and the indirect path. This is separate from 5.4: that one was
+`gl_InstanceIndex`, which reaches the shader through a sysval. This one is
+attribute fetch, which goes through the descriptor offset.
+
+Fix (patch `0039`): `prepare_draw_v9` sets `vi.base_instance` from the draw
+before the VS driver set is built. For indirect draws that value is the
+placeholder 0, so the helper kernels now also add `firstInstance * stride` to
+the `Offset` word of each instance-rate attribute descriptor. That word is the
+int32 at word 2 of the Attribute descriptor (`v9.xml`). The descriptors are 32
+bytes apart in the VS driver set, which is allocated per draw, so the add cannot
+accumulate. `PANVK_INDIRECT_NO_INSTATTR=1` withholds the patch and is the
+negative control. With it, `i_fi` and `xi_fi` fail exactly as before, and `i_ab4`
+(firstInstance 0) still passes.
+
+**Bug 2: any vertex shader with a FAU block of 4 words or more rendered black.**
+Two plain `vec4` varyings were enough to trigger it. The `VARYING` shader
+environment of the MALLOC_VERTEX job was given the FAU pointer but no
+`fau_count`, while the `POSITION` environment had one. Gallium sets both
+(`pan_jm.c`, `jm_emit_shader_env`). It is the same defect class as the graphics
+and compute FAU-count fixes. Fixed by patch `0040`, one line, with
+`PANVK_VARYING_NO_FAU_COUNT=1` as the control.
+
+How it was isolated (each variant run against the fixed build, then the control):
+
+| VS variant | FAU words (64-bit) | of which constants | control | fixed |
+|---|---|---|---|---|
+| one vec4 varying | 3 | 0 | PASS | PASS |
+| one vec4 at location 1 | 3 | 0 | PASS | PASS |
+| one vec4 with a literal | 4 | 1 | PASS | PASS |
+| two vec4, no literals in source | 4 | 1 | **FAIL** | PASS |
+| two vec4 | 4 | 1 | **FAIL**, black | PASS |
+| vec4 + flat int | 4 | 1 | **FAIL**, black | PASS |
+| four vec4 | — | — | **FAIL**, black | PASS |
+| four vec4 + flat int | 10 | 13 (32-bit) | **FAIL**, black | PASS |
+
+The FAU sizes come from a temporary dump of the shader's FAU layout, removed
+after use. All single-varying shaders used earlier in Phase 4 had a 3-word FAU
+block, which is why the bug never showed. What the table does **not** establish
+is which FAU word the varying shader actually depends on: a 4-word VS that
+passes and a 4-word VS that fails both appear above. The fix is source-backed by
+Gallium. The mechanism is not pinned down.
+
+**Results after both fixes, 3x each, identical, zero faults.** Same 14 cases
+with the single-varying shader and with a five-varying shader that reassembles
+the same colour, so the reference is shared:
+
+| case | params | covered | hash |
+|---|---|---|---|
+| `d_a` / `i_a` | 3 vtx, 1 inst | 156 | `723ee669c18f` |
+| `d_ab4` / `i_ab4` | 6 vtx, 4 inst | 1184 | `f7ddb36cc949` |
+| `d_fv` / `i_fv` | firstVertex 3 | 140 | `92319b8596ad` |
+| `x_vo` / `xi_vo` | vertexOffset 3 | 140 | `92319b8596ad` |
+| `d_fi` / `i_fi` | firstInstance 5 | 592 | `73cfd71107f8` |
+| `x_fi` / `xi_fi` | firstInstance 2, indexed | 888 | `f1f105cf1e87` |
+| `d_all` / `i_all` | 48 vertices vs placeholder 1 | 2368 | `ba7e115cc338` |
+
+Direct, indirect, single-varying and five-varying are byte-identical in every
+row. `firstVertex 3` and `vertexOffset 3` land on the same image through two
+different API inputs.
+
+**Negative controls on the comparison itself.** `VBO_LIE` corrupts only the GPU
+side while the CPU reference keeps the true data, so the comparison has to fail.
+With `color`, all 1184 pixels mismatch. With `cell`, 296 mismatch plus 296 stray,
+which is one cell's worth.
+
+**Not covered:** vertex buffer offsets other than 0, strides that are not
+multiples of 16, packed or normalized attribute formats, attribute divisors,
+more than 8 instances, and noperspective varyings.
+
 ## 6. Things that apply to all four sub-phases
 
 ### 6.1 One workload shape, over and over — OPEN
 
 Nearly everything was validated with a 64×64 linear `R8G8B8A8_UNORM` offscreen
-target, no depth, no blending, no MSAA, single layer, and shaders that avoid
-vertex buffers by indexing a hardcoded array. That shape was chosen to isolate
+target, no depth, no blending, no MSAA, single layer, and (until 5.9) shaders
+that avoid vertex buffers by indexing a hardcoded array. That shape was chosen to isolate
 variables and it did its job, but it means the results generalise less than the
 number of passing tests suggests.
 
