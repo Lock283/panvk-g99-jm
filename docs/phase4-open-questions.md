@@ -337,22 +337,97 @@ stops doing it.
 512 and 253. The quadrant breakdown settles it: `445,192,64,64`, where
 445 = 192 + 253 in the top-left. Two distinct shapes in distinct places.
 
-### 5.4 firstInstance is not implemented — ACCEPTED, and deliberately
+### 5.4 firstInstance: the published claim was wrong, and indirect had a real bug — RESOLVED
 
-The helper does not patch `PRIMITIVE.instance_offset`, because the direct path
-does not write it either. Patching it would have made indirect behave
-*differently* from direct, which would break the byte-identity property that all
-the other evidence rests on.
+**What this section used to say.** "`firstInstance` is ignored on v9 for both
+direct and indirect draws." That was SUPERSEDED by measurement. It was reasoned
+from one field only, `PRIMITIVE.instance_offset`, which neither path writes, and
+it never looked at how the shader actually sees the instance index.
 
-This means `firstInstance` is ignored on v9 for both direct and indirect draws.
-That is a pre-existing gap in the direct path and should be fixed there first.
-Untested either way, since no test used a non-zero `firstInstance`.
+**How the shader sees it (VERIFIED-SRC).**
 
-### 5.5 Instancing barely exercised — OPEN
+1. `nir_lower_system_values.c:206` lowers `gl_InstanceIndex` to
+   `instance_id + base_instance` unless the backend sets
+   `instance_id_includes_base_index`. Panfrost does not set it anywhere.
+2. `base_instance` and `first_vertex` (`gl_BaseInstance`, `gl_BaseVertex`) are
+   sysvals in the VS push-uniform block.
+3. The direct path fills both from the draw call
+   (`panvk_vX_cmd_draw.c:825-826`).
+4. The v9 indirect helper received no pointer to either sysval. The only
+   indirect path that patched them was the Bifrost one, inside the
+   `PAN_ARCH < 9` block of `jm/panvk_vX_cmd_draw.c`.
 
-`instanceCount` was only ever 1 or 0. An `instanceCount` of 2 or more was never
-run, on any path. The instance-count patching in the helper is therefore
-unverified for values above 1, even though it is the same 32-bit field write.
+So the prediction was that direct honours `firstInstance` and indirect does not:
+two paths that were supposed to be byte-identical would disagree.
+
+**Measured before the fix.** `instquad.vert` places one bar per instance at slot
+`gl_InstanceIndex`. With `instanceCount = 4, firstInstance = 2`:
+
+| case | framebuffer | bar columns |
+|---|---|---|
+| `inst4` (firstInstance 0) | `d29092155a06` | 3-4, 7-8, 11-12, 15-16 |
+| direct, firstInstance 2 | `b0ea0848b5a3` | 11-12, 15-16, 19-20, 23-24 |
+| indirect, firstInstance 2 | `d29092155a06` | 3-4, 7-8, 11-12, 15-16 |
+
+Direct shifted by exactly two slots. Indirect came back identical to
+`firstInstance = 0`. Indexed direct and indexed indirect split the same way.
+Pixel counts were 152 in every row, so a counter alone would never have caught
+this; only the image hash did.
+
+**Fix (patch `0038`).** Both v9 helper kernels now take the addresses of the two
+sysvals inside the draw's VS push-uniform block and write `firstVertex` (or
+`vertexOffset` for indexed) and `firstInstance` into them. The address is 0 when
+the shader does not use that sysval, and the kernel skips the write. Offsets are
+computed from `panvk_shader_hw_variant`, the same variant `prepare_draw_v9`
+builds the push uniforms from. The block is allocated fresh on every draw
+(`prepare_push_uniforms`, unconditional in `prepare_draw_v9`), so a patched value
+cannot leak into a later draw.
+
+**After the fix, 3x each, identical, zero faults.** `PANVK_INDIRECT_NO_SYSVAL=1`
+withholds the pointers and is the negative control:
+
+| case | fixed | control |
+|---|---|---|
+| `inst4i_first2` | `b0ea0848b5a3` = direct | `d29092155a06` (old bug) |
+| `idx_inst4i_first2` | `b0ea0848b5a3` = direct | `d29092155a06` |
+| `bv4i` (gl_BaseVertex, firstVertex 4) | `c5a90bec42dc` = direct | `8a0e13e89d90` |
+| `idx_bv4i` (vertexOffset 4) | `c5a90bec42dc` = direct | `8a0e13e89d90` |
+
+The direct cases do not move under the control, as expected, since the control
+only touches the indirect path. `basevtx.vert` positions its bar from
+`gl_BaseVertexARB` alone, so it tests the `first_vertex` sysval independently of
+the hardware `base_vertex_offset` that `firstvtx` already covered.
+
+**Still true:** `PRIMITIVE.instance_offset` is written by neither path. Nothing
+tested here depends on it, because the instance index reaches the shader through
+the sysval. Whether instance-rate vertex attributes need it is untested; see 5.6.
+
+**Lesson recorded.** "Neither path writes field X, so the feature is ignored on
+both" assumed X was the only route by which the value could take effect. It was
+not. The first `inst4_first2` case in the harness even carried the expectation
+"same as inst4" in its description, i.e. the test was written to confirm the
+assumption. That text was removed before the case was run.
+
+### 5.5 Instancing — RESOLVED for instanceCount up to 8
+
+`instquad.vert` makes coverage scale with `instanceCount`, which is what makes
+instancing observable: a shader that ignores `gl_InstanceIndex` would draw N
+overlapping copies and give the same count for every N.
+
+| instanceCount | pixels | direct | indirect |
+|---|---|---|---|
+| 1 | 38 | `8a0e13e89d90` | identical |
+| 2 | 76 | `9d6904ce7bf7` | identical |
+| 4 | 152 | `d29092155a06` | identical |
+| 8 | 304 | `ffa303a53f1c` | identical |
+
+Exactly 38 × N. The CPU placeholder for `instanceCount` is 1, so the indirect
+results at 2, 4 and 8 can only come from the helper writing
+`INSTANCE_COUNT.count`. Indexed indirect at 4 instances gives the same hash as
+direct. 3x each, zero faults.
+
+Not covered: instance-rate vertex attributes (the shader uses no vertex buffers),
+and counts beyond 8.
 
 ### 5.6 Indexed indirect skips the min/max index scan — ACCEPTED
 

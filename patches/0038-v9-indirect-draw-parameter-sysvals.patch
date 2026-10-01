@@ -1,0 +1,120 @@
+--- a/src/panfrost/libpan/draw_helper.cl
++++ b/src/panfrost/libpan/draw_helper.cl
+@@ -676,8 +676,24 @@
+  */
+ KERNEL(1)
+ panlib_draw_indirect_helper(global VkDrawIndirectCommand *cmd,
+-                           global uint8_t *malloc_vertex_job)
++                           global uint8_t *malloc_vertex_job,
++                           global int32_t *first_vertex_sysval,
++                           global int32_t *base_instance_sysval)
+ {
++
++   /* Shader-visible draw parameters. gl_BaseVertex and gl_BaseInstance read
++    * these sysvals directly, and gl_InstanceIndex is lowered to
++    * instance_id + base_instance (nir_lower_system_values.c). The direct path
++    * fills them on the CPU from the draw call; for an indirect draw the CPU only
++    * had placeholders, so without this firstInstance had no effect at all on
++    * indirect draws while the direct path honoured it. The push uniform block
++    * these point into is allocated per draw (prepare_push_uniforms), so the
++    * write cannot leak into another draw. A null pointer means the shader does
++    * not use that sysval. */
++   if (first_vertex_sysval)
++      *first_vertex_sysval = (int32_t)cmd->firstVertex;
++   if (base_instance_sysval)
++      *base_instance_sysval = (int32_t)cmd->firstInstance;
+    const uint32_t vertex_count = cmd->vertexCount;
+    const uint32_t instance_count = cmd->instanceCount;
+    const uint32_t first_vertex = cmd->firstVertex;
+@@ -739,8 +755,24 @@
+ panlib_draw_indexed_indirect_helper(global VkDrawIndexedIndirectCommand *cmd,
+                                    global uint8_t *malloc_vertex_job,
+                                    uint64_t index_buffer_base,
+-                                   uint32_t index_size)
++                                   uint32_t index_size,
++                                   global int32_t *first_vertex_sysval,
++                                   global int32_t *base_instance_sysval)
+ {
++
++   /* Shader-visible draw parameters. gl_BaseVertex and gl_BaseInstance read
++    * these sysvals directly, and gl_InstanceIndex is lowered to
++    * instance_id + base_instance (nir_lower_system_values.c). The direct path
++    * fills them on the CPU from the draw call; for an indirect draw the CPU only
++    * had placeholders, so without this firstInstance had no effect at all on
++    * indirect draws while the direct path honoured it. The push uniform block
++    * these point into is allocated per draw (prepare_push_uniforms), so the
++    * write cannot leak into another draw. A null pointer means the shader does
++    * not use that sysval. */
++   if (first_vertex_sysval)
++      *first_vertex_sysval = cmd->vertexOffset;
++   if (base_instance_sysval)
++      *base_instance_sysval = (int32_t)cmd->firstInstance;
+    const uint32_t index_count = cmd->indexCount;
+    const uint32_t instance_count = cmd->instanceCount;
+    const uint32_t first_index = cmd->firstIndex;
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2967,6 +2967,31 @@
+    const bool is_indirect = draw->info.indirect.buffer_dev_addr != 0;
+    unsigned indirect_dep = 0;
+ 
++   /* Addresses of the draw-parameter sysvals inside this draw's freshly
++    * allocated VS push uniform block, or 0 when the shader does not read them.
++    * The indirect helper fills them from the application's buffer, since the
++    * CPU only had placeholders. Same scheme as the Bifrost path above. */
++   uint64_t fv_sysval = 0, bi_sysval = 0;
++   if (is_indirect) {
++      /* Must be the variant prepare_draw_v9 built the push uniforms from,
++       * otherwise the remapped offsets point at the wrong slots. */
++      const struct panvk_shader_variant *ivs =
++         panvk_shader_hw_variant(cmdbuf->state.gfx.vs.shader);
++      if (shader_uses_sysval(ivs, graphics, vs.first_vertex))
++         fv_sysval = cmdbuf->state.gfx.vs.push_uniforms +
++                     shader_remapped_sysval_offset(
++                        ivs, sysval_offset(graphics, vs.first_vertex));
++      if (shader_uses_sysval(ivs, graphics, vs.base_instance))
++         bi_sysval = cmdbuf->state.gfx.vs.push_uniforms +
++                     shader_remapped_sysval_offset(
++                        ivs, sysval_offset(graphics, vs.base_instance));
++
++      /* Negative control: withhold the pointers, reproducing the behaviour
++       * before the sysvals were patched. */
++      if (getenv("PANVK_INDIRECT_NO_SYSVAL"))
++         fv_sysval = bi_sysval = 0;
++   }
++
+    /* T4.5.8 experiment. Removing the dependency entirely (PANVK_INDIRECT_NODEP)
+     * changed nothing observable in 40 runs, which means the ordering could have
+     * been coming from chain-order serialisation rather than from the dependency.
+@@ -2994,12 +3019,13 @@
+          panlib_draw_indexed_indirect_helper(
+             &precomp_ctx, panlib_1d(1), PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+             draw->info.indirect.buffer_dev_addr, draw->jobs.idvs.gpu,
+-            draw->info.index.buffer_dev_addr, draw->info.index.index_size);
++            draw->info.index.buffer_dev_addr, draw->info.index.index_size,
++            fv_sysval, bi_sysval);
+       } else {
+          panlib_draw_indirect_helper(&precomp_ctx, panlib_1d(1),
+                                      PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+                                      draw->info.indirect.buffer_dev_addr,
+-                                     draw->jobs.idvs.gpu);
++                                     draw->jobs.idvs.gpu, fv_sysval, bi_sysval);
+       }
+ 
+       /* Confirm the prediction rather than trusting it. If the helper did not
+@@ -3026,12 +3052,13 @@
+          panlib_draw_indexed_indirect_helper(
+             &precomp_ctx, panlib_1d(1), PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+             draw->info.indirect.buffer_dev_addr, draw->jobs.idvs.gpu,
+-            draw->info.index.buffer_dev_addr, draw->info.index.index_size);
++            draw->info.index.buffer_dev_addr, draw->info.index.index_size,
++            fv_sysval, bi_sysval);
+       } else {
+          panlib_draw_indirect_helper(&precomp_ctx, panlib_1d(1),
+                                      PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+                                      draw->info.indirect.buffer_dev_addr,
+-                                     draw->jobs.idvs.gpu);
++                                     draw->jobs.idvs.gpu, fv_sysval, bi_sysval);
+       }
+ 
+       indirect_dep = batch->vtc_jc.job_index;

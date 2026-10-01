@@ -95,6 +95,36 @@ int main(void){
       { "many30i",  1,0, 1, {{30,1,0,0}}, {{0}}, 0, "10 columns via indirect, 30x placeholder" },
       { "many90",   0,0, 1, {{90,1,0,0}}, {{0}}, 0, "30 columns, direct reference" },
       { "many90i",  1,0, 1, {{90,1,0,0}}, {{0}}, 0, "30 columns via indirect, 90x placeholder" },
+      /* instanceCount, never exercised above 1 on any path before this.
+       * Use with DI_VS=instquad.vert.spv. Coverage scales with instanceCount
+       * because the shader offsets each instance by gl_InstanceIndex. */
+      { "inst1",    0,0, 1, {{3,1,0,0}}, {{0}}, 0, "1 bar, direct reference" },
+      { "inst1i",   1,0, 1, {{3,1,0,0}}, {{0}}, 0, "1 bar via indirect" },
+      { "inst2",    0,0, 1, {{3,2,0,0}}, {{0}}, 0, "2 bars, direct reference" },
+      { "inst2i",   1,0, 1, {{3,2,0,0}}, {{0}}, 0, "2 bars via indirect" },
+      { "inst4",    0,0, 1, {{3,4,0,0}}, {{0}}, 0, "4 bars, direct reference" },
+      { "inst4i",   1,0, 1, {{3,4,0,0}}, {{0}}, 0, "4 bars via indirect" },
+      { "inst8",    0,0, 1, {{3,8,0,0}}, {{0}}, 0, "8 bars, direct reference" },
+      { "inst8i",   1,0, 1, {{3,8,0,0}}, {{0}}, 0, "8 bars via indirect, 8x the placeholder" },
+      /* indexed variants: the indexed helper patches the same INSTANCE_COUNT
+       * field, so it needs its own coverage. */
+      { "idx_inst4",  1,1, 1, {{0}}, {{3,4,0,0,0}}, 3, "indexed indirect, 4 instances" },
+      /* firstInstance. gl_InstanceIndex is lowered to instance_id +
+       * base_instance (nir_lower_system_values.c), and base_instance is a
+       * sysval. The direct path fills it from firstInstance; whether the
+       * indirect path does is exactly what these cases measure. No expected
+       * image is written here: direct is the reference for indirect, and inst4
+       * is the reference for "firstInstance had no effect". */
+      { "inst4_first2",  0,0, 1, {{3,4,0,2}}, {{0}}, 0, "direct, firstInstance=2" },
+      { "inst4i_first2", 1,0, 1, {{3,4,0,2}}, {{0}}, 0, "indirect, firstInstance=2" },
+      { "idx_inst4_first2",  0,1, 1, {{0}}, {{3,4,0,0,2}}, 3, "indexed direct, firstInstance=2" },
+      { "idx_inst4i_first2", 1,1, 1, {{0}}, {{3,4,0,0,2}}, 3, "indexed indirect, firstInstance=2" },
+      /* gl_BaseVertex. Use with DI_VS=basevtx.vert.spv, which places its bar at
+       * slot gl_BaseVertexARB. Direct is the reference for indirect. */
+      { "bv4",   0,0, 1, {{3,1,4,0}}, {{0}}, 0, "direct, firstVertex=4" },
+      { "bv4i",  1,0, 1, {{3,1,4,0}}, {{0}}, 0, "indirect, firstVertex=4" },
+      { "idx_bv4",  0,1, 1, {{0}}, {{3,1,0,4,0}}, 3, "indexed direct, vertexOffset=4" },
+      { "idx_bv4i", 1,1, 1, {{0}}, {{3,1,0,4,0}}, 3, "indexed indirect, vertexOffset=4" },
       /* indexed indirect. 6 indices {0..5} in the buffer so firstIndex and
        * vertexOffset each have somewhere to point. */
       { "idx_direct",  0,1, 1, {{0}}, {{3,1,0,0,0}}, 6, "reference indexed, triangle A" },

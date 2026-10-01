@@ -1,0 +1,53 @@
+vkCreateInstance ok
+proc addrs: GetDeviceProcAddr=0x7b251ee6ec EnumeratePhysicalDevices=0x7b25241630 GetMemoryProperties=0x7b251ee4f4 CreateDevice=0x7b251ee514
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: error: kbase: MEM_ALLOC req: va_pages=32768 commit_pages=0 extension=512 flags=0x2a0f kmod_flags=0x2
+MESA: error: kbase: MEM_ALLOC req: va_pages=35157 commit_pages=0 extension=512 flags=0x2a0f kmod_flags=0x6
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x280f kmod_flags=0x0
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x1817 kmod_flags=0x41
+[PANVK_DEBUG_SHADERBIN] stage=OTHER bin_size=128 bytes:
+  c0 c4 00 00 04 80 6b 00 c0 09 03 00 00 c2 10 09
+  40 00 00 58 02 42 61 78 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+MESA: error: kbase: MEM_ALLOC req: va_pages=4 commit_pages=4 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=1 commit_pages=1 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=16 commit_pages=16 extension=0 flags=0x380f kmod_flags=0x40
+MESA: error: kbase: MEM_ALLOC req: va_pages=16 commit_pages=16 extension=0 flags=0x380f kmod_flags=0x40
+[PANVK_DEBUG_SUBMIT] vtc_jc ret=0
+[PANVK_DEBUG_JOBSTATUS] vtc_jc job[0] type=4 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x01 (DONE) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_JOBSTATUS] vtc_jc job[1] type=4 index=1 dep1=0 dep2=0 next=0x0 exception_status=0x01 (DONE) first_incomplete_task=0 fault_pointer=0x0
+[PANVK_DEBUG_HEAP] SESUDAH vtc_jc (vertex+tiler) bo->flags=0x2 dev=0x7b19000000 size=134217728 host=0x7b19000000 mincore=absent -- UNREADABLE (I/O error) => halaman belum ter-commit, tiler tidak menulis apa pun
+EnumeratePhysicalDevices(count query): VkResult=0 count=1
+EnumeratePhysicalDevices(fetch): VkResult=0 count=1 pdev=0xb400007c1a80b010
+vkCreateDevice ok
+vkCreateBuffer ok
+using memory type 1
+vkAllocateMemory ok
+vkBindBufferMemory ok
+vkMapMemory ok
+buffer initialized with 0xAA, first u32=0xaaaaaaaa
+shader loaded, 560 bytes
+vkCreateShaderModule ok
+vkCreateDescriptorSetLayout ok
+vkCreatePipelineLayout ok
+vkCreateComputePipelines ok
+vkCreateDescriptorPool ok
+vkAllocateDescriptorSets ok
+pipeline+descriptors ready
+vkCreateCommandPool ok
+vkAllocateCommandBuffers ok
+vkBeginCommandBuffer ok
+vkEndCommandBuffer ok
+command buffer recorded
+calling vkQueueSubmit (this exercises our kbase patch)...
+vkQueueSubmit ok
+calling vkQueueWaitIdle...
+vkQueueWaitIdle ok
+buffer after dispatch, first u32=0x00000309 (expected 0x00000309 = 777)
