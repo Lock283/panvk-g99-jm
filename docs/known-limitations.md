@@ -34,9 +34,9 @@ Read this before quoting anything from this repo.
 | `vkCmdDispatchIndirect` (v9) | **VERIFIED-HW**. Was faulting the GPU before `dispatch_precomp` was ported to v9 |
 | Indexed draws | **VERIFIED-HW** including `firstIndex` and `vertexOffset`. `firstIndex` was silently ignored until fixed |
 | Indirect draws | **VERIFIED-HW** for `vkCmdDrawIndirect` and `vkCmdDrawIndexedIndirect`, software-emulated. `instanceCount` up to 8, `firstInstance`, `gl_BaseVertex` byte-identical to direct after patch `0038`; vertex buffers, instance-rate attributes and multiple varyings byte-identical to direct after patches `0039`/`0040` |
-| MSAA | `multisample_enable` emitted false; untested |
+| MSAA | **VERIFIED-HW** for 4x with AVERAGE resolve and pSampleMask, against a per-sample model using the standard sample positions. 8x, sample shading and alpha-to-coverage untested — see [phase4-open-questions.md](phase4-open-questions.md) §5.10 |
 | Multiple render targets | **VERIFIED-HW** for 2 attachments, square and circle, against a CPU reference rasterizer, plus byte-exact attachment independence over the whole allocation. 3–8 attachments and mixed formats untested |
-| Depth/stencil testing | descriptors emitted, never validated by a test |
+| Depth/stencil testing | Depth **VERIFIED-HW**: compare ops, clear value, write enable, D32F and D16, every pixel of colour and depth compared against a model. Stencil, depth bias/bounds/clamp untested — see §5.10 |
 | Tiled / AFBC image layouts | linear only |
 | Queries / occlusion | `Occlusion query: Disabled` |
 | Secondary command buffers | untested |

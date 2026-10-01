@@ -1,0 +1,7 @@
+framebufferColorSampleCounts=0xd Depth=0xd standardSampleLocations=1
+D16     optimal=0x0d601 linear=0x0d601  DSattach(opt)=1 transferSrc(opt)=1
+X8D24   optimal=0x0d601 linear=0x0d601  DSattach(opt)=1 transferSrc(opt)=1
+D32F    optimal=0x0d601 linear=0x0d601  DSattach(opt)=1 transferSrc(opt)=1
+D24S8   optimal=0x0d601 linear=0x0d601  DSattach(opt)=1 transferSrc(opt)=1
+D32FS8  optimal=0x0d601 linear=0x0d601  DSattach(opt)=1 transferSrc(opt)=1
+RGBA8   optimal=0x0dd83 linear=0x0dd83

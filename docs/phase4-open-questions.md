@@ -698,12 +698,67 @@ which is one cell's worth.
 multiples of 16, packed or normalized attribute formats, attribute divisors,
 more than 8 instances, and noperspective varyings.
 
+### 5.10 Depth testing and multisampling — VERIFIED-HW, no bugs found
+
+Neither had ever been exercised. The device reports
+`framebufferColorSampleCounts = framebufferDepthSampleCounts = 0xd` (1, 4, 8)
+and `standardSampleLocations = 1`, and advertises D16, X8_D24, D32F, D24S8 and
+D32FS8 as depth attachments in both optimal and linear tiling.
+
+**Depth (`depth_test.c`).** Two overlapping quads, A red at z 0.25 and B green at
+z 0.75, with every edge on an integer pixel coordinate, so coverage is exact
+(576, 576, overlap 256). The expected result is not written down: a CPU model of
+the Vulkan depth test runs over the same quads in the same order. Both the colour
+and the depth attachment are linear and host visible, so every pixel of both is
+compared, colour exactly and depth to 1e-6 (D32F) or one unorm step (D16).
+
+| case | what it distinguishes | red | green | verdict |
+|---|---|---|---|---|
+| `off_ab` | test off, A then B: last wins | 320 | 576 | PASS |
+| `off_ba` | test off, B then A | 576 | 320 | PASS |
+| `less_ab` | LESS: nearer wins regardless of order | 576 | 320 | PASS |
+| `less_ba` | same, reversed order, same image | 576 | 320 | PASS |
+| `greater_ba` | GREATER, clear 0: farther wins (differs from `off_ba`) | 320 | 576 | PASS |
+| `less_clear05` | clear value used: only z 0.25 passes | 576 | 0 | PASS |
+| `less_clear01` | nothing passes | 0 | 0 | PASS |
+| `less_nowrite` | write disabled: B passes over A | 320 | 576 | PASS |
+| `equal_clear025` | EQUAL against clear 0.25 | 576 | 0 | PASS |
+
+All nine pass on D32F and on D16, 3x each, identical, zero faults, with zero
+mismatching depth values. `DEPTH_LIE=1` makes the model use the opposite compare
+op, and the comparison then fails on 896 colour and 896 (or 576) depth pixels,
+which shows the depth readback is being compared rather than passing vacuously.
+
+**Multisampling (`msaa_test.c`).** One slanted triangle, no axis-aligned edges,
+rendered into a 4x attachment and resolved with `VK_RESOLVE_MODE_AVERAGE_BIT`
+into a linear 1x image. For every pixel the model counts how many of the four
+standard sample positions are inside the triangle, k = 0..4, and the resolved
+value must be 255k/4 within 1.
+
+| case | model | got | verdict |
+|---|---|---|---|
+| `ms4` | k1 33, k2 39, k3 32 partial pixels | 64:34, 128:40, 191:32 | PASS |
+| `ms4_mask` (pSampleMask 0x1) | only 0 or 64 possible | 0:2990, 64:1106 | PASS |
+| `ms1` control | no intermediate values | 0:2988, 255:1108 | PASS |
+
+The extra one or two pixels in the `got` column are the pixels with a sample
+point within 1e-3 px of an edge; those are counted but not scored (2 in `ms4`).
+3x each, identical, zero faults. `MSAA_LIE=1` makes the model use the pixel
+centre for the 4x render and the comparison then fails on 106 pixels. The mask
+case and the 1x case differ by 2 pixels (1106 vs 1108), because sample 0 is not
+at the pixel centre, which confirms the hardware is using the standard
+positions rather than the centre.
+
+**Not covered:** stencil, depth bounds, depth bias, depth clamp, 8x, sample
+shading, alpha-to-coverage, MSAA with depth, resolve modes other than AVERAGE,
+and depth formats in optimal tiling read back through a copy.
+
 ## 6. Things that apply to all four sub-phases
 
 ### 6.1 One workload shape, over and over — OPEN
 
 Nearly everything was validated with a 64×64 linear `R8G8B8A8_UNORM` offscreen
-target, no depth, no blending, no MSAA, single layer, and (until 5.9) shaders
+target, no blending, single layer, no depth or MSAA until 5.10, and (until 5.9) shaders
 that avoid vertex buffers by indexing a hardcoded array. That shape was chosen to isolate
 variables and it did its job, but it means the results generalise less than the
 number of passing tests suggests.
