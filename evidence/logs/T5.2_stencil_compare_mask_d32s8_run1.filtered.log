@@ -1,0 +1,7 @@
+=== stencil case: compare_mask format=d32s8 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 130 optimalTilingFeatures=0xd601
+model values: 21 x320 53 x3200 202 x320 234 x256
+gpu values  : 21 x320 53 x3200 202 x320 234 x256  unhit=0
+STENCILFP compare_mask fmt=d32s8 bad=0 unhit=0 verdict=PASS
+DONE

@@ -1,0 +1,8 @@
+=== stencil case: invert format=d24s8 NEGATIVE CONTROL: model swaps pass/fail ops ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 129 optimalTilingFeatures=0xd601
+model values: 15 x4096
+gpu values  : 15 x3456 240 x640  unhit=0
+  first     : (16,16) got 240,0,0,255 model stencil 15
+STENCILFP invert fmt=d24s8 bad=640 unhit=0 verdict=FAIL
+DONE

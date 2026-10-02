@@ -1,0 +1,7 @@
+=== stencil case: invert format=d24s8 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 129 optimalTilingFeatures=0xd601
+model values: 15 x3456 240 x640
+gpu values  : 15 x3456 240 x640  unhit=0
+STENCILFP invert fmt=d24s8 bad=0 unhit=0 verdict=PASS
+DONE

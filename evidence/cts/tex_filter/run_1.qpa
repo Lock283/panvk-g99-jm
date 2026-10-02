@@ -1,0 +1,1470 @@
+#sessionInfo releaseName 31807adf6dc7111b32b1ade990d0d8e552fa1b78
+#sessionInfo releaseId 0x31807adf
+#sessionInfo targetName "Android"
+#sessionInfo logFormatVersion "0.3.4"
+#sessionInfo vendorID 0x13b5
+#sessionInfo deviceID 0x90930010
+#sessionInfo deviceName Mali-G57 MC2
+#sessionInfo commandLineParameters "--deqp-vk-library-path=/data/data/com.termux/files/home/cts/shim/libvkshim.so --deqp-caselist-file=/data/data/com.termux/files/home/cts/runs/tex_filter/todo_1.txt --deqp-log-filename=/data/data/com.termux/files/home/cts/runs/tex_filter/run_1.qpa --deqp-log-images=enable --deqp-log-shader-sources=disable --deqp-watchdog=disable"
+
+#beginSession
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">6189</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">312</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">121</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">108</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">109</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Text>VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">106</Number>
+ <Result StatusCode="NotSupported">VK_EXT_filter_cubic is not supported at vktTestCase.cpp:1394</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">305.976013</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.021000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog>WARNING: 0:2: &apos;&apos; : all default precisions are highp; use precision statements to quiet warning, e.g.:
+         &quot;precision mediump int; precision highp float;&quot; 
+</InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">1.231000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.009000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">1.097000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.008000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+   8BNeNyzfAAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4nOWav27b
+   MBDGv3O1eOiSAFlToEvXPltfow+VN/CYLgHEVUCzFKg6JGAH/hFFkRbPlKWTM9gn
+   yKLsu/vuxyMtevr54wkAiDTt1fb9sW/bL61Sj0qpR9V1D13p+AaaQIA5uVPrfCBN
+   /lU6/kCayA/eq3WvC8Y3nGhJtXHmOao+bJ69Jaw9hiZw1XAzCgAwOG8dLBl/OxCM
+   mFA6/rYg6MqAMf5mSiB0/sNC8JIp8SYYkILgh2LABIIM23CmDLE2zjxDAQ2BCFqA
+   ExU2VgKnrBvS5phIm4E7tKMycK/C8QaCBKMCZwVklWNrVoMNgYi0jYLW+1RDYuor
+   HW9KgAimFPapgjjzPAaACNqDAF4NEJLdEgZEEGQxgALfoTWIglmBMChDQKbPKQBA
+   7WrQ1gJ8AQVMgGhI1qwGm6lcYFVg1QBAPCRT9C+HYCpaKTXYzwWqwDtvg8GEYC5a
+   CJggG5JhENgQzEfLqcDNk2EpCFNDxWowwYA5NYRlIYMJEwhyGTAfKesotM18DEls
+   O2VWrQYZF0/LI6UGrD5luswvDMESm1LD+uWRbITqIVijBvv5SiqIe4ErQJCrBvMd
+   q02ZdavBSxggSw1x5ldkAFMNV2JCDEEWA5ZVQGitw04ZV5wykxAsVUA9BEvLImyn
+   fWQWKYtJI7QNBEsshrLQ7m0BSC6/Gry2GjA4v0AD5Z23wRAAQQ4k6xso78M2jZAA
+   NUT1L5gBOSa4PYd42V2mhgkEuQzYRgH2V4IGOwqIvY4wP2VeuBo0DFgVgqVlkdqB
+   ypeFy/yOIMgtD/8jk2WRbITmyoY0SIt+QKIckpMZYEbVYwVsCsGFIBm2vy6hZ7IO
+   0tioEaphQn5jlhCtAc6oOlbAjh6SIiKNwSaOR6Vgxzk2ABj/jW6tcAWENj9lGufN
+   2ZABJfdtnr/9eibSVk57s6ZM+v7Yq2Ov1LFX7fFv293/7kyUNObu05y+n07wfxHv
+   0/b/jn1799qqu1el7l9V1z10Jv/aByk3vnn5+vKytQOLBODTW6uad9U2b233+U9n
+   SmVQSS4Qghuh83Y8pcF2gOa0hyJhdl0huBGat+441QmOnceghqiNFt4IlWSfMqtB
+   wLfRZLOfUMEunhTNHXubXQ1aDsA2U4mN2YNngGA7knjqc3eNVcL0PjYIvtxtWeir
+   bosvl/Wz2Y8DlN0WT6tBNARLnAfA3BYf7zmIfFw+Jfez40IGlFzvrcC1AEf6YQmM
+   pF+sai1nNZjKenE23T1cKTC+dzMF1NT8xBZBMG0PEqY2AGBnPVRPshEq+x2rNkKl
+   59g22wjNj/8PH5TxQ9w4qAQAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFU0lEQVR4nO2Zv2/a
+   TBzGH//AGILBgO0ktElaoahqowxdMjVTlkqdu3Ztl0qdO/Yf6NR/pXOHdqiUJUMa
+   VUmUNqFgwBgMcQADdodXvCr4vllviB+J5Z77xA9P7ix0BwDRv5/3799HlI6OjqIX
+   L15Ey8z88+bNm8h1XSZbq9WiV69ekezLly+js7MzJjscDqN3796R7MHBQfT9+3cy
+   94cPH0hWxB1XUgDvALyVFMA7AG8lBfAOwFtJAbwD8FZSAO8AvCXfu3dvYUAQBPz5
+   84c5udvtYmVlBcvMXKlUCs1mEzc3NzGv3W4jnU6TbCaTQafTgaqqMS8IAkiSRLKa
+   psHzPDJ3FEUkKz9+/HhhQJIknJycMCe3Wi0Ui0UsM3Ol02mcn58jnU7HvMFggJWV
+   FZLVNA2/f/9Gv9+PedPpFKlUimTL5TIajQYEQWD6URSRrPD27dvo34FSqYRyucyc
+   HAQBHMeB7/tMX9d1lEolSJIU8yaTCVzXZX5B4L8CyuUyUqlUzAvDEJ1OB71ej8lm
+   MhkYhsFcPQDgui46nQ7TEz59+rRQgOM4aDabzMmqqsKyLGiaRj6o1WphNpvFvFQq
+   BcuyoOs6k/U8D+12G+PxOOaJogjTNGEYBpP1fR+tVou59QDANE1YlsX0Ylvg69ev
+   5BawLAuPHj3C9vY20z88PMT5+TmGw2HM0zQNDx8+JJfiyckJDg8P0e124yFlGZVK
+   hWQvLi5wdHSEer3O9A3DINlYAd++fSMLmM1mt74Djo+PcXp6isFgEPNM07z1HVCr
+   1XB1dYWrq6uYpygKnj9/TrL9fh/NZpPM/ezZM7qAtbW1hQFRFGHbNnOyZVnIZrNY
+   Zv7/Y7IMx3GY/0VJkqAoCsmqqgrXdZnPVlUVoiiSbC6XQ7/fJ3MDINk7/zsgKYB3
+   AN5KCuAdgLeSAngH4K2kAN4BeCspgHcA3koK4B2At5ICeAfgraQA3gF4684XIF9e
+   Xi4MhGGIzc1N5mTDMHB9fY1lZq4gCFCpVJinxqZpYjQakezNzQ0sy8JkMol5iqJg
+   Op2SbL/fR6lUInMDIFl5+SDxtksEwzDQ7XbJw8fxeIxqtco82tY0Db7vk+xgMMDG
+   xgby+Xw8pCxjMpmQbKfTwerqKqIoYvqCIJCs8PHjxwXK8zzyAkJRFOi6jkwmw/Sv
+   r6/R6/WY9wKSJEHXdeRyOSbr+z48z2OuAAAoFovMcgBgOByi1+shCAKmXygUyPsI
+   4fXr1wsFrK2tYX19nTl5NBqhXq/D8zymbxgGKpUKeTNUr9fhui6TLRaLWF9fZ16r
+   hWGIRqOBVqvFZDVNQ6VSQTabZfq2baPRaDC92BYwTZPcArZt4/j4GD9//mT6e3t7
+   qFarzBUyGAxwenpKLsWdnR3s7e0xr+Xm+59iq9Uqnj59ivv375O5KTZWwP7+PlmA
+   JEm3vgN2d3dRrVZRKBRiXrPZvPUdsLm5ia2tLWxsbMS8IAjw+fNnktV1Haurq2Tu
+   L1++0AW02+2FgSiKYJomc3Kj0cBwOMQyM9dsNkO5XEaxWGR+iclkQrLj8RiFQoH5
+   7NFohNlsRrK+70PTNDK3IAgke+d/ByQF8A7AW0kBvAPwVlIA7wC8lRTAOwBvJQXw
+   DsBbSQG8A/BWUgDvALyVFMA7AG/d+QLkBw8eLAyIoohfv34xJzuOg3w+j2VmLkVR
+   UKvVmKfG7XYbqqqSbDabhW3bzBPlIAggyzLJ6roO13XJ3ABIVn7y5MnCgCiK+PHj
+   B3Oy4zjQdR3LzFyqquLs7Ix5tO37PnK5HMnm83lcXl4yy5tOp1AUhWQNw4Bt2wjD
+   kOmHYUiyfwEcdbkgvGOISAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">505069</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">4746</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_linear
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_linear" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4nOWav27b
+   MBDGv3O1eOiSAFlToEvXPltfow+VN/CYLgHEVUCzFKg6JGAH/hFFkRbPlKWTM9gn
+   yKLsu/vuxyMtevr54wkAiDTt1fb9sW/bL61Sj0qpR9V1D13p+AaaQIA5uVPrfCBN
+   /lU6/kCayA/eq3WvC8Y3nGhJtXHmOao+bJ69Jaw9hiZw1XAzCgAwOG8dLBl/OxCM
+   mFA6/rYg6MqAMf5mSiB0/sNC8JIp8SYYkILgh2LABIIM23CmDLE2zjxDAQ2BCFqA
+   ExU2VgKnrBvS5phIm4E7tKMycK/C8QaCBKMCZwVklWNrVoMNgYi0jYLW+1RDYuor
+   HW9KgAimFPapgjjzPAaACNqDAF4NEJLdEgZEEGQxgALfoTWIglmBMChDQKbPKQBA
+   7WrQ1gJ8AQVMgGhI1qwGm6lcYFVg1QBAPCRT9C+HYCpaKTXYzwWqwDtvg8GEYC5a
+   CJggG5JhENgQzEfLqcDNk2EpCFNDxWowwYA5NYRlIYMJEwhyGTAfKesotM18DEls
+   O2VWrQYZF0/LI6UGrD5luswvDMESm1LD+uWRbITqIVijBvv5SiqIe4ErQJCrBvMd
+   q02ZdavBSxggSw1x5ldkAFMNV2JCDEEWA5ZVQGitw04ZV5wykxAsVUA9BEvLImyn
+   fWQWKYtJI7QNBEsshrLQ7m0BSC6/Gry2GjA4v0AD5Z23wRAAQQ4k6xso78M2jZAA
+   NUT1L5gBOSa4PYd42V2mhgkEuQzYRgH2V4IGOwqIvY4wP2VeuBo0DFgVgqVlkdqB
+   ypeFy/yOIMgtD/8jk2WRbITmyoY0SIt+QKIckpMZYEbVYwVsCsGFIBm2vy6hZ7IO
+   0tioEaphQn5jlhCtAc6oOlbAjh6SIiKNwSaOR6Vgxzk2ABj/jW6tcAWENj9lGufN
+   2ZABJfdtnr/9eibSVk57s6ZM+v7Yq2Ov1LFX7fFv293/7kyUNObu05y+n07wfxHv
+   0/b/jn1799qqu1el7l9V1z10Jv/aByk3vnn5+vKytQOLBODTW6uad9U2b233+U9n
+   SmVQSS4Qghuh83Y8pcF2gOa0hyJhdl0huBGat+441QmOnceghqiNFt4IlWSfMqtB
+   wLfRZLOfUMEunhTNHXubXQ1aDsA2U4mN2YNngGA7knjqc3eNVcL0PjYIvtxtWeir
+   bosvl/Wz2Y8DlN0WT6tBNARLnAfA3BYf7zmIfFw+Jfez40IGlFzvrcC1AEf6YQmM
+   pF+sai1nNZjKenE23T1cKTC+dzMF1NT8xBZBMG0PEqY2AGBnPVRPshEq+x2rNkKl
+   59g22wjNj/8PH5TxQ9w4qAQAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+   lYkM3lCGzqEAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFU0lEQVR4nO2Zv2/a
+   TBzGH//AGILBgO0ktElaoahqowxdMjVTlkqdu3Ztl0qdO/Yf6NR/pXOHdqiUJUMa
+   VUmUNqFgwBgMcQADdodXvCr4vllviB+J5Z77xA9P7ix0BwDRv5/3799HlI6OjqIX
+   L15Ey8z88+bNm8h1XSZbq9WiV69ekezLly+js7MzJjscDqN3796R7MHBQfT9+3cy
+   94cPH0hWxB1XUgDvALyVFMA7AG8lBfAOwFtJAbwD8FZSAO8AvCXfu3dvYUAQBPz5
+   84c5udvtYmVlBcvMXKlUCs1mEzc3NzGv3W4jnU6TbCaTQafTgaqqMS8IAkiSRLKa
+   psHzPDJ3FEUkKz9+/HhhQJIknJycMCe3Wi0Ui0UsM3Ol02mcn58jnU7HvMFggJWV
+   FZLVNA2/f/9Gv9+PedPpFKlUimTL5TIajQYEQWD6URSRrPD27dvo34FSqYRyucyc
+   HAQBHMeB7/tMX9d1lEolSJIU8yaTCVzXZX5B4L8CyuUyUqlUzAvDEJ1OB71ej8lm
+   MhkYhsFcPQDgui46nQ7TEz59+rRQgOM4aDabzMmqqsKyLGiaRj6o1WphNpvFvFQq
+   BcuyoOs6k/U8D+12G+PxOOaJogjTNGEYBpP1fR+tVou59QDANE1YlsX0Ylvg69ev
+   5BawLAuPHj3C9vY20z88PMT5+TmGw2HM0zQNDx8+JJfiyckJDg8P0e124yFlGZVK
+   hWQvLi5wdHSEer3O9A3DINlYAd++fSMLmM1mt74Djo+PcXp6isFgEPNM07z1HVCr
+   1XB1dYWrq6uYpygKnj9/TrL9fh/NZpPM/ezZM7qAtbW1hQFRFGHbNnOyZVnIZrNY
+   Zv7/Y7IMx3GY/0VJkqAoCsmqqgrXdZnPVlUVoiiSbC6XQ7/fJ3MDINk7/zsgKYB3
+   AN5KCuAdgLeSAngH4K2kAN4BeCspgHcA3koK4B2At5ICeAfgraQA3gF4684XIF9e
+   Xi4MhGGIzc1N5mTDMHB9fY1lZq4gCFCpVJinxqZpYjQakezNzQ0sy8JkMol5iqJg
+   Op2SbL/fR6lUInMDIFl5+SDxtksEwzDQ7XbJw8fxeIxqtco82tY0Db7vk+xgMMDG
+   xgby+Xw8pCxjMpmQbKfTwerqKqIoYvqCIJCs8PHjxwXK8zzyAkJRFOi6jkwmw/Sv
+   r6/R6/WY9wKSJEHXdeRyOSbr+z48z2OuAAAoFovMcgBgOByi1+shCAKmXygUyPsI
+   4fXr1wsFrK2tYX19nTl5NBqhXq/D8zymbxgGKpUKeTNUr9fhui6TLRaLWF9fZ16r
+   hWGIRqOBVqvFZDVNQ6VSQTabZfq2baPRaDC92BYwTZPcArZt4/j4GD9//mT6e3t7
+   qFarzBUyGAxwenpKLsWdnR3s7e0xr+Xm+59iq9Uqnj59ivv375O5KTZWwP7+PlmA
+   JEm3vgN2d3dRrVZRKBRiXrPZvPUdsLm5ia2tLWxsbMS8IAjw+fNnktV1Haurq2Tu
+   L1++0AW02+2FgSiKYJomc3Kj0cBwOMQyM9dsNkO5XEaxWGR+iclkQrLj8RiFQoH5
+   7NFohNlsRrK+70PTNDK3IAgke+d/ByQF8A7AW0kBvAPwVlIA7wC8lRTAOwBvJQXw
+   DsBbSQG8A/BWUgDvALyVFMA7AG/d+QLkBw8eLAyIoohfv34xJzuOg3w+j2VmLkVR
+   UKvVmKfG7XYbqqqSbDabhW3bzBPlIAggyzLJ6roO13XJ3ABIVn7y5MnCgCiK+PHj
+   B3Oy4zjQdR3LzFyqquLs7Ix5tO37PnK5HMnm83lcXl4yy5tOp1AUhWQNw4Bt2wjD
+   kOmHYUiyfwEcdbkgvGOISAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">311698</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_linear_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_linear_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">1972</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_nearest
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_nearest" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4nOWav27b
+   MBDGv3O1eOiSAFlToEvXPltfow+VN/CYLgHEVUCzFKg6JGAH/hFFkRbPlKWTM9gn
+   yKLsu/vuxyMtevr54wkAiDTt1fb9sW/bL61Sj0qpR9V1D13p+AaaQIA5uVPrfCBN
+   /lU6/kCayA/eq3WvC8Y3nGhJtXHmOao+bJ69Jaw9hiZw1XAzCgAwOG8dLBl/OxCM
+   mFA6/rYg6MqAMf5mSiB0/sNC8JIp8SYYkILgh2LABIIM23CmDLE2zjxDAQ2BCFqA
+   ExU2VgKnrBvS5phIm4E7tKMycK/C8QaCBKMCZwVklWNrVoMNgYi0jYLW+1RDYuor
+   HW9KgAimFPapgjjzPAaACNqDAF4NEJLdEgZEEGQxgALfoTWIglmBMChDQKbPKQBA
+   7WrQ1gJ8AQVMgGhI1qwGm6lcYFVg1QBAPCRT9C+HYCpaKTXYzwWqwDtvg8GEYC5a
+   CJggG5JhENgQzEfLqcDNk2EpCFNDxWowwYA5NYRlIYMJEwhyGTAfKesotM18DEls
+   O2VWrQYZF0/LI6UGrD5luswvDMESm1LD+uWRbITqIVijBvv5SiqIe4ErQJCrBvMd
+   q02ZdavBSxggSw1x5ldkAFMNV2JCDEEWA5ZVQGitw04ZV5wykxAsVUA9BEvLImyn
+   fWQWKYtJI7QNBEsshrLQ7m0BSC6/Gry2GjA4v0AD5Z23wRAAQQ4k6xso78M2jZAA
+   NUT1L5gBOSa4PYd42V2mhgkEuQzYRgH2V4IGOwqIvY4wP2VeuBo0DFgVgqVlkdqB
+   ypeFy/yOIMgtD/8jk2WRbITmyoY0SIt+QKIckpMZYEbVYwVsCsGFIBm2vy6hZ7IO
+   0tioEaphQn5jlhCtAc6oOlbAjh6SIiKNwSaOR6Vgxzk2ABj/jW6tcAWENj9lGufN
+   2ZABJfdtnr/9eibSVk57s6ZM+v7Yq2Ov1LFX7fFv293/7kyUNObu05y+n07wfxHv
+   0/b/jn1799qqu1el7l9V1z10Jv/aByk3vnn5+vKytQOLBODTW6uad9U2b233+U9n
+   SmVQSS4Qghuh83Y8pcF2gOa0hyJhdl0huBGat+441QmOnceghqiNFt4IlWSfMqtB
+   wLfRZLOfUMEunhTNHXubXQ1aDsA2U4mN2YNngGA7knjqc3eNVcL0PjYIvtxtWeir
+   bosvl/Wz2Y8DlN0WT6tBNARLnAfA3BYf7zmIfFw+Jfez40IGlFzvrcC1AEf6YQmM
+   pF+sai1nNZjKenE23T1cKTC+dzMF1NT8xBZBMG0PEqY2AGBnPVRPshEq+x2rNkKl
+   59g22wjNj/8PH5TxQ9w4qAQAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   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
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFU0lEQVR4nO2Zv2/a
+   TBzGH//AGILBgO0ktElaoahqowxdMjVTlkqdu3Ztl0qdO/Yf6NR/pXOHdqiUJUMa
+   VUmUNqFgwBgMcQADdodXvCr4vllviB+J5Z77xA9P7ix0BwDRv5/3799HlI6OjqIX
+   L15Ey8z88+bNm8h1XSZbq9WiV69ekezLly+js7MzJjscDqN3796R7MHBQfT9+3cy
+   94cPH0hWxB1XUgDvALyVFMA7AG8lBfAOwFtJAbwD8FZSAO8AvCXfu3dvYUAQBPz5
+   84c5udvtYmVlBcvMXKlUCs1mEzc3NzGv3W4jnU6TbCaTQafTgaqqMS8IAkiSRLKa
+   psHzPDJ3FEUkKz9+/HhhQJIknJycMCe3Wi0Ui0UsM3Ol02mcn58jnU7HvMFggJWV
+   FZLVNA2/f/9Gv9+PedPpFKlUimTL5TIajQYEQWD6URSRrPD27dvo34FSqYRyucyc
+   HAQBHMeB7/tMX9d1lEolSJIU8yaTCVzXZX5B4L8CyuUyUqlUzAvDEJ1OB71ej8lm
+   MhkYhsFcPQDgui46nQ7TEz59+rRQgOM4aDabzMmqqsKyLGiaRj6o1WphNpvFvFQq
+   BcuyoOs6k/U8D+12G+PxOOaJogjTNGEYBpP1fR+tVou59QDANE1YlsX0Ylvg69ev
+   5BawLAuPHj3C9vY20z88PMT5+TmGw2HM0zQNDx8+JJfiyckJDg8P0e124yFlGZVK
+   hWQvLi5wdHSEer3O9A3DINlYAd++fSMLmM1mt74Djo+PcXp6isFgEPNM07z1HVCr
+   1XB1dYWrq6uYpygKnj9/TrL9fh/NZpPM/ezZM7qAtbW1hQFRFGHbNnOyZVnIZrNY
+   Zv7/Y7IMx3GY/0VJkqAoCsmqqgrXdZnPVlUVoiiSbC6XQ7/fJ3MDINk7/zsgKYB3
+   AN5KCuAdgLeSAngH4K2kAN4BeCspgHcA3koK4B2At5ICeAfgraQA3gF4684XIF9e
+   Xi4MhGGIzc1N5mTDMHB9fY1lZq4gCFCpVJinxqZpYjQakezNzQ0sy8JkMol5iqJg
+   Op2SbL/fR6lUInMDIFl5+SDxtksEwzDQ7XbJw8fxeIxqtco82tY0Db7vk+xgMMDG
+   xgby+Xw8pCxjMpmQbKfTwerqKqIoYvqCIJCs8PHjxwXK8zzyAkJRFOi6jkwmw/Sv
+   r6/R6/WY9wKSJEHXdeRyOSbr+z48z2OuAAAoFovMcgBgOByi1+shCAKmXygUyPsI
+   4fXr1wsFrK2tYX19nTl5NBqhXq/D8zymbxgGKpUKeTNUr9fhui6TLRaLWF9fZ16r
+   hWGIRqOBVqvFZDVNQ6VSQTabZfq2baPRaDC92BYwTZPcArZt4/j4GD9//mT6e3t7
+   qFarzBUyGAxwenpKLsWdnR3s7e0xr+Xm+59iq9Uqnj59ivv375O5KTZWwP7+PlmA
+   JEm3vgN2d3dRrVZRKBRiXrPZvPUdsLm5ia2tLWxsbMS8IAjw+fNnktV1Haurq2Tu
+   L1++0AW02+2FgSiKYJomc3Kj0cBwOMQyM9dsNkO5XEaxWGR+iclkQrLj8RiFQoH5
+   7NFohNlsRrK+70PTNDK3IAgke+d/ByQF8A7AW0kBvAPwVlIA7wC8lRTAOwBvJQXw
+   DsBbSQG8A/BWUgDvALyVFMA7AG/d+QLkBw8eLAyIoohfv34xJzuOg3w+j2VmLkVR
+   UKvVmKfG7XYbqqqSbDabhW3bzBPlIAggyzLJ6roO13XJ3ABIVn7y5MnCgCiK+PHj
+   B3Oy4zjQdR3LzFyqquLs7Ix5tO37PnK5HMnm83lcXl4yy5tOp1AUhWQNw4Bt2wjD
+   kOmHYUiyfwEcdbkgvGOISAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">258529</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_nearest_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.linear_mipmap_nearest_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">2198</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEQ0lEQVR4nO2bTW7b
+   QAyFUUBDDwLE0VFyml6jgHc9gXeyeozeLkiBRpE2XdiyRtLjDH9k1EGy4MY2PhEk
+   R8N5HH97/v77magnbANRwN8F6gNRTzF2cfnd8fjz6GEi45jn59uZVf1S17yziYUB
+   wlAAvExkHHP1fCWz2r/u96UfzoHzaMeeVgHwMpFxzPT5FiZbAaIohkFVAVKmpgJ2
+   sdt5mKsKkJbPNQNDiMsHeJkogxwTVaCGWdUvdW1z8BIAsAa9TJTBsQKWXFSBGmbV
+   HJqGKxFLAAL1oXnfuZhLuzLBurYGYGSu3wFKx2Ps4jIrXmbqZImpDcCSye8CAqcD
+   9UG1CwiZ6HPJLmBhyvqAheMp0NwHZJjIRH2AgSnqA64wkEFrH5BjeipAyyxWABvF
+   zBr0Mi0VYGXCCtBsYdIKUG2LwGmuAnY9lRuhDHMWAMvefa2A5AFe5mTTtscxdY3Q
+   mlk9vdRPdgfxEvAykXHNlbkRujCr06E5cSWiDcDo4KmLLmZqI7PpYrPMoDUAKRO/
+   BBWOo8OIl5k6WWJqAoCY+W0w43TuMOJlImO3QXAY0zBVgggCegWRkpMlJjqMaZh6
+   QWQR7U0EEcHyUAsiQma2AopRVAoiUqa2AjzM+xVECsyRq+oDALPihAZxAGYVcN6i
+   vEzk+KcWRIh64pieRggIImUllXOAFy/0zDSYmNnfhyBChA8jXiZaOh5BJMcU9AHr
+   DPoFkTwTWbkPsDHFgghRTyEM68OIQxDhmMg0FaBhFgMAo5iUsiUAJaYlAFambzJE
+   PcUubjsZYhx3TYYyzPsWRBhmylULIgvm9pMhusFkiG4oiDSHpuFKRBuASWjYuZhL
+   C9SHqyCyPIx5JkNYENE1LqLJkKEZuntBZARuKYggJ0vMkiBSYgoFkSmD2wkiPBOZ
+   TBDRM3WTIZBB92RIUBXZCkCTIQXTIYico72tIMK/K+yCSJ7pnwwNFJcPcE+GQAY/
+   hiByecC2gkheZLFtgxOzag6nxnpe5xxo3qOLiexmgsj+9XEqLUPjgg4jXmZqI3e2
+   BAqHMQ2TeQnKGxfxZEjBREuHfQmCw5iGWd4GmQyaJ0MCJjJ2GwSHMQ1TPhmigULY
+   +Kosw0QmngwpmYarsn1xDXqZqgpgr8rKmE5BZKDYbXxVlnlX+AQRnumfDMWwuq6+
+   zVXZeQY/jiByi6uyGZHF3gekkyHH8IKdDDmYSzuLF1hk8Qkid3xVViqy3FAQKWdQ
+   L4jImOhzXhBZH8Y0TPVV2c0EkQwTmfaq7I0EEXBd3S2IyN4VOkFEzrQLIsarshKm
+   tgI8zPu8Kgsy6BdEMHO7yZDgWqvJLhnc7qrsnFm1P361HgfREmj/PriYyNq3hxat
+   a48g0r49tNX+zyhe2BoXdBjxMlObxAsssvgEkUfmJfifr8rKBRF8GNMwC9sgn0G7
+   IFJmIuMFkfVhTMP8+u/w13+HP/l/h/8BYCDzdBkWkmMAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABUElEQVR4nO2bOxKD
+   MAxEZY1PnJ4G1zkTN3PSZAg2hdCYjz272wlwkfVbUMQQlvdrkZ9Us8pGo9UpTcm7
+   PmrW9aCKlBeMVm9+y9H1xQFEkQABF7wBjICAiwQIuOANYAQEXCRAwAVvQNTPJgK5
+   M6QZgesVNYc/AVo5OBoRJMAveAOqPqAeGg4WCUbAL6MTHIwIEuAXvAHOP0OdR4IR
+   8AvegMZ5QGeRYAT8Onki9DARJMAveAMuHoreHAlGwK+bx+IXE0EC/II34OE3QydH
+   ghHwq7N3g41EOAkIIgGeAHgDOotAYySMCASRUJ8nAX0T4CVCzR2va3gC4A2IaUrr
+   RwZPf/DQWs8ic3E+2OtJwFg3QeOxlkO1w3YnCU8AvAFDRcB8ru86QbuThCcA3oCu
+   I3CklS1qcx6wjwQJ6IkA9467CdgTAU8AvAGPRqAZ+eYIsA+QL1RneQkPODlhAAAA
+   AElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAArElEQVR4nO2VMQ4C
+   MQzAHMT/v1xGTkgsCMhgeztlaORW5wEOF855fs4M72av809n22fekHP/x81961Z/
+   cab+BegFDP0E3SRge4FtyiBy9ALKIHL0AqoAchKwvcA2ZRA5egFlEDl6AVUAOXoB
+   VQA5CdheYJsyiBy9gDKIHL2AKoCcBGwvsE0ZRI5eQBlEjl5AFUBOArYX2KYMIkcv
+   oAwiRy+gCiBHL6AKIEcv4AEq9yaBjpmKkgAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAwElEQVR4nO3asQrD
+   MBTFULv0/3/Z3Tq0jYcsp2BpTLggRJYHmWOMNT5Y6+vRmznn5bt/3e72j+3qAAqg
+   BTQF0AKaAmgBTQG0gKYAWkBTAC2gOT7A89cZuTs9756dcrvbH/8FFEALaAqgBTQF
+   0AKaAmgBTQG0gKYAWkBTAC2gKYAW0BRAC2gKoAU0BdACmuMDzNF/gmdTAC2gKYAW
+   0BRAC2gKoAU0BdACmgJoAU0BtICmAFpAUwAtoCmAFtAUQAtoXkjEKXybBCJ9AAAA
+   AElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">303230</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">2561</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_linear
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_linear" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAB3klEQVR4nO2YQW7D
+   IBBF/0hZMxwlN+oV0pOY3qBHtHsBunBi4wTXhowUN/ydwxcPZ4TgjeX88X0WiQIA
+   qoOKRFH9UQAQiaJuHFvmw5Q7Hdz9WAiXYMFM8xAuYZpvyDz53vspiDJOjDKDr2Np
+   7qK4+zydY8VMc997/9eatcyiArgobi2vLcBfzNoClDA3C3CDbf2ZkgLsZZYUoJaZ
+   LcDW1qkpQA1zqwAWzEUB9m6dkgI8w1wrgCXz1H2Gbgrc4+l5OzGB/OmaG+sAE2aa
+   d0A35YbMk++1+MTO5el2tGKmO8j3WnwL7GFWXYO5w+fZa3DrQKu5Bvcw6QH0AHpA
+   4x4gUUQAAYDbs0QZf1+f9+Q1c46wJkUoXL7m1tVIhEIUE2aahyhzO2zIpAhRhChC
+   FKG2RUgHnQNg3DrAvHWuY2mugN7nizEj5iIf9CG3YNID6AH0AHoAPaB067yVB8iB
+   WtNXrEkRav6LEEWIIkQRogiVvuxbiVCudV1rIx3g1vKtdriGuZifaYctmPQAegA9
+   gB5AD3jmZf+9B8iBWtNXrEkRav6LEEWIIkQRogiVVu6tRKikdc3l2dbTiLnIC9rh
+   EiY9gB5AD6AH0AOmoEUPkAO1pq9YkyLU/BchihBFqG0R+gXKLHvZja/fQQAAAABJ
+   RU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4nOWav27b
+   MBDGv3O1eOiSAFlToEvXPltfow+VN/CYLgHEVUCzFKg6JGAH/hFFkRbPlKWTM9gn
+   yKLsu/vuxyMtevr54wkAiDTt1fb9sW/bL61Sj0qpR9V1D13p+AaaQIA5uVPrfCBN
+   /lU6/kCayA/eq3WvC8Y3nGhJtXHmOao+bJ69Jaw9hiZw1XAzCgAwOG8dLBl/OxCM
+   mFA6/rYg6MqAMf5mSiB0/sNC8JIp8SYYkILgh2LABIIM23CmDLE2zjxDAQ2BCFqA
+   ExU2VgKnrBvS5phIm4E7tKMycK/C8QaCBKMCZwVklWNrVoMNgYi0jYLW+1RDYuor
+   HW9KgAimFPapgjjzPAaACNqDAF4NEJLdEgZEEGQxgALfoTWIglmBMChDQKbPKQBA
+   7WrQ1gJ8AQVMgGhI1qwGm6lcYFVg1QBAPCRT9C+HYCpaKTXYzwWqwDtvg8GEYC5a
+   CJggG5JhENgQzEfLqcDNk2EpCFNDxWowwYA5NYRlIYMJEwhyGTAfKesotM18DEls
+   O2VWrQYZF0/LI6UGrD5luswvDMESm1LD+uWRbITqIVijBvv5SiqIe4ErQJCrBvMd
+   q02ZdavBSxggSw1x5ldkAFMNV2JCDEEWA5ZVQGitw04ZV5wykxAsVUA9BEvLImyn
+   fWQWKYtJI7QNBEsshrLQ7m0BSC6/Gry2GjA4v0AD5Z23wRAAQQ4k6xso78M2jZAA
+   NUT1L5gBOSa4PYd42V2mhgkEuQzYRgH2V4IGOwqIvY4wP2VeuBo0DFgVgqVlkdqB
+   ypeFy/yOIMgtD/8jk2WRbITmyoY0SIt+QKIckpMZYEbVYwVsCsGFIBm2vy6hZ7IO
+   0tioEaphQn5jlhCtAc6oOlbAjh6SIiKNwSaOR6Vgxzk2ABj/jW6tcAWENj9lGufN
+   2ZABJfdtnr/9eibSVk57s6ZM+v7Yq2Ov1LFX7fFv293/7kyUNObu05y+n07wfxHv
+   0/b/jn1799qqu1el7l9V1z10Jv/aByk3vnn5+vKytQOLBODTW6uad9U2b233+U9n
+   SmVQSS4Qghuh83Y8pcF2gOa0hyJhdl0huBGat+441QmOnceghqiNFt4IlWSfMqtB
+   wLfRZLOfUMEunhTNHXubXQ1aDsA2U4mN2YNngGA7knjqc3eNVcL0PjYIvtxtWeir
+   bosvl/Wz2Y8DlN0WT6tBNARLnAfA3BYf7zmIfFw+Jfez40IGlFzvrcC1AEf6YQmM
+   pF+sai1nNZjKenE23T1cKTC+dzMF1NT8xBZBMG0PEqY2AGBnPVRPshEq+x2rNkKl
+   59g22wjNj/8PH5TxQ9w4qAQAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABBklEQVR4nO2XsQ0C
+   MRAEF/QtkJKTEkP8MUVQBKU5/iIogiIge5lHPpFtMDuRJet01ujk0+7Ox8tbHa21
+   9Xy6HTS6k6T79TG862urOnfPveBMW1PzPK/ntozvJOnZXsO7vraqc/fETwBewPTz
+   6XRjtP04tmP09eks40+nqnP3xE9ABLgf4KZcg9W6kv5fO1Wduyd+AvACpmrtVOtK
+   +n/tVHXunvgJwAtIGBKcCHA/wE3SoODgBSQMCQ5eQMKQ4OAFJAwJTgS4H+AmYUhw
+   8AIShgQHLyBhSHAiwP0AN0mDgoMXkDAkOHgBCUOCEwHuB7hJGhQcvICEIcHBC0gY
+   Ehy8gIQhwcEL+AB33zleTnemDAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFU0lEQVR4nO2Zv2/a
+   TBzGH//AGILBgO0ktElaoahqowxdMjVTlkqdu3Ztl0qdO/Yf6NR/pXOHdqiUJUMa
+   VUmUNqFgwBgMcQADdodXvCr4vllviB+J5Z77xA9P7ix0BwDRv5/3799HlI6OjqIX
+   L15Ey8z88+bNm8h1XSZbq9WiV69ekezLly+js7MzJjscDqN3796R7MHBQfT9+3cy
+   94cPH0hWxB1XUgDvALyVFMA7AG8lBfAOwFtJAbwD8FZSAO8AvCXfu3dvYUAQBPz5
+   84c5udvtYmVlBcvMXKlUCs1mEzc3NzGv3W4jnU6TbCaTQafTgaqqMS8IAkiSRLKa
+   psHzPDJ3FEUkKz9+/HhhQJIknJycMCe3Wi0Ui0UsM3Ol02mcn58jnU7HvMFggJWV
+   FZLVNA2/f/9Gv9+PedPpFKlUimTL5TIajQYEQWD6URSRrPD27dvo34FSqYRyucyc
+   HAQBHMeB7/tMX9d1lEolSJIU8yaTCVzXZX5B4L8CyuUyUqlUzAvDEJ1OB71ej8lm
+   MhkYhsFcPQDgui46nQ7TEz59+rRQgOM4aDabzMmqqsKyLGiaRj6o1WphNpvFvFQq
+   BcuyoOs6k/U8D+12G+PxOOaJogjTNGEYBpP1fR+tVou59QDANE1YlsX0Ylvg69ev
+   5BawLAuPHj3C9vY20z88PMT5+TmGw2HM0zQNDx8+JJfiyckJDg8P0e124yFlGZVK
+   hWQvLi5wdHSEer3O9A3DINlYAd++fSMLmM1mt74Djo+PcXp6isFgEPNM07z1HVCr
+   1XB1dYWrq6uYpygKnj9/TrL9fh/NZpPM/ezZM7qAtbW1hQFRFGHbNnOyZVnIZrNY
+   Zv7/Y7IMx3GY/0VJkqAoCsmqqgrXdZnPVlUVoiiSbC6XQ7/fJ3MDINk7/zsgKYB3
+   AN5KCuAdgLeSAngH4K2kAN4BeCspgHcA3koK4B2At5ICeAfgraQA3gF4684XIF9e
+   Xi4MhGGIzc1N5mTDMHB9fY1lZq4gCFCpVJinxqZpYjQakezNzQ0sy8JkMol5iqJg
+   Op2SbL/fR6lUInMDIFl5+SDxtksEwzDQ7XbJw8fxeIxqtco82tY0Db7vk+xgMMDG
+   xgby+Xw8pCxjMpmQbKfTwerqKqIoYvqCIJCs8PHjxwXK8zzyAkJRFOi6jkwmw/Sv
+   r6/R6/WY9wKSJEHXdeRyOSbr+z48z2OuAAAoFovMcgBgOByi1+shCAKmXygUyPsI
+   4fXr1wsFrK2tYX19nTl5NBqhXq/D8zymbxgGKpUKeTNUr9fhui6TLRaLWF9fZ16r
+   hWGIRqOBVqvFZDVNQ6VSQTabZfq2baPRaDC92BYwTZPcArZt4/j4GD9//mT6e3t7
+   qFarzBUyGAxwenpKLsWdnR3s7e0xr+Xm+59iq9Uqnj59ivv375O5KTZWwP7+PlmA
+   JEm3vgN2d3dRrVZRKBRiXrPZvPUdsLm5ia2tLWxsbMS8IAjw+fNnktV1Haurq2Tu
+   L1++0AW02+2FgSiKYJomc3Kj0cBwOMQyM9dsNkO5XEaxWGR+iclkQrLj8RiFQoH5
+   7NFohNlsRrK+70PTNDK3IAgke+d/ByQF8A7AW0kBvAPwVlIA7wC8lRTAOwBvJQXw
+   DsBbSQG8A/BWUgDvALyVFMA7AG/d+QLkBw8eLAyIoohfv34xJzuOg3w+j2VmLkVR
+   UKvVmKfG7XYbqqqSbDabhW3bzBPlIAggyzLJ6roO13XJ3ABIVn7y5MnCgCiK+PHj
+   B3Oy4zjQdR3LzFyqquLs7Ix5tO37PnK5HMnm83lcXl4yy5tOp1AUhWQNw4Bt2wjD
+   kOmHYUiyfwEcdbkgvGOISAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">339222</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_linear_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_linear_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">2256</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_nearest
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_nearest" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Texture coordinates: (-1, -2.7) -&gt; (2.03143, 4.76426)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABa0lEQVR4nO2YwW3D
+   MAxF1cJ3cZSM1A3aUewJuqK6QQ5tHauRQpOmgAZ+vlggoXf4oZKnvFzePi/p5xEp
+   8v3+krWWi9z3b7UsJf+tLcv7EsHc1kcxJyly25iSbN+9dU4pP9wTxKz2D2KaAvgF
+   NmHOAB4xvQFYmGoA6qftCGAv0xKAl9kMQB0dRwAephZABLMKYPfoGAI4wuwFEMmc
+   5o9lXhv5/tuztdZqc0ohzO16FHOSku3JNWrVOAYxt9xRTNfPYBPWOQJHmFV/EBMP
+   wAPwgHN7wGs6+YMIIUKIECJkBiNC2rghQohQCFMLgD9EAph4AB6AB+AB9tHRxu2J
+   PIDrMCKECCFC89pAhHYm16ghQp0jcIRZ9REhRGgIEw/AA/AAPMCeXKOGB3SOwBFm
+   1R/E5DqMCCFCiJB9dBwBIEIOZi8ARAgRimOeXoTwADwAD8AD7KNjCAAP+OcewHUY
+   EUKEECH76Gjjhgg9jwhdAeOXXXG0U5tIAAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-0.2, 0.7) -&gt; (0.05, 1.09229)</Text>
+ <Text>u_sampler = 0</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4nOWav27b
+   MBDGv3O1eOiSAFlToEvXPltfow+VN/CYLgHEVUCzFKg6JGAH/hFFkRbPlKWTM9gn
+   yKLsu/vuxyMtevr54wkAiDTt1fb9sW/bL61Sj0qpR9V1D13p+AaaQIA5uVPrfCBN
+   /lU6/kCayA/eq3WvC8Y3nGhJtXHmOao+bJ69Jaw9hiZw1XAzCgAwOG8dLBl/OxCM
+   mFA6/rYg6MqAMf5mSiB0/sNC8JIp8SYYkILgh2LABIIM23CmDLE2zjxDAQ2BCFqA
+   ExU2VgKnrBvS5phIm4E7tKMycK/C8QaCBKMCZwVklWNrVoMNgYi0jYLW+1RDYuor
+   HW9KgAimFPapgjjzPAaACNqDAF4NEJLdEgZEEGQxgALfoTWIglmBMChDQKbPKQBA
+   7WrQ1gJ8AQVMgGhI1qwGm6lcYFVg1QBAPCRT9C+HYCpaKTXYzwWqwDtvg8GEYC5a
+   CJggG5JhENgQzEfLqcDNk2EpCFNDxWowwYA5NYRlIYMJEwhyGTAfKesotM18DEls
+   O2VWrQYZF0/LI6UGrD5luswvDMESm1LD+uWRbITqIVijBvv5SiqIe4ErQJCrBvMd
+   q02ZdavBSxggSw1x5ldkAFMNV2JCDEEWA5ZVQGitw04ZV5wykxAsVUA9BEvLImyn
+   fWQWKYtJI7QNBEsshrLQ7m0BSC6/Gry2GjA4v0AD5Z23wRAAQQ4k6xso78M2jZAA
+   NUT1L5gBOSa4PYd42V2mhgkEuQzYRgH2V4IGOwqIvY4wP2VeuBo0DFgVgqVlkdqB
+   ypeFy/yOIMgtD/8jk2WRbITmyoY0SIt+QKIckpMZYEbVYwVsCsGFIBm2vy6hZ7IO
+   0tioEaphQn5jlhCtAc6oOlbAjh6SIiKNwSaOR6Vgxzk2ABj/jW6tcAWENj9lGufN
+   2ZABJfdtnr/9eibSVk57s6ZM+v7Yq2Ov1LFX7fFv293/7kyUNObu05y+n07wfxHv
+   0/b/jn1799qqu1el7l9V1z10Jv/aByk3vnn5+vKytQOLBODTW6uad9U2b233+U9n
+   SmVQSS4Qghuh83Y8pcF2gOa0hyJhdl0huBGat+441QmOnceghqiNFt4IlWSfMqtB
+   wLfRZLOfUMEunhTNHXubXQ1aDsA2U4mN2YNngGA7knjqc3eNVcL0PjYIvtxtWeir
+   bosvl/Wz2Y8DlN0WT6tBNARLnAfA3BYf7zmIfFw+Jfez40IGlFzvrcC1AEf6YQmM
+   pF+sai1nNZjKenE23T1cKTC+dzMF1NT8xBZBMG0PEqY2AGBnPVRPshEq+x2rNkKl
+   59g22wjNj/8PH5TxQ9w4qAQAAAAASUVORK5CYII=
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (-1.5, -1.1) -&gt; (-0.398095, 0.109994)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAArElEQVR4nO2VMQ4C
+   MQzAHMT/v1xGTkgsCMhgeztlaORW5wEOF855fs4M72av809n22fekHP/x81961Z/
+   cab+BegFDP0E3SRge4FtyiBy9ALKIHL0AqoAchKwvcA2ZRA5egFlEDl6AVUAOXoB
+   VQA5CdheYJsyiBy9gDKIHL2AKoCcBGwvsE0ZRI5eQBlEjl5AFUBOArYX2KYMIkcv
+   oAwiRy+gCiBHL6AKIEcv4AEq9yaBjpmKkgAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Texture coordinates: (0.4, -0.1) -&gt; (0.928509, 0.0604282)</Text>
+ <Text>u_sampler = 1</Text>
+ <Text>u_colorScale = (1, 1, 1, 1)</Text>
+ <Text>u_colorBias = (-0, -0, -0, -0)</Text>
+ <ImageSet Name="VerifyResult" Description="Verification result">
+  <Image Name="Rendered" Width="64" Height="64" Format="RGBA8888" CompressionMode="PNG" Description="Rendered image">
+   iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFU0lEQVR4nO2Zv2/a
+   TBzGH//AGILBgO0ktElaoahqowxdMjVTlkqdu3Ztl0qdO/Yf6NR/pXOHdqiUJUMa
+   VUmUNqFgwBgMcQADdodXvCr4vllviB+J5Z77xA9P7ix0BwDRv5/3799HlI6OjqIX
+   L15Ey8z88+bNm8h1XSZbq9WiV69ekezLly+js7MzJjscDqN3796R7MHBQfT9+3cy
+   94cPH0hWxB1XUgDvALyVFMA7AG8lBfAOwFtJAbwD8FZSAO8AvCXfu3dvYUAQBPz5
+   84c5udvtYmVlBcvMXKlUCs1mEzc3NzGv3W4jnU6TbCaTQafTgaqqMS8IAkiSRLKa
+   psHzPDJ3FEUkKz9+/HhhQJIknJycMCe3Wi0Ui0UsM3Ol02mcn58jnU7HvMFggJWV
+   FZLVNA2/f/9Gv9+PedPpFKlUimTL5TIajQYEQWD6URSRrPD27dvo34FSqYRyucyc
+   HAQBHMeB7/tMX9d1lEolSJIU8yaTCVzXZX5B4L8CyuUyUqlUzAvDEJ1OB71ej8lm
+   MhkYhsFcPQDgui46nQ7TEz59+rRQgOM4aDabzMmqqsKyLGiaRj6o1WphNpvFvFQq
+   BcuyoOs6k/U8D+12G+PxOOaJogjTNGEYBpP1fR+tVou59QDANE1YlsX0Ylvg69ev
+   5BawLAuPHj3C9vY20z88PMT5+TmGw2HM0zQNDx8+JJfiyckJDg8P0e124yFlGZVK
+   hWQvLi5wdHSEer3O9A3DINlYAd++fSMLmM1mt74Djo+PcXp6isFgEPNM07z1HVCr
+   1XB1dYWrq6uYpygKnj9/TrL9fh/NZpPM/ezZM7qAtbW1hQFRFGHbNnOyZVnIZrNY
+   Zv7/Y7IMx3GY/0VJkqAoCsmqqgrXdZnPVlUVoiiSbC6XQ7/fJ3MDINk7/zsgKYB3
+   AN5KCuAdgLeSAngH4K2kAN4BeCspgHcA3koK4B2At5ICeAfgraQA3gF4684XIF9e
+   Xi4MhGGIzc1N5mTDMHB9fY1lZq4gCFCpVJinxqZpYjQakezNzQ0sy8JkMol5iqJg
+   Op2SbL/fR6lUInMDIFl5+SDxtksEwzDQ7XbJw8fxeIxqtco82tY0Db7vk+xgMMDG
+   xgby+Xw8pCxjMpmQbKfTwerqKqIoYvqCIJCs8PHjxwXK8zzyAkJRFOi6jkwmw/Sv
+   r6/R6/WY9wKSJEHXdeRyOSbr+z48z2OuAAAoFovMcgBgOByi1+shCAKmXygUyPsI
+   4fXr1wsFrK2tYX19nTl5NBqhXq/D8zymbxgGKpUKeTNUr9fhui6TLRaLWF9fZ16r
+   hWGIRqOBVqvFZDVNQ6VSQTabZfq2baPRaDC92BYwTZPcArZt4/j4GD9//mT6e3t7
+   qFarzBUyGAxwenpKLsWdnR3s7e0xr+Xm+59iq9Uqnj59ivv375O5KTZWwP7+PlmA
+   JEm3vgN2d3dRrVZRKBRiXrPZvPUdsLm5ia2tLWxsbMS8IAjw+fNnktV1Haurq2Tu
+   L1++0AW02+2FgSiKYJomc3Kj0cBwOMQyM9dsNkO5XEaxWGR+iclkQrLj8RiFQoH5
+   7NFohNlsRrK+70PTNDK3IAgke+d/ByQF8A7AW0kBvAPwVlIA7wC8lRTAOwBvJQXw
+   DsBbSQG8A/BWUgDvALyVFMA7AG/d+QLkBw8eLAyIoohfv34xJzuOg3w+j2VmLkVR
+   UKvVmKfG7XYbqqqSbDabhW3bzBPlIAggyzLJ6roO13XJ3ABIVn7y5MnCgCiK+PHj
+   B3Oy4zjQdR3LzFyqquLs7Ix5tO37PnK5HMnm83lcXl4yy5tOp1AUhWQNw4Bt2wjD
+   kOmHYUiyfwEcdbkgvGOISAAAAABJRU5ErkJggg==
+</Image>
+</ImageSet>
+ <Text>Unused shaders: compute_2D_FLOAT</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">275164</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_nearest_compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.nearest_mipmap_nearest_compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="compute_2D_FLOAT" Description="Program: compute_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="fragment_2D_FLOAT" Description="Program: fragment_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vertex_2D_FLOAT" Description="Program: vertex_2D_FLOAT">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Text>Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">2245</Number>
+ <Result StatusCode="NotSupported">Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+Run took 2.05 seconds
+
+#endSession

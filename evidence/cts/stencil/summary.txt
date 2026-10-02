@@ -1,0 +1,3 @@
+group stencil: 209 cases, 1 process run(s)
+  Pass                   209
+  pass rate of supported: 209/209 = 100.0%

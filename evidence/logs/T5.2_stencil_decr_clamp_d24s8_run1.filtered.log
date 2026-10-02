@@ -1,0 +1,7 @@
+=== stencil case: decr_clamp format=d24s8 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 129 optimalTilingFeatures=0xd601
+model values: 0 x576 1 x320 2 x3200
+gpu values  : 0 x576 1 x320 2 x3200  unhit=0
+STENCILFP decr_clamp fmt=d24s8 bad=0 unhit=0 verdict=PASS
+DONE

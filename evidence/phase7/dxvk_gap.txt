@@ -1,0 +1,14 @@
+# DXVK required features vs panvk v9/JM (G57)
+
+source: DXVK master src/dxvk/dxvk_device_info.cpp, getFeatureList() entries with require=true
+
+core/vk11/vk12/vk13 required: 46  supported 16  MISSING 6  not found in dump 24
+MISSING: geometryShader multiDrawIndirect multiViewport shaderClipDistance shaderCullDistance textureCompressionBC
+not in dump: shaderDrawParameters storageBuffer16BitAccess bufferDeviceAddress descriptorIndexing storageBuffer8BitAccess descriptorBindingSampledImageUpdateAfterBind descriptorBindingUpdateUnusedWhilePending descriptorBindingPartiallyBound hostQueryReset runtimeDescriptorArray samplerMirrorClampToEdge scalarBlockLayout shaderInt8 timelineSemaphore uniformBufferStandardLayout vulkanMemoryModel inlineUniformBlock computeFullSubgroups dynamicRendering maintenance4 shaderDemoteToHelperInvocation shaderZeroInitializeWorkgroupMemory subgroupSizeControl synchronization2
+ext VK_EXT_depth_clip_enable         present  feature depthClipEnable=None
+ext VK_EXT_robustness2               ABSENT  feature robustBufferAccess2=None
+ext VK_EXT_robustness2               ABSENT  feature nullDescriptor=None
+ext VK_KHR_load_store_op_none        present  feature loadStoreOpNone=None
+ext VK_KHR_maintenance5              present  feature maintenance5=None
+ext VK_KHR_maintenance6              present  feature maintenance6=None
+ext VK_KHR_swapchain                 ABSENT  feature swapchain=None

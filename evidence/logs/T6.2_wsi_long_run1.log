@@ -1,0 +1,190 @@
+=== wsi cube: frames=30000 step=1.0 dim=1000 present=fifo check every 250 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+surface     : supported=1 images 3..0 extent 1000x1000 usage 0x8009f
+formats     : 50 44
+presentmodes: 0 1 2 3
+swapchain   : #0 1000x1000, 4 images, format 44 (frame 0)
+WSIFP frame=0000 deg=    0.0 img=0 screen_bad=0 edge=2168 fps=0.0
+WSIFP frame=0250 deg=  250.0 img=2 screen_bad=0 edge=3072 fps=66.9
+swapchain   : #1 640x640, 4 images, format 44 (frame 500)
+WSIFP frame=0500 deg=  500.0 img=0 screen_bad=0 edge=1942 fps=70.4
+WSIFP frame=0750 deg=  750.0 img=2 screen_bad=0 edge=2301 fps=97.6
+swapchain   : #2 880x880, 4 images, format 44 (frame 1000)
+WSIFP frame=1000 deg= 1000.0 img=0 screen_bad=0 edge=2678 fps=92.2
+WSIFP frame=1250 deg= 1250.0 img=2 screen_bad=0 edge=2813 fps=82.0
+swapchain   : #3 400x400, 4 images, format 44 (frame 1500)
+WSIFP frame=1500 deg= 1500.0 img=0 screen_bad=0 edge=1721 fps=84.6
+WSIFP frame=1750 deg= 1750.0 img=2 screen_bad=0 edge=1746 fps=107.7
+swapchain   : #4 720x720, 4 images, format 44 (frame 2000)
+WSIFP frame=2000 deg= 2000.0 img=0 screen_bad=0 edge=3060 fps=104.7
+WSIFP frame=2250 deg= 2250.0 img=2 screen_bad=0 edge=2274 fps=91.6
+swapchain   : #5 1024x1024, 4 images, format 44 (frame 2500)
+WSIFP frame=2500 deg= 2500.0 img=0 screen_bad=0 edge=3625 fps=91.3
+WSIFP frame=2750 deg= 2750.0 img=2 screen_bad=0 edge=3641 fps=74.3
+swapchain   : #6 1000x1000, 4 images, format 44 (frame 3000)
+WSIFP frame=3000 deg= 3000.0 img=0 screen_bad=0 edge=3626 fps=75.3
+WSIFP frame=3250 deg= 3250.0 img=2 screen_bad=0 edge=3089 fps=75.5
+swapchain   : #7 640x640, 4 images, format 44 (frame 3500)
+WSIFP frame=3500 deg= 3500.0 img=0 screen_bad=0 edge=2009 fps=69.5
+WSIFP frame=3750 deg= 3750.0 img=2 screen_bad=0 edge=1970 fps=84.9
+swapchain   : #8 880x880, 4 images, format 44 (frame 4000)
+WSIFP frame=4000 deg= 4000.0 img=0 screen_bad=0 edge=2039 fps=107.7
+WSIFP frame=4250 deg= 4250.0 img=2 screen_bad=0 edge=2060 fps=87.4
+swapchain   : #9 400x400, 4 images, format 44 (frame 4500)
+WSIFP frame=4500 deg= 4500.0 img=0 screen_bad=0 edge=868 fps=85.0
+WSIFP frame=4750 deg= 4750.0 img=2 screen_bad=0 edge=936 fps=112.9
+swapchain   : #10 720x720, 4 images, format 44 (frame 5000)
+WSIFP frame=5000 deg= 5000.0 img=0 screen_bad=0 edge=1670 fps=106.0
+WSIFP frame=5250 deg= 5250.0 img=2 screen_bad=0 edge=2164 fps=96.2
+swapchain   : #11 1024x1024, 4 images, format 44 (frame 5500)
+WSIFP frame=5500 deg= 5500.0 img=0 screen_bad=0 edge=3154 fps=90.2
+WSIFP frame=5750 deg= 5750.0 img=2 screen_bad=0 edge=3239 fps=69.5
+swapchain   : #12 1000x1000, 4 images, format 44 (frame 6000)
+WSIFP frame=6000 deg= 6000.0 img=0 screen_bad=0 edge=4170 fps=70.0
+WSIFP frame=6250 deg= 6250.0 img=2 screen_bad=0 edge=4279 fps=71.8
+swapchain   : #13 640x640, 4 images, format 44 (frame 6500)
+WSIFP frame=6500 deg= 6500.0 img=0 screen_bad=0 edge=2632 fps=71.1
+WSIFP frame=6750 deg= 6750.0 img=2 screen_bad=0 edge=2016 fps=84.4
+swapchain   : #14 880x880, 4 images, format 44 (frame 7000)
+WSIFP frame=7000 deg= 7000.0 img=0 screen_bad=0 edge=3090 fps=87.4
+WSIFP frame=7250 deg= 7250.0 img=2 screen_bad=0 edge=3055 fps=81.4
+swapchain   : #15 400x400, 4 images, format 44 (frame 7500)
+WSIFP frame=7500 deg= 7500.0 img=0 screen_bad=0 edge=1405 fps=70.9
+WSIFP frame=7750 deg= 7750.0 img=2 screen_bad=0 edge=1209 fps=88.6
+swapchain   : #16 720x720, 4 images, format 44 (frame 8000)
+WSIFP frame=8000 deg= 8000.0 img=0 screen_bad=0 edge=2285 fps=74.0
+WSIFP frame=8250 deg= 8250.0 img=2 screen_bad=0 edge=3030 fps=79.4
+swapchain   : #17 1024x1024, 4 images, format 44 (frame 8500)
+WSIFP frame=8500 deg= 8500.0 img=0 screen_bad=0 edge=3314 fps=84.0
+WSIFP frame=8750 deg= 8750.0 img=2 screen_bad=0 edge=3234 fps=73.3
+swapchain   : #18 1000x1000, 4 images, format 44 (frame 9000)
+WSIFP frame=9000 deg= 9000.0 img=0 screen_bad=0 edge=2168 fps=69.7
+WSIFP frame=9250 deg= 9250.0 img=2 screen_bad=0 edge=3154 fps=70.1
+swapchain   : #19 640x640, 4 images, format 44 (frame 9500)
+WSIFP frame=9500 deg= 9500.0 img=0 screen_bad=0 edge=2065 fps=67.5
+WSIFP frame=9750 deg= 9750.0 img=2 screen_bad=0 edge=2670 fps=80.6
+swapchain   : #20 880x880, 4 images, format 44 (frame 10000)
+WSIFP frame=10000 deg=10000.0 img=0 screen_bad=0 edge=2812 fps=80.8
+WSIFP frame=10250 deg=10250.0 img=2 screen_bad=0 edge=2670 fps=73.1
+swapchain   : #21 400x400, 4 images, format 44 (frame 10500)
+WSIFP frame=10500 deg=10500.0 img=0 screen_bad=0 edge=1405 fps=72.8
+WSIFP frame=10750 deg=10750.0 img=2 screen_bad=0 edge=1398 fps=122.1
+swapchain   : #22 720x720, 4 images, format 44 (frame 11000)
+WSIFP frame=11000 deg=11000.0 img=0 screen_bad=0 edge=2537 fps=86.8
+WSIFP frame=11250 deg=11250.0 img=2 screen_bad=0 edge=2274 fps=87.1
+swapchain   : #23 1024x1024, 4 images, format 44 (frame 11500)
+WSIFP frame=11500 deg=11500.0 img=0 screen_bad=0 edge=4262 fps=77.3
+WSIFP frame=11750 deg=11750.0 img=2 screen_bad=0 edge=4356 fps=57.5
+swapchain   : #24 1000x1000, 4 images, format 44 (frame 12000)
+WSIFP frame=12000 deg=12000.0 img=0 screen_bad=0 edge=4170 fps=66.5
+WSIFP frame=12250 deg=12250.0 img=2 screen_bad=0 edge=3166 fps=67.1
+swapchain   : #25 640x640, 4 images, format 44 (frame 12500)
+WSIFP frame=12500 deg=12500.0 img=0 screen_bad=0 edge=1970 fps=67.2
+WSIFP frame=12750 deg=12750.0 img=2 screen_bad=0 edge=1913 fps=78.4
+swapchain   : #26 880x880, 4 images, format 44 (frame 13000)
+WSIFP frame=13000 deg=13000.0 img=0 screen_bad=0 edge=2033 fps=86.9
+WSIFP frame=13250 deg=13250.0 img=2 screen_bad=0 edge=2059 fps=75.9
+swapchain   : #27 400x400, 4 images, format 44 (frame 13500)
+WSIFP frame=13500 deg=13500.0 img=0 screen_bad=0 edge=868 fps=80.8
+WSIFP frame=13750 deg=13750.0 img=2 screen_bad=0 edge=939 fps=85.8
+swapchain   : #28 720x720, 4 images, format 44 (frame 14000)
+WSIFP frame=14000 deg=14000.0 img=0 screen_bad=0 edge=1676 fps=85.1
+WSIFP frame=14250 deg=14250.0 img=2 screen_bad=0 edge=2232 fps=85.9
+swapchain   : #29 1024x1024, 4 images, format 44 (frame 14500)
+WSIFP frame=14500 deg=14500.0 img=0 screen_bad=0 edge=3217 fps=82.4
+WSIFP frame=14750 deg=14750.0 img=2 screen_bad=0 edge=3159 fps=73.9
+swapchain   : #30 1000x1000, 4 images, format 44 (frame 15000)
+WSIFP frame=15000 deg=15000.0 img=0 screen_bad=0 edge=3626 fps=77.5
+WSIFP frame=15250 deg=15250.0 img=2 screen_bad=0 edge=3568 fps=67.9
+swapchain   : #31 640x640, 4 images, format 44 (frame 15500)
+WSIFP frame=15500 deg=15500.0 img=0 screen_bad=0 edge=2257 fps=71.6
+WSIFP frame=15750 deg=15750.0 img=2 screen_bad=0 edge=2016 fps=83.7
+swapchain   : #32 880x880, 4 images, format 44 (frame 16000)
+WSIFP frame=16000 deg=16000.0 img=0 screen_bad=0 edge=3746 fps=79.9
+WSIFP frame=16250 deg=16250.0 img=2 screen_bad=0 edge=3841 fps=75.1
+swapchain   : #33 400x400, 4 images, format 44 (frame 16500)
+WSIFP frame=16500 deg=16500.0 img=0 screen_bad=0 edge=1721 fps=74.7
+WSIFP frame=16750 deg=16750.0 img=2 screen_bad=0 edge=1275 fps=88.3
+swapchain   : #34 720x720, 4 images, format 44 (frame 17000)
+WSIFP frame=17000 deg=17000.0 img=0 screen_bad=0 edge=2177 fps=85.1
+WSIFP frame=17250 deg=17250.0 img=2 screen_bad=0 edge=2590 fps=80.5
+swapchain   : #35 1024x1024, 4 images, format 44 (frame 17500)
+WSIFP frame=17500 deg=17500.0 img=0 screen_bad=0 edge=3108 fps=74.4
+WSIFP frame=17750 deg=17750.0 img=2 screen_bad=0 edge=3150 fps=66.0
+swapchain   : #36 1000x1000, 4 images, format 44 (frame 18000)
+WSIFP frame=18000 deg=18000.0 img=0 screen_bad=0 edge=2168 fps=66.5
+WSIFP frame=18250 deg=18250.0 img=2 screen_bad=0 edge=3072 fps=69.9
+swapchain   : #37 640x640, 4 images, format 44 (frame 18500)
+WSIFP frame=18500 deg=18500.0 img=0 screen_bad=0 edge=1942 fps=67.1
+WSIFP frame=18750 deg=18750.0 img=2 screen_bad=0 edge=2301 fps=83.7
+swapchain   : #38 880x880, 4 images, format 44 (frame 19000)
+WSIFP frame=19000 deg=19000.0 img=0 screen_bad=0 edge=2678 fps=79.8
+WSIFP frame=19250 deg=19250.0 img=2 screen_bad=0 edge=2813 fps=73.8
+swapchain   : #39 400x400, 4 images, format 44 (frame 19500)
+WSIFP frame=19500 deg=19500.0 img=0 screen_bad=0 edge=1721 fps=74.7
+WSIFP frame=19750 deg=19750.0 img=2 screen_bad=0 edge=1746 fps=96.8
+swapchain   : #40 720x720, 4 images, format 44 (frame 20000)
+WSIFP frame=20000 deg=20000.0 img=0 screen_bad=0 edge=3060 fps=109.8
+WSIFP frame=20250 deg=20250.0 img=2 screen_bad=0 edge=2274 fps=88.1
+swapchain   : #41 1024x1024, 4 images, format 44 (frame 20500)
+WSIFP frame=20500 deg=20500.0 img=0 screen_bad=0 edge=3625 fps=92.0
+WSIFP frame=20750 deg=20750.0 img=2 screen_bad=0 edge=3641 fps=68.7
+swapchain   : #42 1000x1000, 4 images, format 44 (frame 21000)
+WSIFP frame=21000 deg=21000.0 img=0 screen_bad=0 edge=3626 fps=63.1
+WSIFP frame=21250 deg=21250.0 img=2 screen_bad=0 edge=3089 fps=59.0
+swapchain   : #43 640x640, 4 images, format 44 (frame 21500)
+WSIFP frame=21500 deg=21500.0 img=0 screen_bad=0 edge=2009 fps=58.7
+WSIFP frame=21750 deg=21750.0 img=2 screen_bad=0 edge=1970 fps=120.2
+swapchain   : #44 880x880, 4 images, format 44 (frame 22000)
+WSIFP frame=22000 deg=22000.0 img=0 screen_bad=0 edge=2039 fps=95.5
+WSIFP frame=22250 deg=22250.0 img=2 screen_bad=0 edge=2060 fps=82.1
+swapchain   : #45 400x400, 4 images, format 44 (frame 22500)
+WSIFP frame=22500 deg=22500.0 img=0 screen_bad=0 edge=868 fps=97.3
+WSIFP frame=22750 deg=22750.0 img=2 screen_bad=0 edge=936 fps=151.3
+swapchain   : #46 720x720, 4 images, format 44 (frame 23000)
+WSIFP frame=23000 deg=23000.0 img=0 screen_bad=0 edge=1670 fps=165.2
+WSIFP frame=23250 deg=23250.0 img=2 screen_bad=0 edge=2164 fps=120.6
+swapchain   : #47 1024x1024, 4 images, format 44 (frame 23500)
+WSIFP frame=23500 deg=23500.0 img=0 screen_bad=0 edge=3154 fps=115.4
+WSIFP frame=23750 deg=23750.0 img=2 screen_bad=0 edge=3239 fps=84.2
+swapchain   : #48 1000x1000, 4 images, format 44 (frame 24000)
+WSIFP frame=24000 deg=24000.0 img=0 screen_bad=0 edge=4170 fps=65.4
+WSIFP frame=24250 deg=24250.0 img=2 screen_bad=0 edge=4279 fps=51.4
+swapchain   : #49 640x640, 4 images, format 44 (frame 24500)
+WSIFP frame=24500 deg=24500.0 img=0 screen_bad=0 edge=2632 fps=62.5
+WSIFP frame=24750 deg=24750.0 img=2 screen_bad=0 edge=2016 fps=98.7
+swapchain   : #50 880x880, 4 images, format 44 (frame 25000)
+WSIFP frame=25000 deg=25000.0 img=0 screen_bad=0 edge=3090 fps=101.7
+WSIFP frame=25250 deg=25250.0 img=2 screen_bad=0 edge=3055 fps=80.2
+swapchain   : #51 400x400, 4 images, format 44 (frame 25500)
+WSIFP frame=25500 deg=25500.0 img=0 screen_bad=0 edge=1405 fps=92.1
+WSIFP frame=25750 deg=25750.0 img=2 screen_bad=0 edge=1209 fps=147.5
+swapchain   : #52 720x720, 4 images, format 44 (frame 26000)
+WSIFP frame=26000 deg=26000.0 img=0 screen_bad=0 edge=2285 fps=99.4
+WSIFP frame=26250 deg=26250.0 img=2 screen_bad=0 edge=3030 fps=103.3
+swapchain   : #53 1024x1024, 4 images, format 44 (frame 26500)
+WSIFP frame=26500 deg=26500.0 img=0 screen_bad=0 edge=3314 fps=71.1
+WSIFP frame=26750 deg=26750.0 img=2 screen_bad=0 edge=3234 fps=62.8
+swapchain   : #54 1000x1000, 4 images, format 44 (frame 27000)
+WSIFP frame=27000 deg=27000.0 img=0 screen_bad=0 edge=2168 fps=82.8
+WSIFP frame=27250 deg=27250.0 img=2 screen_bad=0 edge=3154 fps=52.1
+swapchain   : #55 640x640, 4 images, format 44 (frame 27500)
+WSIFP frame=27500 deg=27500.0 img=0 screen_bad=0 edge=2065 fps=69.8
+WSIFP frame=27750 deg=27750.0 img=2 screen_bad=0 edge=2670 fps=121.2
+swapchain   : #56 880x880, 4 images, format 44 (frame 28000)
+WSIFP frame=28000 deg=28000.0 img=0 screen_bad=0 edge=2812 fps=111.0
+WSIFP frame=28250 deg=28250.0 img=2 screen_bad=0 edge=2670 fps=92.8
+swapchain   : #57 400x400, 4 images, format 44 (frame 28500)
+WSIFP frame=28500 deg=28500.0 img=0 screen_bad=0 edge=1405 fps=87.1
+WSIFP frame=28750 deg=28750.0 img=2 screen_bad=0 edge=1398 fps=148.8
+swapchain   : #58 720x720, 4 images, format 44 (frame 29000)
+WSIFP frame=29000 deg=29000.0 img=0 screen_bad=0 edge=2537 fps=150.2
+WSIFP frame=29250 deg=29250.0 img=2 screen_bad=0 edge=2274 fps=108.8
+swapchain   : #59 1024x1024, 4 images, format 44 (frame 29500)
+WSIFP frame=29500 deg=29500.0 img=0 screen_bad=0 edge=4262 fps=108.1
+WSIFP frame=29750 deg=29750.0 img=2 screen_bad=0 edge=4356 fps=69.9
+
+--- result ---
+frames=30000 in 368.3 s = 81.4 fps (incl. checks), checked=120 bad_frames=0 screen_bad=0
+WSISUM present=fifo format=BGRA8 frames=30000 checked=120 bad_frames=0 bad=0 swapchains=60 out_of_date=0 verdict=PASS
+DONE

@@ -28,7 +28,13 @@
 int main(void){
     const int frames = getenv("CUBE_FRAMES") ? atoi(getenv("CUBE_FRAMES")) : 600;
     const double step = getenv("CUBE_STEP") ? atof(getenv("CUBE_STEP")) : 1.0;
-    const int D = getenv("CUBE_DIM") ? atoi(getenv("CUBE_DIM")) : 1000;
+    int D = getenv("CUBE_DIM") ? atoi(getenv("CUBE_DIM")) : 1000;
+    /* CUBE_RESIZE_EVERY=n: every n frames resize the X window to the next
+     * size in the list and recreate the swapchain (oldSwapchain chained).
+     * Sizes stay square so the CPU model's aspect ratio is unchanged. */
+    const int resize_every = getenv("CUBE_RESIZE_EVERY") ? atoi(getenv("CUBE_RESIZE_EVERY")) : 0;
+    const int sizes[] = {1000, 640, 880, 400, 720, 1024};
+    const int D0 = D, DMAX = 1024;
     const int every = getenv("CUBE_CHECK_EVERY") ? atoi(getenv("CUBE_CHECK_EVERY")) : 30;
     const double band = getenv("CUBE_BAND") ? atof(getenv("CUBE_BAND")) : 0.5;
     const int lie = getenv("CUBE_LIE") && getenv("CUBE_LIE")[0]=='1';
@@ -36,7 +42,7 @@ int main(void){
     VkPresentModeKHR want_pm = !strcmp(pm_s,"immediate")?VK_PRESENT_MODE_IMMEDIATE_KHR:
                                !strcmp(pm_s,"mailbox")?VK_PRESENT_MODE_MAILBOX_KHR:VK_PRESENT_MODE_FIFO_KHR;
     printf("=== wsi cube: frames=%d step=%.1f dim=%d present=%s check every %d%s ===\n",
-           frames,step,D,pm_s,every,lie?" NEGATIVE CONTROL: model angle +3":"");
+           frames,step,D0,pm_s,every,lie?" NEGATIVE CONTROL: model angle +3":"");
     fflush(stdout);
 
     /* X window */
@@ -103,34 +109,11 @@ int main(void){
     DP(CreateSwapchainKHR); DP(GetSwapchainImagesKHR); DP(AcquireNextImageKHR); DP(QueuePresentKHR);
     VkQueue q; GetDeviceQueue(dev,0,0,&q);
 
-    uint32_t nimg_want = caps.minImageCount+1; if(caps.maxImageCount && nimg_want>caps.maxImageCount) nimg_want=caps.maxImageCount;
-    VkSwapchainCreateInfoKHR sci={.sType=VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,.surface=surf,
-        .minImageCount=nimg_want,.imageFormat=FMT,.imageColorSpace=VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
-        .imageExtent={D,D},.imageArrayLayers=1,.imageUsage=VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
-        .imageSharingMode=VK_SHARING_MODE_EXCLUSIVE,.preTransform=caps.currentTransform,
-        .compositeAlpha=VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,.presentMode=want_pm,.clipped=VK_TRUE};
-    VkSwapchainKHR sc; CHECK(CreateSwapchainKHR(dev,&sci,NULL,&sc),"vkCreateSwapchainKHR");
-    uint32_t nimg=0; GetSwapchainImagesKHR(dev,sc,&nimg,NULL);
-    VkImage simg[8]; if(nimg>8){printf("FAILED: %u images\n",nimg);return 1;} GetSwapchainImagesKHR(dev,sc,&nimg,simg);
-    VkImageView sview[8];
-    for(uint32_t i=0;i<nimg;i++){
-        VkImageViewCreateInfo vi={.sType=VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,.image=simg[i],.viewType=VK_IMAGE_VIEW_TYPE_2D,
-            .format=FMT,.subresourceRange={VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1}};
-        CHECK(CreateImageView(dev,&vi,NULL,&sview[i]),"swapchain view"); }
-    printf("swapchain   : %u images, format %d\n",nimg,FMT);
-
-    /* depth */
+    VkSwapchainKHR sc=VK_NULL_HANDLE; VkImage simg[8]; VkImageView sview[8]; uint32_t nimg=0;
     const VkFormat DFMT=VK_FORMAT_D32_SFLOAT;
-    VkImageCreateInfo dic={.sType=VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,.imageType=VK_IMAGE_TYPE_2D,.format=DFMT,
-        .extent={D,D,1},.mipLevels=1,.arrayLayers=1,.samples=VK_SAMPLE_COUNT_1_BIT,.tiling=VK_IMAGE_TILING_OPTIMAL,
-        .usage=VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT};
-    VkImage dimg; CHECK(CreateImage(dev,&dic,NULL,&dimg),"depth");
-    VkMemoryRequirements mr; GetImageMemoryRequirements(dev,dimg,&mr);
-    VkMemoryAllocateInfo dma={.sType=VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,.allocationSize=mr.size,.memoryTypeIndex=mtype(&mp,mr.memoryTypeBits,0)};
-    VkDeviceMemory dmem; CHECK(AllocateMemory(dev,&dma,NULL,&dmem),"depth mem"); BindImageMemory(dev,dimg,dmem,0);
-    VkImageViewCreateInfo dvi={.sType=VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,.image=dimg,.viewType=VK_IMAGE_VIEW_TYPE_2D,
-        .format=DFMT,.subresourceRange={VK_IMAGE_ASPECT_DEPTH_BIT,0,1,0,1}};
-    VkImageView dview; CHECK(CreateImageView(dev,&dvi,NULL,&dview),"depth view");
+    VkImage dimg=VK_NULL_HANDLE; VkDeviceMemory dmem=VK_NULL_HANDLE; VkImageView dview=VK_NULL_HANDLE;
+    DP(DestroySwapchainKHR); DP(DestroyImageView); DP(DestroyImage); DP(FreeMemory);
+    int need_recreate=1, recreates=0, out_of_date=0, size_ix=0;
 
     /* vertices */
     struct vtx verts[36]; int nv=build_cube(verts);
@@ -186,11 +169,53 @@ int main(void){
     VkSemaphore acq,done; CHECK(CreateSemaphore(dev,&sci2,NULL,&acq),"sem"); CHECK(CreateSemaphore(dev,&sci2,NULL,&done),"sem");
 
     const uint8_t clear8[3]={32,32,40};
-    struct model md={malloc((size_t)D*D*3),malloc((size_t)D*D)};
+    struct model md={malloc((size_t)DMAX*DMAX*3),malloc((size_t)DMAX*DMAX)};
     uint64_t tot_bad=0; int checked=0,bad_frames=0; double t0=now_s(), tlast=t0; int flast=0;
     for(int fr=0; frames==0||fr<frames; fr++){
         double deg=fr*step; double m[16]; make_mvp(deg,m); float mf[16]; for(int i=0;i<16;i++) mf[i]=(float)m[i];
+        if(resize_every>0 && fr>0 && fr%resize_every==0){
+            size_ix=(size_ix+1)%(int)(sizeof sizes/sizeof sizes[0]); D=sizes[size_ix]; if(D>DMAX) D=DMAX;
+            uint32_t wv[4]={(scr->width_in_pixels-D)/2,(scr->height_in_pixels-D)/2,(uint32_t)D,(uint32_t)D};
+            xcb_configure_window(xc,win,XCB_CONFIG_WINDOW_X|XCB_CONFIG_WINDOW_Y|XCB_CONFIG_WINDOW_WIDTH|XCB_CONFIG_WINDOW_HEIGHT,wv);
+            free(xcb_get_input_focus_reply(xc,xcb_get_input_focus(xc),NULL));
+            need_recreate=1;
+        }
+        if(need_recreate){
+            CHECK(QueueWaitIdle(q),"wait idle before recreate");
+            CHECK(GetPhysicalDeviceSurfaceCapabilitiesKHR(pd,surf,&caps),"caps (recreate)");
+            if(caps.currentExtent.width!=0xFFFFFFFFu && (caps.currentExtent.width!=(uint32_t)D||caps.currentExtent.height!=(uint32_t)D))
+                printf("note        : surface reports %ux%u, swapchain will be %dx%d\n",caps.currentExtent.width,caps.currentExtent.height,D,D);
+            uint32_t nimg_want = caps.minImageCount+1; if(caps.maxImageCount && nimg_want>caps.maxImageCount) nimg_want=caps.maxImageCount;
+            VkSwapchainKHR old=sc;
+            VkSwapchainCreateInfoKHR sci={.sType=VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,.surface=surf,
+                .minImageCount=nimg_want,.imageFormat=FMT,.imageColorSpace=VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
+                .imageExtent={D,D},.imageArrayLayers=1,.imageUsage=VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
+                .imageSharingMode=VK_SHARING_MODE_EXCLUSIVE,.preTransform=caps.currentTransform,
+                .compositeAlpha=VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,.presentMode=want_pm,.clipped=VK_TRUE,.oldSwapchain=old};
+            CHECK(CreateSwapchainKHR(dev,&sci,NULL,&sc),"vkCreateSwapchainKHR");
+            if(old){ for(uint32_t i=0;i<nimg;i++) DestroyImageView(dev,sview[i],NULL); DestroySwapchainKHR(dev,old,NULL);
+                     DestroyImageView(dev,dview,NULL); DestroyImage(dev,dimg,NULL); FreeMemory(dev,dmem,NULL); }
+            nimg=0; GetSwapchainImagesKHR(dev,sc,&nimg,NULL);
+            if(nimg>8){printf("FAILED: %u images\n",nimg);return 1;} GetSwapchainImagesKHR(dev,sc,&nimg,simg);
+            for(uint32_t i=0;i<nimg;i++){
+                VkImageViewCreateInfo vi={.sType=VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,.image=simg[i],.viewType=VK_IMAGE_VIEW_TYPE_2D,
+                    .format=FMT,.subresourceRange={VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1}};
+                CHECK(CreateImageView(dev,&vi,NULL,&sview[i]),"swapchain view"); }
+            VkImageCreateInfo dic={.sType=VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO,.imageType=VK_IMAGE_TYPE_2D,.format=DFMT,
+                .extent={D,D,1},.mipLevels=1,.arrayLayers=1,.samples=VK_SAMPLE_COUNT_1_BIT,.tiling=VK_IMAGE_TILING_OPTIMAL,
+                .usage=VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT};
+            CHECK(CreateImage(dev,&dic,NULL,&dimg),"depth");
+            VkMemoryRequirements mr; GetImageMemoryRequirements(dev,dimg,&mr);
+            VkMemoryAllocateInfo dma={.sType=VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,.allocationSize=mr.size,.memoryTypeIndex=mtype(&mp,mr.memoryTypeBits,0)};
+            CHECK(AllocateMemory(dev,&dma,NULL,&dmem),"depth mem"); BindImageMemory(dev,dimg,dmem,0);
+            VkImageViewCreateInfo dvi={.sType=VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO,.image=dimg,.viewType=VK_IMAGE_VIEW_TYPE_2D,
+                .format=DFMT,.subresourceRange={VK_IMAGE_ASPECT_DEPTH_BIT,0,1,0,1}};
+            CHECK(CreateImageView(dev,&dvi,NULL,&dview),"depth view");
+            printf("swapchain   : #%d %dx%d, %u images, format %d (frame %d)\n",recreates,D,D,nimg,FMT,fr); fflush(stdout);
+            recreates++; need_recreate=0;
+        }
         uint32_t ix=0; VkResult ar=AcquireNextImageKHR(dev,sc,5000000000ull,acq,VK_NULL_HANDLE,&ix);
+        if(ar==VK_ERROR_OUT_OF_DATE_KHR){ out_of_date++; need_recreate=1; fr--; continue; }
         if(ar!=VK_SUCCESS&&ar!=VK_SUBOPTIMAL_KHR){printf("FAILED: acquire frame %d -> %d\n",fr,ar);return 1;}
         CHECK(ResetCommandBuffer(cmd,0),"reset");
         VkCommandBufferBeginInfo bi={.sType=VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,.flags=VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT};
@@ -233,7 +258,8 @@ int main(void){
         VkPresentInfoKHR pi={.sType=VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,.waitSemaphoreCount=1,.pWaitSemaphores=&done,
             .swapchainCount=1,.pSwapchains=&sc,.pImageIndices=&ix};
         VkResult prr=QueuePresentKHR(q,&pi);
-        if(prr!=VK_SUCCESS&&prr!=VK_SUBOPTIMAL_KHR){printf("FAILED: present frame %d -> %d\n",fr,prr);return 1;}
+        if(prr==VK_ERROR_OUT_OF_DATE_KHR||prr==VK_SUBOPTIMAL_KHR){ out_of_date+=prr==VK_ERROR_OUT_OF_DATE_KHR; need_recreate=1; }
+        else if(prr!=VK_SUCCESS){printf("FAILED: present frame %d -> %d\n",fr,prr);return 1;}
         VkResult wr=WaitForFences(dev,1,&fence,VK_TRUE,5000000000ull);
         if(wr!=VK_SUCCESS){printf("FAILED: fence frame %d -> %d\n",fr,wr);return 1;}
 
@@ -281,8 +307,8 @@ int main(void){
     printf("\n--- result ---\nframes=%d in %.1f s = %.1f fps (incl. checks), checked=%d bad_frames=%d screen_bad=%llu\n",
            frames,wall,frames/wall,checked,bad_frames,(unsigned long long)tot_bad);
     int ok=checked>0&&tot_bad==0;
-    printf("WSISUM present=%s format=%s frames=%d checked=%d bad_frames=%d bad=%llu verdict=%s\n",pm_s,bgra?"BGRA8":"RGBA8",
-           frames,checked,bad_frames,(unsigned long long)tot_bad,ok?"PASS":"FAIL");
+    printf("WSISUM present=%s format=%s frames=%d checked=%d bad_frames=%d bad=%llu swapchains=%d out_of_date=%d verdict=%s\n",pm_s,bgra?"BGRA8":"RGBA8",
+           frames,checked,bad_frames,(unsigned long long)tot_bad,recreates,out_of_date,ok?"PASS":"FAIL");
     printf("DONE\n");
     return ok?0:2;
 }

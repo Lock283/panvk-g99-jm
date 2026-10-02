@@ -1,0 +1,48 @@
+=== wsi cube: frames=900 step=1.0 dim=1000 present=fifo check every 30 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+surface     : supported=1 images 3..0 extent 1000x1000 usage 0x8009f
+formats     : 50 44
+presentmodes: 0 1 2 3
+swapchain   : #0 1000x1000, 4 images, format 44 (frame 0)
+WSIFP frame=0000 deg=    0.0 img=0 screen_bad=0 edge=2168 fps=0.0
+WSIFP frame=0030 deg=   30.0 img=2 screen_bad=0 edge=3549 fps=59.7
+WSIFP frame=0060 deg=   60.0 img=0 screen_bad=0 edge=3501 fps=54.7
+WSIFP frame=0090 deg=   90.0 img=2 screen_bad=0 edge=3130 fps=58.0
+swapchain   : #1 640x640, 4 images, format 44 (frame 120)
+WSIFP frame=0120 deg=  120.0 img=0 screen_bad=0 edge=1488 fps=53.9
+WSIFP frame=0150 deg=  150.0 img=2 screen_bad=0 edge=1970 fps=74.0
+WSIFP frame=0180 deg=  180.0 img=0 screen_bad=0 edge=2020 fps=71.0
+WSIFP frame=0210 deg=  210.0 img=2 screen_bad=0 edge=2248 fps=73.8
+swapchain   : #2 880x880, 4 images, format 44 (frame 240)
+WSIFP frame=0240 deg=  240.0 img=0 screen_bad=0 edge=3137 fps=68.6
+WSIFP frame=0270 deg=  270.0 img=2 screen_bad=0 edge=2044 fps=61.2
+WSIFP frame=0300 deg=  300.0 img=0 screen_bad=0 edge=3096 fps=62.1
+WSIFP frame=0330 deg=  330.0 img=2 screen_bad=0 edge=3125 fps=60.9
+swapchain   : #3 400x400, 4 images, format 44 (frame 360)
+WSIFP frame=0360 deg=  360.0 img=0 screen_bad=0 edge=1244 fps=63.8
+WSIFP frame=0390 deg=  390.0 img=2 screen_bad=0 edge=946 fps=88.2
+WSIFP frame=0420 deg=  420.0 img=0 screen_bad=0 edge=1359 fps=81.0
+WSIFP frame=0450 deg=  450.0 img=2 screen_bad=0 edge=1260 fps=85.9
+swapchain   : #4 720x720, 4 images, format 44 (frame 480)
+WSIFP frame=0480 deg=  480.0 img=0 screen_bad=0 edge=2547 fps=81.1
+WSIFP frame=0510 deg=  510.0 img=2 screen_bad=0 edge=2239 fps=67.5
+WSIFP frame=0540 deg=  540.0 img=0 screen_bad=0 edge=2242 fps=70.5
+WSIFP frame=0570 deg=  570.0 img=2 screen_bad=0 edge=2524 fps=64.5
+swapchain   : #5 1024x1024, 4 images, format 44 (frame 600)
+WSIFP frame=0600 deg=  600.0 img=0 screen_bad=0 edge=3707 fps=61.9
+WSIFP frame=0630 deg=  630.0 img=2 screen_bad=0 edge=2376 fps=54.5
+WSIFP frame=0660 deg=  660.0 img=0 screen_bad=0 edge=2366 fps=55.4
+WSIFP frame=0690 deg=  690.0 img=2 screen_bad=0 edge=4311 fps=55.1
+swapchain   : #6 1000x1000, 4 images, format 44 (frame 720)
+WSIFP frame=0720 deg=  720.0 img=0 screen_bad=0 edge=3150 fps=52.0
+WSIFP frame=0750 deg=  750.0 img=2 screen_bad=0 edge=3593 fps=56.2
+WSIFP frame=0780 deg=  780.0 img=0 screen_bad=0 edge=3181 fps=56.2
+WSIFP frame=0810 deg=  810.0 img=2 screen_bad=0 edge=3130 fps=56.4
+swapchain   : #7 640x640, 4 images, format 44 (frame 840)
+WSIFP frame=0840 deg=  840.0 img=0 screen_bad=0 edge=2255 fps=56.4
+WSIFP frame=0870 deg=  870.0 img=2 screen_bad=0 edge=1915 fps=74.0
+
+--- result ---
+frames=900 in 14.2 s = 63.5 fps (incl. checks), checked=30 bad_frames=0 screen_bad=0
+WSISUM present=fifo format=BGRA8 frames=900 checked=30 bad_frames=0 bad=0 swapchains=8 out_of_date=0 verdict=PASS
+DONE

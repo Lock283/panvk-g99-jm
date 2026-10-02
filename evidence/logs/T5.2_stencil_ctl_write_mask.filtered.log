@@ -1,0 +1,8 @@
+=== stencil case: write_mask format=d24s8 NEGATIVE CONTROL: model swaps pass/fail ops ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 129 optimalTilingFeatures=0xd601
+model values: 255 x4096
+gpu values  : 240 x576 255 x3520  unhit=0
+  first     : (16,16) got 240,0,0,255 model stencil 255
+STENCILFP write_mask fmt=d24s8 bad=576 unhit=0 verdict=FAIL
+DONE

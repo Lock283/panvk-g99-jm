@@ -31,7 +31,7 @@ Read this before quoting anything from this repo.
 
 | Area | Note |
 |---|---|
-| WSI / swapchain / present | **VERIFIED-HW** for X11 (`VK_KHR_xcb_surface`), Mesa software WSI path, FIFO and IMMEDIATE, on-screen pixels checked. Needs a `-Dplatforms=x11` build. Android surface, resize/recreate and long runs untested |
+| WSI / swapchain / present | **VERIFIED-HW** for X11 (`VK_KHR_xcb_surface`), Mesa software WSI path, FIFO and IMMEDIATE, on-screen pixels checked. Needs a `-Dplatforms=x11` build. resize/recreate and 30,000-frame runs verified; Android surface untested |
 | Fences / semaphores (kbase) | **VERIFIED-HW** after patch `0041`. Before it, no fence was ever signalled |
 | Texture sampling | **VERIFIED-HW** for 2D RGBA8, nearest and linear filtering, REPEAT, MIRRORED_REPEAT, CLAMP_TO_EDGE, CLAMP_TO_BORDER, OPTIMAL and LINEAR. Mipmaps, anisotropy, compare samplers, other formats untested |
 | Application descriptor sets | **VERIFIED-HW** for uniform buffers across 1, 2 and 4 sets plus non-contiguous sets 0 and 3; storage, dynamic uniform and dynamic storage buffers, mixed static/dynamic in one set, and descriptor arrays. Image and texel-buffer descriptors untested (Phase 5) — see [phase4-open-questions.md](phase4-open-questions.md) §3.2 |
@@ -40,7 +40,9 @@ Read this before quoting anything from this repo.
 | Indirect draws | **VERIFIED-HW** for `vkCmdDrawIndirect` and `vkCmdDrawIndexedIndirect`, software-emulated. `instanceCount` up to 8, `firstInstance`, `gl_BaseVertex` byte-identical to direct after patch `0038`; vertex buffers, instance-rate attributes and multiple varyings byte-identical to direct after patches `0039`/`0040` |
 | MSAA | **VERIFIED-HW** for 4x with AVERAGE resolve and pSampleMask, against a per-sample model using the standard sample positions. 8x, sample shading and alpha-to-coverage untested — see [phase4-open-questions.md](phase4-open-questions.md) §5.10 |
 | Multiple render targets | **VERIFIED-HW** for 2 attachments, square and circle, against a CPU reference rasterizer, plus byte-exact attachment independence over the whole allocation. 3–8 attachments and mixed formats untested |
-| Depth/stencil testing | Depth **VERIFIED-HW**: compare ops, clear value, write enable, D32F and D16, every pixel of colour and depth compared against a model. Stencil, depth bias/bounds/clamp untested — see §5.10 |
+| Depth/stencil testing | Depth **VERIFIED-HW**: compare ops, clear value, write enable, D32F and D16, every pixel of colour and depth compared against a model. Stencil **VERIFIED-HW**: all ops, compare, masks, depth-fail, D24S8/D32S8/S8 ([phase5-7.md](phase5-7.md)). Depth bias/bounds/clamp untested |
+| Blending | **VERIFIED-HW** for 13 blend states on one RGBA8 attachment ([phase5-7.md](phase5-7.md)). Independent blend, dual-source, logic ops untested |
+| DXVK / Wine | not attempted. DXVK's required features `geometryShader`, `multiDrawIndirect`, `multiViewport`, clip/cull distance, `textureCompressionBC` and `VK_EXT_robustness2` are not reported by this driver ([phase5-7.md](phase5-7.md)) |
 | Tiled / AFBC image layouts | **VERIFIED-HW** for OPTIMAL (AFBC) colour targets read back by copy, and OPTIMAL textures uploaded by copy. Graphics-path copies to OPTIMAL images needed patch `0042` |
 | Queries / occlusion | `Occlusion query: Disabled` |
 | Secondary command buffers | untested |

@@ -1,0 +1,657 @@
+#sessionInfo releaseName 31807adf6dc7111b32b1ade990d0d8e552fa1b78
+#sessionInfo releaseId 0x31807adf
+#sessionInfo targetName "Android"
+#sessionInfo logFormatVersion "0.3.4"
+#sessionInfo vendorID 0x13b5
+#sessionInfo deviceID 0x90930010
+#sessionInfo deviceName Mali-G57 MC2
+#sessionInfo commandLineParameters "--deqp-vk-library-path=/data/data/com.termux/files/home/cts/shim/libvkshim.so --deqp-case=dEQP-VK.info.device_extensions --deqp-log-filename=/data/data/com.termux/files/home/cts/runs/dbg/info_device_extensions.qpa"
+
+#beginSession
+
+#beginTestCaseResult dEQP-VK.info.device_extensions
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.info.device_extensions" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="Global" Description="Global Extensions">
+  <Text>0: VkExtensionProperties = {
+	extensionName = VK_KHR_8bit_storage
+	specVersion = 1
+}</Text>
+  <Text>1: VkExtensionProperties = {
+	extensionName = VK_KHR_16bit_storage
+	specVersion = 1
+}</Text>
+  <Text>2: VkExtensionProperties = {
+	extensionName = VK_KHR_bind_memory2
+	specVersion = 1
+}</Text>
+  <Text>3: VkExtensionProperties = {
+	extensionName = VK_KHR_buffer_device_address
+	specVersion = 1
+}</Text>
+  <Text>4: VkExtensionProperties = {
+	extensionName = VK_KHR_calibrated_timestamps
+	specVersion = 1
+}</Text>
+  <Text>5: VkExtensionProperties = {
+	extensionName = VK_KHR_compute_shader_derivatives
+	specVersion = 1
+}</Text>
+  <Text>6: VkExtensionProperties = {
+	extensionName = VK_KHR_copy_commands2
+	specVersion = 1
+}</Text>
+  <Text>7: VkExtensionProperties = {
+	extensionName = VK_KHR_create_renderpass2
+	specVersion = 1
+}</Text>
+  <Text>8: VkExtensionProperties = {
+	extensionName = VK_KHR_dedicated_allocation
+	specVersion = 3
+}</Text>
+  <Text>9: VkExtensionProperties = {
+	extensionName = VK_KHR_depth_clamp_zero_one
+	specVersion = 1
+}</Text>
+  <Text>10: VkExtensionProperties = {
+	extensionName = VK_KHR_depth_stencil_resolve
+	specVersion = 1
+}</Text>
+  <Text>11: VkExtensionProperties = {
+	extensionName = VK_KHR_descriptor_update_template
+	specVersion = 1
+}</Text>
+  <Text>12: VkExtensionProperties = {
+	extensionName = VK_KHR_device_group
+	specVersion = 4
+}</Text>
+  <Text>13: VkExtensionProperties = {
+	extensionName = VK_KHR_driver_properties
+	specVersion = 1
+}</Text>
+  <Text>14: VkExtensionProperties = {
+	extensionName = VK_KHR_dynamic_rendering
+	specVersion = 1
+}</Text>
+  <Text>15: VkExtensionProperties = {
+	extensionName = VK_KHR_dynamic_rendering_local_read
+	specVersion = 1
+}</Text>
+  <Text>16: VkExtensionProperties = {
+	extensionName = VK_KHR_external_fence
+	specVersion = 1
+}</Text>
+  <Text>17: VkExtensionProperties = {
+	extensionName = VK_KHR_external_fence_fd
+	specVersion = 1
+}</Text>
+  <Text>18: VkExtensionProperties = {
+	extensionName = VK_KHR_external_memory
+	specVersion = 1
+}</Text>
+  <Text>19: VkExtensionProperties = {
+	extensionName = VK_KHR_external_memory_fd
+	specVersion = 1
+}</Text>
+  <Text>20: VkExtensionProperties = {
+	extensionName = VK_KHR_external_semaphore
+	specVersion = 1
+}</Text>
+  <Text>21: VkExtensionProperties = {
+	extensionName = VK_KHR_external_semaphore_fd
+	specVersion = 1
+}</Text>
+  <Text>22: VkExtensionProperties = {
+	extensionName = VK_KHR_format_feature_flags2
+	specVersion = 2
+}</Text>
+  <Text>23: VkExtensionProperties = {
+	extensionName = VK_KHR_get_memory_requirements2
+	specVersion = 1
+}</Text>
+  <Text>24: VkExtensionProperties = {
+	extensionName = VK_KHR_global_priority
+	specVersion = 1
+}</Text>
+  <Text>25: VkExtensionProperties = {
+	extensionName = VK_KHR_image_format_list
+	specVersion = 1
+}</Text>
+  <Text>26: VkExtensionProperties = {
+	extensionName = VK_KHR_imageless_framebuffer
+	specVersion = 1
+}</Text>
+  <Text>27: VkExtensionProperties = {
+	extensionName = VK_KHR_index_type_uint8
+	specVersion = 1
+}</Text>
+  <Text>28: VkExtensionProperties = {
+	extensionName = VK_KHR_internally_synchronized_queues
+	specVersion = 1
+}</Text>
+  <Text>29: VkExtensionProperties = {
+	extensionName = VK_KHR_line_rasterization
+	specVersion = 1
+}</Text>
+  <Text>30: VkExtensionProperties = {
+	extensionName = VK_KHR_load_store_op_none
+	specVersion = 1
+}</Text>
+  <Text>31: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance1
+	specVersion = 2
+}</Text>
+  <Text>32: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance2
+	specVersion = 1
+}</Text>
+  <Text>33: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance3
+	specVersion = 1
+}</Text>
+  <Text>34: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance4
+	specVersion = 2
+}</Text>
+  <Text>35: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance5
+	specVersion = 1
+}</Text>
+  <Text>36: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance6
+	specVersion = 1
+}</Text>
+  <Text>37: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance7
+	specVersion = 1
+}</Text>
+  <Text>38: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance8
+	specVersion = 1
+}</Text>
+  <Text>39: VkExtensionProperties = {
+	extensionName = VK_KHR_maintenance9
+	specVersion = 1
+}</Text>
+  <Text>40: VkExtensionProperties = {
+	extensionName = VK_KHR_map_memory2
+	specVersion = 1
+}</Text>
+  <Text>41: VkExtensionProperties = {
+	extensionName = VK_KHR_multiview
+	specVersion = 1
+}</Text>
+  <Text>42: VkExtensionProperties = {
+	extensionName = VK_KHR_pipeline_binary
+	specVersion = 1
+}</Text>
+  <Text>43: VkExtensionProperties = {
+	extensionName = VK_KHR_pipeline_executable_properties
+	specVersion = 1
+}</Text>
+  <Text>44: VkExtensionProperties = {
+	extensionName = VK_KHR_pipeline_library
+	specVersion = 1
+}</Text>
+  <Text>45: VkExtensionProperties = {
+	extensionName = VK_KHR_push_descriptor
+	specVersion = 2
+}</Text>
+  <Text>46: VkExtensionProperties = {
+	extensionName = VK_KHR_relaxed_block_layout
+	specVersion = 1
+}</Text>
+  <Text>47: VkExtensionProperties = {
+	extensionName = VK_KHR_sampler_mirror_clamp_to_edge
+	specVersion = 3
+}</Text>
+  <Text>48: VkExtensionProperties = {
+	extensionName = VK_KHR_sampler_ycbcr_conversion
+	specVersion = 14
+}</Text>
+  <Text>49: VkExtensionProperties = {
+	extensionName = VK_KHR_separate_depth_stencil_layouts
+	specVersion = 1
+}</Text>
+  <Text>50: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_atomic_int64
+	specVersion = 1
+}</Text>
+  <Text>51: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_clock
+	specVersion = 1
+}</Text>
+  <Text>52: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_draw_parameters
+	specVersion = 1
+}</Text>
+  <Text>53: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_expect_assume
+	specVersion = 1
+}</Text>
+  <Text>54: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_float16_int8
+	specVersion = 1
+}</Text>
+  <Text>55: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_float_controls
+	specVersion = 4
+}</Text>
+  <Text>56: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_float_controls2
+	specVersion = 1
+}</Text>
+  <Text>57: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_fma
+	specVersion = 1
+}</Text>
+  <Text>58: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_integer_dot_product
+	specVersion = 1
+}</Text>
+  <Text>59: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_maximal_reconvergence
+	specVersion = 1
+}</Text>
+  <Text>60: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_non_semantic_info
+	specVersion = 1
+}</Text>
+  <Text>61: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_quad_control
+	specVersion = 1
+}</Text>
+  <Text>62: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_relaxed_extended_instruction
+	specVersion = 1
+}</Text>
+  <Text>63: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_subgroup_extended_types
+	specVersion = 1
+}</Text>
+  <Text>64: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_subgroup_rotate
+	specVersion = 2
+}</Text>
+  <Text>65: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_subgroup_uniform_control_flow
+	specVersion = 1
+}</Text>
+  <Text>66: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_terminate_invocation
+	specVersion = 1
+}</Text>
+  <Text>67: VkExtensionProperties = {
+	extensionName = VK_KHR_shader_untyped_pointers
+	specVersion = 1
+}</Text>
+  <Text>68: VkExtensionProperties = {
+	extensionName = VK_KHR_spirv_1_4
+	specVersion = 1
+}</Text>
+  <Text>69: VkExtensionProperties = {
+	extensionName = VK_KHR_storage_buffer_storage_class
+	specVersion = 1
+}</Text>
+  <Text>70: VkExtensionProperties = {
+	extensionName = VK_KHR_synchronization2
+	specVersion = 1
+}</Text>
+  <Text>71: VkExtensionProperties = {
+	extensionName = VK_KHR_timeline_semaphore
+	specVersion = 2
+}</Text>
+  <Text>72: VkExtensionProperties = {
+	extensionName = VK_KHR_unified_image_layouts
+	specVersion = 1
+}</Text>
+  <Text>73: VkExtensionProperties = {
+	extensionName = VK_KHR_uniform_buffer_standard_layout
+	specVersion = 1
+}</Text>
+  <Text>74: VkExtensionProperties = {
+	extensionName = VK_KHR_variable_pointers
+	specVersion = 1
+}</Text>
+  <Text>75: VkExtensionProperties = {
+	extensionName = VK_KHR_vertex_attribute_divisor
+	specVersion = 1
+}</Text>
+  <Text>76: VkExtensionProperties = {
+	extensionName = VK_KHR_vulkan_memory_model
+	specVersion = 3
+}</Text>
+  <Text>77: VkExtensionProperties = {
+	extensionName = VK_KHR_workgroup_memory_explicit_layout
+	specVersion = 1
+}</Text>
+  <Text>78: VkExtensionProperties = {
+	extensionName = VK_KHR_zero_initialize_workgroup_memory
+	specVersion = 1
+}</Text>
+  <Text>79: VkExtensionProperties = {
+	extensionName = VK_EXT_4444_formats
+	specVersion = 1
+}</Text>
+  <Text>80: VkExtensionProperties = {
+	extensionName = VK_EXT_astc_decode_mode
+	specVersion = 1
+}</Text>
+  <Text>81: VkExtensionProperties = {
+	extensionName = VK_EXT_attachment_feedback_loop_dynamic_state
+	specVersion = 1
+}</Text>
+  <Text>82: VkExtensionProperties = {
+	extensionName = VK_EXT_attachment_feedback_loop_layout
+	specVersion = 2
+}</Text>
+  <Text>83: VkExtensionProperties = {
+	extensionName = VK_EXT_border_color_swizzle
+	specVersion = 1
+}</Text>
+  <Text>84: VkExtensionProperties = {
+	extensionName = VK_EXT_buffer_device_address
+	specVersion = 2
+}</Text>
+  <Text>85: VkExtensionProperties = {
+	extensionName = VK_EXT_calibrated_timestamps
+	specVersion = 2
+}</Text>
+  <Text>86: VkExtensionProperties = {
+	extensionName = VK_EXT_color_write_enable
+	specVersion = 1
+}</Text>
+  <Text>87: VkExtensionProperties = {
+	extensionName = VK_EXT_custom_border_color
+	specVersion = 12
+}</Text>
+  <Text>88: VkExtensionProperties = {
+	extensionName = VK_EXT_debug_marker
+	specVersion = 4
+}</Text>
+  <Text>89: VkExtensionProperties = {
+	extensionName = VK_EXT_depth_bias_control
+	specVersion = 1
+}</Text>
+  <Text>90: VkExtensionProperties = {
+	extensionName = VK_EXT_depth_clamp_control
+	specVersion = 1
+}</Text>
+  <Text>91: VkExtensionProperties = {
+	extensionName = VK_EXT_depth_clamp_zero_one
+	specVersion = 1
+}</Text>
+  <Text>92: VkExtensionProperties = {
+	extensionName = VK_EXT_depth_clip_control
+	specVersion = 1
+}</Text>
+  <Text>93: VkExtensionProperties = {
+	extensionName = VK_EXT_depth_clip_enable
+	specVersion = 1
+}</Text>
+  <Text>94: VkExtensionProperties = {
+	extensionName = VK_EXT_descriptor_indexing
+	specVersion = 2
+}</Text>
+  <Text>95: VkExtensionProperties = {
+	extensionName = VK_EXT_device_address_binding_report
+	specVersion = 1
+}</Text>
+  <Text>96: VkExtensionProperties = {
+	extensionName = VK_EXT_device_memory_report
+	specVersion = 2
+}</Text>
+  <Text>97: VkExtensionProperties = {
+	extensionName = VK_EXT_dynamic_rendering_unused_attachments
+	specVersion = 1
+}</Text>
+  <Text>98: VkExtensionProperties = {
+	extensionName = VK_EXT_extended_dynamic_state
+	specVersion = 1
+}</Text>
+  <Text>99: VkExtensionProperties = {
+	extensionName = VK_EXT_extended_dynamic_state2
+	specVersion = 1
+}</Text>
+  <Text>100: VkExtensionProperties = {
+	extensionName = VK_EXT_extended_dynamic_state3
+	specVersion = 2
+}</Text>
+  <Text>101: VkExtensionProperties = {
+	extensionName = VK_EXT_external_memory_acquire_unmodified
+	specVersion = 1
+}</Text>
+  <Text>102: VkExtensionProperties = {
+	extensionName = VK_EXT_external_memory_dma_buf
+	specVersion = 1
+}</Text>
+  <Text>103: VkExtensionProperties = {
+	extensionName = VK_EXT_global_priority
+	specVersion = 2
+}</Text>
+  <Text>104: VkExtensionProperties = {
+	extensionName = VK_EXT_global_priority_query
+	specVersion = 1
+}</Text>
+  <Text>105: VkExtensionProperties = {
+	extensionName = VK_EXT_graphics_pipeline_library
+	specVersion = 1
+}</Text>
+  <Text>106: VkExtensionProperties = {
+	extensionName = VK_EXT_hdr_metadata
+	specVersion = 3
+}</Text>
+  <Text>107: VkExtensionProperties = {
+	extensionName = VK_EXT_host_image_copy
+	specVersion = 1
+}</Text>
+  <Text>108: VkExtensionProperties = {
+	extensionName = VK_EXT_host_query_reset
+	specVersion = 1
+}</Text>
+  <Text>109: VkExtensionProperties = {
+	extensionName = VK_EXT_image_2d_view_of_3d
+	specVersion = 1
+}</Text>
+  <Text>110: VkExtensionProperties = {
+	extensionName = VK_EXT_image_drm_format_modifier
+	specVersion = 2
+}</Text>
+  <Text>111: VkExtensionProperties = {
+	extensionName = VK_EXT_image_robustness
+	specVersion = 1
+}</Text>
+  <Text>112: VkExtensionProperties = {
+	extensionName = VK_EXT_image_sliced_view_of_3d
+	specVersion = 1
+}</Text>
+  <Text>113: VkExtensionProperties = {
+	extensionName = VK_EXT_image_view_min_lod
+	specVersion = 1
+}</Text>
+  <Text>114: VkExtensionProperties = {
+	extensionName = VK_EXT_index_type_uint8
+	specVersion = 1
+}</Text>
+  <Text>115: VkExtensionProperties = {
+	extensionName = VK_EXT_inline_uniform_block
+	specVersion = 1
+}</Text>
+  <Text>116: VkExtensionProperties = {
+	extensionName = VK_EXT_legacy_dithering
+	specVersion = 2
+}</Text>
+  <Text>117: VkExtensionProperties = {
+	extensionName = VK_EXT_line_rasterization
+	specVersion = 1
+}</Text>
+  <Text>118: VkExtensionProperties = {
+	extensionName = VK_EXT_load_store_op_none
+	specVersion = 1
+}</Text>
+  <Text>119: VkExtensionProperties = {
+	extensionName = VK_EXT_map_memory_placed
+	specVersion = 1
+}</Text>
+  <Text>120: VkExtensionProperties = {
+	extensionName = VK_EXT_memory_budget
+	specVersion = 1
+}</Text>
+  <Text>121: VkExtensionProperties = {
+	extensionName = VK_EXT_multisampled_render_to_single_sampled
+	specVersion = 1
+}</Text>
+  <Text>122: VkExtensionProperties = {
+	extensionName = VK_EXT_mutable_descriptor_type
+	specVersion = 1
+}</Text>
+  <Text>123: VkExtensionProperties = {
+	extensionName = VK_EXT_non_seamless_cube_map
+	specVersion = 1
+}</Text>
+  <Text>124: VkExtensionProperties = {
+	extensionName = VK_EXT_physical_device_drm
+	specVersion = 1
+}</Text>
+  <Text>125: VkExtensionProperties = {
+	extensionName = VK_EXT_pipeline_creation_cache_control
+	specVersion = 3
+}</Text>
+  <Text>126: VkExtensionProperties = {
+	extensionName = VK_EXT_pipeline_creation_feedback
+	specVersion = 1
+}</Text>
+  <Text>127: VkExtensionProperties = {
+	extensionName = VK_EXT_pipeline_robustness
+	specVersion = 1
+}</Text>
+  <Text>128: VkExtensionProperties = {
+	extensionName = VK_EXT_primitive_topology_list_restart
+	specVersion = 1
+}</Text>
+  <Text>129: VkExtensionProperties = {
+	extensionName = VK_EXT_private_data
+	specVersion = 1
+}</Text>
+  <Text>130: VkExtensionProperties = {
+	extensionName = VK_EXT_provoking_vertex
+	specVersion = 1
+}</Text>
+  <Text>131: VkExtensionProperties = {
+	extensionName = VK_EXT_queue_family_foreign
+	specVersion = 1
+}</Text>
+  <Text>132: VkExtensionProperties = {
+	extensionName = VK_EXT_scalar_block_layout
+	specVersion = 1
+}</Text>
+  <Text>133: VkExtensionProperties = {
+	extensionName = VK_EXT_separate_stencil_usage
+	specVersion = 1
+}</Text>
+  <Text>134: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_atomic_float
+	specVersion = 1
+}</Text>
+  <Text>135: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_demote_to_helper_invocation
+	specVersion = 1
+}</Text>
+  <Text>136: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_image_atomic_int64
+	specVersion = 1
+}</Text>
+  <Text>137: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_module_identifier
+	specVersion = 1
+}</Text>
+  <Text>138: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_replicated_composites
+	specVersion = 1
+}</Text>
+  <Text>139: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_stencil_export
+	specVersion = 1
+}</Text>
+  <Text>140: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_subgroup_ballot
+	specVersion = 1
+}</Text>
+  <Text>141: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_subgroup_vote
+	specVersion = 1
+}</Text>
+  <Text>142: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_tile_image
+	specVersion = 1
+}</Text>
+  <Text>143: VkExtensionProperties = {
+	extensionName = VK_EXT_shader_uniform_buffer_unsized_array
+	specVersion = 1
+}</Text>
+  <Text>144: VkExtensionProperties = {
+	extensionName = VK_EXT_subgroup_size_control
+	specVersion = 2
+}</Text>
+  <Text>145: VkExtensionProperties = {
+	extensionName = VK_EXT_texel_buffer_alignment
+	specVersion = 1
+}</Text>
+  <Text>146: VkExtensionProperties = {
+	extensionName = VK_EXT_texture_compression_astc_hdr
+	specVersion = 1
+}</Text>
+  <Text>147: VkExtensionProperties = {
+	extensionName = VK_EXT_tooling_info
+	specVersion = 1
+}</Text>
+  <Text>148: VkExtensionProperties = {
+	extensionName = VK_EXT_vertex_attribute_divisor
+	specVersion = 3
+}</Text>
+  <Text>149: VkExtensionProperties = {
+	extensionName = VK_EXT_vertex_input_dynamic_state
+	specVersion = 2
+}</Text>
+  <Text>150: VkExtensionProperties = {
+	extensionName = VK_EXT_zero_initialize_device_memory
+	specVersion = 1
+}</Text>
+  <Text>151: VkExtensionProperties = {
+	extensionName = VK_ARM_scheduling_controls
+	specVersion = 2
+}</Text>
+  <Text>152: VkExtensionProperties = {
+	extensionName = VK_ARM_shader_core_builtins
+	specVersion = 2
+}</Text>
+  <Text>153: VkExtensionProperties = {
+	extensionName = VK_ARM_shader_core_properties
+	specVersion = 1
+}</Text>
+  <Text>154: VkExtensionProperties = {
+	extensionName = VK_GOOGLE_decorate_string
+	specVersion = 1
+}</Text>
+  <Text>155: VkExtensionProperties = {
+	extensionName = VK_GOOGLE_hlsl_functionality1
+	specVersion = 1
+}</Text>
+  <Text>156: VkExtensionProperties = {
+	extensionName = VK_GOOGLE_user_type
+	specVersion = 1
+}</Text>
+  <Text>157: VkExtensionProperties = {
+	extensionName = VK_VALVE_mutable_descriptor_type
+	specVersion = 1
+}</Text>
+</Section>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">3407</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+Run took 0.01 seconds
+
+#endSession

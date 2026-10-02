@@ -1,0 +1,30 @@
+=== wsi cube: frames=480 step=1.0 dim=1000 present=fifo check every 30 NEGATIVE CONTROL: model angle +3 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+surface     : supported=1 images 3..0 extent 1000x1000 usage 0x8009f
+formats     : 50 44
+presentmodes: 0 1 2 3
+swapchain   : #0 1000x1000, 4 images, format 44 (frame 0)
+WSIFP frame=0000 deg=    0.0 img=0 screen_bad=11467 edge=2504 fps=0.0 shown=frame-3 first=(283,283) screen=255,255,0 model=32,32,40
+WSIFP frame=0030 deg=   30.0 img=2 screen_bad=16113 edge=3523 fps=48.7 shown=frame-3 first=(455,285) screen=32,32,40 model=255,0,255
+WSIFP frame=0060 deg=   60.0 img=0 screen_bad=16259 edge=3493 fps=46.1 shown=frame-3 first=(569,229) screen=32,32,40 model=255,0,255
+WSIFP frame=0090 deg=   90.0 img=2 screen_bad=11436 edge=3126 fps=48.5 shown=frame-3 first=(320,238) screen=32,32,40 model=255,0,255
+swapchain   : #1 640x640, 4 images, format 44 (frame 120)
+WSIFP frame=0120 deg=  120.0 img=0 screen_bad=3800 edge=1499 fps=50.8 shown=frame-3 first=(270,125) screen=255,0,255 model=32,32,40
+WSIFP frame=0150 deg=  150.0 img=2 screen_bad=4563 edge=2004 fps=63.7 shown=frame-3 first=(374,160) screen=255,255,0 model=32,32,40
+WSIFP frame=0180 deg=  180.0 img=0 screen_bad=4934 edge=1998 fps=68.0 shown=frame-3 first=(218,165) screen=32,32,40 model=255,255,0
+WSIFP frame=0210 deg=  210.0 img=2 screen_bad=6539 edge=2242 fps=66.1 shown=frame-3 first=(283,120) screen=32,32,40 model=255,255,0
+swapchain   : #2 880x880, 4 images, format 44 (frame 240)
+WSIFP frame=0240 deg=  240.0 img=0 screen_bad=10863 edge=2659 fps=54.8 shown=frame-3 first=(509,192) screen=255,0,0 model=32,32,40
+WSIFP frame=0270 deg=  270.0 img=2 screen_bad=8502 edge=2031 fps=55.5 shown=frame-3 first=(242,276) screen=255,0,0 model=32,32,40
+WSIFP frame=0300 deg=  300.0 img=0 screen_bad=12115 edge=3080 fps=51.8 shown=frame-3 first=(476,227) screen=32,32,40 model=0,255,0
+WSIFP frame=0330 deg=  330.0 img=2 screen_bad=11953 edge=3146 fps=51.7 shown=frame-3 first=(373,186) screen=32,32,40 model=0,255,0
+swapchain   : #3 400x400, 4 images, format 44 (frame 360)
+WSIFP frame=0360 deg=  360.0 img=0 screen_bad=1693 edge=1244 fps=57.5 shown=frame-3 first=(257,98) screen=32,32,40 model=0,255,0
+WSIFP frame=0390 deg=  390.0 img=2 screen_bad=1362 edge=941 fps=81.2 shown=frame-3 first=(230,85) screen=0,255,0 model=32,32,40
+WSIFP frame=0420 deg=  420.0 img=0 screen_bad=1709 edge=1277 fps=82.3 shown=frame-3 first=(176,93) screen=255,0,0 model=32,32,40
+WSIFP frame=0450 deg=  450.0 img=2 screen_bad=1867 edge=1261 fps=87.1 shown=frame-3 first=(264,98) screen=32,32,40 model=255,0,0
+
+--- result ---
+frames=480 in 8.5 s = 56.6 fps (incl. checks), checked=16 bad_frames=16 screen_bad=125175
+WSISUM present=fifo format=BGRA8 frames=480 checked=16 bad_frames=16 bad=125175 swapchains=4 out_of_date=0 verdict=FAIL
+DONE

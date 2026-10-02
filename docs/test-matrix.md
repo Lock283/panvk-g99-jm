@@ -28,6 +28,10 @@ actually produced, with the artifact that shows it.
 | [`tests/graphics/cube_test.c`](../tests/graphics/cube_test.c) | spinning cube, push-constant MVP, depth, per-frame CPU rasterizer check | **VERIFIED-HW** | `evidence/logs/T4.9.1_*`, `T4.9.2_*` |
 | [`tests/graphics/wsi_cube.c`](../tests/graphics/wsi_cube.c) | same cube through an X11 swapchain, window read back and checked | **VERIFIED-HW** | `evidence/logs/T4.9.3_*` |
 | [`tests/graphics/tex_test.c`](../tests/graphics/tex_test.c) | texture sampling, filters and address modes, OPTIMAL and LINEAR | **VERIFIED-HW** | `evidence/logs/T5.1_*` |
+| [`tests/graphics/stencil_test.c`](../tests/graphics/stencil_test.c) | stencil ops, compare, masks, depth-fail, D24S8/D32S8/S8, read back through 256 EQUAL probes | **VERIFIED-HW** | `evidence/logs/T5.2_*` |
+| [`tests/graphics/blend_test.c`](../tests/graphics/blend_test.c) | 13 blend states vs CPU model | **VERIFIED-HW** | `evidence/logs/T5.3_*` |
+| [`tests/graphics/wsi_cube.c`](../tests/graphics/wsi_cube.c) `CUBE_RESIZE_EVERY` | resize + swapchain recreate, 30,000-frame runs, RSS | **VERIFIED-HW** | `evidence/logs/T6.1_*`, `T6.2_*` |
+| [`tests/phase7/featq.c`](../tests/phase7/featq.c) | 1.1/1.2/1.3 and extension features for the DXVK gap | reported values | [`evidence/phase7/`](../evidence/phase7/) |
 | [`tests/cts/run_cts.py`](../tests/cts/run_cts.py) | VK-GL-CTS groups `api.smoke`, `simple_draw`, `indirect_draw` | 8/8, 4/4, 86 pass 0 fail | [`evidence/cts/`](../evidence/cts/) |
 | [`tests/graphics/mrt_shape_test.c`](../tests/graphics/mrt_shape_test.c) | 4.3 two render targets, square and circle vs CPU reference | **VERIFIED-HW** | `evidence/logs/T4.3_*` |
 | [`tests/graphics/draw_indirect_test.c`](../tests/graphics/draw_indirect_test.c) | 4.4 indirect and indexed-indirect draw | **VERIFIED-HW** | `evidence/logs/T4.4.4_*`, `T4.4.5_*` |
@@ -91,8 +95,8 @@ positions), plus the `HISTORICAL-fullscreen-baseline` variants.
 
 ## Not covered by any test
 
-Stencil testing, blending beyond the default, mipmapping, secondary command
+Mipmap selection in this project's own tests (CTS mipmap cases pass), secondary command
 buffers, multi-layer rendering, multi-queue, and anything resembling a real
-application. (MSAA, MRT, depth, indexed and indirect draws, AFBC, WSI and
-multi-descriptor-set tables are covered above.)
+application. (MSAA, MRT, depth, stencil, blending, indexed and indirect draws,
+AFBC, WSI and multi-descriptor-set tables are covered above.)
 See [known-limitations.md](known-limitations.md).

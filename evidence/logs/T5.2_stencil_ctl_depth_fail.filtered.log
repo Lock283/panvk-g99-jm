@@ -1,0 +1,8 @@
+=== stencil case: depth_fail format=d24s8 NEGATIVE CONTROL: model swaps pass/fail ops ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 129 optimalTilingFeatures=0xd601
+model values: 0 x3840 9 x256
+gpu values  : 0 x3520 1 x320 9 x256  unhit=0
+  first     : (40,24) got 1,0,0,255 model stencil 0
+STENCILFP depth_fail fmt=d24s8 bad=320 unhit=0 verdict=FAIL
+DONE

@@ -1,0 +1,7 @@
+=== stencil case: zero format=s8 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+format      : 127 optimalTilingFeatures=0xc601
+model values: 0 x576 7 x3520
+gpu values  : 0 x576 7 x3520  unhit=0
+STENCILFP zero fmt=s8 bad=0 unhit=0 verdict=PASS
+DONE

@@ -1,0 +1,269 @@
+#sessionInfo releaseName 31807adf6dc7111b32b1ade990d0d8e552fa1b78
+#sessionInfo releaseId 0x31807adf
+#sessionInfo targetName "Android"
+#sessionInfo logFormatVersion "0.3.4"
+#sessionInfo vendorID 0x13b5
+#sessionInfo deviceID 0x90930010
+#sessionInfo deviceName Mali-G57 MC2
+#sessionInfo commandLineParameters "--deqp-vk-library-path=/data/data/com.termux/files/home/cts/shim/libvkshim.so --deqp-case=dEQP-VK.info.device_properties --deqp-log-filename=/data/data/com.termux/files/home/cts/runs/dbg/info_device_properties.qpa"
+
+#beginSession
+
+#beginTestCaseResult dEQP-VK.info.device_properties
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.info.device_properties" Version="0.3.4" CaseType="SelfValidate">
+ <Text>device = 0xb40000793460c220</Text>
+ <Text>VkPhysicalDeviceProperties = {
+	apiVersion = 4206946
+	driverVersion = 109060195
+	vendorID = 5045
+	deviceID = 2425552912
+	deviceType = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU
+	deviceName = Mali-G57 MC2
+	pipelineCacheUUID = 
+{ 0x6f, 0x16, 0x89, 0xb3, 0x1d, 0xec, 0x4d, 0xd9, 0x3a, 0xbb, 0x6b, 0xce, 0x7d, 0xc4, 0x74, 0x9d }
+	limits = VkPhysicalDeviceLimits = {
+	maxImageDimension1D = 10000
+	maxImageDimension2D = 10000
+	maxImageDimension3D = 10000
+	maxImageDimensionCube = 10000
+	maxImageArrayLayers = 10000
+	maxTexelBufferElements = 8000000
+	maxUniformBufferRange = 100000
+	maxStorageBufferRange = ffffffff
+	maxPushConstantsSize = 100
+	maxMemoryAllocationCount = ffffffff
+	maxSamplerAllocationCount = ffffffff
+	bufferImageGranularity = 40
+	sparseAddressSpaceSize = 0
+	maxBoundDescriptorSets = 7
+	maxPerStageDescriptorSamplers = 100000
+	maxPerStageDescriptorUniformBuffers = 100000
+	maxPerStageDescriptorStorageBuffers = 100000
+	maxPerStageDescriptorSampledImages = 100000
+	maxPerStageDescriptorStorageImages = 100000
+	maxPerStageDescriptorInputAttachments = 9
+	maxPerStageResources = 500009
+	maxDescriptorSetSamplers = 100000
+	maxDescriptorSetUniformBuffers = 100000
+	maxDescriptorSetUniformBuffersDynamic = 10
+	maxDescriptorSetStorageBuffers = 100000
+	maxDescriptorSetStorageBuffersDynamic = 8
+	maxDescriptorSetSampledImages = 100000
+	maxDescriptorSetStorageImages = 100000
+	maxDescriptorSetInputAttachments = 9
+	maxVertexInputAttributes = 10
+	maxVertexInputBindings = 10
+	maxVertexInputAttributeOffset = ffffffff
+	maxVertexInputBindingStride = ffff
+	maxVertexOutputComponents = 80
+	maxTessellationGenerationLevel = 0
+	maxTessellationPatchSize = 0
+	maxTessellationControlPerVertexInputComponents = 0
+	maxTessellationControlPerVertexOutputComponents = 0
+	maxTessellationControlPerPatchOutputComponents = 0
+	maxTessellationControlTotalOutputComponents = 0
+	maxTessellationEvaluationInputComponents = 0
+	maxTessellationEvaluationOutputComponents = 0
+	maxGeometryShaderInvocations = 0
+	maxGeometryInputComponents = 0
+	maxGeometryOutputComponents = 0
+	maxGeometryOutputVertices = 0
+	maxGeometryTotalOutputComponents = 0
+	maxFragmentInputComponents = 80
+	maxFragmentOutputAttachments = 8
+	maxFragmentDualSrcAttachments = 8
+	maxFragmentCombinedOutputResources = 1108
+	maxComputeSharedMemorySize = 8000
+	maxComputeWorkGroupCount = 
+{ ffff, ffff, ffff }
+	maxComputeWorkGroupInvocations = 200
+	maxComputeWorkGroupSize = 
+{ 200, 200, 200 }
+	subPixelPrecisionBits = 8
+	subTexelPrecisionBits = 8
+	mipmapPrecisionBits = 8
+	maxDrawIndexedIndexValue = ffffffff
+	maxDrawIndirectCount = 1
+	maxSamplerLodBias = 127.996
+	maxSamplerAnisotropy = 16
+	maxViewports = 1
+	maxViewportDimensions = 
+{ 4000, 4000 }
+	viewportBoundsRange = 
+{ -32768, 32767 }
+	viewportSubPixelBits = 0
+	minMemoryMapAlignment = 1000
+	minTexelBufferOffsetAlignment = 10
+	minUniformBufferOffsetAlignment = 10
+	minStorageBufferOffsetAlignment = 10
+	minTexelOffset = fffffff8
+	maxTexelOffset = 7
+	minTexelGatherOffset = fffffff8
+	maxTexelGatherOffset = 7
+	minInterpolationOffset = -0.5
+	maxInterpolationOffset = 0.5
+	subPixelInterpolationOffsetBits = 8
+	maxFramebufferWidth = 4000
+	maxFramebufferHeight = 4000
+	maxFramebufferLayers = 100
+	framebufferColorSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferDepthSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferStencilSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferNoAttachmentsSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	maxColorAttachments = 8
+	sampledImageColorSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageIntegerSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageDepthSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageStencilSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	storageImageSampleCounts = VK_SAMPLE_COUNT_1_BIT
+	maxSampleMaskWords = 1
+	timestampComputeAndGraphics = 0
+	timestampPeriod = 0
+	maxClipDistances = 0
+	maxCullDistances = 0
+	maxCombinedClipAndCullDistances = 0
+	discreteQueuePriorities = 2
+	pointSizeRange = 
+{ 0.125, 4095.94 }
+	lineWidthRange = 
+{ 0, 7.99219 }
+	pointSizeGranularity = 0.0625
+	lineWidthGranularity = 0.0078125
+	strictLines = 1
+	standardSampleLocations = 1
+	optimalBufferCopyOffsetAlignment = 40
+	optimalBufferCopyRowPitchAlignment = 40
+	nonCoherentAtomSize = 40
+}
+	sparseProperties = VkPhysicalDeviceSparseProperties = {
+	residencyStandard2DBlockShape = 0
+	residencyStandard2DMultisampleBlockShape = 0
+	residencyStandard3DBlockShape = 0
+	residencyAlignedMipSize = 0
+	residencyNonResidentStrict = 0
+}
+}</Text>
+ <Text>VkPhysicalDeviceLimits = {
+	maxImageDimension1D = 65536
+	maxImageDimension2D = 65536
+	maxImageDimension3D = 65536
+	maxImageDimensionCube = 65536
+	maxImageArrayLayers = 65536
+	maxTexelBufferElements = 134217728
+	maxUniformBufferRange = 1048576
+	maxStorageBufferRange = 4294967295
+	maxPushConstantsSize = 256
+	maxMemoryAllocationCount = 4294967295
+	maxSamplerAllocationCount = 4294967295
+	bufferImageGranularity = 64
+	sparseAddressSpaceSize = 0
+	maxBoundDescriptorSets = 7
+	maxPerStageDescriptorSamplers = 1048576
+	maxPerStageDescriptorUniformBuffers = 1048576
+	maxPerStageDescriptorStorageBuffers = 1048576
+	maxPerStageDescriptorSampledImages = 1048576
+	maxPerStageDescriptorStorageImages = 1048576
+	maxPerStageDescriptorInputAttachments = 9
+	maxPerStageResources = 5242889
+	maxDescriptorSetSamplers = 1048576
+	maxDescriptorSetUniformBuffers = 1048576
+	maxDescriptorSetUniformBuffersDynamic = 16
+	maxDescriptorSetStorageBuffers = 1048576
+	maxDescriptorSetStorageBuffersDynamic = 8
+	maxDescriptorSetSampledImages = 1048576
+	maxDescriptorSetStorageImages = 1048576
+	maxDescriptorSetInputAttachments = 9
+	maxVertexInputAttributes = 16
+	maxVertexInputBindings = 16
+	maxVertexInputAttributeOffset = 4294967295
+	maxVertexInputBindingStride = 65535
+	maxVertexOutputComponents = 128
+	maxTessellationGenerationLevel = 0
+	maxTessellationPatchSize = 0
+	maxTessellationControlPerVertexInputComponents = 0
+	maxTessellationControlPerVertexOutputComponents = 0
+	maxTessellationControlPerPatchOutputComponents = 0
+	maxTessellationControlTotalOutputComponents = 0
+	maxTessellationEvaluationInputComponents = 0
+	maxTessellationEvaluationOutputComponents = 0
+	maxGeometryShaderInvocations = 0
+	maxGeometryInputComponents = 0
+	maxGeometryOutputComponents = 0
+	maxGeometryOutputVertices = 0
+	maxGeometryTotalOutputComponents = 0
+	maxFragmentInputComponents = 128
+	maxFragmentOutputAttachments = 8
+	maxFragmentDualSrcAttachments = 8
+	maxFragmentCombinedOutputResources = 4360
+	maxComputeSharedMemorySize = 32768
+	maxComputeWorkGroupCount = 
+{ 65535, 65535, 65535 }
+	maxComputeWorkGroupInvocations = 512
+	maxComputeWorkGroupSize = 
+{ 512, 512, 512 }
+	subPixelPrecisionBits = 8
+	subTexelPrecisionBits = 8
+	mipmapPrecisionBits = 8
+	maxDrawIndexedIndexValue = 4294967295
+	maxDrawIndirectCount = 1
+	maxSamplerLodBias = 127.996
+	maxSamplerAnisotropy = 16
+	maxViewports = 1
+	maxViewportDimensions = 
+{ 16384, 16384 }
+	viewportBoundsRange = 
+{ -32768, 32767 }
+	viewportSubPixelBits = 0
+	minMemoryMapAlignment = 4096
+	minTexelBufferOffsetAlignment = 16
+	minUniformBufferOffsetAlignment = 16
+	minStorageBufferOffsetAlignment = 16
+	minTexelOffset = -8
+	maxTexelOffset = 7
+	minTexelGatherOffset = -8
+	maxTexelGatherOffset = 7
+	minInterpolationOffset = -0.5
+	maxInterpolationOffset = 0.5
+	subPixelInterpolationOffsetBits = 8
+	maxFramebufferWidth = 16384
+	maxFramebufferHeight = 16384
+	maxFramebufferLayers = 256
+	framebufferColorSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferDepthSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferStencilSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	framebufferNoAttachmentsSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	maxColorAttachments = 8
+	sampledImageColorSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageIntegerSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageDepthSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	sampledImageStencilSampleCounts = VK_SAMPLE_COUNT_1_BIT|VK_SAMPLE_COUNT_4_BIT|VK_SAMPLE_COUNT_8_BIT
+	storageImageSampleCounts = VK_SAMPLE_COUNT_1_BIT
+	maxSampleMaskWords = 1
+	timestampComputeAndGraphics = 0
+	timestampPeriod = 0
+	maxClipDistances = 0
+	maxCullDistances = 0
+	maxCombinedClipAndCullDistances = 0
+	discreteQueuePriorities = 2
+	pointSizeRange = 
+{ 0.125, 4095.94 }
+	lineWidthRange = 
+{ 0, 7.99219 }
+	pointSizeGranularity = 0.0625
+	lineWidthGranularity = 0.0078125
+	strictLines = 1
+	standardSampleLocations = 1
+	optimalBufferCopyOffsetAlignment = 64
+	optimalBufferCopyRowPitchAlignment = 64
+	nonCoherentAtomSize = 64
+}</Text>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">4500</Number>
+ <Result StatusCode="Pass">DeviceProperites query succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+Run took 0.01 seconds
+
+#endSession
