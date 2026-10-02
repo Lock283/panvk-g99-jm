@@ -33,7 +33,7 @@ Upstream base commit of the driver tree: `6598829019c0746aa8e473b4ae1c980cbfa6ea
 | `tests/shaders/` | 12 | GLSL + prebuilt SPIR-V |
 | `evidence/logs/` | 10 | the FAU A/B series + the partial-triangle run |
 | `evidence/descriptors/` | 12 | pandecode dumps + raw descriptor hex |
-| `evidence/framebuffer/` | 3 | `panvk_triangle.ppm` (real output), PNG upscale, pixel log |
+| `evidence/framebuffer/` | 3 | `panvk_triangle.png` (real output, lossless from the original PPM), PNG upscale, pixel log |
 | `evidence/schema/` | 1 | resource-table / genxml audit |
 | `evidence/builds/` | 10 | build provenance for each A/B side |
 | `evidence/historical/` | 7 | pre-port build failures + early triangle attempts |

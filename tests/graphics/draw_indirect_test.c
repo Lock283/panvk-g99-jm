@@ -35,6 +35,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include "vulkan/vulkan_core.h"
 
 #define CHECK(e,m) do { VkResult _r=(e); \
@@ -429,12 +430,12 @@ int main(void){
 
     const char*pp=getenv("DI_PPM");
     if(pp&&pp[0]){
-        FILE*f=fopen(pp,"wb");
+        FILE*f=png_open(pp,"wb");
         if(f){fprintf(f,"P6\n%d %d\n255\n",DIMS,DIMS);
             for(int y=0;y<DIMS;y++){uint8_t*row=base+y*sl.rowPitch;
                 for(int x=0;x<DIMS;x++){uint8_t*p=row+x*4;
                     uint8_t rgb[3]={p[0],p[1],p[2]};fwrite(rgb,1,3,f);}}
-            fclose(f);printf("VISUAL_DUMP: %s\n",pp);}
+            png_close(f);printf("VISUAL_DUMP: %s\n",pp);}
     }
     UM(dev,imgm);
     free(vc); free(fc);

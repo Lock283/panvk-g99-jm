@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include "vulkan/vulkan_core.h"
 
 #define CHECK(expr, msg) do { \
@@ -467,7 +468,7 @@ int main(void) {
         printf("\nUNEXPECTED: targeted validation gagal; cek pixel dump.\n");
     }
 
-    FILE *ppm = fopen("panvk_triangle.ppm", "wb");
+    FILE *ppm = png_open("panvk_triangle.ppm","wb");
     if (!ppm) {
         perror("fopen panvk_triangle.ppm");
     } else {
@@ -482,7 +483,7 @@ int main(void) {
             }
         }
 
-        fclose(ppm);
+        png_close(ppm);
         printf("VISUAL_DUMP: panvk_triangle.ppm\\n");
     }
 

@@ -65,7 +65,7 @@ the reason a second, deliberately smaller workload was run.
 
 Framebuffer artifacts:
 
-* [`evidence/framebuffer/panvk_triangle.ppm`](../evidence/framebuffer/panvk_triangle.ppm)
+* [`evidence/framebuffer/panvk_triangle.png`](../evidence/framebuffer/panvk_triangle.png)
   — P6, 64x64, maxval 255. The actual GPU output.
 * [`evidence/framebuffer/panvk_triangle_512.png`](../evidence/framebuffer/panvk_triangle_512.png)
   — 512x512 PNG, an 8x upscale of the same buffer for viewing. Not a separate

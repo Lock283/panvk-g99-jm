@@ -1,0 +1,65 @@
+--- a/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
+@@ -25,6 +25,7 @@
+ #include "panvk_queue.h"
+ 
+ #include "vk_drm_syncobj.h"
++#include "vk_sync.h"
+ #include "vk_framebuffer.h"
+ 
+ #include "drm-uapi/panfrost_drm.h"
+@@ -471,13 +472,19 @@
+    unsigned nr_semaphores = submit->wait_count + 1;
+    uint32_t semaphores[nr_semaphores];
+ 
+-   semaphores[0] = queue->sync;
++   /* On kbase the device's sync type is the CPU sync from
++    * get_device_sync_types_kbase(), not a DRM syncobj, so the waits cannot be
++    * turned into syncobj handles. Every v9 submission below is synchronous
++    * (panvk_kbase_submit_and_wait), so honouring a wait just means waiting for
++    * it on the CPU before submitting. */
++   semaphores[0] = 0;
+    for (unsigned i = 0; i < submit->wait_count; i++) {
+-      assert(vk_sync_type_is_drm_syncobj(submit->waits[i].sync->type));
+-      struct vk_drm_syncobj *syncobj =
+-         vk_sync_as_drm_syncobj(submit->waits[i].sync);
+-
+-      semaphores[i + 1] = syncobj->syncobj;
++      VkResult wr = vk_sync_wait(&dev->vk, submit->waits[i].sync,
++                                 submit->waits[i].wait_value,
++                                 VK_SYNC_WAIT_COMPLETE, UINT64_MAX);
++      if (wr != VK_SUCCESS)
++         return wr;
++      semaphores[i + 1] = 0;
+    }
+ 
+    for (uint32_t j = 0; j < submit->command_buffer_count; ++j) {
+@@ -545,13 +552,21 @@
+       }
+    }
+ 
+-   /* Transfer the out fence to signal semaphores */
+-   for (unsigned i = 0; i < submit->signal_count; i++) {
+-      assert(vk_sync_type_is_drm_syncobj(submit->signals[i].sync->type));
+-      struct vk_drm_syncobj *syncobj =
+-         vk_sync_as_drm_syncobj(submit->signals[i].sync);
+-
+-      panvk_queue_transfer_sync(queue, syncobj->syncobj);
++   /* Signal fences and semaphores. The old code transferred a DRM syncobj
++    * with DRM_IOCTL_SYNCOBJ_* ioctls, which fail on a kbase fd; the asserts
++    * are compiled out in release builds, so the failure was silent and no
++    * fence was ever signalled: vkWaitForFences always timed out even though
++    * the jobs had completed. All work above has already finished, because
++    * each batch is submitted and waited for synchronously, so the signal can
++    * be raised on the CPU. PANVK_KBASE_NO_SIGNAL=1 reproduces the old
++    * behaviour as a negative control. */
++   if (!getenv("PANVK_KBASE_NO_SIGNAL")) {
++      for (unsigned i = 0; i < submit->signal_count; i++) {
++         VkResult sr = vk_sync_signal(&dev->vk, submit->signals[i].sync,
++                                      submit->signals[i].signal_value);
++         if (sr != VK_SUCCESS)
++            return sr;
++      }
+    }
+ 
+    return VK_SUCCESS;

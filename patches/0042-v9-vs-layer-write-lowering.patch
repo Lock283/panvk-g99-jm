@@ -1,0 +1,63 @@
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -281,7 +281,7 @@
+    return true;
+ }
+ 
+-#if PAN_ARCH < 9
++#if PAN_ARCH <= 9 /* v9 JM: see the lower_layer_writes call below */
+ static bool
+ lower_gl_pos_layer_writes(nir_builder *b, nir_instr *instr, void *data)
+ {
+@@ -512,11 +512,21 @@
+    NIR_PASS(_, nir, nir_lower_io_vars_to_temporaries,
+             nir_shader_get_entrypoint(nir), nir_var_shader_out);
+ 
+-#if PAN_ARCH < 9
++#if PAN_ARCH <= 9
+    /* This needs to be done just after the io_to_temporaries pass, because we
+     * rely on out temporaries to collect the final layer_id value.
+-    */
+-   NIR_PASS(_, nir, lower_layer_writes);
++    *
++    * v9 Job Manager: with the hardware layer write left in, vk_meta's rect
++    * shader (which writes gl_Layer on every meta draw) lost a triangular
++    * wedge of the second triangle of each rectangle, so meta copies through
++    * the graphics path came out with unwritten pixels. Why the hardware
++    * layer slot (VARYING_SLOT_LAYER) breaks this path was not established.
++    * The v9 path only encodes layer 0 anyway, so use the same software
++    * lowering as Bifrost: drop the layer write and discard
++    * primitives whose layer is not the one being drawn.
++    * PANVK_V9_HW_LAYER=1 skips this as a negative control. */
++   if (PAN_ARCH < 9 || !getenv("PANVK_V9_HW_LAYER"))
++      NIR_PASS(_, nir, lower_layer_writes);
+ #endif
+ 
+    NIR_PASS(_, nir, nir_lower_global_vars_to_local);
+--- a/src/panfrost/vulkan/panvk_shader.h
++++ b/src/panfrost/vulkan/panvk_shader.h
+@@ -184,6 +184,12 @@
+    struct {
+       aligned_u64 sets[PANVK_DESC_TABLE_GFX_COUNT];
+    } desc;
++#elif PAN_ARCH == 9
++   /* v9 Job Manager filters gl_Layer the same way as Bifrost (see
++    * lower_layer_writes in panvk_vX_shader.c); the field sits at the end so
++    * no other offset moves. Padded to keep the struct 8-byte sized. */
++   int32_t layer_id;
++   int32_t layer_id_pad;
+ #endif
+ } __attribute__((aligned(FAU_WORD_SIZE)));
+ 
+--- a/src/panfrost/vulkan/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+@@ -829,6 +829,9 @@
+    set_gfx_sysval(cmdbuf, dirty_sysvals, vs.raw_vertex_offset,
+                   info->vertex.raw_offset);
+    set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, info->layer_id);
++#elif PAN_ARCH == 9
++   /* The v9 path encodes layer 0 only (see the TODO in jm/panvk_vX_cmd_draw.c). */
++   set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, 0);
+ #endif
+ 
+    if (dyn_gfx_state_dirty(cmdbuf, CB_BLEND_CONSTANTS)) {

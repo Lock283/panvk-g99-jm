@@ -31,6 +31,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include <math.h>
 #include "vulkan/vulkan_core.h"
 
@@ -309,7 +310,7 @@ int main(void){
         {0, 6*sizeof(float), VK_VERTEX_INPUT_RATE_VERTEX},
         {1, 2*sizeof(float), VK_VERTEX_INPUT_RATE_INSTANCE}};
     VkVertexInputAttributeDescription vad[3]={
-        {0,0,VK_FORMAT_R32G32_SFLOAT,0},
+        {0,0,(getenv("VBO_POS_UINT")?VK_FORMAT_R32G32_UINT:VK_FORMAT_R32G32_SFLOAT),0},
         {1,0,VK_FORMAT_R32G32B32A32_SFLOAT,2*sizeof(float)},
         {2,1,VK_FORMAT_R32G32_SFLOAT,0}};
     VkPipelineVertexInputStateCreateInfo vin={
@@ -488,12 +489,12 @@ int main(void){
 
     const char*pp=getenv("VBO_PPM");
     if(pp&&pp[0]){
-        FILE*f=fopen(pp,"wb");
+        FILE*f=png_open(pp,"wb");
         if(f){fprintf(f,"P6\n%d %d\n255\n",DIMS,DIMS);
             for(int y=0;y<DIMS;y++){uint8_t*row=base+y*sl.rowPitch;
                 for(int x=0;x<DIMS;x++){uint8_t*p=row+x*4;
                     uint8_t rgb[3]={p[0],p[1],p[2]};fwrite(rgb,1,3,f);}}
-            fclose(f);printf("VISUAL_DUMP: %s\n",pp);}
+            png_close(f);printf("VISUAL_DUMP: %s\n",pp);}
     }
     UM(dev,imgm);
     free(vc); free(fc);

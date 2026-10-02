@@ -1,0 +1,20 @@
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2618,6 +2618,17 @@
+    if (!ptr.gpu)
+       return VK_ERROR_OUT_OF_DEVICE_MEMORY;
+ 
++   /* The descriptor pool hands back recycled memory, and not every byte of
++    * the job is written below. Measured in CTS (asm_triangle then transfer
++    * in one process): bytes +64..+111 and +320..+383 of this job still held
++    * the previous user's clear colour (0xffbf4020), and the job ended with
++    * DATA_INVALID_FAULT (0x58). Run alone, the same test got zeroed memory
++    * and passed. Which descriptor fields those bytes belong to was not
++    * established. Zero the whole job first. PANVK_MVJ_NO_ZERO=1 is the
++    * control. */
++   if (!getenv("PANVK_MVJ_NO_ZERO"))
++      memset(ptr.cpu, 0, pan_size(MALLOC_VERTEX_JOB));
++
+    util_dynarray_append(&batch->jobs, ptr.cpu);
+ 
+    pan_section_pack(ptr.cpu, MALLOC_VERTEX_JOB, PRIMITIVE, cfg) {

@@ -23,6 +23,12 @@ actually produced, with the artifact that shows it.
 | [`tests/graphics/vbo_varying_test.c`](../tests/graphics/vbo_varying_test.c) | vertex buffers, instance-rate attributes, varyings, direct and indirect, against a CPU reference rasterizer | **VERIFIED-HW** | `evidence/logs/T4.6.*` |
 | [`tests/graphics/depth_test.c`](../tests/graphics/depth_test.c) | depth test, compare ops, clear value, write enable, D32F and D16, against a CPU model | **VERIFIED-HW** | `evidence/logs/T4.7.1_*`, `T4.7.3_*` |
 | [`tests/graphics/msaa_test.c`](../tests/graphics/msaa_test.c) | 4x MSAA with AVERAGE resolve, sample mask, against a per-sample CPU model | **VERIFIED-HW** | `evidence/logs/T4.7.4_*`, `T4.7.6_*` |
+| [`tests/graphics/fence_test.c`](../tests/graphics/fence_test.c) | `vkWaitForFences` after real, empty and no-command-buffer submits | **VERIFIED-HW** after `0041` | `evidence/logs/T4.8.1_*` |
+| [`tests/graphics/copy_test.c`](../tests/graphics/copy_test.c) | buffer/image copies, linear and OPTIMAL, round trip | **VERIFIED-HW** after `0042` | `evidence/logs/T4.8.2_*` |
+| [`tests/graphics/cube_test.c`](../tests/graphics/cube_test.c) | spinning cube, push-constant MVP, depth, per-frame CPU rasterizer check | **VERIFIED-HW** | `evidence/logs/T4.9.1_*`, `T4.9.2_*` |
+| [`tests/graphics/wsi_cube.c`](../tests/graphics/wsi_cube.c) | same cube through an X11 swapchain, window read back and checked | **VERIFIED-HW** | `evidence/logs/T4.9.3_*` |
+| [`tests/graphics/tex_test.c`](../tests/graphics/tex_test.c) | texture sampling, filters and address modes, OPTIMAL and LINEAR | **VERIFIED-HW** | `evidence/logs/T5.1_*` |
+| [`tests/cts/run_cts.py`](../tests/cts/run_cts.py) | VK-GL-CTS groups `api.smoke`, `simple_draw`, `indirect_draw` | 8/8, 4/4, 86 pass 0 fail | [`evidence/cts/`](../evidence/cts/) |
 | [`tests/graphics/mrt_shape_test.c`](../tests/graphics/mrt_shape_test.c) | 4.3 two render targets, square and circle vs CPU reference | **VERIFIED-HW** | `evidence/logs/T4.3_*` |
 | [`tests/graphics/draw_indirect_test.c`](../tests/graphics/draw_indirect_test.c) | 4.4 indirect and indexed-indirect draw | **VERIFIED-HW** | `evidence/logs/T4.4.4_*`, `T4.4.5_*` |
 | [`tests/graphics/indirect_probe_test.c`](../tests/graphics/indirect_probe_test.c) | 4.4 gate probe, recorded the pre-fix behaviour | **VERIFIED-HW** | `evidence/logs/indirect_T4.4.0_*` |
@@ -85,7 +91,8 @@ positions), plus the `HISTORICAL-fullscreen-baseline` variants.
 
 ## Not covered by any test
 
-MSAA, multiple render targets, depth/stencil *testing*, indexed draws, indirect
-draws, tiled/AFBC image layouts, WSI/present, multi-descriptor-set resource
-tables, multi-submit synchronization, and anything resembling a real application.
+Stencil testing, blending beyond the default, mipmapping, secondary command
+buffers, multi-layer rendering, multi-queue, and anything resembling a real
+application. (MSAA, MRT, depth, indexed and indirect draws, AFBC, WSI and
+multi-descriptor-set tables are covered above.)
 See [known-limitations.md](known-limitations.md).

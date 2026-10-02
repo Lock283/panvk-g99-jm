@@ -766,7 +766,7 @@ number of passing tests suggests.
 ### 6.2 Nothing was displayed — ACCEPTED
 
 Every image in this phase is a `vkMapMemory` readback of an offscreen buffer.
-This driver has still never presented a frame. WSI is Phase 6.
+This driver has still never presented a frame. WSI is Phase 6. *(SUPERSEDED: a spinning cube is now presented through the X11 swapchain, see [`cts-wsi-texture.md`](cts-wsi-texture.md#3-spinning-cube).)*
 
 ### 6.3 Three-times repetition catches flakes, not systematic error — ACCEPTED
 

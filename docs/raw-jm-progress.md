@@ -45,7 +45,7 @@ described:
 Independent size checks: [`verify_atom_size.c`](../tests/raw-jm/verify_atom_size.c),
 [`verify_atom_size_v2.c`](../tests/raw-jm/verify_atom_size_v2.c).
 
-## Event codes {#event-codes}
+## Event codes
 
 **`event_code = 0x4` is `BASE_JD_EVENT_TERMINATED`. It is not `DONE`.**
 

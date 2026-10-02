@@ -95,7 +95,7 @@ center (32,32) = 255,0,0,255
 SUCCESS: partial triangle rasterized
 ```
 
-It also writes `panvk_triangle.ppm` (P6, 64x64) in the working directory.
+It also writes `panvk_triangle.ppm` (P6, 64x64) in the working directory. The copy in `evidence/framebuffer/` was converted to PNG losslessly (pixel data identical, checked by round trip).
 
 ## 4. Capture descriptors
 

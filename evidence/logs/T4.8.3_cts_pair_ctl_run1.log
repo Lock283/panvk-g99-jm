@@ -1,0 +1,20 @@
+Writing test log into /data/data/com.termux/files/home/cts/runs/dbg/p.qpa
+dEQP Core 31807adf6dc7111b32b1ade990d0d8e552fa1b78 (0x31807adf) starting..
+  target implementation = 'Android'
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+
+Test case 'dEQP-VK.api.smoke.asm_triangle'..
+  Pass (Rendering succeeded)
+
+Test case 'dEQP-VK.api.smoke.transfer'..
+  Fail (Unexpected value in the result buffer)
+
+DONE!
+
+Test run totals:
+  Passed:        1/2 (50.0%)
+  Failed:        1/2 (50.0%)
+  Not supported: 0/2 (0.0%)
+  Warnings:      0/2 (0.0%)
+  Waived:        0/2 (0.0%)

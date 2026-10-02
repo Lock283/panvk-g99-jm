@@ -1,0 +1,21 @@
+=== wsi cube: frames=300 step=1.0 dim=1000 present=immediate check every 30 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+surface     : supported=1 images 3..0 extent 1000x1000 usage 0x8009f
+formats     : 50 44
+presentmodes: 0 1 2 3
+swapchain   : 4 images, format 44
+WSIFP frame=0000 deg=    0.0 img=0 screen_bad=0 edge=2168 fps=0.0
+WSIFP frame=0030 deg=   30.0 img=2 screen_bad=0 edge=3549 fps=59.3
+WSIFP frame=0060 deg=   60.0 img=0 screen_bad=0 edge=3501 fps=61.6
+WSIFP frame=0090 deg=   90.0 img=2 screen_bad=0 edge=3130 fps=53.8
+WSIFP frame=0120 deg=  120.0 img=0 screen_bad=0 edge=2340 fps=52.7
+WSIFP frame=0150 deg=  150.0 img=2 screen_bad=0 edge=3119 fps=52.8
+WSIFP frame=0180 deg=  180.0 img=0 screen_bad=0 edge=3150 fps=57.1
+WSIFP frame=0210 deg=  210.0 img=2 screen_bad=0 edge=3497 fps=62.0
+WSIFP frame=0240 deg=  240.0 img=0 screen_bad=0 edge=3557 fps=59.5
+WSIFP frame=0270 deg=  270.0 img=2 screen_bad=0 edge=2324 fps=60.1
+
+--- result ---
+frames=300 in 5.2 s = 57.3 fps (incl. checks), checked=10 bad_frames=0 screen_bad=0
+WSISUM present=immediate format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 verdict=PASS
+DONE

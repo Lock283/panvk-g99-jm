@@ -1,0 +1,24 @@
+--- a/external/vulkancts/modules/vulkan/memory/vktMemoryMapPlacedTests.cpp
++++ b/external/vulkancts/modules/vulkan/memory/vktMemoryMapPlacedTests.cpp
+@@ -64,6 +64,21 @@
+ #include <errno.h>
+ #endif
+ 
++/* Local build fix: bionic only declares memfd_create from API 30, and this
++ * toolchain targets API 24. The syscall itself exists on the running kernel, so
++ * call it directly. Not part of upstream CTS. */
++#if (DE_OS == DE_OS_ANDROID) && defined(__ANDROID_API__) && (__ANDROID_API__ < 30)
++#include <sys/syscall.h>
++#include <unistd.h>
++#ifndef MFD_CLOEXEC
++#define MFD_CLOEXEC 0x0001U
++#endif
++static inline int memfd_create(const char *name, unsigned int flags)
++{
++    return (int)syscall(__NR_memfd_create, name, flags);
++}
++#endif
++
+ using namespace vk;
+ 
+ namespace vkt

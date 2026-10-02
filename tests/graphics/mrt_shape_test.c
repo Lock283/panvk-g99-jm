@@ -39,6 +39,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include "vulkan/vulkan_core.h"
 
 #define CHECK(expr, msg) do { \
@@ -504,11 +505,11 @@ int main(void) {
             if (prefix && prefix[0]) {
                 char path[512];
                 snprintf(path, sizeof(path), "%s_rt%d.ppm", prefix, r);
-                FILE *pf = fopen(path, "wb");
+                FILE *pf = png_open(path,"wb");
                 if (pf) {
                     fprintf(pf, "P6\n%d %d\n255\n", DIM, DIM);
                     fwrite(rtcopy[r], 1, DIM*DIM*3, pf);
-                    fclose(pf);
+                    png_close(pf);
                     printf("VISUAL_DUMP: %s\n", path);
                 }
             }
@@ -535,11 +536,11 @@ int main(void) {
         if (prefix && prefix[0]) {
             char path[512];
             snprintf(path, sizeof(path), "%s_rt%d.ppm", prefix, r);
-            FILE *pf = fopen(path, "wb");
+            FILE *pf = png_open(path,"wb");
             if (pf) {
                 fprintf(pf, "P6\n%d %d\n255\n", DIM, DIM);
                 fwrite(rtcopy[r], 1, DIM*DIM*3, pf);
-                fclose(pf);
+                png_close(pf);
                 printf("VISUAL_DUMP: %s\n", path);
             }
         }

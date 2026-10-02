@@ -11,16 +11,18 @@ Read this before quoting anything from this repo.
 
 **Does NOT prove:**
 
-* **WSI / presentation.** No swapchain, no surface, no `vkQueuePresentKHR`.
-  Nothing has ever been displayed on the screen by this driver. The 512x512 PNG
-  in `evidence/framebuffer/` is an upscale of a CPU-read buffer, not a
-  screenshot.
+* **WSI / presentation.** *(Updated: an X11 swapchain now presents a spinning
+  cube on Termux:X11, see [cts-wsi-texture.md](cts-wsi-texture.md#3-spinning-cube).)*
+  The triangle result itself was offscreen. The 512x512 PNG in
+  `evidence/framebuffer/` is an upscale of a CPU-read buffer, not a screenshot.
 * **General application support.** One hand-written test with one triangle, one
   linear render target, **zero application descriptor sets**, no textures, no
   depth testing. Runtime measurement shows `used_set_mask = 0x0`, so the
   descriptor-set binding path is not exercised at all by this test — see
   [resource-table-findings.md](resource-table-findings.md).
-* **Vulkan conformance.** No CTS run of any kind.
+* **Vulkan conformance.** CTS runs on the device, but only three small groups
+  so far (see [cts-wsi-texture.md](cts-wsi-texture.md)). Nothing close to
+  conformance.
 * **Game or emulator compatibility.** Not attempted.
 * **Performance.** Never measured.
 * **Stability.** No stress, no long-run, no multi-frame, no multi-threaded test.
@@ -29,7 +31,9 @@ Read this before quoting anything from this repo.
 
 | Area | Note |
 |---|---|
-| WSI / swapchain / present | no code path |
+| WSI / swapchain / present | **VERIFIED-HW** for X11 (`VK_KHR_xcb_surface`), Mesa software WSI path, FIFO and IMMEDIATE, on-screen pixels checked. Needs a `-Dplatforms=x11` build. Android surface, resize/recreate and long runs untested |
+| Fences / semaphores (kbase) | **VERIFIED-HW** after patch `0041`. Before it, no fence was ever signalled |
+| Texture sampling | **VERIFIED-HW** for 2D RGBA8, nearest and linear filtering, REPEAT, MIRRORED_REPEAT, CLAMP_TO_EDGE, CLAMP_TO_BORDER, OPTIMAL and LINEAR. Mipmaps, anisotropy, compare samplers, other formats untested |
 | Application descriptor sets | **VERIFIED-HW** for uniform buffers across 1, 2 and 4 sets plus non-contiguous sets 0 and 3; storage, dynamic uniform and dynamic storage buffers, mixed static/dynamic in one set, and descriptor arrays. Image and texel-buffer descriptors untested (Phase 5) — see [phase4-open-questions.md](phase4-open-questions.md) §3.2 |
 | `vkCmdDispatchIndirect` (v9) | **VERIFIED-HW**. Was faulting the GPU before `dispatch_precomp` was ported to v9 |
 | Indexed draws | **VERIFIED-HW** including `firstIndex` and `vertexOffset`. `firstIndex` was silently ignored until fixed |
@@ -37,7 +41,7 @@ Read this before quoting anything from this repo.
 | MSAA | **VERIFIED-HW** for 4x with AVERAGE resolve and pSampleMask, against a per-sample model using the standard sample positions. 8x, sample shading and alpha-to-coverage untested — see [phase4-open-questions.md](phase4-open-questions.md) §5.10 |
 | Multiple render targets | **VERIFIED-HW** for 2 attachments, square and circle, against a CPU reference rasterizer, plus byte-exact attachment independence over the whole allocation. 3–8 attachments and mixed formats untested |
 | Depth/stencil testing | Depth **VERIFIED-HW**: compare ops, clear value, write enable, D32F and D16, every pixel of colour and depth compared against a model. Stencil, depth bias/bounds/clamp untested — see §5.10 |
-| Tiled / AFBC image layouts | linear only |
+| Tiled / AFBC image layouts | **VERIFIED-HW** for OPTIMAL (AFBC) colour targets read back by copy, and OPTIMAL textures uploaded by copy. Graphics-path copies to OPTIMAL images needed patch `0042` |
 | Queries / occlusion | `Occlusion query: Disabled` |
 | Secondary command buffers | untested |
 | Multi-queue / multi-submit sync | untested |

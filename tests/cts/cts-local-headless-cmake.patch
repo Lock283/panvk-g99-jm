@@ -1,0 +1,10 @@
+--- a/framework/platform/CMakeLists.txt
++++ b/framework/platform/CMakeLists.txt
+@@ -134,6 +134,7 @@
+ 	elseif (DE_OS_IS_ANDROID)
+ 		set(TCUTIL_PLATFORM_SRCS
+ 			android/tcuAndroidExecService.cpp
++			android/tcuAndroidHeadlessExePlatform.cpp
+ 			android/tcuAndroidExecService.hpp
+ 			)
+ 

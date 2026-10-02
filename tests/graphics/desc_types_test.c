@@ -37,6 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include "vulkan/vulkan_core.h"
 
 #define CHECK(expr, msg) do { \
@@ -575,7 +576,7 @@ int main(void) {
      * result can be looked at as an image rather than only counted. */
     const char *ppm_path = getenv("DESC_PPM");
     if (ppm_path && ppm_path[0]) {
-        FILE *pf = fopen(ppm_path, "wb");
+        FILE *pf = png_open(ppm_path,"wb");
         if (!pf) {
             printf("WARNING: cannot write %s\n", ppm_path);
         } else {
@@ -588,7 +589,7 @@ int main(void) {
                     fwrite(rgb, 1, 3, pf);
                 }
             }
-            fclose(pf);
+            png_close(pf);
             printf("VISUAL_DUMP: %s\n", ppm_path);
         }
     }

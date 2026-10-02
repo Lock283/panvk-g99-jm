@@ -1,0 +1,230 @@
+#sessionInfo releaseName 31807adf6dc7111b32b1ade990d0d8e552fa1b78
+#sessionInfo releaseId 0x31807adf
+#sessionInfo targetName "Android"
+#sessionInfo logFormatVersion "0.3.4"
+#sessionInfo vendorID 0x13b5
+#sessionInfo deviceID 0x90930010
+#sessionInfo deviceName Mali-G57 MC2
+#sessionInfo commandLineParameters "--deqp-vk-library-path=/data/data/com.termux/files/home/cts/shim/libvkshim.so --deqp-caselist-file=/data/data/com.termux/files/home/cts/runs/simple_draw/todo_1.txt --deqp-log-filename=/data/data/com.termux/files/home/cts/runs/simple_draw/run_1.qpa --deqp-log-images=enable --deqp-log-shader-sources=disable --deqp-watchdog=disable"
+
+#beginSession
+
+#beginTestCaseResult dEQP-VK.draw.renderpass.simple_draw.simple_draw_instanced_triangle_list
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.draw.renderpass.simple_draw.simple_draw_instanced_triangle_list" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="vulkan/draw/VertexFetch.frag" Description="Program: vulkan/draw/VertexFetch.frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">107.466003</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.009000</Number>
+</Section>
+ <Section Name="vulkan/draw/VertexFetchInstancedFirstInstance.vert" Description="Program: vulkan/draw/VertexFetchInstancedFirstInstance.vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">1.244000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.011000</Number>
+</Section>
+ <ImageSet Name="Result" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="Result">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAADL0lEQVR4nO3WwQ2A
+   QAwDwRyi/5aPJpDy2JkK/Fr5zMwdIOnZHgDsEQAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIe7cHdNztAfzmbA/4jQcAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YWdm7vYIYIcHAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEfCKAE/z/QhUEAAAAA
+   SUVORK5CYII=
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">161496</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.draw.renderpass.simple_draw.simple_draw_instanced_triangle_strip
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.draw.renderpass.simple_draw.simple_draw_instanced_triangle_strip" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="vulkan/draw/VertexFetch.frag" Description="Program: vulkan/draw/VertexFetch.frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vulkan/draw/VertexFetchInstancedFirstInstance.vert" Description="Program: vulkan/draw/VertexFetchInstancedFirstInstance.vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <ImageSet Name="Result" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="Result">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAADL0lEQVR4nO3WwQ2A
+   QAwDwRyi/5aPJpDy2JkK/Fr5zMwdIOnZHgDsEQAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAI
+   EwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIe7cHdNztAfzmbA/4jQcAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIAYQIA
+   YWdm7vYIYIcHAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEC
+   AGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGECAGEfCKAE/z/QhUEAAAAA
+   SUVORK5CYII=
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">27031</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.draw.renderpass.simple_draw.simple_draw_triangle_list
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.draw.renderpass.simple_draw.simple_draw_triangle_list" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="vulkan/draw/VertexFetch.frag" Description="Program: vulkan/draw/VertexFetch.frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vulkan/draw/VertexFetch.vert" Description="Program: vulkan/draw/VertexFetch.vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">1.700000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.011000</Number>
+</Section>
+ <ImageSet Name="Result" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="Result">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAADLklEQVR4nO3WwQ3A
+   MAwDMafo/iunYxjFkRPoddCZmTtA0rM9ANgjABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABD2bg/ouNsDfuZsD0jwACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDs
+   zMzdHgHs8AAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg7AOgrAT/FgtR3wAAAABJ
+   RU5ErkJggg==
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">31266</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.draw.renderpass.simple_draw.simple_draw_triangle_strip
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.draw.renderpass.simple_draw.simple_draw_triangle_strip" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="vulkan/draw/VertexFetch.frag" Description="Program: vulkan/draw/VertexFetch.frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vulkan/draw/VertexFetch.vert" Description="Program: vulkan/draw/VertexFetch.vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <ImageSet Name="Result" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="Result">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAADLklEQVR4nO3WwQ3A
+   MAwDMafo/iunYxjFkRPoddCZmTtA0rM9ANgjABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAm
+   ABD2bg/ouNsDfuZsD0jwACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDs
+   zMzdHgHs8AAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg
+   TAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAg7AOgrAT/FgtR3wAAAABJ
+   RU5ErkJggg==
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">33940</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+Run took 0.31 seconds
+
+#endSession

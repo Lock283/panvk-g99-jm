@@ -31,6 +31,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <dlfcn.h>
+#include "pngdump.h"
 #include "vulkan/vulkan_core.h"
 
 #define CHECK(expr, msg) do { \
@@ -439,7 +440,7 @@ int main(void) {
 
     const char *ppm = getenv("IDX_PPM");
     if (ppm && ppm[0]) {
-        FILE *pf = fopen(ppm, "wb");
+        FILE *pf = png_open(ppm,"wb");
         if (pf) {
             fprintf(pf, "P6\n%u %u\n255\n", W, H);
             for (uint32_t y = 0; y < H; y++) {
@@ -450,7 +451,7 @@ int main(void) {
                     fwrite(rgb,1,3,pf);
                 }
             }
-            fclose(pf);
+            png_close(pf);
             printf("VISUAL_DUMP: %s\n", ppm);
         }
     }

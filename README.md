@@ -39,7 +39,7 @@ center (32,32) = 255,0,0,255            <- triangle
 ```
 
 Evidence: [`evidence/logs/PANVK_G57_triangle_fresh_20260917-004051.log`](evidence/logs/PANVK_G57_triangle_fresh_20260917-004051.log),
-framebuffer [`evidence/framebuffer/panvk_triangle.ppm`](evidence/framebuffer/panvk_triangle.ppm).
+framebuffer [`evidence/framebuffer/panvk_triangle.png`](evidence/framebuffer/panvk_triangle.png).
 
 > **This proves offscreen rasterization and readback. It does NOT prove WSI,
 > present, or general application support.** The partial coverage matters: a
@@ -225,10 +225,12 @@ Modeled on wonderkast02's PoC-milestone structure — small, independently check
   - **Sub-phases since closed:** 4.1 indexed draws, 4.2 multi-descriptor-set resource tables, 4.3 multiple render targets, 4.4 indirect draw and indirect dispatch — all VERIFIED-HW with negative controls and 3x repetition. See [`docs/phase4-open-questions.md`](docs/phase4-open-questions.md) for what each result does *not* cover, including a self-audit for false positives.
   - Still open within Phase 4: MSAA, depth/stencil validation, multi-layer rendering, tiled/AFBC layouts, occlusion queries, secondary command buffers.
 - [ ] **Phase 5 — Texture sampling, depth/stencil, blending, MSAA.** Same shape as wonderkast02 §"PanVK nativo", ported to v9's descriptor layout. Depth/stencil and blend *descriptors* are emitted and captured today, but nothing validates their behaviour — see [`docs/known-limitations.md`](docs/known-limitations.md).
+  - **5a texture sampling: done.** Nearest and linear filtering, four address modes, OPTIMAL (AFBC) and LINEAR textures, 48/48 against a CPU model with error 0, negative control fails all cases. Stencil and blending still open. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md#4-texture-sampling-phase-5a-verified-hw).
 - [ ] **Phase 6 — WSI / swapchain.** Termux:X11 or native Android surface, vkcube-equivalent, sustained frame test.
+  - **Spinning cube presented on Termux:X11 through `VK_KHR_xcb_surface` + `VK_KHR_swapchain`**, 49-56 fps, on-screen pixels read back from the X server and matched to a CPU rasterizer (0 bad, 3x, negative control fails). Sustained long runs and swapchain recreation still open. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md#3-spinning-cube).
 - [ ] **Phase 7 — Wine/Box64/DXVK bring-up (optional, stretch).** Only after Phase 4 is solid — wonderkast02's G720 LAB findings on missing features (`geometryShader`, `textureCompressionBC`, etc.) likely apply here too and are worth re-checking against this hardware's real feature bits rather than assumed.
 
-No phase here claims Vulkan conformance or "games will run" — that would need CTS, which is out of scope until well past Phase 5.
+No phase here claims Vulkan conformance or "games will run". CTS now runs on the device, but only on a few small groups (`api.smoke` 8/8, `simple_draw` 4/4, `indirect_draw` 86 pass / 0 fail), and it found three driver bugs (patches 0041-0043) that this project's own tests had missed. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md).
 
 Also still open, not yet on this list: `vkCmdDispatchIndirect` for v9 (direct dispatch only so far), and the practical size ceiling of the 4 MB EXEC_VA zone for larger/more complex shaders than the single-buffer test in §7.
 
@@ -270,7 +272,7 @@ tests/test_kbase2.c, test_kbase3.c      early ioctl / GET_GPUPROPS probes
 
 evidence/logs/                          run logs incl. the full FAU A/B series
 evidence/descriptors/                   pandecode dumps + raw descriptor hex captures
-evidence/framebuffer/                   panvk_triangle.ppm (real output) + PNG upscale
+evidence/framebuffer/                   panvk_triangle.png (real output, lossless from the original PPM) + PNG upscale
 evidence/schema/                        resource-table / genxml audit output
 evidence/builds/                        build provenance for each FAU A/B side
 evidence/historical/                    pre-port build failures, early draw attempts
