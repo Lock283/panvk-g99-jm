@@ -1,0 +1,3 @@
+group p84_dsr4: 8 cases, 1 process run(s)
+  Pass                   8
+  pass rate of supported: 8/8 = 100.0%

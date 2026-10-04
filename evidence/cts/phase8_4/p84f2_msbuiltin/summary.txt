@@ -1,0 +1,4 @@
+group p84f2_msbuiltin: 95 cases, 1 process run(s)
+  Pass                   52
+  NotSupported           43
+  pass rate of supported: 52/52 = 100.0%

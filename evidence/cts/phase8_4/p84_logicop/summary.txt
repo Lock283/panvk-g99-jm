@@ -1,0 +1,4 @@
+group p84_logicop: 224 cases, 1 process run(s)
+  Pass                   176
+  NotSupported           48
+  pass rate of supported: 176/176 = 100.0%

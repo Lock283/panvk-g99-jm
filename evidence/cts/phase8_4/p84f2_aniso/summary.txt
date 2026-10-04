@@ -1,0 +1,4 @@
+group p84f2_aniso: 128 cases, 2 process run(s)
+  Pass                   64
+  NotSupported           64
+  pass rate of supported: 64/64 = 100.0%

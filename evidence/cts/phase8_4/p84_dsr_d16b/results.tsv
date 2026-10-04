@@ -1,0 +1,12 @@
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_16_64_6.samples_4.d16_unorm.depth_average	NotSupported	Requested core feature is not supported: geometryShader at vktTestCase.cpp:1498
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_16_64_6.samples_4.d16_unorm.depth_zero	NotSupported	Requested core feature is not supported: geometryShader at vktTestCase.cpp:1498
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_16_64_6.samples_8.d16_unorm.depth_max	NotSupported	Requested core feature is not supported: geometryShader at vktTestCase.cpp:1498
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_17_1.samples_4.d16_unorm.depth_max_stencil_none_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_17_1.samples_4.d16_unorm.depth_zero_stencil_none_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_17_1.samples_8.d16_unorm.depth_average_stencil_none_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_17_1.samples_8.d16_unorm.depth_min_stencil_min_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_17_1.samples_8.d16_unorm.depth_zero_stencil_zero_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_32_32.samples_4.d16_unorm.depth_max_stencil_max_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_32_32.samples_4.d16_unorm.depth_min_stencil_none_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_32_32.samples_8.d16_unorm.depth_max_stencil_max_testing_depth	Pass	Pass
+dEQP-VK.renderpasses.renderpass2.depth_stencil_resolve.image_2d_32_32.samples_8.d16_unorm.depth_min_stencil_none_testing_depth	Pass	Pass

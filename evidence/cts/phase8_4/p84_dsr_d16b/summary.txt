@@ -1,0 +1,4 @@
+group p84_dsr_d16b: 12 cases, 1 process run(s)
+  Pass                   9
+  NotSupported           3
+  pass rate of supported: 9/9 = 100.0%

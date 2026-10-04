@@ -26,8 +26,12 @@ the driver itself.
 - [x] 8.2 Secondary command buffers / batch split inside a render pass
   (patch `0058`). CTS `api.command_buffers` secondary subset 17/19, 2 NS, 3x.
 - [x] 8.3 Input assembly / primitive restart: CTS 111 pass, 87 NS, 0 fail.
-- [ ] 8.4 Phase 5 leftovers: anisotropy, independent blend, dual-source
-  blend, logic op, 8x MSAA, sample shading, alpha-to-coverage (CTS subsets).
+- [x] 8.4 Phase 5 leftovers (patch `0059`). CTS 3x, 0 fail:
+  anisotropy 64/128 (64 NS), dual-source blend 167/202 (35 NS), blend
+  formats 133/161 (28 NS), logic op 176/224 (48 NS), MSAA 356/708 (352 NS),
+  multisample shader builtins 52/95 (43 NS), multisample interpolation
+  72/124 (52 NS), depth/stencil resolve 4x/8x 619/941 (322 NS). Three bugs
+  fixed: per-sample shading, alpha-to-coverage, shader depth source.
 - [ ] 8.5 Phase 6 leftover: Android native surface outside Winlator.
 - [ ] 8.6 Memory growth seen in games (RAM 60% -> 96% then the app is
   killed). Measure first (per-pool / per-BO accounting), fix in Phase 12.

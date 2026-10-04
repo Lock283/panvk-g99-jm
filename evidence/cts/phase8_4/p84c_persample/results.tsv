@@ -1,0 +1,86 @@
+dEQP-VK.pipeline.monolithic.multisample.alpha_to_coverage.samples_4.alpha_invisible	Fail	Pixel is not in the expected range: 1 not in [0, 0.01]
+dEQP-VK.pipeline.monolithic.multisample.alpha_to_coverage.samples_8.alpha_invisible	Fail	Pixel is not in the expected range: 1 not in [0, 0.01]
+dEQP-VK.pipeline.monolithic.multisample.alpha_to_coverage.samples_8.alpha_translucent	Fail	Pixel is not in the expected range: 1 not in [0, 0.52]
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_25.samples_8.primitive_point	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_5.samples_4.primitive_point	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_5.samples_4.primitive_triangle	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_5.samples_8.primitive_line	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_5.samples_8.primitive_triangle	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_75.samples_4.primitive_point	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_0_75.samples_4.primitive_triangle	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_1_0.samples_4.primitive_point	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_1_0.samples_4.primitive_triangle	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading.min_1_0.samples_8.primitive_point	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading_enabled.min_0_25.samples_8.quad	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading_enabled.min_0_5.samples_4.quad	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.min_sample_shading_enabled.min_1_0.samples_8.quad	Fail	Got less unique colors than requested through minSampleShading
+dEQP-VK.pipeline.monolithic.multisample.misc.basic.r8g8b8a8_unorm_r16g16b16a16_sfloat_r16g16b16a16_sint_d16_unorm.8x.ds_resolve_max.sub_framebuffer.default	Fail	Incorrect multisampled rendering for color attachment 1, color attachment 2, depth attachment
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.all_components.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.all_components.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.all_components.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.all_components.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.component_1.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.component_1.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.component_1.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.component_1.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.pushc_component_1.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.pushc_component_1.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.pushc_component_1.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.offset_interpolation_at_sample_position.pushc_component_1.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolate_at_distinct_values.128_128_1.samples_4	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolate_at_distinct_values.128_128_1.samples_8	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolate_at_distinct_values.137_191_1.samples_4	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolate_at_distinct_values.137_191_1.samples_8	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.all_components.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.all_components.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.all_components.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.all_components.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.component_1.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.component_1.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.component_1.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.component_1.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.pushc_component_1.128_128_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.pushc_component_1.128_128_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.pushc_component_1.137_191_1.samples_4	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_interpolation_consistency.pushc_component_1.137_191_1.samples_8	Fail	Failed
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_qualifier_distinct_values.128_128_1.samples_4	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_qualifier_distinct_values.128_128_1.samples_8	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_qualifier_distinct_values.137_191_1.samples_4	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_interpolation.sample_qualifier_distinct_values.137_191_1.samples_8	Fail	Expected numSamples+1 different colors in the output image
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.128_128_1.samples_16	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.128_128_1.samples_4	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.128_128_1.samples_8	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.137_191_1.samples_16	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.137_191_1.samples_4	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_id.137_191_1.samples_8	Fail	gl_SampleID does not have correct value
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.128_128_1.samples_16	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.128_128_1.samples_4	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.128_128_1.samples_8	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.137_191_1.samples_16	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.137_191_1.samples_4	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count.137_191_1.samples_8	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.128_128_1.samples_16	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.128_128_1.samples_4	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.128_128_1.samples_8	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.137_191_1.samples_16	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.137_191_1.samples_4	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.bit_count_0_5.137_191_1.samples_8	Fail	gl_SampleMaskIn has an illegal number of bits for some shader invocations
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.128_128_1.samples_16	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.128_128_1.samples_4	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.128_128_1.samples_8	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.137_191_1.samples_16	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.137_191_1.samples_4	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_mask.correct_bit.137_191_1.samples_8	Fail	The bit corresponsing to current gl_SampleID is not set in gl_SampleMaskIn
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.correctness.128_128_1.samples_4	Fail	Varying values are not sampled at gl_SamplePosition
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.correctness.128_128_1.samples_8	Fail	Varying values are not sampled at gl_SamplePosition
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.correctness.137_191_1.samples_4	Fail	Varying values are not sampled at gl_SamplePosition
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.correctness.137_191_1.samples_8	Fail	Varying values are not sampled at gl_SamplePosition
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.128_128_1.samples_16	Fail	Two samples have the same position
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.128_128_1.samples_4	Fail	Sample positions are not uniformly distributed within the pixel
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.128_128_1.samples_8	Fail	Two samples have the same position
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.137_191_1.samples_16	Fail	Two samples have the same position
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.137_191_1.samples_4	Fail	Sample positions are not uniformly distributed within the pixel
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.sample_position.distribution.137_191_1.samples_8	Fail	Two samples have the same position
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.write_sample_mask.16_samples	Fail	Read 0 while expecting 1 in buffer position 8193 (x=0, y=2, sample=1)
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.write_sample_mask.4_samples	Fail	Found garbage value -16777216 in buffer position 1 (x=0, y=0, sample=1)
+dEQP-VK.pipeline.monolithic.multisample_shader_builtin.write_sample_mask.8_samples	Fail	Found garbage value -65536 in buffer position 1 (x=0, y=0, sample=1)

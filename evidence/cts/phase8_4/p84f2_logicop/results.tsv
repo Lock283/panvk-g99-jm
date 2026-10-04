@@ -1,0 +1,224 @@
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.and	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.and_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.and_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.clear	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.copy	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.copy_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.equivalent	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.invert	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.nand	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.no_op	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.nor	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.or	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.or_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.or_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.set	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8_uint.xor	NotSupported	Unsupported color attachment format: VK_FORMAT_B8G8R8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.b8g8r8a8_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.and	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.and_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.and_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.clear	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.copy	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.copy_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.equivalent	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.invert	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.nand	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.no_op	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.nor	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.or	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.or_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.or_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.set	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16_uint.xor	NotSupported	Unsupported color attachment format: VK_FORMAT_R16G16B16_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r16g16b16a16_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r32g32b32a32_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8_uint.xor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.and	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.and_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.and_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.clear	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.copy	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.copy_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.equivalent	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.invert	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.nand	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.no_op	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.nor	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.or	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.or_inverted	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.or_reverse	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.set	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8_uint.xor	NotSupported	Unsupported color attachment format: VK_FORMAT_R8G8B8_UINT at vktPipelineLogicOpTests.cpp:201
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.and	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.and_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.and_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.clear	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.copy	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.copy_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.equivalent	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.invert	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.nand	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.no_op	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.nor	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.or	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.or_inverted	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.or_reverse	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.set	Pass	Pass
+dEQP-VK.pipeline.monolithic.logic_op.r8g8b8a8_uint.xor	Pass	Pass

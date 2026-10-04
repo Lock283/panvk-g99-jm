@@ -1,0 +1,4 @@
+group p84f2_msinterp: 124 cases, 2 process run(s)
+  Pass                   72
+  NotSupported           52
+  pass rate of supported: 72/72 = 100.0%

@@ -1,0 +1,128 @@
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_2.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_4.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_8.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.basic.anisotropy_max.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_linear_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_2.mag_nearest_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_linear_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_4.mag_nearest_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_linear_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_8.mag_nearest_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_linear_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_linear_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_linear_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_linear_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_linear_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_nearest_mipmap_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_nearest_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_nearest_mipmap_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.mipmap.anisotropy_max.mag_nearest_min_nearest_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_2.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_4.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_8.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_linear_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_linear_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_linear_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_linear_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_nearest_min_linear	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_nearest_min_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_nearest_min_nearest	Pass	Pass
+dEQP-VK.texture.filtering_anisotropy.single_level.anisotropy_max.mag_nearest_min_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766

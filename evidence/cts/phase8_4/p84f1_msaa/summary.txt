@@ -1,0 +1,4 @@
+group p84f1_msaa: 708 cases, 8 process run(s)
+  Pass                   356
+  NotSupported           352
+  pass rate of supported: 356/356 = 100.0%

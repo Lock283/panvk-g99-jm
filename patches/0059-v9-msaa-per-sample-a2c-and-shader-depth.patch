@@ -1,0 +1,73 @@
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2468,6 +2468,26 @@
+     * padanan eksplisit di kode Bifrost yang jadi referensi -- dibiarkan
+     * default genxml (true / [0,1] / Fixed function), BUKAN tebakan. */
+    pan_cast_and_pack(ds_ptr.cpu, DEPTH_STENCIL, cfg) {
++      /* PATCH v9: depth source, stencil-from-shader, depth clip and clamp
++       * were left at the genxml defaults (fixed-function depth, no shader
++       * stencil, clip on, no clamp). With per-sample shading the
++       * shader-written gl_FragDepth was then lost (CTS
++       * depth_stencil_resolve.*, multisample.misc.*.ds_resolve_*), and
++       * depthClamp / depthClipEnable were ignored. Same fields as CSF
++       * prepare_ds(). PANVK_V9_ZSD_OLD=1 restores the old descriptor
++       * (negative control). */
++      static int zsd_old = -1;
++      if (zsd_old < 0)
++         zsd_old = getenv("PANVK_V9_ZSD_OLD") != NULL;
++      if (!zsd_old) {
++         cfg.stencil_from_shader = fs ? fs->info.fs.writes_stencil : 0;
++         cfg.depth_cull_enable = vk_rasterization_state_depth_clip_enable(rs);
++         if (rs->depth_clamp_enable)
++            cfg.depth_clamp_mode = MALI_DEPTH_CLAMP_MODE_BOUNDS;
++         if (fs)
++            cfg.depth_source = pan_depth_source(&fs->info);
++      }
++
+       cfg.stencil_test_enable = test_s;
+       cfg.depth_write_enable = writes_z;
+       cfg.depth_bias_enable = rs->depth_bias.enable;
+@@ -2563,6 +2583,29 @@
+                fs->info.fs.writes_coverage || fs->info.fs.can_discard ||
+                alpha_to_coverage;
+          }
++
++         /* PATCH v9: per-sample shading was never requested on v9, so the
++          * FS ran once per pixel even with sampleShadingEnable or a shader
++          * that reads gl_SampleID / gl_SamplePosition / interpolateAtSample
++          * (CTS multisample_shader_builtin.*, multisample_interpolation.*).
++          * Same rule as CSF build_dcd_flags(): also when a blend shader runs
++          * with MSAA (it writes one sample at a time).
++          * PANVK_V9_NO_PER_SAMPLE=1 restores the old behaviour (control). */
++         static int no_per_sample = -1;
++         if (no_per_sample < 0)
++            no_per_sample = getenv("PANVK_V9_NO_PER_SAMPLE") != NULL;
++         if (!no_per_sample)
++            cfg.flags_0.evaluate_per_sample =
++               (fs->info.fs.sample_shading ||
++                cmdbuf->state.gfx.cb.info.needs_shader) &&
++               dyns->ms.rasterization_samples > 1;
++
++         /* PATCH v9: alpha-to-coverage was never enabled in the DCD, so
++          * alpha did not reduce coverage (CTS multisample.alpha_to_coverage.*
++          * alpha_invisible / alpha_translucent). CSF sets the same bit.
++          * Covered by the same control. */
++         if (!no_per_sample)
++            cfg.flags_0.alpha_to_coverage = alpha_to_coverage;
+       } else {
+          /* PATCH v9: no fragment shader (no colour attachment written and no
+           * other FS side effect, e.g. depth-only passes). Same as gallium
+diff --git a/src/panfrost/vulkan/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+@@ -113,6 +113,9 @@
+     * framebuffer layout and we could potentially allow direct resolves in
+     * more cases.
+     */
++   if (PAN_ARCH == 9 && getenv("PANVK_V9_NO_TILE_RESOLVE"))
++      return true;
++
+    return PAN_ARCH < 7 && drm_is_afbc(img->props.modifier);
+ }
+ 

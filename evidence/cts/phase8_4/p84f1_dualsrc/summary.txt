@@ -1,0 +1,4 @@
+group p84f1_dualsrc: 202 cases, 3 process run(s)
+  Pass                   167
+  NotSupported           35
+  pass rate of supported: 167/167 = 100.0%

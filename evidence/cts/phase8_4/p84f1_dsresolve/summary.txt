@@ -1,0 +1,4 @@
+group p84f1_dsresolve: 941 cases, 10 process run(s)
+  Pass                   619
+  NotSupported           322
+  pass rate of supported: 619/619 = 100.0%

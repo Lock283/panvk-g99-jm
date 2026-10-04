@@ -1,0 +1,4 @@
+group p84f3_blendfmt: 161 cases, 2 process run(s)
+  Pass                   133
+  NotSupported           28
+  pass rate of supported: 133/133 = 100.0%
