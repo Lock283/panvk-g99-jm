@@ -37,6 +37,8 @@ Results on the final binary (patches up to 0043), in
 | `draw.renderpass.simple_draw` | 4 | 0 | 0 |
 | `draw.renderpass.indirect_draw` | 86 | 0 | 286 |
 
+*(SUPERSEDED for `indirect_draw`: with the 🧪 EXPERIMENTAL patch `0044` it is 372/0/0, see [v9-experimental-features.md](v9-experimental-features.md). The 86/286 result is kept in `evidence/cts/indirect_draw_before_0044/`.)*
+
 `indirect_draw` ran on the binary just before the 0042/0043 comment rewording.
 The code was the same, and the smaller groups were rerun after the rebuild.
 This is three groups out of a mustpass of about 3.2 million cases. It says

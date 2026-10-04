@@ -1,0 +1,4 @@
+group sampler_mm: 170 cases, 1 process run(s)
+  Pass                   73
+  NotSupported           97
+  pass rate of supported: 73/73 = 100.0%

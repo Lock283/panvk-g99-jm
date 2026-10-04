@@ -47,6 +47,9 @@ Read this before quoting anything from this repo.
 | Queries / occlusion | `Occlusion query: Disabled` |
 | Secondary command buffers | untested |
 | Multi-queue / multi-submit sync | untested |
+| 🧪 `multiDrawIndirect` / `drawIndirectCount` (v9) | **EXPERIMENTAL**, patch `0044`. CTS `indirect_draw` 372/372. One job per draw, cost grows with `maxDrawCount` |
+| 🧪 `nullDescriptor` (v9) | **EXPERIMENTAL**, patch `0045`. CTS subset 16 pass. `robustBufferAccess2` not exposed by default (texel buffers fail) |
+| 🧪 Sampler min/max reduction (v9) | **EXPERIMENTAL**, patch `0046`, emulated in the shader. **Cube / cube array wrong** (CTS 12/16 fail), gradients and depth compare fall back to the average, extra cost on every float sample |
 
 ## Deliberately left at defaults, not guessed
 

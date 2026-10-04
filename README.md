@@ -10,9 +10,53 @@ Most public PanVK testing/builds so far target **CSF** chips (G610/G615/G710/G72
 
 ---
 
-## Status (2026-09-17): compute **and** offscreen graphics execute on v9. No WSI/present.
+## Status (2026-10-04): graphics, texturing, WSI and a spinning cube on v9. Plus EXPERIMENTAL v9-only features.
 
-**Full labelled status: [`docs/STATUS.md`](docs/STATUS.md).**
+**Full labelled status: [`docs/STATUS.md`](docs/STATUS.md)** (up to 2026-09-17). Newer work:
+[`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md), [`docs/phase5-7.md`](docs/phase5-7.md),
+[`docs/v9-experimental-features.md`](docs/v9-experimental-features.md).
+
+| Area | State |
+|---|---|
+| Kernel / kbase surface | ✅ **VERIFIED** |
+| Native v9/JM compute dispatch + readback | ✅ **VERIFIED** |
+| Offscreen graphics: vertex buffers, varyings, indexed/indirect draws, MRT, depth, stencil, blending, 4x MSAA | ✅ **VERIFIED-HW** (own harnesses vs CPU models, 3x + negative controls) |
+| Texture sampling (2D RGBA8, nearest/linear, 4 address modes, AFBC and linear) | ✅ **VERIFIED-HW** |
+| Fences / semaphores on kbase | ✅ **VERIFIED-HW** after patch `0041` (were never signalled before) |
+| WSI: X11 swapchain on Termux:X11, spinning cube, 30,000 frames with resize/recreate | ✅ **VERIFIED-HW** (on-screen pixels checked) |
+| VK-GL-CTS on device | 🚧 small subsets only, see table below |
+| `multiDrawIndirect`, `drawIndirectCount` on v9 | 🧪 **EXPERIMENTAL** (patch `0044`, CTS subset passes) |
+| `VK_EXT_robustness2` `nullDescriptor` on v9 | 🧪 **EXPERIMENTAL** (patch `0045`, CTS subset passes). `robustBufferAccess2` opt-in only, texel buffers fail |
+| Sampler min/max reduction on v9 (emulated in the shader) | 🧪 **EXPERIMENTAL** (patch `0046`). 1D/2D/3D pass in CTS, **cube maps broken** |
+| DXVK | ❌ will not create a device: `geometryShader`, `multiViewport`, clip/cull distance, `textureCompressionBC`, `transformFeedback` missing |
+| Android native surface, game / application support, conformance | ❌ **NOT IMPLEMENTED** |
+
+> 🧪 **EXPERIMENTAL** means the feature is exposed on v9 although upstream panvk
+> only exposes it on v10+, and it works by emulation in the driver. It is
+> checked against a CTS subset with a negative control, nothing more. It is
+> not conformant, has known gaps, and may be slow. Details and what is broken:
+> [`docs/v9-experimental-features.md`](docs/v9-experimental-features.md).
+
+CTS on device (VK-GL-CTS `31807ad`, local build; results in [`evidence/cts/`](evidence/cts/)):
+
+| group | Pass | Fail | NotSupported |
+|---|---|---|---|
+| `api.smoke` | 8 | 0 | 0 |
+| `draw.renderpass.simple_draw` | 4 | 0 | 0 |
+| `draw.renderpass.indirect_draw` (with 🧪 `0044`) | 372 | 0 | 0 |
+| `texture.filtering.2d.formats.r8g8b8a8_unorm` | 6 | 0 | 12 |
+| `texture.mipmap.2d.basic` | 36 | 0 | 36 |
+| `pipeline.monolithic.sampler` 2D RGBA8 (with 🧪 `0046`) | 73 | 0 | 97 |
+| `pipeline.monolithic.sampler` min/max subset, 1D/2D/3D (🧪 `0046`) | 132 | 0 | 0 |
+| same, cube / cube array (🧪 `0046`) | 4 | **12** | 0 |
+| `pipeline.monolithic.blend.format.r8g8b8a8_unorm` | 100 | 0 | 0 |
+| `pipeline.monolithic.stencil` D24S8, every 20th case | 209 | 0 | 0 |
+| `robustness2` null-descriptor subset (🧪 `0045`) | 16 | 0 | 10 |
+
+Three driver bugs were found by CTS that the project's own tests had missed
+(patches `0041`-`0043`, [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md#2-fixes-found-by-cts)).
+
+## Status (2026-09-17, historical): compute **and** offscreen graphics execute on v9. No WSI/present.
 
 | Area | State |
 |---|---|
@@ -22,10 +66,8 @@ Most public PanVK testing/builds so far target **CSF** chips (G610/G615/G710/G72
 | Offscreen partial-triangle rasterization + readback | ✅ **VERIFIED** |
 | FAU count root cause for that workload | ✅ **VERIFIED** |
 | Raw-JM `WRITE_VALUE` atom submission | ✅ **VERIFIED** |
-| Descriptor / resource-table audit | 🚧 **IN PROGRESS** |
-| WSI / present / swapchain | ❌ **NOT IMPLEMENTED** |
-| General application / game support | ❌ **NOT IMPLEMENTED** |
-| Vulkan conformance | ❌ **NOT IMPLEMENTED** |
+| Descriptor / resource-table audit | 🚧 **IN PROGRESS** (superseded: done in Phase 4) |
+| WSI / present / swapchain | ❌ at the time (superseded: see 2026-10-04 above) |
 
 ### The headline result
 
@@ -77,6 +119,10 @@ attribution: [`docs/fau-root-cause.md`](docs/fau-root-cause.md).
 | [`docs/known-limitations.md`](docs/known-limitations.md) | **read before quoting anything** |
 | [`docs/reproduction.md`](docs/reproduction.md) | exact build and run commands |
 | [`docs/historical-superseded.md`](docs/historical-superseded.md) | wrong turns, kept with corrections |
+| [`docs/phase4-open-questions.md`](docs/phase4-open-questions.md) | Phase 4 self-audit and open questions |
+| [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md) | CTS on device, fixes 0041-0043, spinning cube over X11, texture sampling |
+| [`docs/phase5-7.md`](docs/phase5-7.md) | stencil, blending, CTS subsets, sustained WSI, DXVK gap |
+| [`docs/v9-experimental-features.md`](docs/v9-experimental-features.md) | 🧪 **EXPERIMENTAL** v9-only features (0044-0046) and what is broken |
 
 Earlier sections §1–§7 below are the original chronological investigation log and
 are kept as written. Where a conclusion in them has since been overturned, the
@@ -232,8 +278,9 @@ Modeled on wonderkast02's PoC-milestone structure — small, independently check
   - **Sustained run and swapchain recreation: done.** 30,000 frames with a window resize and swapchain recreate every 500 frames (60 swapchains), 3x, on-screen check 0 bad, RSS flat. X11 only; Android native surface untested. See [`docs/phase5-7.md`](docs/phase5-7.md#4-sustained-wsi-and-swapchain-recreation-phase-6-verified-hw).
 - [ ] **Phase 7 — Wine/Box64/DXVK bring-up (optional, stretch).** Only after Phase 4 is solid — wonderkast02's G720 LAB findings on missing features (`geometryShader`, `textureCompressionBC`, etc.) likely apply here too and are worth re-checking against this hardware's real feature bits rather than assumed.
   - **Gap analysis done, bring-up not attempted.** Against DXVK master's required-feature list this driver is missing `geometryShader`, `multiDrawIndirect`, `multiViewport`, `shaderClipDistance`, `shaderCullDistance`, `textureCompressionBC` and `VK_EXT_robustness2`, so DXVK will not create a device. See [`docs/phase5-7.md`](docs/phase5-7.md#5-dxvk-requirement-gap-phase-7-verified-src--reported-features).
+  - **🧪 EXPERIMENTAL v9 feature work started** to close that gap from the driver side: `multiDrawIndirect`/`drawIndirectCount` (`0044`), `nullDescriptor` (`0045`), sampler min/max by shader emulation (`0046`, cube maps broken). See [`docs/v9-experimental-features.md`](docs/v9-experimental-features.md).
 
-No phase here claims Vulkan conformance or "games will run". CTS now runs on the device, but only on a few small groups (`api.smoke` 8/8, `simple_draw` 4/4, `indirect_draw` 86 pass / 0 fail), and it found three driver bugs (patches 0041-0043) that this project's own tests had missed. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md).
+No phase here claims Vulkan conformance or "games will run". CTS now runs on the device, but only on a few small groups (see the CTS table in the status section), and it found three driver bugs (patches 0041-0043) that this project's own tests had missed. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md).
 
 Also still open, not yet on this list: `vkCmdDispatchIndirect` for v9 (direct dispatch only so far), and the practical size ceiling of the 4 MB EXEC_VA zone for larger/more complex shaders than the single-buffer test in §7.
 

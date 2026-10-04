@@ -1,0 +1,481 @@
+--- a/src/panfrost/vulkan/panvk_vX_physical_device.c
++++ b/src/panfrost/vulkan/panvk_vX_physical_device.c
+@@ -201,7 +201,7 @@
+       .EXT_rasterization_order_attachment_access = PAN_ARCH >= 10,
+       .EXT_rgba10x6_formats = PAN_ARCH >= 11,
+       .EXT_robustness2 = PAN_ARCH >= 9,
+-      .EXT_sampler_filter_minmax = PAN_ARCH >= 10,
++      .EXT_sampler_filter_minmax = PAN_ARCH >= 9, /* v9: EXPERIMENTAL shader emulation */
+       .EXT_scalar_block_layout = true,
+       .EXT_separate_stencil_usage = true,
+       .EXT_shader_atomic_float = true,
+@@ -417,7 +417,7 @@
+       .descriptorBindingPartiallyBound = PAN_ARCH >= 9,
+       .descriptorBindingVariableDescriptorCount = true,
+       .runtimeDescriptorArray = true,
+-      .samplerFilterMinmax = PAN_ARCH >= 10,
++      .samplerFilterMinmax = PAN_ARCH >= 9, /* v9: EXPERIMENTAL shader emulation */
+       .scalarBlockLayout = true,
+       .imagelessFramebuffer = true,
+       .uniformBufferStandardLayout = true,
+@@ -1145,8 +1145,8 @@
+                                       VK_RESOLVE_MODE_MAX_BIT,
+       .independentResolveNone = true,
+       .independentResolve = true,
+-      .filterMinmaxSingleComponentFormats = PAN_ARCH >= 10,
+-      .filterMinmaxImageComponentMapping = PAN_ARCH >= 10,
++      .filterMinmaxSingleComponentFormats = PAN_ARCH >= 9,
++      .filterMinmaxImageComponentMapping = PAN_ARCH >= 9,
+       .maxTimelineSemaphoreValueDifference = INT64_MAX,
+       .framebufferIntegerColorSampleCounts = sample_counts,
+ 
+--- a/src/panfrost/vulkan/panvk_physical_device.c
++++ b/src/panfrost/vulkan/panvk_physical_device.c
+@@ -1487,7 +1487,9 @@
+                   VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT |
+                   VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT;
+ 
+-      if (arch >= 10)
++      /* v9: EXPERIMENTAL, min/max reduction is emulated in the shader
++       * (panvk_v9_nir_lower_minmax.h). */
++      if (arch >= 9)
+          features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT;
+ 
+       /* Integer formats only support nearest filtering */
+--- a/src/panfrost/vulkan/panvk_sampler.h
++++ b/src/panfrost/vulkan/panvk_sampler.h
+@@ -28,4 +28,14 @@
+ VK_DEFINE_NONDISP_HANDLE_CASTS(panvk_sampler, vk.base, VkSampler,
+                                VK_OBJECT_TYPE_SAMPLER)
+ 
++
++/* EXPERIMENTAL: v9 sampler word 3 layout used by the min/max reduction
++ * emulation (panvk_vX_sampler.c, panvk_v9_nir_lower_minmax.c). */
++#define PANVK_V9_MINMAX_MIN        (1u << 0)
++#define PANVK_V9_MINMAX_MAX        (1u << 1)
++#define PANVK_V9_MINMAX_MAG_LINEAR (1u << 4)
++#define PANVK_V9_MINMAX_MIN_LINEAR (1u << 5)
++#define PANVK_V9_MINMAX_MIP_LINEAR (1u << 6)
++#define PANVK_V9_MINMAX_TAG        (1u << 31)
++
+ #endif
+--- a/src/panfrost/vulkan/panvk_vX_sampler.c
++++ b/src/panfrost/vulkan/panvk_vX_sampler.c
+@@ -177,6 +177,27 @@
+       cfg.reduction_mode = panvk_translate_reduction_mode(reduction_mode);
+ #endif
+    }
++#if PAN_ARCH == 9
++   /* EXPERIMENTAL v9 min/max reduction emulation. v9 samplers have no
++    * reduction mode field, so the shader does the filtering itself (see
++    * panvk_v9_nir_lower_minmax.c) and needs the mode and the filters. They
++    * go in word 3, which v9.xml leaves undefined and which the hardware was
++    * measured not to read (filled with 0xffffffff: byte-identical texture
++    * output). Word 3 stays 0 for every WEIGHTED_AVERAGE sampler, so those
++    * are unchanged. Layout, see PANVK_V9_MINMAX_*: */
++   if (reduction_mode != VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE) {
++      uint32_t w3 = PANVK_V9_MINMAX_TAG |
++         (reduction_mode == VK_SAMPLER_REDUCTION_MODE_MIN ? PANVK_V9_MINMAX_MIN
++                                                          : PANVK_V9_MINMAX_MAX);
++      if (mag_filter == VK_FILTER_LINEAR)
++         w3 |= PANVK_V9_MINMAX_MAG_LINEAR;
++      if (min_filter == VK_FILTER_LINEAR)
++         w3 |= PANVK_V9_MINMAX_MIN_LINEAR;
++      if (info->mipmapMode == VK_SAMPLER_MIPMAP_MODE_LINEAR)
++         w3 |= PANVK_V9_MINMAX_MIP_LINEAR;
++      ((uint32_t *)desc)[3] = w3;
++   }
++#endif
+ }
+ 
+ VKAPI_ATTR VkResult VKAPI_CALL
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -19,6 +19,9 @@
+ #include "panvk_physical_device.h"
+ #include "panvk_sampler.h"
+ #include "panvk_shader.h"
++#if PAN_ARCH == 9
++#include "panvk_v9_nir_lower_minmax.h"
++#endif
+ 
+ #include "spirv/nir_spirv.h"
+ #include "util/memstream.h"
+@@ -1079,6 +1082,14 @@
+       NIR_PASS(_, nir, nir_shader_intrinsics_pass, panvk_lower_load_vs_input,
+                nir_metadata_control_flow, &input.no_idvs);
+ 
++#if PAN_ARCH == 9
++   /* EXPERIMENTAL: emulated sampler min/max reduction. PANVK_V9_NO_MINMAX=1
++    * skips it (negative control; compile time, needs
++    * MESA_SHADER_CACHE_DISABLE=true). */
++   if (!getenv("PANVK_V9_NO_MINMAX"))
++      NIR_PASS(_, nir, panvk_v9_lower_sampler_minmax);
++#endif
++
+    pan_postprocess_nir(nir, &input, &shader->info);
+ 
+    if (noperspective_varyings && nir->info.stage == MESA_SHADER_VERTEX) {
+--- /dev/null
++++ b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+@@ -0,0 +1,360 @@
++/*
++ * EXPERIMENTAL: VK_SAMPLER_REDUCTION_MODE_MIN/MAX emulation for Valhall v9.
++ *
++ * v9 samplers have no reduction mode field (v10 added one), so for samplers
++ * created with MIN or MAX the filtering is redone in the shader:
++ *
++ *  - panvk_vX_sampler.c puts a tag, the mode and the min/mag/mip filters in
++ *    sampler descriptor word 3 (unused by v9 hardware). Every other sampler
++ *    keeps word 3 = 0.
++ *  - For every implicit-LOD, biased or explicit-LOD float sample, this pass
++ *    loads word 3. If the tag is set, it computes the level of detail the same
++ *    way va_lower_lod() does (sampler min/max LOD, level count, mipmap mode),
++ *    fetches the texel footprint the selected filter would use with
++ *    texelFetch at that level, applies the sampler's address modes in the
++ *    shader, and takes the component-wise min or max. For a LINEAR mipmap
++ *    mode with a non-zero fraction both levels are reduced together.
++ *  - Otherwise the original hardware sample is used unchanged.
++ *
++ * Not handled (the hardware weighted average is returned, i.e. wrong for a
++ * MIN/MAX sampler): cube maps, depth compare, explicit gradients (txd),
++ * non-32-bit results.
++ *
++ * Runs right before pan_postprocess_nir(), so the raw descriptor loads take
++ * the same path as the ones va_lower_lod() emits.
++ */
++
++#include "pan_nir.h"
++#include "panvk_sampler.h"
++#include "util/ralloc.h"
++
++static nir_def *
++mm_handle(nir_builder *b, nir_tex_instr *tex, nir_tex_src_type off_type,
++          uint32_t index)
++{
++   int i = nir_tex_instr_src_index(tex, off_type);
++   if (i >= 0)
++      return nir_iadd_imm(b, tex->src[i].src.ssa, index);
++   return nir_imm_int(b, index);
++}
++
++/* New tex instruction on the same texture/sampler. The caller fills the
++ * last extra_srcs sources. */
++static nir_tex_instr *
++mm_new_tex(nir_builder *b, nir_tex_instr *orig, nir_texop op,
++           unsigned extra_srcs, unsigned *first_free)
++{
++   int ti = nir_tex_instr_src_index(orig, nir_tex_src_texture_offset);
++   int si = nir_tex_instr_src_index(orig, nir_tex_src_sampler_offset);
++   unsigned n = extra_srcs + (ti >= 0) + (si >= 0);
++   nir_tex_instr *t = nir_tex_instr_create(b->shader, n);
++   t->op = op;
++   t->sampler_dim = orig->sampler_dim;
++   t->is_array = orig->is_array;
++   t->texture_index = orig->texture_index;
++   t->sampler_index = orig->sampler_index;
++   t->dest_type = orig->dest_type;
++   unsigned k = 0;
++   if (ti >= 0)
++      t->src[k++] = nir_tex_src_for_ssa(nir_tex_src_texture_offset,
++                                        orig->src[ti].src.ssa);
++   if (si >= 0)
++      t->src[k++] = nir_tex_src_for_ssa(nir_tex_src_sampler_offset,
++                                        orig->src[si].src.ssa);
++   *first_free = k;
++   return t;
++}
++
++static unsigned
++mm_spatial_dims(enum glsl_sampler_dim dim)
++{
++   switch (dim) {
++   case GLSL_SAMPLER_DIM_1D: return 1;
++   case GLSL_SAMPLER_DIM_2D: return 2;
++   case GLSL_SAMPLER_DIM_3D: return 3;
++   default: return 0;
++   }
++}
++
++static bool
++mm_wanted(nir_tex_instr *tex)
++{
++   if (tex->op != nir_texop_tex && tex->op != nir_texop_txb &&
++       tex->op != nir_texop_txl)
++      return false;
++   if (!mm_spatial_dims(tex->sampler_dim) || tex->is_shadow || tex->is_sparse)
++      return false;
++   if (nir_alu_type_get_base_type(tex->dest_type) != nir_type_float ||
++       tex->def.bit_size != 32)
++      return false;
++   if (nir_tex_instr_src_index(tex, nir_tex_src_projector) >= 0 ||
++       nir_tex_instr_src_index(tex, nir_tex_src_ddx) >= 0 ||
++       nir_tex_instr_src_index(tex, nir_tex_src_coord) < 0)
++      return false;
++   return true;
++}
++
++/* Address mode applied in the shader. Returns the wrapped coordinate and sets
++ * *border when the texel is outside a CLAMP_TO_BORDER image. Mode values are
++ * MALI_WRAP_MODE_* (v9.xml "Wrap Mode"). */
++static nir_def *
++mm_wrap(nir_builder *b, nir_def *i, nir_def *w, nir_def *mode, nir_def **border)
++{
++   nir_def *wm1 = nir_iadd_imm(b, w, -1);
++   nir_def *rep = nir_imod(b, i, w);
++   nir_def *clamp = nir_imin(b, nir_imax(b, i, nir_imm_int(b, 0)), wm1);
++   nir_def *w2 = nir_ishl_imm(b, w, 1);
++   nir_def *t = nir_imod(b, i, w2);
++   nir_def *mrep = nir_bcsel(b, nir_ilt(b, t, w), t,
++                             nir_isub(b, nir_iadd_imm(b, w2, -1), t));
++   nir_def *m = nir_bcsel(b, nir_ilt_imm(b, i, 0),
++                          nir_isub(b, nir_imm_int(b, -1), i), i);
++   nir_def *mclamp = nir_imin(b, m, wm1);
++
++   nir_def *is_rep = nir_ieq_imm(b, mode, 8);
++   nir_def *is_mrep = nir_ieq_imm(b, mode, 12);
++   nir_def *is_mirror_clamp = nir_ior(b, nir_ieq_imm(b, mode, 13),
++                                      nir_ieq_imm(b, mode, 15));
++
++   nir_def *res = clamp; /* 9 clamp to edge, 11 clamp to border */
++   res = nir_bcsel(b, is_mirror_clamp, mclamp, res);
++   res = nir_bcsel(b, is_mrep, mrep, res);
++   res = nir_bcsel(b, is_rep, rep, res);
++
++   nir_def *out = nir_ior(b, nir_ilt_imm(b, i, 0), nir_ige(b, i, w));
++   nir_def *mout = nir_ige(b, m, w);
++   nir_def *bd = nir_iand(b, nir_ieq_imm(b, mode, 11), out);
++   bd = nir_ior(b, bd, nir_iand(b, nir_ieq_imm(b, mode, 15), mout));
++   *border = nir_ior(b, *border, bd);
++   return res;
++}
++
++struct mm_state {
++   nir_tex_instr *tex;
++   nir_def *coord, *offset, *size0, *border_color;
++   nir_def *wrap[3];
++   nir_def *normalized, *linear, *is_min;
++   unsigned dims;
++};
++
++static nir_def *
++mm_reduce(nir_builder *b, nir_def *is_min, nir_def *a, nir_def *c)
++{
++   return nir_bcsel(b, is_min, nir_fmin(b, a, c), nir_fmax(b, a, c));
++}
++
++/* Reduce the filter footprint at integer level lvl (float). */
++static nir_def *
++mm_level(nir_builder *b, struct mm_state *s, nir_def *lvl)
++{
++   nir_def *li = nir_f2i32(b, lvl);
++   nir_def *lo[3], *hi[3], *sz[3];
++
++   for (unsigned d = 0; d < s->dims; d++) {
++      sz[d] = nir_imax(b, nir_ushr(b, nir_channel(b, s->size0, d), li),
++                       nir_imm_int(b, 1));
++      nir_def *u = nir_channel(b, s->coord, d);
++      u = nir_bcsel(b, s->normalized, nir_fmul(b, u, nir_i2f32(b, sz[d])), u);
++      nir_def *lin0 = nir_f2i32(b, nir_ffloor(b, nir_fadd_imm(b, u, -0.5)));
++      nir_def *near = nir_f2i32(b, nir_ffloor(b, u));
++      lo[d] = nir_bcsel(b, s->linear, lin0, near);
++      hi[d] = nir_bcsel(b, s->linear, nir_iadd_imm(b, lin0, 1), near);
++      if (s->offset) {
++         nir_def *o = nir_channel(b, s->offset, d);
++         lo[d] = nir_iadd(b, lo[d], o);
++         hi[d] = nir_iadd(b, hi[d], o);
++      }
++   }
++
++   nir_def *layer = NULL;
++   if (s->tex->is_array) {
++      nir_def *nl = nir_channel(b, s->size0, s->dims);
++      layer = nir_f2i32(b, nir_ffloor(b, nir_fadd_imm(b,
++                    nir_channel(b, s->coord, s->dims), 0.5)));
++      layer = nir_imin(b, nir_imax(b, layer, nir_imm_int(b, 0)),
++                       nir_iadd_imm(b, nl, -1));
++   }
++
++   /* One texel fetch per loop iteration. Unrolled, the scheduler issued all
++    * fetches up front and the register pressure made the backend spill. */
++   nir_variable *acc_var =
++      nir_local_variable_create(b->impl, glsl_vec4_type(), "mm_acc");
++   nir_variable *cnr_var =
++      nir_local_variable_create(b->impl, glsl_uint_type(), "mm_corner");
++   nir_store_var(b, cnr_var, nir_imm_int(b, 0), 1);
++
++   nir_push_loop(b);
++   {
++      nir_def *corner = nir_load_var(b, cnr_var);
++      nir_break_if(b, nir_uge_imm(b, corner, 1u << s->dims));
++
++      nir_def *border = nir_imm_false(b);
++      nir_def *c[4];
++      for (unsigned d = 0; d < s->dims; d++) {
++         nir_def *pick_hi = nir_test_mask(b, corner, 1u << d);
++         c[d] = mm_wrap(b, nir_bcsel(b, pick_hi, hi[d], lo[d]), sz[d],
++                        s->wrap[d], &border);
++      }
++      unsigned nc = s->dims;
++      if (layer)
++         c[nc++] = layer;
++
++      unsigned k;
++      nir_tex_instr *f = mm_new_tex(b, s->tex, nir_texop_txf, 2, &k);
++      f->coord_components = nc;
++      f->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord, nir_vec(b, c, nc));
++      f->src[k + 1] = nir_tex_src_for_ssa(nir_tex_src_lod, li);
++      nir_def_init(&f->instr, &f->def, 4, 32);
++      nir_builder_instr_insert(b, &f->instr);
++      nir_def *texel = nir_bcsel(b, border, s->border_color, &f->def);
++
++      nir_def *acc = nir_load_var(b, acc_var);
++      acc = nir_bcsel(b, nir_ieq_imm(b, corner, 0), texel,
++                      mm_reduce(b, s->is_min, acc, texel));
++      nir_store_var(b, acc_var, acc, 0xf);
++      nir_store_var(b, cnr_var, nir_iadd_imm(b, corner, 1), 1);
++   }
++   nir_pop_loop(b, NULL);
++
++   return nir_load_var(b, acc_var);
++}
++
++static void
++mm_lower_one(nir_builder *b, nir_tex_instr *tex)
++{
++   /* The hardware sample moves into the else branch so its result is not
++    * live across the (register-heavy) emulation path. */
++   b->cursor = nir_before_instr(&tex->instr);
++   nir_def *orig = &tex->def;
++
++   nir_def *samp_h = mm_handle(b, tex, nir_tex_src_sampler_offset,
++                               tex->sampler_index);
++   nir_def *tex_h = mm_handle(b, tex, nir_tex_src_texture_offset,
++                              tex->texture_index);
++   nir_def *w3 = pan_nir_load_va_desc(b, 1, 32, samp_h, 12);
++
++   nir_def *cond = nir_test_mask(b, w3, PANVK_V9_MINMAX_TAG);
++   nir_if *nif = nir_push_if(b, cond);
++
++   struct mm_state s = { .tex = tex, .dims = mm_spatial_dims(tex->sampler_dim) };
++   nir_def *sw = pan_nir_load_va_desc(b, 3, 32, samp_h, 0);
++   nir_def *w0 = nir_channel(b, sw, 0), *w1 = nir_channel(b, sw, 1),
++           *w2 = nir_channel(b, sw, 2);
++
++   s.coord = tex->src[nir_tex_instr_src_index(tex, nir_tex_src_coord)].src.ssa;
++   int oi = nir_tex_instr_src_index(tex, nir_tex_src_offset);
++   s.offset = oi >= 0 ? tex->src[oi].src.ssa : NULL;
++
++   /* lambda' */
++   nir_def *lam;
++   int li = nir_tex_instr_src_index(tex, nir_tex_src_lod);
++   if (tex->op == nir_texop_txl && li >= 0) {
++      nir_def *bias = nir_fmul_imm(b, nir_i2f32(b,
++                         nir_ibitfield_extract_imm(b, w2, 0, 16)), 1.0 / 256.0);
++      lam = nir_fadd(b, tex->src[li].src.ssa, bias);
++   } else {
++      unsigned k;
++      nir_tex_instr *q = mm_new_tex(b, tex, nir_texop_lod, 1, &k);
++      q->is_array = false;
++      q->coord_components = s.dims;
++      q->dest_type = nir_type_float32;
++      q->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord,
++                     nir_trim_vector(b, s.coord, s.dims));
++      nir_def_init(&q->instr, &q->def, 2, 32);
++      nir_builder_instr_insert(b, &q->instr);
++      lam = nir_channel(b, &q->def, 1);
++      int bi = nir_tex_instr_src_index(tex, nir_tex_src_bias);
++      if (bi >= 0)
++         lam = nir_fadd(b, lam, tex->src[bi].src.ssa);
++   }
++
++   /* Level selection, same as va_lower_lod(). */
++   nir_def *min_lod = nir_fmul_imm(b, nir_u2f32(b,
++                         nir_ubitfield_extract_imm(b, w1, 0, 13)), 1.0 / 256.0);
++   nir_def *max_lod = nir_fmul_imm(b, nir_u2f32(b,
++                         nir_ubitfield_extract_imm(b, w1, 16, 13)), 1.0 / 256.0);
++   nir_def *maxl = nir_u2f32(b, nir_iadd_imm(b,
++                      pan_nir_load_va_tex_levels(b, tex_h), -1));
++   max_lod = nir_fmin(b, max_lod, maxl);
++   int mi = nir_tex_instr_src_index(tex, nir_tex_src_min_lod);
++   if (mi >= 0)
++      min_lod = nir_fmax(b, min_lod, tex->src[mi].src.ssa);
++   nir_def *lod = nir_fmin(b, nir_fmax(b, lam, min_lod), max_lod);
++
++   nir_def *mip_linear = nir_test_mask(b, w3, PANVK_V9_MINMAX_MIP_LINEAR);
++   nir_def *lnear = nir_fmax(b, nir_fadd_imm(b, nir_fceil(b,
++                       nir_fadd_imm(b, lod, 0.5)), -1.0), nir_imm_float(b, 0));
++   nir_def *lfloor = nir_ffloor(b, lod);
++   nir_def *l0 = nir_bcsel(b, mip_linear, lfloor, lnear);
++   nir_def *frac = nir_bcsel(b, mip_linear, nir_fsub(b, lod, lfloor),
++                             nir_imm_float(b, 0));
++   nir_def *l1 = nir_fmin(b, nir_fadd_imm(b, l0, 1.0), maxl);
++
++   s.linear = nir_bcsel(b, nir_fle_imm(b, lam, 0.0),
++                        nir_test_mask(b, w3, PANVK_V9_MINMAX_MAG_LINEAR),
++                        nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN_LINEAR));
++   s.is_min = nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN);
++   s.normalized = nir_test_mask(b, w0, 1u << 25);
++   s.wrap[0] = nir_ubitfield_extract_imm(b, w0, 16, 4); /* S */
++   s.wrap[1] = nir_ubitfield_extract_imm(b, w0, 12, 4); /* T */
++   s.wrap[2] = nir_ubitfield_extract_imm(b, w0, 8, 4);  /* R */
++   s.size0 = pan_nir_load_va_tex_size(b, tex_h, tex->sampler_dim,
++                                      tex->is_array);
++   s.border_color = pan_nir_load_va_desc(b, 4, 32, samp_h, 16);
++
++   nir_def *r0 = mm_level(b, &s, l0);
++   nir_if *nif2 = nir_push_if(b, nir_fgt_imm(b, frac, 0.0));
++   nir_def *r01 = mm_reduce(b, s.is_min, r0, mm_level(b, &s, l1));
++   nir_pop_if(b, nif2);
++   nir_def *res = nir_if_phi(b, r01, r0);
++   res = nir_trim_vector(b, res, orig->num_components);
++
++   nir_push_else(b, nif);
++   nir_instr_remove(&tex->instr);
++   nir_builder_instr_insert(b, &tex->instr);
++   nir_pop_if(b, nif);
++   nir_def *phi = nir_if_phi(b, res, orig);
++   /* Every use of the hardware result except the phi itself now reads the
++    * phi. (nir_def_rewrite_uses_after only works within one block.) */
++   nir_foreach_use_including_if_safe(src, orig) {
++      if (!nir_src_is_if(src) && nir_src_use_instr(src) == nir_def_instr(phi))
++         continue;
++      nir_src_rewrite(src, phi);
++   }
++}
++
++static bool
++panvk_v9_lower_sampler_minmax(nir_shader *nir)
++{
++   bool progress = false;
++
++   nir_foreach_function_impl(impl, nir) {
++      unsigned n = 0;
++      nir_foreach_block(block, impl)
++         nir_foreach_instr(instr, block)
++            n += instr->type == nir_instr_type_tex &&
++                 mm_wanted(nir_instr_as_tex(instr));
++      if (!n) {
++         nir_no_progress(impl);
++         continue;
++      }
++
++      nir_tex_instr **list = ralloc_array(NULL, nir_tex_instr *, n);
++      unsigned k = 0;
++      nir_foreach_block(block, impl)
++         nir_foreach_instr(instr, block)
++            if (instr->type == nir_instr_type_tex &&
++                mm_wanted(nir_instr_as_tex(instr)))
++               list[k++] = nir_instr_as_tex(instr);
++
++      nir_builder b = nir_builder_create(impl);
++      for (unsigned i = 0; i < n; i++)
++         mm_lower_one(&b, list[i]);
++      ralloc_free(list);
++
++      progress |= nir_progress(true, impl, nir_metadata_none);
++   }
++   if (progress)
++      NIR_PASS(_, nir, nir_lower_vars_to_ssa);
++   return progress;
++}

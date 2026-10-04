@@ -1,0 +1,16 @@
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min

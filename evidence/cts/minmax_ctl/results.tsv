@@ -1,0 +1,132 @@
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.1d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.2d_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.3d.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch

@@ -1,0 +1,367 @@
+--- a/src/panfrost/vulkan/panvk_shader.h
++++ b/src/panfrost/vulkan/panvk_shader.h
+@@ -187,9 +187,12 @@
+ #elif PAN_ARCH == 9
+    /* v9 Job Manager filters gl_Layer the same way as Bifrost (see
+     * lower_layer_writes in panvk_vX_shader.c); the field sits at the end so
+-    * no other offset moves. Padded to keep the struct 8-byte sized. */
++    * no other offset moves. */
+    int32_t layer_id;
+-   int32_t layer_id_pad;
++   /* gl_DrawID for v9 multi-draw: multi-draws are unrolled into one job per
++    * draw, and each draw gets its own push-uniform block, so the index is a
++    * plain per-draw sysval. Also keeps the struct 8-byte sized. */
++   int32_t draw_id;
+ #endif
+ } __attribute__((aligned(FAU_WORD_SIZE)));
+ 
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -173,11 +173,17 @@
+       if (PAN_ARCH >= 10)
+          return false;
+ 
++      assert(b->shader->info.stage == MESA_SHADER_VERTEX);
++#if PAN_ARCH == 9
++      /* v9 Job Manager unrolls multi-draws, one job per draw, and sets the
++       * index as a sysval (cmd_prepare_draw_sysvals). */
++      val = load_sysval(b, graphics, bit_size, draw_id);
++#else
+       /* TODO: We only implement single-draw direct and indirect draws, so this
+        * is sufficient. We'll revisit this when we get around to implementing
+        * multidraw. */
+-      assert(b->shader->info.stage == MESA_SHADER_VERTEX);
+       val = nir_imm_int(b, 0);
++#endif
+       break;
+ 
+    case nir_intrinsic_load_printf_buffer_address:
+--- a/src/panfrost/vulkan/panvk_cmd_draw.h
++++ b/src/panfrost/vulkan/panvk_cmd_draw.h
+@@ -476,6 +476,9 @@
+ 
+ #if PAN_ARCH < 9
+    uint32_t layer_id;
++#elif PAN_ARCH == 9
++   /* Index of this draw within a multi-draw (gl_DrawID). */
++   uint32_t draw_id;
+ #endif
+ };
+ 
+--- a/src/panfrost/vulkan/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+@@ -832,6 +832,7 @@
+ #elif PAN_ARCH == 9
+    /* The v9 path encodes layer 0 only (see the TODO in jm/panvk_vX_cmd_draw.c). */
+    set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, 0);
++   set_gfx_sysval(cmdbuf, dirty_sysvals, draw_id, info->draw_id);
+ #endif
+ 
+    if (dyn_gfx_state_dirty(cmdbuf, CB_BLEND_CONSTANTS)) {
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -3080,13 +3080,16 @@
+             &precomp_ctx, panlib_1d(1), PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+             draw->info.indirect.buffer_dev_addr, draw->jobs.idvs.gpu,
+             draw->info.index.buffer_dev_addr, draw->info.index.index_size,
+-            fv_sysval, bi_sysval, vs_attribs, inst_mask, inst_strides);
++            fv_sysval, bi_sysval, vs_attribs, inst_mask, inst_strides,
++            draw->info.indirect.count_buffer_dev_addr, draw->info.draw_id);
+       } else {
+          panlib_draw_indirect_helper(&precomp_ctx, panlib_1d(1),
+                                      PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+                                      draw->info.indirect.buffer_dev_addr,
+                                      draw->jobs.idvs.gpu, fv_sysval, bi_sysval,
+-                                     vs_attribs, inst_mask, inst_strides);
++                                     vs_attribs, inst_mask, inst_strides,
++                                     draw->info.indirect.count_buffer_dev_addr,
++                                     draw->info.draw_id);
+       }
+ 
+       /* Confirm the prediction rather than trusting it. If the helper did not
+@@ -3114,13 +3117,16 @@
+             &precomp_ctx, panlib_1d(1), PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+             draw->info.indirect.buffer_dev_addr, draw->jobs.idvs.gpu,
+             draw->info.index.buffer_dev_addr, draw->info.index.index_size,
+-            fv_sysval, bi_sysval, vs_attribs, inst_mask, inst_strides);
++            fv_sysval, bi_sysval, vs_attribs, inst_mask, inst_strides,
++            draw->info.indirect.count_buffer_dev_addr, draw->info.draw_id);
+       } else {
+          panlib_draw_indirect_helper(&precomp_ctx, panlib_1d(1),
+                                      PANLIB_BARRIER_JM_SUPPRESS_PREFETCH,
+                                      draw->info.indirect.buffer_dev_addr,
+                                      draw->jobs.idvs.gpu, fv_sysval, bi_sysval,
+-                                     vs_attribs, inst_mask, inst_strides);
++                                     vs_attribs, inst_mask, inst_strides,
++                                     draw->info.indirect.count_buffer_dev_addr,
++                                     draw->info.draw_id);
+       }
+ 
+       indirect_dep = batch->vtc_jc.job_index;
+@@ -3214,29 +3220,32 @@
+    panvk_cmd_draw_v9(cmdbuf, &draw);
+ }
+ 
+-VKAPI_ATTR void VKAPI_CALL
+-panvk_per_arch(CmdDrawIndirect)(VkCommandBuffer commandBuffer, VkBuffer _buffer,
+-                                VkDeviceSize offset, uint32_t drawCount,
+-                                uint32_t stride)
++/* Job Manager hardware has no indirect-draw descriptor, so each draw becomes a
++ * job plus a helper kernel that patches its counts. There is no multi-draw
++ * descriptor either, so drawCount (or maxDrawCount) is unrolled into that many
++ * pairs, each with its own gl_DrawID. For the *Count variants the helper turns
++ * the draws at or past the GPU-side count into NULL jobs.
++ *
++ * The counts in the draw info are placeholders. The helper overwrites
++ * index_count, base_vertex_offset and the instance count in the descriptor
++ * before the job is allowed to run.
++ *
++ * The indexed variant does NOT run the Bifrost min/max index search: on v9
++ * varyings are hardware-allocated, so nothing is sized from the vertex range. */
++static void
++draw_indirect_unrolled_v9(struct panvk_cmd_buffer *cmdbuf,
++                          struct panvk_buffer *buffer, VkDeviceSize offset,
++                          uint32_t draw_count, uint32_t stride, bool indexed,
++                          uint64_t count_buffer_dev_addr)
+ {
+-   VK_FROM_HANDLE(panvk_cmd_buffer, cmdbuf, commandBuffer);
+-   VK_FROM_HANDLE(panvk_buffer, buffer, _buffer);
+-
+-   if (drawCount == 0)
+-      return;
++   /* Negative controls: PANVK_MDI_NO_DRAWID gives every draw gl_DrawID 0,
++    * PANVK_MDI_NO_COUNT ignores the count buffer (all maxDrawCount draws
++    * run). */
++   const bool no_draw_id = getenv("PANVK_MDI_NO_DRAWID") != NULL;
++   if (getenv("PANVK_MDI_NO_COUNT"))
++      count_buffer_dev_addr = 0;
+ 
+-   /* Job Manager hardware has no indirect-draw descriptor, so each draw becomes
+-    * a job plus a helper kernel that patches its counts. There is no multi-draw
+-    * descriptor either, so drawCount is unrolled into that many pairs.
+-    *
+-    * The counts below are placeholders. The helper overwrites index_count,
+-    * base_vertex_offset and the instance count in the descriptor before the job
+-    * is allowed to run, so their values do not reach the hardware. They do still
+-    * drive record-time sizing decisions inside prepare_draw_v9(), which is why
+-    * workloads with varyings or vertex buffers are not covered by this path yet
+-    * - those buffers would be sized for the placeholder rather than the real
+-    * count. See docs for the current scope. */
+-   for (uint32_t i = 0; i < drawCount; i++) {
++   for (uint32_t i = 0; i < draw_count; i++) {
+       struct panvk_draw_data draw = {
+          .info = {
+             .vertex.base = 0,
+@@ -3246,17 +3255,37 @@
+             .prim = panvk_get_client_prim(cmdbuf),
+             .indirect.buffer_dev_addr =
+                panvk_buffer_gpu_ptr(buffer, offset + (uint64_t)i * stride),
++            .indirect.count_buffer_dev_addr = count_buffer_dev_addr,
+             .indirect.draw_count = 1,
+             .indirect.stride = 0,
++            .draw_id = no_draw_id ? 0 : i,
+          },
+          .vertex_range = 1,
+       };
++      if (indexed)
++         draw.info.index =
++            (__typeof__(draw.info.index))panvk_draw_info_index(cmdbuf, 0);
+ 
+       panvk_cmd_draw_v9(cmdbuf, &draw);
+    }
+ }
+ 
+ VKAPI_ATTR void VKAPI_CALL
++panvk_per_arch(CmdDrawIndirect)(VkCommandBuffer commandBuffer, VkBuffer _buffer,
++                                VkDeviceSize offset, uint32_t drawCount,
++                                uint32_t stride)
++{
++   VK_FROM_HANDLE(panvk_cmd_buffer, cmdbuf, commandBuffer);
++   VK_FROM_HANDLE(panvk_buffer, buffer, _buffer);
++
++   if (drawCount == 0)
++      return;
++
++   draw_indirect_unrolled_v9(cmdbuf, buffer, offset, drawCount, stride, false,
++                             0);
++}
++
++VKAPI_ATTR void VKAPI_CALL
+ panvk_per_arch(CmdDrawIndexedIndirect)(VkCommandBuffer commandBuffer,
+                                        VkBuffer _buffer, VkDeviceSize offset,
+                                        uint32_t drawCount, uint32_t stride)
+@@ -3264,37 +3293,53 @@
+    VK_FROM_HANDLE(panvk_cmd_buffer, cmdbuf, commandBuffer);
+    VK_FROM_HANDLE(panvk_buffer, buffer, _buffer);
+ 
+-   if (drawCount == 0)
++   if (drawCount == 0 || cmdbuf->state.gfx.ib.size == 0)
+       return;
+ 
+-   /* Same emulation as CmdDrawIndirect, with the index buffer folded in. The
+-    * helper also rewrites INDICES.address, because firstIndex reaches the
+-    * hardware as an address offset rather than as a count.
+-    *
+-    * Unlike the Bifrost path this does NOT run a min/max index search first.
+-    * That search exists to size varying and attribute buffers from the range of
+-    * vertices the indices actually touch, so workloads using either are out of
+-    * scope here and are expected to be wrong. The validated workload indexes a
+-    * hardcoded position array through gl_VertexIndex, needing neither. */
+-   for (uint32_t i = 0; i < drawCount; i++) {
+-      struct panvk_draw_data draw = {
+-         .info = {
+-            .index = panvk_draw_info_index(cmdbuf, 0),
+-            .vertex.base = 0,
+-            .vertex.count = 1,
+-            .instance.base = 0,
+-            .instance.count = 1,
+-            .prim = panvk_get_client_prim(cmdbuf),
+-            .indirect.buffer_dev_addr =
+-               panvk_buffer_gpu_ptr(buffer, offset + (uint64_t)i * stride),
+-            .indirect.draw_count = 1,
+-            .indirect.stride = 0,
+-         },
+-         .vertex_range = 1,
+-      };
++   draw_indirect_unrolled_v9(cmdbuf, buffer, offset, drawCount, stride, true,
++                             0);
++}
+ 
+-      panvk_cmd_draw_v9(cmdbuf, &draw);
+-   }
++VKAPI_ATTR void VKAPI_CALL
++panvk_per_arch(CmdDrawIndirectCount)(VkCommandBuffer commandBuffer,
++                                     VkBuffer _buffer, VkDeviceSize offset,
++                                     VkBuffer countBuffer,
++                                     VkDeviceSize countBufferOffset,
++                                     uint32_t maxDrawCount, uint32_t stride)
++{
++   VK_FROM_HANDLE(panvk_cmd_buffer, cmdbuf, commandBuffer);
++   VK_FROM_HANDLE(panvk_buffer, buffer, _buffer);
++   VK_FROM_HANDLE(panvk_buffer, count_buffer, countBuffer);
++
++   if (maxDrawCount == 0)
++      return;
++
++   draw_indirect_unrolled_v9(cmdbuf, buffer, offset, maxDrawCount, stride,
++                             false,
++                             panvk_buffer_gpu_ptr(count_buffer,
++                                                  countBufferOffset));
++}
++
++VKAPI_ATTR void VKAPI_CALL
++panvk_per_arch(CmdDrawIndexedIndirectCount)(VkCommandBuffer commandBuffer,
++                                            VkBuffer _buffer,
++                                            VkDeviceSize offset,
++                                            VkBuffer countBuffer,
++                                            VkDeviceSize countBufferOffset,
++                                            uint32_t maxDrawCount,
++                                            uint32_t stride)
++{
++   VK_FROM_HANDLE(panvk_cmd_buffer, cmdbuf, commandBuffer);
++   VK_FROM_HANDLE(panvk_buffer, buffer, _buffer);
++   VK_FROM_HANDLE(panvk_buffer, count_buffer, countBuffer);
++
++   if (maxDrawCount == 0 || cmdbuf->state.gfx.ib.size == 0)
++      return;
++
++   draw_indirect_unrolled_v9(cmdbuf, buffer, offset, maxDrawCount, stride,
++                             true,
++                             panvk_buffer_gpu_ptr(count_buffer,
++                                                  countBufferOffset));
+ }
+ 
+ VKAPI_ATTR void VKAPI_CALL
+--- a/src/panfrost/libpan/draw_helper.cl
++++ b/src/panfrost/libpan/draw_helper.cl
+@@ -703,8 +703,22 @@
+                            global int32_t *first_vertex_sysval,
+                            global int32_t *base_instance_sysval,
+                            global uint8_t *vs_attribs, uint32_t inst_attr_mask,
+-                           global uint32_t *inst_attr_strides)
++                           global uint32_t *inst_attr_strides,
++                           global uint32_t *draw_count_buf, uint32_t draw_index)
+ {
++   /* vkCmdDraw*IndirectCount: the CPU unrolls maxDrawCount draws; the ones at
++    * or past the GPU-side count become NULL jobs here. draw_count_buf is NULL
++    * for plain vkCmdDraw*Indirect. */
++   if (draw_count_buf && draw_index >= *draw_count_buf) {
++      struct mali_job_header_packed nop_header;
++      pan_pack(&nop_header, JOB_HEADER, cfg) {
++         cfg.type = MALI_JOB_TYPE_NULL;
++      }
++      pan_merge((global struct mali_job_header_packed *)malloc_vertex_job,
++                &nop_header, JOB_HEADER);
++      return;
++   }
++
+    panlib_v9_patch_instance_attribs(vs_attribs, inst_attr_mask,
+                                     inst_attr_strides, cmd->firstInstance);
+ 
+@@ -787,8 +801,23 @@
+                                    global int32_t *base_instance_sysval,
+                                    global uint8_t *vs_attribs,
+                                    uint32_t inst_attr_mask,
+-                                   global uint32_t *inst_attr_strides)
++                                   global uint32_t *inst_attr_strides,
++                                   global uint32_t *draw_count_buf,
++                                   uint32_t draw_index)
+ {
++   /* vkCmdDraw*IndirectCount: the CPU unrolls maxDrawCount draws; the ones at
++    * or past the GPU-side count become NULL jobs here. draw_count_buf is NULL
++    * for plain vkCmdDraw*Indirect. */
++   if (draw_count_buf && draw_index >= *draw_count_buf) {
++      struct mali_job_header_packed nop_header;
++      pan_pack(&nop_header, JOB_HEADER, cfg) {
++         cfg.type = MALI_JOB_TYPE_NULL;
++      }
++      pan_merge((global struct mali_job_header_packed *)malloc_vertex_job,
++                &nop_header, JOB_HEADER);
++      return;
++   }
++
+    panlib_v9_patch_instance_attribs(vs_attribs, inst_attr_mask,
+                                     inst_attr_strides, cmd->firstInstance);
+ 
+--- a/src/panfrost/vulkan/panvk_vX_physical_device.c
++++ b/src/panfrost/vulkan/panvk_vX_physical_device.c
+@@ -58,7 +58,7 @@
+       .KHR_depth_clamp_zero_one = true,
+       .KHR_depth_stencil_resolve = true,
+       .KHR_device_group = true,
+-      .KHR_draw_indirect_count = PAN_ARCH >= 10,
++      .KHR_draw_indirect_count = PAN_ARCH >= 9,
+       .KHR_driver_properties = true,
+       .KHR_dynamic_rendering = true,
+       .KHR_dynamic_rendering_local_read = true,
+@@ -310,7 +310,7 @@
+       .sampleRateShading = true,
+       .dualSrcBlend = true,
+       .logicOp = true,
+-      .multiDrawIndirect = PAN_ARCH >= 10,
++      .multiDrawIndirect = PAN_ARCH >= 9,
+       .drawIndirectFirstInstance = true,
+       .depthClamp = true,
+       .depthBiasClamp = true,
+@@ -384,7 +384,7 @@
+ 
+       /* Vulkan 1.2 */
+       .samplerMirrorClampToEdge = true,
+-      .drawIndirectCount = PAN_ARCH >= 10,
++      .drawIndirectCount = PAN_ARCH >= 9,
+       .storageBuffer8BitAccess = true,
+       .uniformAndStorageBuffer8BitAccess = true,
+       .storagePushConstant8 = true,
+@@ -967,7 +967,11 @@
+       .mipmapPrecisionBits = 8,
+       /* Software limit. */
+       .maxDrawIndexedIndexValue = UINT32_MAX,
+-      .maxDrawIndirectCount = PAN_ARCH >= 10 ? UINT32_MAX : 1,
++      /* v9 Job Manager unrolls multi-draws on the CPU, one job per draw, so
++       * keep the limit at the spec minimum for multiDrawIndirect (2^16 - 1)
++       * instead of UINT32_MAX. */
++      .maxDrawIndirectCount = PAN_ARCH >= 10 ? UINT32_MAX :
++                              PAN_ARCH == 9 ? 65535 : 1,
+       .maxSamplerLodBias = (float)INT16_MAX / 256.0f,
+       .maxSamplerAnisotropy = 16,
+       .maxViewports = 1,

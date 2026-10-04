@@ -1,0 +1,65 @@
+--- a/src/panfrost/vulkan/panvk_vX_physical_device.c
++++ b/src/panfrost/vulkan/panvk_vX_physical_device.c
+@@ -11,6 +11,7 @@
+ 
+ #include <sys/sysmacros.h>
+ 
++#include <stdlib.h>
+ #include "git_sha1.h"
+ 
+ #include "vk_android.h"
+@@ -93,7 +94,7 @@
+       .KHR_pipeline_library = true,
+       .KHR_push_descriptor = true,
+       .KHR_relaxed_block_layout = true,
+-      .KHR_robustness2 = PAN_ARCH >= 10,
++      .KHR_robustness2 = PAN_ARCH >= 9,
+       .KHR_sampler_mirror_clamp_to_edge = true,
+       .KHR_sampler_ycbcr_conversion = true,
+       .KHR_separate_depth_stencil_layouts = true,
+@@ -199,7 +200,7 @@
+       .EXT_queue_family_foreign = true,
+       .EXT_rasterization_order_attachment_access = PAN_ARCH >= 10,
+       .EXT_rgba10x6_formats = PAN_ARCH >= 11,
+-      .EXT_robustness2 = PAN_ARCH >= 10,
++      .EXT_robustness2 = PAN_ARCH >= 9,
+       .EXT_sampler_filter_minmax = PAN_ARCH >= 10,
+       .EXT_scalar_block_layout = true,
+       .EXT_separate_stencil_usage = true,
+@@ -627,9 +628,9 @@
+       .pipelineExecutableInfo = true,
+ 
+       /* VK_KHR_robustness2 */
+-      .robustBufferAccess2 = PAN_ARCH >= 11,
++      .robustBufferAccess2 = PAN_ARCH == 9 ? getenv("PANVK_V9_RBA2") != NULL : PAN_ARCH >= 11,
+       .robustImageAccess2 = false,
+-      .nullDescriptor = PAN_ARCH >= 10,
++      .nullDescriptor = PAN_ARCH >= 9,
+ 
+       /* VK_EXT_shader_tile_image */
+       .shaderTileImageColorReadAccess = PAN_ARCH >= 9,
+--- a/src/panfrost/vulkan/panvk_vX_descriptor_set.c
++++ b/src/panfrost/vulkan/panvk_vX_descriptor_set.c
+@@ -11,6 +11,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
++#include <stdlib.h>
+ #include "util/mesa-blake3.h"
+ #include "vk_alloc.h"
+ #include "vk_descriptor_update_template.h"
+@@ -85,7 +86,13 @@
+       struct mali_null_descriptor_packed null_desc;                            \
+       pan_pack(&null_desc, NULL_DESCRIPTOR, cfg)                               \
+          ;                                                                     \
+-      write_desc(set, binding, elem, &null_desc, (subdesc));                   \
++      /* A v9 null descriptor is type 0, i.e. all zero bytes.               \
++       * PANVK_NULLDESC_POISON=1 is the negative control: write 0xff bytes  \
++       * (invalid type) instead, so a test that really reads the slot must   \
++       * change. */                                                          \
++      if (getenv("PANVK_NULLDESC_POISON"))                                   \
++         memset(&null_desc, 0xff, sizeof(null_desc));                        \
++      write_desc(set, binding, elem, &null_desc, (subdesc));                 \
+    } while (0)
+ #else
+ #define write_nulldesc(set, binding, elem, subdesc)                            \

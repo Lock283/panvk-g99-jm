@@ -1,0 +1,4 @@
+group indirect_draw_ctl_no_drawid: 372 cases, 1 process run(s)
+  Pass                   238
+  Fail                   134
+  pass rate of supported: 238/372 = 64.0%

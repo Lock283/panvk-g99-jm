@@ -1,0 +1,304 @@
+#sessionInfo releaseName 31807adf6dc7111b32b1ade990d0d8e552fa1b78
+#sessionInfo releaseId 0x31807adf
+#sessionInfo targetName "Android"
+#sessionInfo logFormatVersion "0.3.4"
+#sessionInfo vendorID 0x13b5
+#sessionInfo deviceID 0x90930010
+#sessionInfo deviceName Mali-G57 MC2
+#sessionInfo commandLineParameters "--deqp-vk-library-path=/data/data/com.termux/files/home/cts/shim/libvkshim.so --deqp-caselist-file=/data/data/com.termux/files/home/cts/runs/api_smoke_mdi/todo_1.txt --deqp-log-filename=/data/data/com.termux/files/home/cts/runs/api_smoke_mdi/run_1.qpa --deqp-log-images=enable --deqp-log-shader-sources=disable --deqp-watchdog=disable"
+
+#beginSession
+
+#beginTestCaseResult dEQP-VK.api.smoke.asm_triangle
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.asm_triangle" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="frag" Description="Program: frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <SpirVAssemblySource></SpirVAssemblySource>
+</ShaderProgram>
+  <Number Name="SpirVAssemblyTime" Description="SpirV assembly time" Tag="Time" Unit="ms">1.620000</Number>
+</Section>
+ <Section Name="vert" Description="Program: vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <SpirVAssemblySource></SpirVAssemblySource>
+</ShaderProgram>
+  <Number Name="SpirVAssemblyTime" Description="SpirV assembly time" Tag="Time" Unit="ms">0.200000</Number>
+</Section>
+ <ImageSet Name="ComparisonResult" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="ComparisonResult">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAEuUlEQVR4nO3W2ZEc
+   RQBFUUHIEOHJeI48wRTxAREj0Cy9VFUu9xwLsjI77uvfvr38+eMLkPT76AMA4wgA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhH0dfYDR/vr+
+   MvoIDPTHy/fRRxgq/w+g/gMo8/YCAGkC8MUSFHnzfwgAhAnAvyxCh7d+JQAQJgA/
+   sQz788b/JQAQJgD/YyH25W1/JQAQJgBvsBT78aZvEwAIE4B3WIx9eMv3CQCECcAH
+   LMf6vOHHBADCBOATFmRd3u5zAgBhAnADS7Ieb3YbAYAwAbiRRVmHt7qdAECYANzB
+   sszPG91HACBMAO5kYeblbe4nABAmAA+wNPPxJo8RAAgTgAdZnHl4i8cJAIQJwBMs
+   z3je4DkCAGEC8CQLNI67f54AQJgAHMASXc+dH0MAIEwADmKRruOujyMAECYAB7JM
+   53PHxxIACBOAg1mo87jb4wkAhAnACSzV8dzpOQQAwgTgJBbrOO7yPAIAYQJwIsv1
+   PHd4LgGAMAE4mQV7nLs7nwBAmABcwJLdz51dQwAgTAAuYtFu566uIwAQJgAXsmyf
+   c0fXEgAIE4CLWbj3uZvrCQCECcAAlu5X7mQMAYAwARjE4r1yF+MIAIQJwECWzx2M
+   JgAQJgCDlRew/O2zEAAIE4AJFJew+M0zEgAIE4BJlBax9K2zEwAIE4CJFJax8I0r
+   EQAIE4DJ7LyQO3/bqgQAwgRgQjsu5Y7ftAMBgDABmNROi7nTt+xGACBMACa2w3Lu
+   8A07EwAIE4DJrbygK5+9QgAgTAAWsOKSrnjmIgGAMAFYxEqLutJZ6wQAwgRgISss
+   6wpn5JUAQJgALGbmhZ35bLxNACBMABY049LOeCY+JwAQJgCLmmlxZzoL9xEACBOA
+   hc2wvDOcgccJAIQJwOJGLrD1X58AQJgAbGDEElv/PQgAhAnAJq5cZOu/DwGAMAHY
+   yBXLbP33IgAQJgCbOXOhrf9+BADCBGBDZyy19d+TAECYAGzqyMW2/vsSAAgTgI0d
+   sdzWf28CAGECsLlnFtz6708AIEwAAh5ZcuvfIAAQJgAR9yy69e8QAAgTgJBblt36
+   twgAhAlAzEcLb/17BADCBCDoraW3/k0CAGECEPXz4lv/LgGAsK+jD8A4lh//ACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDsb5cg
+   loH8Za1/AAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">31105</Number>
+ <Result StatusCode="Pass">Rendering succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.asm_triangle_no_opname
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.asm_triangle_no_opname" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="frag" Description="Program: frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <SpirVAssemblySource></SpirVAssemblySource>
+</ShaderProgram>
+  <Number Name="SpirVAssemblyTime" Description="SpirV assembly time" Tag="Time" Unit="ms">0.145000</Number>
+</Section>
+ <Section Name="vert" Description="Program: vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <SpirVAssemblySource></SpirVAssemblySource>
+</ShaderProgram>
+  <Number Name="SpirVAssemblyTime" Description="SpirV assembly time" Tag="Time" Unit="ms">0.235000</Number>
+</Section>
+ <ImageSet Name="ComparisonResult" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="ComparisonResult">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAEuUlEQVR4nO3W2ZEc
+   RQBFUUHIEOHJeI48wRTxAREj0Cy9VFUu9xwLsjI77uvfvr38+eMLkPT76AMA4wgA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhH0dfYDR/vr+
+   MvoIDPTHy/fRRxgq/w+g/gMo8/YCAGkC8MUSFHnzfwgAhAnAvyxCh7d+JQAQJgA/
+   sQz788b/JQAQJgD/YyH25W1/JQAQJgBvsBT78aZvEwAIE4B3WIx9eMv3CQCECcAH
+   LMf6vOHHBADCBOATFmRd3u5zAgBhAnADS7Ieb3YbAYAwAbiRRVmHt7qdAECYANzB
+   sszPG91HACBMAO5kYeblbe4nABAmAA+wNPPxJo8RAAgTgAdZnHl4i8cJAIQJwBMs
+   z3je4DkCAGEC8CQLNI67f54AQJgAHMASXc+dH0MAIEwADmKRruOujyMAECYAB7JM
+   53PHxxIACBOAg1mo87jb4wkAhAnACSzV8dzpOQQAwgTgJBbrOO7yPAIAYQJwIsv1
+   PHd4LgGAMAE4mQV7nLs7nwBAmABcwJLdz51dQwAgTAAuYtFu566uIwAQJgAXsmyf
+   c0fXEgAIE4CLWbj3uZvrCQCECcAAlu5X7mQMAYAwARjE4r1yF+MIAIQJwECWzx2M
+   JgAQJgCDlRew/O2zEAAIE4AJFJew+M0zEgAIE4BJlBax9K2zEwAIE4CJFJax8I0r
+   EQAIE4DJ7LyQO3/bqgQAwgRgQjsu5Y7ftAMBgDABmNROi7nTt+xGACBMACa2w3Lu
+   8A07EwAIE4DJrbygK5+9QgAgTAAWsOKSrnjmIgGAMAFYxEqLutJZ6wQAwgRgISss
+   6wpn5JUAQJgALGbmhZ35bLxNACBMABY049LOeCY+JwAQJgCLmmlxZzoL9xEACBOA
+   hc2wvDOcgccJAIQJwOJGLrD1X58AQJgAbGDEElv/PQgAhAnAJq5cZOu/DwGAMAHY
+   yBXLbP33IgAQJgCbOXOhrf9+BADCBGBDZyy19d+TAECYAGzqyMW2/vsSAAgTgI0d
+   sdzWf28CAGECsLlnFtz6708AIEwAAh5ZcuvfIAAQJgAR9yy69e8QAAgTgJBblt36
+   twgAhAlAzEcLb/17BADCBCDoraW3/k0CAGECEPXz4lv/LgGAsK+jD8A4lh//ACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDsb5cg
+   loH8Za1/AAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">21210</Number>
+ <Result StatusCode="Pass">Rendering succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.compute
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.compute" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="comp" Description="Program: comp">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <ComputeShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</ComputeShader>
+</ShaderProgram>
+  <Number Name="ComputeCompileTime" Description="Compute shader compile time" Tag="Time" Unit="ms">321.115997</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.012000</Number>
+</Section>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">349020</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.create_sampler
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.create_sampler" Version="0.3.4" CaseType="SelfValidate">
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">14</Number>
+ <Result StatusCode="Pass">Creating sampler succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.create_shader
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.create_shader" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="test" Description="Program: test">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">156.667007</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.020000</Number>
+</Section>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">161957</Number>
+ <Result StatusCode="Pass">Creating shader module succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.transfer
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.transfer" Version="0.3.4" CaseType="SelfValidate">
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">11405</Number>
+ <Result StatusCode="Pass">Pass</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.triangle
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.triangle" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="frag" Description="Program: frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog></InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">1.761000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.020000</Number>
+</Section>
+ <Section Name="vert" Description="Program: vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <ImageSet Name="ComparisonResult" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="ComparisonResult">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAEuUlEQVR4nO3W2ZEc
+   RQBFUUHIEOHJeI48wRTxAREj0Cy9VFUu9xwLsjI77uvfvr38+eMLkPT76AMA4wgA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhH0dfYDR/vr+
+   MvoIDPTHy/fRRxgq/w+g/gMo8/YCAGkC8MUSFHnzfwgAhAnAvyxCh7d+JQAQJgA/
+   sQz788b/JQAQJgD/YyH25W1/JQAQJgBvsBT78aZvEwAIE4B3WIx9eMv3CQCECcAH
+   LMf6vOHHBADCBOATFmRd3u5zAgBhAnADS7Ieb3YbAYAwAbiRRVmHt7qdAECYANzB
+   sszPG91HACBMAO5kYeblbe4nABAmAA+wNPPxJo8RAAgTgAdZnHl4i8cJAIQJwBMs
+   z3je4DkCAGEC8CQLNI67f54AQJgAHMASXc+dH0MAIEwADmKRruOujyMAECYAB7JM
+   53PHxxIACBOAg1mo87jb4wkAhAnACSzV8dzpOQQAwgTgJBbrOO7yPAIAYQJwIsv1
+   PHd4LgGAMAE4mQV7nLs7nwBAmABcwJLdz51dQwAgTAAuYtFu566uIwAQJgAXsmyf
+   c0fXEgAIE4CLWbj3uZvrCQCECcAAlu5X7mQMAYAwARjE4r1yF+MIAIQJwECWzx2M
+   JgAQJgCDlRew/O2zEAAIE4AJFJew+M0zEgAIE4BJlBax9K2zEwAIE4CJFJax8I0r
+   EQAIE4DJ7LyQO3/bqgQAwgRgQjsu5Y7ftAMBgDABmNROi7nTt+xGACBMACa2w3Lu
+   8A07EwAIE4DJrbygK5+9QgAgTAAWsOKSrnjmIgGAMAFYxEqLutJZ6wQAwgRgISss
+   6wpn5JUAQJgALGbmhZ35bLxNACBMABY049LOeCY+JwAQJgCLmmlxZzoL9xEACBOA
+   hc2wvDOcgccJAIQJwOJGLrD1X58AQJgAbGDEElv/PQgAhAnAJq5cZOu/DwGAMAHY
+   yBXLbP33IgAQJgCbOXOhrf9+BADCBGBDZyy19d+TAECYAGzqyMW2/vsSAAgTgI0d
+   sdzWf28CAGECsLlnFtz6708AIEwAAh5ZcuvfIAAQJgAR9yy69e8QAAgTgJBblt36
+   twgAhAlAzEcLb/17BADCBCDoraW3/k0CAGECEPXz4lv/LgGAsK+jD8A4lh//ACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDsb5cg
+   loH8Za1/AAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">21296</Number>
+ <Result StatusCode="Pass">Rendering succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+#beginTestCaseResult dEQP-VK.api.smoke.unused_resolve_attachment
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseResult CasePath="dEQP-VK.api.smoke.unused_resolve_attachment" Version="0.3.4" CaseType="SelfValidate">
+ <Section Name="frag" Description="Program: frag">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <FragmentShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</FragmentShader>
+</ShaderProgram>
+  <Number Name="FragmentCompileTime" Description="Fragment shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <Section Name="vert" Description="Program: vert">
+  <ShaderProgram LinkStatus="OK">
+   <InfoLog>Loaded from cache</InfoLog>
+   <VertexShader CompileStatus="OK">
+    <ShaderSource></ShaderSource>
+    <InfoLog></InfoLog>
+</VertexShader>
+</ShaderProgram>
+  <Number Name="VertexCompileTime" Description="Vertex shader compile time" Tag="Time" Unit="ms">0.000000</Number>
+  <Number Name="LinkTime" Description="Link time" Tag="Time" Unit="ms">0.000000</Number>
+</Section>
+ <ImageSet Name="ComparisonResult" Description="Image comparison result">
+  <Image Name="Result" Width="256" Height="256" Format="RGBA8888" CompressionMode="PNG" Description="ComparisonResult">
+   iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAEuUlEQVR4nO3W2ZEc
+   RQBFUUHIEOHJeI48wRTxAREj0Cy9VFUu9xwLsjI77uvfvr38+eMLkPT76AMA4wgA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkA
+   hAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhAkAhH0dfYDR/vr+
+   MvoIDPTHy/fRRxgq/w+g/gMo8/YCAGkC8MUSFHnzfwgAhAnAvyxCh7d+JQAQJgA/
+   sQz788b/JQAQJgD/YyH25W1/JQAQJgBvsBT78aZvEwAIE4B3WIx9eMv3CQCECcAH
+   LMf6vOHHBADCBOATFmRd3u5zAgBhAnADS7Ieb3YbAYAwAbiRRVmHt7qdAECYANzB
+   sszPG91HACBMAO5kYeblbe4nABAmAA+wNPPxJo8RAAgTgAdZnHl4i8cJAIQJwBMs
+   z3je4DkCAGEC8CQLNI67f54AQJgAHMASXc+dH0MAIEwADmKRruOujyMAECYAB7JM
+   53PHxxIACBOAg1mo87jb4wkAhAnACSzV8dzpOQQAwgTgJBbrOO7yPAIAYQJwIsv1
+   PHd4LgGAMAE4mQV7nLs7nwBAmABcwJLdz51dQwAgTAAuYtFu566uIwAQJgAXsmyf
+   c0fXEgAIE4CLWbj3uZvrCQCECcAAlu5X7mQMAYAwARjE4r1yF+MIAIQJwECWzx2M
+   JgAQJgCDlRew/O2zEAAIE4AJFJew+M0zEgAIE4BJlBax9K2zEwAIE4CJFJax8I0r
+   EQAIE4DJ7LyQO3/bqgQAwgRgQjsu5Y7ftAMBgDABmNROi7nTt+xGACBMACa2w3Lu
+   8A07EwAIE4DJrbygK5+9QgAgTAAWsOKSrnjmIgGAMAFYxEqLutJZ6wQAwgRgISss
+   6wpn5JUAQJgALGbmhZ35bLxNACBMABY049LOeCY+JwAQJgCLmmlxZzoL9xEACBOA
+   hc2wvDOcgccJAIQJwOJGLrD1X58AQJgAbGDEElv/PQgAhAnAJq5cZOu/DwGAMAHY
+   yBXLbP33IgAQJgCbOXOhrf9+BADCBGBDZyy19d+TAECYAGzqyMW2/vsSAAgTgI0d
+   sdzWf28CAGECsLlnFtz6708AIEwAAh5ZcuvfIAAQJgAR9yy69e8QAAgTgJBblt36
+   twgAhAlAzEcLb/17BADCBCDoraW3/k0CAGECEPXz4lv/LgGAsK+jD8A4lh//ACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBM
+   ACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACBMACDsb5cg
+   loH8Za1/AAAAAElFTkSuQmCC
+</Image>
+</ImageSet>
+ <Number Name="TestDuration" Description="Test case duration in microseconds" Tag="Time" Unit="us">21847</Number>
+ <Result StatusCode="Pass">Rendering succeeded</Result>
+</TestCaseResult>
+
+#endTestCaseResult
+
+Run took 0.66 seconds
+
+#endSession

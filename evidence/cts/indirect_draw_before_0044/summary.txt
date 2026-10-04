@@ -1,0 +1,4 @@
+group indirect_draw: 372 cases, 1 process run(s)
+  Pass                   86
+  NotSupported           286
+  pass rate of supported: 86/86 = 100.0%

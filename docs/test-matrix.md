@@ -32,6 +32,12 @@ actually produced, with the artifact that shows it.
 | [`tests/graphics/blend_test.c`](../tests/graphics/blend_test.c) | 13 blend states vs CPU model | **VERIFIED-HW** | `evidence/logs/T5.3_*` |
 | [`tests/graphics/wsi_cube.c`](../tests/graphics/wsi_cube.c) `CUBE_RESIZE_EVERY` | resize + swapchain recreate, 30,000-frame runs, RSS | **VERIFIED-HW** | `evidence/logs/T6.1_*`, `T6.2_*` |
 | [`tests/phase7/featq.c`](../tests/phase7/featq.c) | 1.1/1.2/1.3 and extension features for the DXVK gap | reported values | [`evidence/phase7/`](../evidence/phase7/) |
+| [`tests/cts/percase.sh`](../tests/cts/percase.sh) + CTS `indirect_draw` | 🧪 multi-draw (`0044`) | 372/372 3x, controls 134/138 fail | [`evidence/cts/indirect_draw/`](../evidence/cts/indirect_draw/) |
+| CTS robustness2 null-descriptor subset | 🧪 `nullDescriptor` (`0045`) | 16 pass 3x, poison control 8 fail | [`evidence/cts/nulldesc/`](../evidence/cts/nulldesc/) |
+| CTS sampler min/max subset | 🧪 min/max emulation (`0046`) | 132/132 3x, control 72 fail; cube 12/16 FAIL | [`evidence/cts/minmax/`](../evidence/cts/minmax/) |
+| [`tests/cts/percase.sh`](../tests/cts/percase.sh) + CTS `indirect_draw` | 🧪 multi-draw (`0044`) | 372/372 3x, controls 134/138 fail | [`evidence/cts/indirect_draw/`](../evidence/cts/indirect_draw/) |
+| CTS robustness2 null-descriptor subset | 🧪 `nullDescriptor` (`0045`) | 16 pass 3x, poison control 8 fail | [`evidence/cts/nulldesc/`](../evidence/cts/nulldesc/) |
+| CTS sampler min/max subset | 🧪 min/max emulation (`0046`) | 132/132 3x, control 72 fail; cube 12/16 FAIL | [`evidence/cts/minmax/`](../evidence/cts/minmax/) |
 | [`tests/cts/run_cts.py`](../tests/cts/run_cts.py) | VK-GL-CTS groups `api.smoke`, `simple_draw`, `indirect_draw` | 8/8, 4/4, 86 pass 0 fail | [`evidence/cts/`](../evidence/cts/) |
 | [`tests/graphics/mrt_shape_test.c`](../tests/graphics/mrt_shape_test.c) | 4.3 two render targets, square and circle vs CPU reference | **VERIFIED-HW** | `evidence/logs/T4.3_*` |
 | [`tests/graphics/draw_indirect_test.c`](../tests/graphics/draw_indirect_test.c) | 4.4 indirect and indexed-indirect draw | **VERIFIED-HW** | `evidence/logs/T4.4.4_*`, `T4.4.5_*` |
