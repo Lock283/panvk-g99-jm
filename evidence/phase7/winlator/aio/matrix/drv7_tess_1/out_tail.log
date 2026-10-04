@@ -1,0 +1,60 @@
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: yes)
+info:    Buffer size:  1084x686
+info:    Image count:  4
+info:    Exclusive FS: 2
+err:   readMonitorEdidFromKey: Failed to get EDID reg key size
+err:   DXGI: Failed to parse display metadata + colorimetry info, using blank.
+AIODIAG [23:28:47.311] first frame: presented OK
+MESA: warning: panvk: v9: tessellation control shaders are not supported, pipeline creation fails (EXPERIMENTAL guard)
+err:   DxvkShaderPipelineLibrary: Failed to create vertex shader pipeline: -13
+err:   DxvkShaderPipelineLibrary: Failed to create vertex shader pipeline: -13
+MESA: warning: vk_pipeline: pLibraries[1] is VK_NULL_HANDLE, failing the pipeline link
+err:   DxvkGraphicsPipeline: Failed to create base pipeline: -13
+err:   Shader stages:
+err:     vs  : VS_10eff01adf82137c5c5ab0fa2607c94c1ad353c0
+err:     tcs : TCS_e67a9b184aa5e149cea49da2cf46c407328ee96f
+err:     tes : TES_127a8e29ea5719b33e20e04021f9159b7a4574fd
+err:     fs  : FS_dcd79687ced110803b377aeaa6eacec937d7f90b
+err:   Primitive topology: VK_PRIMITIVE_TOPOLOGY_PATCH_LIST [3]
+err:   Vertex binding 0 [0]
+err:     0 [0]: VK_FORMAT_R32G32B32_SFLOAT
+err:   Rasterizer state:
+err:     depth clip:      yes
+err:     depth bias:      no
+err:     polygon mode:    VK_POLYGON_MODE_FILL
+err:     conservative:    no
+err:   Sample count: 1 [0xffff]
+err:     alphaToCoverage: no
+err:   Depth test:        yes [write: yes, op: VK_COMPARE_OP_LESS]
+err:   Depth bounds test: no
+err:   Stencil test:      no
+err:   Logic op:          no
+err:   Depth attachment: VK_FORMAT_D24_UNORM_S8_UINT [ds]
+err:   Color attachments:
+err:     0: VK_FORMAT_R8G8B8A8_UNORM [rgba] blend: no
+err:   DxvkGraphicsPipeline: Failed to compile pipeline: -13
+err:   Shader stages:
+err:     vs  : VS_10eff01adf82137c5c5ab0fa2607c94c1ad353c0
+err:     tcs : TCS_e67a9b184aa5e149cea49da2cf46c407328ee96f
+err:     tes : TES_127a8e29ea5719b33e20e04021f9159b7a4574fd
+err:     fs  : FS_dcd79687ced110803b377aeaa6eacec937d7f90b
+err:   Primitive topology: VK_PRIMITIVE_TOPOLOGY_PATCH_LIST [3]
+err:   Vertex binding 0 [0]
+err:     0 [0]: VK_FORMAT_R32G32B32_SFLOAT
+err:   Rasterizer state:
+err:     depth clip:      yes
+err:     depth bias:      no
+err:     polygon mode:    VK_POLYGON_MODE_FILL
+err:     conservative:    no
+err:   Sample count: 1 [0xffff]
+err:     alphaToCoverage: no
+err:   Depth test:        yes [write: yes, op: VK_COMPARE_OP_LESS]
+err:   Depth bounds test: no
+err:   Stencil test:      no
+err:   Logic op:          no
+err:   Depth attachment: VK_FORMAT_D24_UNORM_S8_UINT [ds]
+err:   Color attachments:
+err:     0: VK_FORMAT_R8G8B8A8_UNORM [rgba] blend: no

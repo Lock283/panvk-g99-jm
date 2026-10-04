@@ -1,0 +1,20 @@
+diff --git a/src/panfrost/vulkan/panvk_physical_device.c b/src/panfrost/vulkan/panvk_physical_device.c
+--- a/src/panfrost/vulkan/panvk_physical_device.c
++++ b/src/panfrost/vulkan/panvk_physical_device.c
+@@ -1134,6 +1134,16 @@
+    case 7:
+    case 9:  /* PATCH: v9/Valhall (Mali-G57 MC2) ditambahkan ke grup ini */
+    case 14:
++#if defined(VK_USE_PLATFORM_ANDROID_KHR)
++      /* Android HAL builds (Winlator/adrenotools): the launcher queries the
++       * driver from its own process, where container env vars do not exist,
++       * so the env gate would hide the GPU (0 devices, 0 extensions, and a
++       * launcher crash on the "Unknown" version). Installing this build is
++       * the opt-in. PANVK_V9_REQUIRE_OPTIN=1 restores the gate (control).
++       */
++      if (arch == 9 && !os_get_option("PANVK_V9_REQUIRE_OPTIN"))
++         break;
++#endif
+       if (!os_get_option("PAN_I_WANT_A_BROKEN_VULKAN_DRIVER")) {
+          result = panvk_errorf(instance, VK_ERROR_INCOMPATIBLE_DRIVER,
+                                "WARNING: panvk is not well-tested on v%d, "

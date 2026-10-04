@@ -1,0 +1,31 @@
+driver: /data/data/com.termux/files/home/wltest/drv6  sha256 f3fbd0b39ffe4282
+wrapper: Version: GameNative Unified Vulkan Wrapper 1.3.303 (BCn & Mali Optimized)
+launcher_query_1                   expect=PASS got=PASS rc=0   OK         RESULT ok 
+wrapper_device_1                   expect=PASS got=PASS rc=0   OK         DEVICES 1 RESULT ok 
+launcher_query_2                   expect=PASS got=PASS rc=0   OK         RESULT ok 
+wrapper_device_2                   expect=PASS got=PASS rc=0   OK         DEVICES 1 RESULT ok 
+launcher_query_3                   expect=PASS got=PASS rc=0   OK         RESULT ok 
+wrapper_device_3                   expect=PASS got=PASS rc=0   OK         DEVICES 1 RESULT ok 
+launcher_libwinlator_1             expect=PASS got=PASS rc=0   OK         RESULT ok 
+launcher_libwinlator_2             expect=PASS got=PASS rc=0   OK         RESULT ok 
+launcher_libwinlator_3             expect=PASS got=PASS rc=0   OK         RESULT ok 
+ctl_launcher_require_optin         expect=FAIL got=FAIL rc=1   OK         RESULT no-device 
+wsi_fifo_1                         expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_fifo_2                         expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_fifo_3                         expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_mailbox_1                      expect=PASS got=PASS rc=0   OK         WSISUM present=mailbox format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_mailbox_2                      expect=PASS got=PASS rc=0   OK         WSISUM present=mailbox format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_mailbox_3                      expect=PASS got=PASS rc=0   OK         WSISUM present=mailbox format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_immediate_1                    expect=PASS got=PASS rc=0   OK         WSISUM present=immediate format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_immediate_2                    expect=PASS got=PASS rc=0   OK         WSISUM present=immediate format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_immediate_3                    expect=PASS got=PASS rc=0   OK         WSISUM present=immediate format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+wsi_resize_1                       expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=240 checked=12 bad_frames=0 bad=0 swapchains=6 out_of_date=0 verdict=PASS 
+wsi_resize_2                       expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=240 checked=12 bad_frames=0 bad=0 swapchains=6 out_of_date=0 verdict=PASS 
+wsi_resize_3                       expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=240 checked=12 bad_frames=0 bad=0 swapchains=6 out_of_date=0 verdict=PASS 
+wsi_fifo_shot                      expect=PASS got=PASS rc=0   OK         WSISUM present=fifo format=BGRA8 frames=300 checked=10 bad_frames=0 bad=0 swapchains=1 out_of_date=0 verdict=PASS 
+ctl_wsi_lie                        expect=FAIL got=FAIL rc=2   OK         WSISUM present=fifo format=BGRA8 frames=60 checked=2 bad_frames=2 bad=9371 swapchains=1 out_of_date=0 verdict=FAIL 
+ctl_gralloc_fd0                    expect=FAIL got=FAIL rc=1   OK         MESA: error: invalid dmabuf size MESA: error: invalid dmabuf size 
+ctl_ahb_no_linear                  expect=FAIL got=FAIL rc=139 OK         
+ctl_no_syncfd                      expect=FAIL got=FAIL rc=1   OK         FAILED: acquire frame 0 -> -1000072003 
+ctl_alpha1_driver                  expect=FAIL got=FAIL rc=1   OK         DEVICES 0 RESULT no-device 
+TOTAL as-expected=28 unexpected=0  logs=/data/data/com.termux/files/home/cts/runs/wrapper/verify3

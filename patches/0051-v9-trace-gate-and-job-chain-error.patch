@@ -1,0 +1,504 @@
+diff --git a/src/panfrost/lib/kmod/kbase_kmod.c b/src/panfrost/lib/kmod/kbase_kmod.c
+--- a/src/panfrost/lib/kmod/kbase_kmod.c
++++ b/src/panfrost/lib/kmod/kbase_kmod.c
+@@ -58,6 +58,7 @@
+ #include "kbase_kmod.h"
+ #include "pan_kmod_backend.h"
+ #include "pan_props.h"
++#include "pan_v9_trace.h"
+ 
+ /* Forward declaration — the full definition is at the end of this file. */
+ const struct pan_kmod_ops kbase_kmod_ops;
+@@ -1597,7 +1598,8 @@
+          },
+       };
+ 
+-      mesa_loge("kbase: MEM_ALLOC req: va_pages=%llu commit_pages=%llu extension=%llu flags=0x%llx kmod_flags=0x%x", (unsigned long long)va_pages, (unsigned long long)commit_pages, (unsigned long long)extension, (unsigned long long)alloc_flags, kmod_flags);
++      if (pan_v9_trace_enabled())
++         mesa_logi("kbase: MEM_ALLOC req: va_pages=%llu commit_pages=%llu extension=%llu flags=0x%llx kmod_flags=0x%x", (unsigned long long)va_pages, (unsigned long long)commit_pages, (unsigned long long)extension, (unsigned long long)alloc_flags, kmod_flags);
+       if (ioctl(dev->fd, KBASE_IOCTL_MEM_ALLOC, &req)) {
+          mesa_loge("kbase: KBASE_IOCTL_MEM_ALLOC failed: %s", strerror(errno));
+          goto err_free_bo;
+diff --git a/src/panfrost/lib/pan_desc.c b/src/panfrost/lib/pan_desc.c
+--- a/src/panfrost/lib/pan_desc.c
++++ b/src/panfrost/lib/pan_desc.c
+@@ -17,6 +17,7 @@
+ #include "pan_texture.h"
+ #include "pan_trace.h"
+ #include "pan_util.h"
++#include "pan_v9_trace.h"
+ 
+ #define PAN_BIN_LEVEL_COUNT 12
+ 
+@@ -840,7 +841,7 @@
+       cfg.writeback_buffer.base = base;
+       cfg.writeback_buffer.row_stride = row_stride;
+       cfg.writeback_buffer.surface_stride = surf_stride;
+-      fprintf(stderr, "[PANVK_DEBUG_RT] linear color attachment base=0x%lx row_stride=%lu surf_stride=%lu\n",
++      PAN_V9_TRACE( "[PANVK_DEBUG_RT] linear color attachment base=0x%lx row_stride=%lu surf_stride=%lu\n",
+               (unsigned long)base, (unsigned long)row_stride, (unsigned long)surf_stride);
+    }
+ }
+diff --git a/src/panfrost/lib/pan_fb.c b/src/panfrost/lib/pan_fb.c
+--- a/src/panfrost/lib/pan_fb.c
++++ b/src/panfrost/lib/pan_fb.c
+@@ -13,6 +13,7 @@
+ #include "pan_image.h"
+ #include "pan_props.h"
+ #include "pan_util.h"
++#include "pan_v9_trace.h"
+ 
+ static unsigned
+ pan_bytes_per_pixel_tib(enum pipe_format format)
+@@ -632,7 +633,7 @@
+ 
+    uint32_t tile_rt_offset_B = 0;
+    for (unsigned rt = 0; rt < fb->rt_count; rt++) {
+-      fprintf(stderr, "[PANVK_DEBUG_RTFMT] rt=%u fmt=%d rt_count=%u\n", rt, fb->rt_formats[rt], fb->rt_count);
++      PAN_V9_TRACE( "[PANVK_DEBUG_RTFMT] rt=%u fmt=%d rt_count=%u\n", rt, fb->rt_formats[rt], fb->rt_count);
+       emit_rgb_rt_desc(info, ct, rt, tile_rt_offset_B, rts);
+       rts++;
+ 
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
+@@ -33,6 +33,7 @@
+ 
+ #include "vk_descriptor_update_template.h"
+ #include "vk_format.h"
++#include "pan_v9_trace.h"
+ 
+ static void
+ panvk_debug_dump_blob(const char *name, const void *ptr, size_t size,
+@@ -40,17 +41,17 @@
+ {
+    const uint8_t *b = ptr;
+ 
+-   fprintf(stderr, "[PANVK_DEBUG_%s] gpu=0x%llx size=%zu\\n",
++   PAN_V9_TRACE( "[PANVK_DEBUG_%s] gpu=0x%llx size=%zu\\n",
+            name, (unsigned long long)gpu, size);
+ 
+    for (size_t row = 0; row < size; row += 16) {
+-      fprintf(stderr, "[PANVK_DEBUG_%s] +%03zu:", name, row);
++      PAN_V9_TRACE( "[PANVK_DEBUG_%s] +%03zu:", name, row);
+       size_t end = row + 16 < size ? row + 16 : size;
+ 
+       for (size_t i = row; i < end; i++)
+-         fprintf(stderr, " %02x", b[i]);
++         PAN_V9_TRACE( " %02x", b[i]);
+ 
+-      fprintf(stderr, "\\n");
++      PAN_V9_TRACE( "\\n");
+    }
+ }
+ 
+@@ -226,7 +227,7 @@
+ 
+          panvk_debug_dump_blob("FBD", fbd.cpu,
+                                batch->fb.desc_stride, fbd.gpu);
+-         fprintf(stderr,
++         PAN_V9_TRACE(
+                  "[PANVK_DEBUG_FBD] tagged_ptr=0x%llx stride=%u\n",
+                  (unsigned long long)tagged_fbd_ptr,
+                  batch->fb.desc_stride);
+@@ -343,14 +344,14 @@
+    }
+ 
+    {
+-      fprintf(stderr, "[PANVK_DEBUG_TILERCTX] 192 byte Tiler Context desc:");
++      PAN_V9_TRACE( "[PANVK_DEBUG_TILERCTX] 192 byte Tiler Context desc:");
+       uint8_t *tcb = (uint8_t *)&batch->tiler.ctx_templ;
+-      for (int i = 0; i < 192; i++) fprintf(stderr, " %02x", tcb[i]);
+-      fprintf(stderr, "\n");
+-      fprintf(stderr, "[PANVK_DEBUG_TILERHEAP] 32 byte Tiler Heap desc:");
++      for (int i = 0; i < 192; i++) PAN_V9_TRACE( " %02x", tcb[i]);
++      PAN_V9_TRACE( "\n");
++      PAN_V9_TRACE( "[PANVK_DEBUG_TILERHEAP] 32 byte Tiler Heap desc:");
+       uint8_t *thb = (uint8_t *)&batch->tiler.heap_templ;
+-      for (int i = 0; i < 32; i++) fprintf(stderr, " %02x", thb[i]);
+-      fprintf(stderr, "\n");
++      for (int i = 0; i < 32; i++) PAN_V9_TRACE( " %02x", thb[i]);
++      PAN_V9_TRACE( "\n");
+    }
+ 
+    memcpy(batch->tiler.heap_desc.cpu, &batch->tiler.heap_templ,
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "genxml/gen_macros.h"
++#include "pan_v9_trace.h"
+ 
+ #include "panvk_buffer.h"
+ #include "panvk_cmd_alloc.h"
+@@ -2494,7 +2495,7 @@
+       cfg.flags_1.render_target_mask =
+          cmdbuf->state.gfx.render.bound_attachments &
+          MESA_VK_RP_ATTACHMENT_ANY_COLOR_BITS;
+-      fprintf(stderr, "[PANVK_DEBUG_FLAGS1] sample_mask=0x%x render_target_mask=0x%x bound_attachments=0x%x\n",
++      PAN_V9_TRACE( "[PANVK_DEBUG_FLAGS1] sample_mask=0x%x render_target_mask=0x%x bound_attachments=0x%x\n",
+               cfg.flags_1.sample_mask, cfg.flags_1.render_target_mask,
+               cmdbuf->state.gfx.render.bound_attachments);
+ 
+@@ -2510,15 +2511,15 @@
+ 
+       cfg.depth_stencil = ds_ptr.gpu;
+       {
+-         fprintf(stderr, "[PANVK_DEBUG_DS] 32 byte Depth/stencil desc:");
++         PAN_V9_TRACE( "[PANVK_DEBUG_DS] 32 byte Depth/stencil desc:");
+          uint8_t *dsb = (uint8_t *)ds_ptr.cpu;
+-         for (int i = 0; i < 32; i++) fprintf(stderr, " %02x", dsb[i]);
+-         fprintf(stderr, "\n");
++         for (int i = 0; i < 32; i++) PAN_V9_TRACE( " %02x", dsb[i]);
++         PAN_V9_TRACE( "\n");
+          if (bd_count > 0) {
+-            fprintf(stderr, "[PANVK_DEBUG_BLENDRAW] %u byte Blend desc(s):", bd_count * 16);
++            PAN_V9_TRACE( "[PANVK_DEBUG_BLENDRAW] %u byte Blend desc(s):", bd_count * 16);
+             uint8_t *bb = (uint8_t *)blend_ptr.cpu;
+-            for (uint32_t i = 0; i < bd_count * 16; i++) fprintf(stderr, " %02x", bb[i]);
+-            fprintf(stderr, "\n");
++            for (uint32_t i = 0; i < bd_count * 16; i++) PAN_V9_TRACE( " %02x", bb[i]);
++            PAN_V9_TRACE( "\n");
+          }
+       }
+ 
+@@ -2779,6 +2780,9 @@
+ static void
+ panvk_debug_dump_malloc_vertex_job(const struct pan_ptr *job, const char *label)
+ {
++   if (!pan_v9_trace_enabled())
++      return;
++
+    const uint8_t *bytes = (const uint8_t *)job->cpu;
+    FILE *out = stderr;
+    uint32_t word4, word5;
+@@ -2904,7 +2908,7 @@
+          if (result != VK_SUCCESS)
+             return result;
+ 
+-         fprintf(stderr, "[PANVK_DEBUG_BLENDFIX] blend_ptr.gpu=0x%lx bd_count=%u state.blend_descs[0]=0x%lx\n",
++         PAN_V9_TRACE( "[PANVK_DEBUG_BLENDFIX] blend_ptr.gpu=0x%lx bd_count=%u state.blend_descs[0]=0x%lx\n",
+                  (unsigned long)draw->blend_ptr.gpu, draw->bd_count,
+                  (unsigned long)cmdbuf->state.gfx.fs.blend_descs[0]);
+       }
+@@ -2922,12 +2926,12 @@
+       return result;
+    cmdbuf->state.gfx.vs.push_uniforms = vs_push_uniforms.gpu;
+ 
+-   fprintf(stderr, "[PANVK_DEBUG_VSFAU] gpu=0x%llx count=%u bytes=%u:",
++   PAN_V9_TRACE( "[PANVK_DEBUG_VSFAU] gpu=0x%llx count=%u bytes=%u:",
+            (unsigned long long)vs_push_uniforms.gpu,
+            vs->fau.total_count, vs->fau.total_count * 8);
+    for (uint32_t i = 0; i < vs->fau.total_count * 8; i++)
+-      fprintf(stderr, " %02x", ((uint8_t *)vs_push_uniforms.cpu)[i]);
+-   fprintf(stderr, "\n");
++      PAN_V9_TRACE( " %02x", ((uint8_t *)vs_push_uniforms.cpu)[i]);
++   PAN_V9_TRACE( "\n");
+ 
+    if (fs) {
+       struct pan_ptr fs_push_uniforms;
+@@ -2937,12 +2941,12 @@
+          return result;
+       cmdbuf->state.gfx.fs.push_uniforms = fs_push_uniforms.gpu;
+ 
+-      fprintf(stderr, "[PANVK_DEBUG_FSFAU] gpu=0x%llx count=%u bytes=%u:",
++      PAN_V9_TRACE( "[PANVK_DEBUG_FSFAU] gpu=0x%llx count=%u bytes=%u:",
+               (unsigned long long)fs_push_uniforms.gpu,
+               fs->fau.total_count, fs->fau.total_count * 8);
+       for (uint32_t i = 0; i < fs->fau.total_count * 8; i++)
+-         fprintf(stderr, " %02x", ((uint8_t *)fs_push_uniforms.cpu)[i]);
+-      fprintf(stderr, "\n");
++         PAN_V9_TRACE( " %02x", ((uint8_t *)fs_push_uniforms.cpu)[i]);
++      PAN_V9_TRACE( "\n");
+    }
+ 
+    /* One tiler context per layer; panvk_cmd_draw_v9() calls this once per
+@@ -3127,12 +3131,12 @@
+        * land on the predicted index the experiment is measuring the wrong thing
+        * and the log has to say so. */
+       if (batch->vtc_jc.job_index != predicted_helper_index) {
+-         fprintf(stderr,
++         PAN_V9_TRACE(
+                  "[PANVK_DEBUG_CHAINREV] prediction MISSED: expected helper "
+                  "index %u, got %u\n",
+                  predicted_helper_index, batch->vtc_jc.job_index);
+       } else {
+-         fprintf(stderr,
++         PAN_V9_TRACE(
+                  "[PANVK_DEBUG_CHAINREV] draw queued first, forward dep on "
+                  "helper index %u (confirmed)\n",
+                  predicted_helper_index);
+@@ -3182,7 +3186,7 @@
+     * sudah terisi. Lihat komentar di panvk_debug_dump_malloc_vertex_job(). */
+    panvk_debug_dump_malloc_vertex_job(&draw->jobs.idvs, "sesudah pan_jc_add_job");
+ 
+-   fprintf(stderr,
++   PAN_V9_TRACE(
+            "[PANVK_DEBUG_MVJ] jc state: first_job=0x%" PRIx64
+            " job_index=%u tiler_dep=%u\n",
+            batch->vtc_jc.first_job, batch->vtc_jc.job_index,
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c b/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
+@@ -35,6 +35,7 @@
+ #include <poll.h>
+ #include <sys/mman.h>
+ #include <unistd.h>
++#include "pan_v9_trace.h"
+ 
+ struct panvk_kbase_event_v2 {
+    uint32_t event_code;
+@@ -337,11 +338,15 @@
+    /* SKIP: dump sebelum submit dipastikan SIGSEGV karena ALLOC_ON_FAULT (commit_pages=0), nggak informatif */
+    if (batch->vtc_jc.first_job) {
+       ret = panvk_kbase_submit_and_wait(dev->drm_fd, batch->vtc_jc.first_job, 0x16); /* PATCH eksperimen: dulu 0x16 (CS|T|V) */
+-      fprintf(panvk_debug_log_file(),
+-              "[PANVK_DEBUG_SUBMIT] vtc_jc ret=%d\n", ret);
+-      panvk_debug_dump_job_status(cmdbuf, batch, "vtc_jc");
+-      assert(!ret);
+-      panvk_debug_dump_tiler_heap(dev, "SESUDAH vtc_jc (vertex+tiler)");
++      if (ret)
++         mesa_loge("panvk: v9 vtc_jc job chain failed: kbase event 0x%x "
++                   "(PANVK_V9_TRACE=1 dumps the job status)", -ret);
++      if (pan_v9_trace_enabled() || getenv("PANVK_HEAP_LOG")) {
++         fprintf(panvk_debug_log_file(),
++                 "[PANVK_DEBUG_SUBMIT] vtc_jc ret=%d\n", ret);
++         panvk_debug_dump_job_status(cmdbuf, batch, "vtc_jc");
++         panvk_debug_dump_tiler_heap(dev, "SESUDAH vtc_jc (vertex+tiler)");
++      }
+ 
+       if (PANVK_DEBUG(TRACE)) {
+          panvk_pool_invalidate_maps(&cmdbuf->desc_pool);
+@@ -359,11 +364,15 @@
+ 
+    if (batch->frag_jc.first_job) {
+       ret = panvk_kbase_submit_and_wait(dev->drm_fd, batch->frag_jc.first_job, 0x01);
+-      fprintf(panvk_debug_log_file(),
+-              "[PANVK_DEBUG_SUBMIT] frag_jc ret=%d\n", ret);
+-      panvk_debug_dump_job_status(cmdbuf, batch, "frag_jc");
+-      assert(!ret);
+-      panvk_debug_dump_tiler_heap(dev, "SESUDAH frag_jc (fragment)");
++      if (ret)
++         mesa_loge("panvk: v9 frag_jc job chain failed: kbase event 0x%x "
++                   "(PANVK_V9_TRACE=1 dumps the job status)", -ret);
++      if (pan_v9_trace_enabled() || getenv("PANVK_HEAP_LOG")) {
++         fprintf(panvk_debug_log_file(),
++                 "[PANVK_DEBUG_SUBMIT] frag_jc ret=%d\n", ret);
++         panvk_debug_dump_job_status(cmdbuf, batch, "frag_jc");
++         panvk_debug_dump_tiler_heap(dev, "SESUDAH frag_jc (fragment)");
++      }
+       if (PANVK_DEBUG(TRACE)) {
+          /* If we want to read the descriptors back, we need to invalidate the
+           * whole desc pool, otherwise we might end up with stale data. */
+diff --git a/src/panfrost/vulkan/panvk_image.c b/src/panfrost/vulkan/panvk_image.c
+--- a/src/panfrost/vulkan/panvk_image.c
++++ b/src/panfrost/vulkan/panvk_image.c
+@@ -31,6 +31,7 @@
+ #include "vk_log.h"
+ #include "vk_object.h"
+ #include "vk_util.h"
++#include "pan_v9_trace.h"
+ 
+ bool
+ panvk_image_can_use_afbc(
+@@ -658,7 +659,7 @@
+    plane->plane.base = mem->addr.dev + offset;
+    plane->mem = mem;
+    plane->mem_offset = offset;
+-   fprintf(stderr, "[PANVK_DEBUG_BIND] image plane bind (non-sparse) base=0x%lx (mem->addr.dev=0x%lx offset=%lu)\n",
++   PAN_V9_TRACE( "[PANVK_DEBUG_BIND] image plane bind (non-sparse) base=0x%lx (mem->addr.dev=0x%lx offset=%lu)\n",
+            (unsigned long)plane->plane.base, (unsigned long)mem->addr.dev, (unsigned long)offset);
+ }
+ 
+@@ -668,7 +669,7 @@
+                             uint64_t addr)
+ {
+    plane->plane.base = addr;
+-   fprintf(stderr, "[PANVK_DEBUG_BIND] image plane bind addr=0x%lx\n", (unsigned long)addr);
++   PAN_V9_TRACE( "[PANVK_DEBUG_BIND] image plane bind addr=0x%lx\n", (unsigned long)addr);
+ }
+ 
+ static void
+diff --git a/src/panfrost/vulkan/panvk_vX_blend.c b/src/panfrost/vulkan/panvk_vX_blend.c
+--- a/src/panfrost/vulkan/panvk_vX_blend.c
++++ b/src/panfrost/vulkan/panvk_vX_blend.c
+@@ -20,6 +20,7 @@
+ #include "panvk_device.h"
+ #include "panvk_meta.h"
+ #include "panvk_shader.h"
++#include "pan_v9_trace.h"
+ 
+ struct panvk_blend_shader_key {
+    enum panvk_meta_object_key_type type;
+@@ -320,21 +321,21 @@
+       rt_loc[i] = loc;
+       loc_rt[loc] = i;
+ 
+-      fprintf(stderr, "[PANVK_DEBUG_BLEND] rt=%u color_write_enables=0x%x fmt=%u write_mask=0x%x\n",
++      PAN_V9_TRACE( "[PANVK_DEBUG_BLEND] rt=%u color_write_enables=0x%x fmt=%u write_mask=0x%x\n",
+               i, cb->color_write_enables, color_attachment_formats[i], cb->attachments[i].write_mask);
+ 
+       if (!(cb->color_write_enables & BITFIELD_BIT(i))) {
+-         fprintf(stderr, "[PANVK_DEBUG_BLEND] rt=%u SKIP: color_write_enables\n", i);
++         PAN_V9_TRACE( "[PANVK_DEBUG_BLEND] rt=%u SKIP: color_write_enables\n", i);
+          continue;
+       }
+ 
+       if (color_attachment_formats[i] == VK_FORMAT_UNDEFINED) {
+-         fprintf(stderr, "[PANVK_DEBUG_BLEND] rt=%u SKIP: format undefined\n", i);
++         PAN_V9_TRACE( "[PANVK_DEBUG_BLEND] rt=%u SKIP: format undefined\n", i);
+          continue;
+       }
+ 
+       if (!cb->attachments[i].write_mask) {
+-         fprintf(stderr, "[PANVK_DEBUG_BLEND] rt=%u SKIP: write_mask zero\n", i);
++         PAN_V9_TRACE( "[PANVK_DEBUG_BLEND] rt=%u SKIP: write_mask zero\n", i);
+          continue;
+       }
+ 
+diff --git a/src/panfrost/vulkan/panvk_vX_cmd_desc_state.c b/src/panfrost/vulkan/panvk_vX_cmd_desc_state.c
+--- a/src/panfrost/vulkan/panvk_vX_cmd_desc_state.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_desc_state.c
+@@ -28,6 +28,7 @@
+ #include "vk_alloc.h"
+ #include "vk_command_buffer.h"
+ #include "vk_command_pool.h"
++#include "pan_v9_trace.h"
+ 
+ static void
+ cmd_desc_state_bind_sets(struct panvk_descriptor_state *desc_state,
+@@ -285,7 +286,7 @@
+    const char *skip = getenv("PANVK_RESTAB_SKIP");
+    if (skip && (!strcmp(skip, "1") ||
+                 (!strcmp(skip, "frag") && desc_info->used_set_mask != 0))) {
+-      fprintf(stderr,
++      PAN_V9_TRACE(
+               "[PANVK_DEBUG_RESTAB] SKIP(%s) ENABLED: not building table "
+               "(would have been used_set_mask=0x%x res_count=%u), "
+               "forcing res_table=0\n",
+@@ -306,7 +307,7 @@
+    if (restab_dbg < 0)
+       restab_dbg = getenv("PANVK_DEBUG_RESTAB") ? 1 : 0;
+    if (restab_dbg)
+-      fprintf(stderr,
++      PAN_V9_TRACE(
+               "[PANVK_DEBUG_RESTAB] used_set_mask=0x%x first_unused_set=%u "
+               "res_count=%u align=%u repeat=%u ptr.gpu=0x%llx "
+               "res_table=0x%llx entry_bytes=%u table_bytes=%u\n",
+@@ -332,7 +333,7 @@
+          cfg.contains_descriptors = cfg.size > 0;
+       }
+       if (restab_dbg)
+-         fprintf(stderr,
++         PAN_V9_TRACE(
+                  "[PANVK_DEBUG_RESTAB]   r=%u entry[0] DRIVER_SET "
+                  "addr=0x%llx size=%u contains_desc=%d\n",
+                  r, (unsigned long long)drv_set_addr,
+@@ -355,14 +356,14 @@
+          }
+          if (restab_dbg) {
+             if (desc_info->used_set_mask & BITFIELD_BIT(i))
+-               fprintf(stderr,
++               PAN_V9_TRACE(
+                        "[PANVK_DEBUG_RESTAB]   r=%u entry[%u] SET%u "
+                        "addr=0x%llx size=%u desc_count=%u\n",
+                        r, i + 1, i, (unsigned long long)set->descs.dev,
+                        set->desc_count * PANVK_DESCRIPTOR_SIZE,
+                        set->desc_count);
+             else
+-               fprintf(stderr,
++               PAN_V9_TRACE(
+                        "[PANVK_DEBUG_RESTAB]   r=%u entry[%u] SET%u "
+                        "UNUSED (zeroed)\n",
+                        r, i + 1, i);
+@@ -375,7 +376,7 @@
+             cfg.size = 0;
+          }
+          if (restab_dbg)
+-            fprintf(stderr,
++            PAN_V9_TRACE(
+                     "[PANVK_DEBUG_RESTAB]   r=%u entry[%u] PAD (zeroed)\n",
+                     r, i);
+       }
+diff --git a/src/panfrost/vulkan/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+@@ -11,6 +11,7 @@
+ 
+ #include "pan_desc.h"
+ #include "pan_util.h"
++#include "pan_v9_trace.h"
+ 
+ static enum pan_fb_load_op
+ get_att_fb_load_op(const VkRenderingAttachmentInfo *att)
+@@ -919,7 +920,7 @@
+        * cetak nilai VkViewport mentah dan hasil scale/offset yang
+        * BENERAN kesimpen di cmdbuf->state.gfx.sysvals, bukan tebak dari
+        * dump hex. HAPUS setelah bug ketemu. */
+-      fprintf(stderr,
++      PAN_V9_TRACE(
+               "[PANVK_DEBUG_VP] VkViewport: w=%f h=%f x=%f y=%f\n"
+               "[PANVK_DEBUG_VP] computed scale: x=%f y=%f\n"
+               "[PANVK_DEBUG_VP] computed offset: x=%f y=%f\n",
+diff --git a/src/panfrost/vulkan/panvk_vX_shader.c b/src/panfrost/vulkan/panvk_vX_shader.c
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -51,6 +51,7 @@
+ #include "vk_pipeline_layout.h"
+ #include "vk_shader.h"
+ #include "vk_util.h"
++#include "pan_v9_trace.h"
+ 
+ #define FAU_WORD_COUNT 64
+ 
+@@ -1284,12 +1285,12 @@
+       const char *stage_name =
+          shader->info.stage == MESA_SHADER_VERTEX ? "VERTEX" :
+          shader->info.stage == MESA_SHADER_FRAGMENT ? "FRAGMENT" : "OTHER";
+-      fprintf(stderr, "[PANVK_DEBUG_SHADERBIN] stage=%s bin_size=%u bytes:",
++      PAN_V9_TRACE( "[PANVK_DEBUG_SHADERBIN] stage=%s bin_size=%u bytes:",
+               stage_name, shader->bin_size);
+       const uint8_t *b = shader->bin_ptr;
+       for (uint32_t i = 0; i < shader->bin_size; i++)
+-         fprintf(stderr, "%s%02x", (i % 16 == 0) ? "\n  " : " ", b[i]);
+-      fprintf(stderr, "\n");
++         PAN_V9_TRACE( "%s%02x", (i % 16 == 0) ? "\n  " : " ", b[i]);
++      PAN_V9_TRACE( "\n");
+    }
+ 
+ #if PAN_ARCH < 9
+diff --git a/src/panfrost/lib/pan_v9_trace.h b/src/panfrost/lib/pan_v9_trace.h
+new file mode 100644
+--- /dev/null
++++ b/src/panfrost/lib/pan_v9_trace.h
+@@ -0,0 +1,28 @@
++/*
++ * Bring-up trace output of the v9 Job Manager port ([PANVK_DEBUG_*] lines:
++ * descriptor dumps, job status, kbase allocations). Off by default; set
++ * PANVK_V9_TRACE=1 to get it on stderr.
++ */
++#ifndef PAN_V9_TRACE_H
++#define PAN_V9_TRACE_H
++
++#include <stdbool.h>
++#include <stdio.h>
++#include "util/u_debug.h"
++
++static inline bool
++pan_v9_trace_enabled(void)
++{
++   static int on = -1;
++   if (on < 0)
++      on = debug_get_bool_option("PANVK_V9_TRACE", false);
++   return on;
++}
++
++#define PAN_V9_TRACE(...)                                                      \
++   do {                                                                        \
++      if (pan_v9_trace_enabled())                                              \
++         fprintf(stderr, __VA_ARGS__);                                         \
++   } while (0)
++
++#endif

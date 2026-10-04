@@ -1,0 +1,11 @@
+drv7 #1 AIOCLICK scene=tess status=ALIVE segv=0 guard_msgs=2 unhandled=0
+drv7 #2 AIOCLICK scene=tess status=ALIVE segv=0 guard_msgs=2 unhandled=0
+drv7 #3 AIOCLICK scene=tess status=ALIVE segv=0 guard_msgs=2 unhandled=0
+drv7 #1 AIOCLICK scene=gs status=ALIVE segv=0 guard_msgs=2 unhandled=0
+drv7 #2 AIOCLICK scene=gs status=ALIVE segv=0 guard_msgs=2 unhandled=0
+drv7 #3 AIOCLICK scene=gs status=ALIVE segv=0 guard_msgs=2 unhandled=0
+ctl_allow AIOCLICK scene=tess status=ALIVE segv=0 guard_msgs=0 unhandled=0
+ctl_drv6 AIOCLICK scene=tess status=ALIVE segv=0 guard_msgs=0 unhandled=0
+ctl_allow AIOCLICK scene=gs status=DIED segv=1 guard_msgs=0 unhandled=7
+ctl_drv6 AIOCLICK scene=gs status=DIED segv=1 guard_msgs=0 unhandled=7
+MATRIX_DONE

@@ -1,0 +1,310 @@
+diff --git a/src/panfrost/vulkan/panvk_physical_device.c b/src/panfrost/vulkan/panvk_physical_device.c
+--- a/src/panfrost/vulkan/panvk_physical_device.c
++++ b/src/panfrost/vulkan/panvk_physical_device.c
+@@ -1493,9 +1493,15 @@
+          features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT;
+ 
+       /* Integer formats only support nearest filtering */
+-      if (!util_format_is_scaled(pfmt) && !util_format_is_pure_integer(pfmt))
++      if (!util_format_is_scaled(pfmt) && !util_format_is_pure_integer(pfmt)) {
+          features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT;
+ 
++         /* v9: EXPERIMENTAL cubic filter emulation, colour formats only
++          * (the emulation does not handle depth compare). */
++         if (arch == 9 && !util_format_is_depth_or_stencil(pfmt))
++            features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT;
++      }
++
+       features |= VK_FORMAT_FEATURE_2_BLIT_SRC_BIT;
+ 
+       if (vk_format_has_depth(format))
+diff --git a/src/panfrost/vulkan/panvk_sampler.h b/src/panfrost/vulkan/panvk_sampler.h
+--- a/src/panfrost/vulkan/panvk_sampler.h
++++ b/src/panfrost/vulkan/panvk_sampler.h
+@@ -29,13 +29,16 @@
+                                VK_OBJECT_TYPE_SAMPLER)
+ 
+ 
+-/* EXPERIMENTAL: v9 sampler word 3 layout used by the min/max reduction
+- * emulation (panvk_vX_sampler.c, panvk_v9_nir_lower_minmax.c). */
++/* EXPERIMENTAL: v9 sampler word 3 layout used by the min/max reduction and
++ * cubic filter emulation (panvk_vX_sampler.c, panvk_v9_nir_lower_minmax.h).
++ * Neither MIN nor MAX set means WEIGHTED_AVERAGE. */
+ #define PANVK_V9_MINMAX_MIN        (1u << 0)
+ #define PANVK_V9_MINMAX_MAX        (1u << 1)
+ #define PANVK_V9_MINMAX_MAG_LINEAR (1u << 4)
+ #define PANVK_V9_MINMAX_MIN_LINEAR (1u << 5)
+ #define PANVK_V9_MINMAX_MIP_LINEAR (1u << 6)
++#define PANVK_V9_MINMAX_MAG_CUBIC  (1u << 7)
++#define PANVK_V9_MINMAX_MIN_CUBIC  (1u << 8)
+ #define PANVK_V9_MINMAX_TAG        (1u << 31)
+ 
+ #endif
+diff --git a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+--- a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
++++ b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+@@ -1,5 +1,12 @@
+ /*
+- * EXPERIMENTAL: VK_SAMPLER_REDUCTION_MODE_MIN/MAX emulation for Valhall v9.
++ * EXPERIMENTAL: VK_SAMPLER_REDUCTION_MODE_MIN/MAX and VK_FILTER_CUBIC_EXT
++ * emulation for Valhall v9.
++ *
++ * Cubic: v9 (like every Mali) has no cubic filter. A sampler with a CUBIC
++ * min or mag filter is tagged in word 3 as well and the emulation path
++ * below takes the 4x4 Catmull-Rom footprint (2D and 2D array only),
++ * weighted for WEIGHTED_AVERAGE, unweighted min/max otherwise. Between mip
++ * levels the two results are blended (average) or reduced (min/max).
+  *
+  * v9 samplers have no reduction mode field (v10 added one), so for samplers
+  * created with MIN or MAX the filtering is redone in the shader:
+@@ -207,7 +214,9 @@
+    nir_def *face, *cube_index, *lod_bias; /* cube only */
+    nir_def *coord, *offset, *size0, *border_color;
+    nir_def *wrap[3];
+-   nir_def *normalized, *linear, *is_min;
++   nir_def *normalized, *is_min, *is_avg;
++   /* log2 of the footprint per dimension: 0 nearest, 1 linear, 2 cubic */
++   nir_def *l2;
+    unsigned dims;
+ };
+ 
+@@ -217,6 +226,28 @@
+    return nir_bcsel(b, is_min, nir_fmin(b, a, c), nir_fmax(b, a, c));
+ }
+ 
++/* Weight of tap k (0..2^l2-1) along one dimension, fraction a = frac(u - 0.5).
++ * Cubic is Catmull-Rom (the VK_EXT_filter_cubic default):
++ *   w = 1/2 * [1 a a^2 a^3] * [ 0  2  0  0
++ *                              -1  0  1  0
++ *                               2 -5  4 -1
++ *                              -1  3 -3  1 ] */
++static nir_def *
++mm_tap_weight(nir_builder *b, nir_def *l2, nir_def *k, nir_def *a)
++{
++   nir_def *a2 = nir_fmul(b, a, a), *a3 = nir_fmul(b, a2, a);
++   nir_def *c0 = nir_fmul_imm(b, nir_fadd(b, nir_fsub(b, nir_fmul_imm(b, a2, 2.0), a), nir_fneg(b, a3)), 0.5);
++   nir_def *c1 = nir_fmul_imm(b, nir_fadd_imm(b, nir_fsub(b, nir_fmul_imm(b, a3, 3.0), nir_fmul_imm(b, a2, 5.0)), 2.0), 0.5);
++   nir_def *c2 = nir_fmul_imm(b, nir_fsub(b, nir_fadd(b, a, nir_fmul_imm(b, a2, 4.0)), nir_fmul_imm(b, a3, 3.0)), 0.5);
++   nir_def *c3 = nir_fmul_imm(b, nir_fsub(b, a3, a2), 0.5);
++   nir_def *cub = nir_bcsel(b, nir_ieq_imm(b, k, 0), c0,
++                  nir_bcsel(b, nir_ieq_imm(b, k, 1), c1,
++                  nir_bcsel(b, nir_ieq_imm(b, k, 2), c2, c3)));
++   nir_def *lin = nir_bcsel(b, nir_ieq_imm(b, k, 0), nir_fsub_imm(b, 1.0, a), a);
++   return nir_bcsel(b, nir_ieq_imm(b, l2, 0), nir_imm_float(b, 1.0),
++                    nir_bcsel(b, nir_ieq_imm(b, l2, 1), lin, cub));
++}
++
+ /* Texel (face, i, j) of level lvl of a cube.
+  *
+  * TEX_FETCH cannot reach cube faces on v9: on a cube descriptor its array
+@@ -278,22 +309,22 @@
+ mm_level(nir_builder *b, struct mm_state *s, nir_def *lvl)
+ {
+    nir_def *li = nir_f2i32(b, lvl);
+-   nir_def *lo[3], *hi[3], *sz[3];
++   nir_def *base[3], *frac[3], *sz[3];
+ 
++   /* Footprint of 2^l2 taps per dimension starting at
++    *   nearest: floor(u)   linear: floor(u - 1/2)   cubic: floor(u - 3/2) */
++   nir_def *start = nir_bcsel(b, nir_ieq_imm(b, s->l2, 0), nir_imm_float(b, 0.0),
++                    nir_bcsel(b, nir_ieq_imm(b, s->l2, 1), nir_imm_float(b, -0.5),
++                              nir_imm_float(b, -1.5)));
+    for (unsigned d = 0; d < s->dims; d++) {
+       sz[d] = nir_imax(b, nir_ushr(b, nir_channel(b, s->size0, d), li),
+                        nir_imm_int(b, 1));
+       nir_def *u = nir_channel(b, s->coord, d);
+       u = nir_bcsel(b, s->normalized, nir_fmul(b, u, nir_i2f32(b, sz[d])), u);
+-      nir_def *lin0 = nir_f2i32(b, nir_ffloor(b, nir_fadd_imm(b, u, -0.5)));
+-      nir_def *near = nir_f2i32(b, nir_ffloor(b, u));
+-      lo[d] = nir_bcsel(b, s->linear, lin0, near);
+-      hi[d] = nir_bcsel(b, s->linear, nir_iadd_imm(b, lin0, 1), near);
+-      if (s->offset) {
+-         nir_def *o = nir_channel(b, s->offset, d);
+-         lo[d] = nir_iadd(b, lo[d], o);
+-         hi[d] = nir_iadd(b, hi[d], o);
+-      }
++      base[d] = nir_f2i32(b, nir_ffloor(b, nir_fadd(b, u, start)));
++      frac[d] = nir_ffract(b, nir_fadd_imm(b, u, -0.5));
++      if (s->offset)
++         base[d] = nir_iadd(b, base[d], nir_channel(b, s->offset, d));
+    }
+ 
+    nir_def *layer = NULL;
+@@ -316,7 +347,17 @@
+    nir_push_loop(b);
+    {
+       nir_def *corner = nir_load_var(b, cnr_var);
+-      nir_break_if(b, nir_uge_imm(b, corner, 1u << s->dims));
++      nir_break_if(b, nir_uge(b, corner, nir_ishl(b, nir_imm_int(b, 1),
++                                  nir_imul_imm(b, s->l2, s->dims))));
++
++      /* tap index per dimension, and the product of the tap weights */
++      nir_def *tap[3], *weight = nir_imm_float(b, 1.0);
++      nir_def *tap_mask = nir_iadd_imm(b, nir_ishl(b, nir_imm_int(b, 1), s->l2), -1);
++      for (unsigned d = 0; d < s->dims; d++) {
++         tap[d] = nir_iand(b, nir_ushr(b, corner, nir_imul_imm(b, s->l2, d)),
++                           tap_mask);
++         weight = nir_fmul(b, weight, mm_tap_weight(b, s->l2, tap[d], frac[d]));
++      }
+ 
+       nir_def *border = nir_imm_false(b);
+       nir_def *c[4], *cube_face = NULL;
+@@ -327,19 +368,16 @@
+          nir_def *nm1 = nir_iadd_imm(b, sz[0], -1), *zero = nir_imm_int(b, 0);
+          nir_def *ij[2], *fc;
+          for (unsigned d = 0; d < 2; d++) {
+-            nir_def *v = nir_bcsel(b, nir_test_mask(b, corner, 1u << d),
+-                                   hi[d], lo[d]);
+-            ij[d] = nir_bcsel(b, s->linear, v,
+-                              nir_imin(b, nir_imax(b, v, zero), nm1));
++            nir_def *v = nir_iadd(b, base[d], tap[d]);
++            ij[d] = nir_bcsel(b, nir_ieq_imm(b, s->l2, 0),
++                              nir_imin(b, nir_imax(b, v, zero), nm1), v);
+          }
+          mm_cube_remap(b, s->face, ij[0], ij[1], sz[0], &fc, &c[0], &c[1]);
+          cube_face = fc;
+       } else {
+-         for (unsigned d = 0; d < s->dims; d++) {
+-            nir_def *pick_hi = nir_test_mask(b, corner, 1u << d);
+-            c[d] = mm_wrap(b, nir_bcsel(b, pick_hi, hi[d], lo[d]), sz[d],
++         for (unsigned d = 0; d < s->dims; d++)
++            c[d] = mm_wrap(b, nir_iadd(b, base[d], tap[d]), sz[d],
+                            s->wrap[d], &border);
+-         }
+          if (layer)
+             c[nc++] = layer;
+       }
+@@ -359,9 +397,15 @@
+       }
+       nir_def *texel = nir_bcsel(b, border, s->border_color, fetched);
+ 
++      /* MIN/MAX take every texel of the footprint regardless of its weight
++       * (spec: "the texels that would be used"); WEIGHTED_AVERAGE sums. */
+       nir_def *acc = nir_load_var(b, acc_var);
+-      acc = nir_bcsel(b, nir_ieq_imm(b, corner, 0), texel,
+-                      mm_reduce(b, s->is_min, acc, texel));
++      nir_def *first = nir_ieq_imm(b, corner, 0);
++      nir_def *wt = nir_fmul(b, texel, weight);
++      nir_def *avg = nir_bcsel(b, first, wt, nir_fadd(b, acc, wt));
++      nir_def *red = nir_bcsel(b, first, texel,
++                               mm_reduce(b, s->is_min, acc, texel));
++      acc = nir_bcsel(b, s->is_avg, avg, red);
+       nir_store_var(b, acc_var, acc, 0xf);
+       nir_store_var(b, cnr_var, nir_iadd_imm(b, corner, 1), 1);
+    }
+@@ -443,10 +487,22 @@
+                              nir_imm_float(b, 0));
+    nir_def *l1 = nir_fmin(b, nir_fadd_imm(b, l0, 1.0), maxl);
+ 
+-   s.linear = nir_bcsel(b, nir_fle_imm(b, lam, 0.0),
+-                        nir_test_mask(b, w3, PANVK_V9_MINMAX_MAG_LINEAR),
+-                        nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN_LINEAR));
++   nir_def *mag = nir_fle_imm(b, lam, 0.0);
++   nir_def *lin = nir_bcsel(b, mag,
++                            nir_test_mask(b, w3, PANVK_V9_MINMAX_MAG_LINEAR),
++                            nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN_LINEAR));
++   nir_def *cub = nir_bcsel(b, mag,
++                            nir_test_mask(b, w3, PANVK_V9_MINMAX_MAG_CUBIC),
++                            nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN_CUBIC));
++   /* Cubic is only exposed for 2D and 2D array views; anything else gets
++    * the linear footprint. */
++   if (s.dims != 2 || s.cube)
++      cub = nir_imm_false(b);
++   s.l2 = nir_bcsel(b, cub, nir_imm_int(b, 2),
++                    nir_bcsel(b, lin, nir_imm_int(b, 1), nir_imm_int(b, 0)));
+    s.is_min = nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN);
++   s.is_avg = nir_inot(b, nir_test_mask(b, w3, PANVK_V9_MINMAX_MIN |
++                                                PANVK_V9_MINMAX_MAX));
+    s.normalized = nir_test_mask(b, w0, 1u << 25);
+    s.wrap[0] = nir_ubitfield_extract_imm(b, w0, 16, 4); /* S */
+    s.wrap[1] = nir_ubitfield_extract_imm(b, w0, 12, 4); /* T */
+@@ -472,11 +528,40 @@
+       s.coord = nir_vec2(b, fs, ft);
+       s.normalized = nir_imm_true(b);
+    }
+-   s.border_color = pan_nir_load_va_desc(b, 4, 32, samp_h, 16);
++   /* Border texel value. The raw sampler words are not it: the hardware
++    * converts the border colour to the image format first, e.g. a format
++    * without alpha reads alpha 1 (CTS unnormal e5b9g9r9 cubic failed on
++    * alpha with the raw words). So ask the hardware: sample far outside the
++    * image along every CLAMP_TO_BORDER axis, where all taps are border
++    * texels. Not used when no axis clamps to border, or for cubes. */
++   if (s.cube) {
++      s.border_color = nir_imm_vec4(b, 0, 0, 0, 0);
++   } else {
++      nir_def *bc[4];
++      for (unsigned d = 0; d < s.dims; d++) {
++         nir_def *is_b = nir_ior(b, nir_ieq_imm(b, s.wrap[d], 11),
++                                    nir_ieq_imm(b, s.wrap[d], 15));
++         bc[d] = nir_bcsel(b, is_b, nir_imm_float(b, -1024.0),
++                           nir_imm_float(b, 0.5));
++      }
++      unsigned nbc = s.dims;
++      if (tex->is_array)
++         bc[nbc++] = nir_channel(b, s.coord, s.dims);
++      unsigned k;
++      nir_tex_instr *bt = mm_new_tex(b, tex, nir_texop_txl, 2, &k);
++      bt->coord_components = nbc;
++      bt->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord, nir_vec(b, bc, nbc));
++      bt->src[k + 1] = nir_tex_src_for_ssa(nir_tex_src_lod, nir_imm_float(b, 0.0));
++      nir_def_init(&bt->instr, &bt->def, 4, 32);
++      nir_builder_instr_insert(b, &bt->instr);
++      s.border_color = &bt->def;
++   }
+ 
+    nir_def *r0 = mm_level(b, &s, l0);
+    nir_if *nif2 = nir_push_if(b, nir_fgt_imm(b, frac, 0.0));
+-   nir_def *r01 = mm_reduce(b, s.is_min, r0, mm_level(b, &s, l1));
++   nir_def *r1 = mm_level(b, &s, l1);
++   nir_def *r01 = nir_bcsel(b, s.is_avg, nir_flrp(b, r0, r1, frac),
++                            mm_reduce(b, s.is_min, r0, r1));
+    nir_pop_if(b, nif2);
+    nir_def *res = nir_if_phi(b, r01, r0);
+    res = nir_trim_vector(b, res, orig->num_components);
+diff --git a/src/panfrost/vulkan/panvk_vX_physical_device.c b/src/panfrost/vulkan/panvk_vX_physical_device.c
+--- a/src/panfrost/vulkan/panvk_vX_physical_device.c
++++ b/src/panfrost/vulkan/panvk_vX_physical_device.c
+@@ -176,6 +176,9 @@
+       .EXT_image_robustness = true,
+       .EXT_image_sliced_view_of_3d = true,
+       .EXT_image_view_min_lod = true,
++      /* v9: EXPERIMENTAL, cubic filtering is emulated in the shader
++       * (panvk_v9_nir_lower_minmax.h); no Mali has a cubic filter. */
++      .EXT_filter_cubic = PAN_ARCH == 9,
+       .EXT_index_type_uint8 = true,
+       .EXT_legacy_dithering = true,
+       .EXT_line_rasterization = true,
+diff --git a/src/panfrost/vulkan/panvk_vX_sampler.c b/src/panfrost/vulkan/panvk_vX_sampler.c
+--- a/src/panfrost/vulkan/panvk_vX_sampler.c
++++ b/src/panfrost/vulkan/panvk_vX_sampler.c
+@@ -185,14 +185,26 @@
+     * measured not to read (filled with 0xffffffff: byte-identical texture
+     * output). Word 3 stays 0 for every WEIGHTED_AVERAGE sampler, so those
+     * are unchanged. Layout, see PANVK_V9_MINMAX_*: */
+-   if (reduction_mode != VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE) {
+-      uint32_t w3 = PANVK_V9_MINMAX_TAG |
+-         (reduction_mode == VK_SAMPLER_REDUCTION_MODE_MIN ? PANVK_V9_MINMAX_MIN
+-                                                          : PANVK_V9_MINMAX_MAX);
++   /* EXPERIMENTAL v9 cubic filtering (VK_EXT_filter_cubic) goes through the
++    * same emulation: the hardware has no cubic filter, the descriptor above
++    * falls back to LINEAR and the shader redoes the 4x4 Catmull-Rom
++    * footprint when word 3 is tagged. */
++   const bool cubic = mag_filter == VK_FILTER_CUBIC_EXT ||
++                      min_filter == VK_FILTER_CUBIC_EXT;
++   if (reduction_mode != VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE || cubic) {
++      uint32_t w3 = PANVK_V9_MINMAX_TAG;
++      if (reduction_mode == VK_SAMPLER_REDUCTION_MODE_MIN)
++         w3 |= PANVK_V9_MINMAX_MIN;
++      else if (reduction_mode == VK_SAMPLER_REDUCTION_MODE_MAX)
++         w3 |= PANVK_V9_MINMAX_MAX;
+       if (mag_filter == VK_FILTER_LINEAR)
+          w3 |= PANVK_V9_MINMAX_MAG_LINEAR;
+       if (min_filter == VK_FILTER_LINEAR)
+          w3 |= PANVK_V9_MINMAX_MIN_LINEAR;
++      if (mag_filter == VK_FILTER_CUBIC_EXT)
++         w3 |= PANVK_V9_MINMAX_MAG_CUBIC;
++      if (min_filter == VK_FILTER_CUBIC_EXT)
++         w3 |= PANVK_V9_MINMAX_MIN_CUBIC;
+       if (info->mipmapMode == VK_SAMPLER_MIPMAP_MODE_LINEAR)
+          w3 |= PANVK_V9_MINMAX_MIP_LINEAR;
+       ((uint32_t *)desc)[3] = w3;

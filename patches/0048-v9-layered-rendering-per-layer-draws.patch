@@ -1,0 +1,131 @@
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_buffer.c
+@@ -204,7 +204,16 @@
+ 
+          fbd_info.layer = layer_id;
+          fbd_info.frame_shaders = fs;
+-         fbd_info.frame_shaders.dcd_pointer += layer_id * 3 * pan_size(DRAW);
++         /* Bifrost has one set of pre/post frame DCDs per layer. v9 has one
++          * set for all layers (alloc_pre_post_dcds() allocates 3 * 1 and the
++          * frame shader reads the layer from the FBD frame argument), so on
++          * v9 the per-layer offset pointed past the allocation. That went
++          * unnoticed while only layer 0 received geometry: the preload runs
++          * in "intersect" mode, i.e. only on tiles with primitives. With
++          * layered rendering, the fragment job of layer 1 was TERMINATED
++          * (CTS indirect_draw_multiview, multiview.masks with LOAD). */
++         if (PAN_ARCH < 9 || getenv("PANVK_V9_DCD_PER_LAYER"))
++            fbd_info.frame_shaders.dcd_pointer += layer_id * 3 * pan_size(DRAW);
+ 
+          const struct pan_fb_descs fb_descs = {
+             .fbd = fbd.cpu,
+@@ -358,10 +367,20 @@
+    }
+ 
+ out_set_layer_ctx:
+-   if (PAN_ARCH >= 9)
++   if (PAN_ARCH >= 9) {
+       batch->tiler.ctx.valhall.desc = tiler_desc;
+-   else
++      /* JM v9 uses one tiler context per layer and drops the hardware layer
++       * write (lower_layer_writes), so every primitive lands in internal
++       * layer 0 of its own context. The FBD picks the primitive list with
++       * internal_layer_index = layer - layer_offset (pan_emit_fbd), which
++       * must therefore be 0. With layer_offset left at 0 the fragment job of
++       * layer N read list N of a one-layer context: empty for N = 1, and the
++       * job was TERMINATED for N >= 2. */
++      assert(layer_idx <= UINT8_MAX);
++      batch->tiler.ctx.valhall.layer_offset = layer_idx;
++   } else {
+       batch->tiler.ctx.bifrost.desc = tiler_desc;
++   }
+ 
+    return VK_SUCCESS;
+ }
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2945,10 +2945,10 @@
+       fprintf(stderr, "\n");
+    }
+ 
+-   /* TODO(v9): multi-layer rendering. Only layer 0 is encoded for now, so a
+-    * layered render pass renders just its first layer instead of silently
+-    * producing a wrong result for all of them. */
+-   result = panvk_per_arch(cmd_prepare_tiler_context)(cmdbuf, 0);
++   /* One tiler context per layer; panvk_cmd_draw_v9() calls this once per
++    * layer (or view) with draw->info.layer_id set. */
++   result = panvk_per_arch(cmd_prepare_tiler_context)(cmdbuf,
++                                                      draw->info.layer_id);
+    if (result != VK_SUCCESS)
+       return result;
+ 
+@@ -2957,10 +2957,41 @@
+    return panvk_draw_prepare_malloc_vertex_job(cmdbuf, draw);
+ }
+ 
++static void panvk_cmd_draw_v9_layer(struct panvk_cmd_buffer *cmdbuf,
++                                    struct panvk_draw_data *draw);
++
++/* Layered rendering and multiview on v9 JM, same scheme as the Bifrost path
++ * (prepare_draw_layer): every draw is recorded once per framebuffer layer (or
++ * per view in the view mask) with its own tiler context and layer_id sysval.
++ * The fragment jobs are already emitted per layer when the batch is closed.
++ * Before this only layer 0 was drawn, so for example a single
++ * vkCmdCopyBufferToImage region with layerCount 6 into an AFBC cube (copied
++ * through the graphics path) left layers 1..5 unwritten.
++ * PANVK_V9_LAYER0_ONLY=1 restores the old behaviour as a negative control. */
+ static void
+ panvk_cmd_draw_v9(struct panvk_cmd_buffer *cmdbuf,
+                   struct panvk_draw_data *draw)
+ {
++   uint32_t view_mask = cmdbuf->state.gfx.render.view_mask;
++   uint32_t layer_count = view_mask ? util_bitcount(view_mask)
++                                    : cmdbuf->state.gfx.render.layer_count;
++
++   if (layer_count <= 1 || getenv("PANVK_V9_LAYER0_ONLY")) {
++      draw->info.layer_id = view_mask ? u_bit_scan(&view_mask) : 0;
++      panvk_cmd_draw_v9_layer(cmdbuf, draw);
++      return;
++   }
++
++   for (uint32_t i = 0; i < layer_count; i++) {
++      draw->info.layer_id = view_mask ? u_bit_scan(&view_mask) : i;
++      panvk_cmd_draw_v9_layer(cmdbuf, draw);
++   }
++}
++
++static void
++panvk_cmd_draw_v9_layer(struct panvk_cmd_buffer *cmdbuf,
++                        struct panvk_draw_data *draw)
++{
+    const struct panvk_shader_variant *vs =
+       panvk_shader_hw_variant(cmdbuf->state.gfx.vs.shader);
+    struct panvk_batch *batch = cmdbuf->cur_batch;
+diff --git a/src/panfrost/vulkan/panvk_cmd_draw.h b/src/panfrost/vulkan/panvk_cmd_draw.h
+--- a/src/panfrost/vulkan/panvk_cmd_draw.h
++++ b/src/panfrost/vulkan/panvk_cmd_draw.h
+@@ -479,6 +479,8 @@
+ #elif PAN_ARCH == 9
+    /* Index of this draw within a multi-draw (gl_DrawID). */
+    uint32_t draw_id;
++   /* Layer (or view) this copy of the draw renders, see panvk_cmd_draw_v9. */
++   uint32_t layer_id;
+ #endif
+ };
+ 
+diff --git a/src/panfrost/vulkan/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/panvk_vX_cmd_draw.c
+@@ -830,8 +830,9 @@
+                   info->vertex.raw_offset);
+    set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, info->layer_id);
+ #elif PAN_ARCH == 9
+-   /* The v9 path encodes layer 0 only (see the TODO in jm/panvk_vX_cmd_draw.c). */
+-   set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, 0);
++   /* The v9 JM path issues one MALLOC_VERTEX job per layer (or view) and the
++    * VS drops primitives whose gl_Layer is not this one (lower_layer_writes). */
++   set_gfx_sysval(cmdbuf, dirty_sysvals, layer_id, info->layer_id);
+    set_gfx_sysval(cmdbuf, dirty_sysvals, draw_id, info->draw_id);
+ #endif
+ 

@@ -1,0 +1,67 @@
+diff --git a/src/panfrost/vulkan/panvk_vX_shader.c b/src/panfrost/vulkan/panvk_vX_shader.c
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -1933,6 +1933,34 @@
+    VkResult result;
+    int32_t i;
+ 
++#if PAN_ARCH < 10
++   /* EXPERIMENTAL (v9 JM): tessellationShader and geometryShader are not
++    * exposed here, but DXVK still creates pipelines with hull/domain/geometry
++    * shaders at feature level 10_x (AIO-Graphics-Test "Tessellation" and
++    * "GS Exploder"). The TCS/TES lowering only targets v10+ and GS has no
++    * case at all (UNREACHABLE), so such shaders miscompile or crash the
++    * process. Fail the pipeline instead; DXVK logs it and skips the draw.
++    * PANVK_V9_ALLOW_TESS_GS=1 restores the old behaviour (negative control).
++    */
++   static int allow_tess_gs = -1;
++   if (allow_tess_gs < 0)
++      allow_tess_gs = getenv("PANVK_V9_ALLOW_TESS_GS") != NULL;
++   for (i = 0; !allow_tess_gs && i < shader_count; i++) {
++      mesa_shader_stage s = infos[i].stage;
++      if (s != MESA_SHADER_TESS_CTRL && s != MESA_SHADER_TESS_EVAL &&
++          s != MESA_SHADER_GEOMETRY)
++         continue;
++
++      mesa_logw_once("panvk: v9: %s shaders are not supported, pipeline "
++                     "creation fails (EXPERIMENTAL guard)",
++                     _mesa_shader_stage_to_string(s));
++      for (uint32_t j = 0; j < shader_count; j++)
++         ralloc_free(infos[j].nir);
++      memset(shaders_out, 0, shader_count * sizeof(*shaders_out));
++      return VK_ERROR_UNKNOWN;
++   }
++#endif
++
+    /* If we are linking VS and FS, we can use the static interpolation
+     * qualifiers from the FS in the VS.  Vulkan runtime passes us shaders in
+     * stage order, so the FS will always be last if it exists.
+diff --git a/src/vulkan/runtime/vk_pipeline.c b/src/vulkan/runtime/vk_pipeline.c
+--- a/src/vulkan/runtime/vk_pipeline.c
++++ b/src/vulkan/runtime/vk_pipeline.c
+@@ -2034,6 +2034,25 @@
+       vk_find_struct_const(pCreateInfo->pNext,
+                            PIPELINE_CREATION_FEEDBACK_CREATE_INFO);
+ 
++   /* EXPERIMENTAL: DXVK 2.x links a VK_NULL_HANDLE library when building one
++    * of the libraries failed (DxvkGraphicsPipeline::createBasePipeline). That
++    * is invalid usage, but dereferencing it kills the game; fail the link so
++    * the app sees an error instead. PANVK_V9_ALLOW_TESS_GS=1 skips the check
++    * (negative control, together with the panvk stage guard).
++    */
++   const VkPipelineLibraryCreateInfoKHR *null_check_libs =
++      vk_find_struct_const(pCreateInfo->pNext,
++                           PIPELINE_LIBRARY_CREATE_INFO_KHR);
++   if (null_check_libs && !getenv("PANVK_V9_ALLOW_TESS_GS")) {
++      for (uint32_t i = 0; i < null_check_libs->libraryCount; i++) {
++         if (null_check_libs->pLibraries[i] == VK_NULL_HANDLE) {
++            mesa_logw_once("vk_pipeline: pLibraries[%u] is VK_NULL_HANDLE, "
++                           "failing the pipeline link", i);
++            return VK_ERROR_UNKNOWN;
++         }
++      }
++   }
++
+    struct vk_graphics_pipeline *pipeline =
+       vk_pipeline_zalloc(device, &vk_graphics_pipeline_ops,
+                          VK_PIPELINE_BIND_POINT_GRAPHICS,

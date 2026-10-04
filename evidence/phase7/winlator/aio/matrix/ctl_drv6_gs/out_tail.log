@@ -1,0 +1,60 @@
+info:    vertexAttributeInstanceRateDivisor     : 1
+info:    vertexAttributeInstanceRateZeroDivisor : 1
+info:  VK_KHR_external_memory_win32
+info:    extension supported                    : 1
+info:  VK_KHR_external_semaphore_win32
+info:    extension supported                    : 1
+info:  VK_KHR_maintenance5
+info:    maintenance5                           : 1
+info:  VK_KHR_present_id
+info:    presentId                              : 1
+info:  VK_KHR_present_wait
+info:    presentWait                            : 1
+info:  VK_NV_raw_access_chains
+info:    shaderRawAccessChains                  : 0
+info:  VK_NVX_binary_import
+info:    extension supported                    : 0
+info:  VK_NVX_image_view_handle
+info:    extension supported                    : 0
+info:  VK_KHR_win32_keyed_mutex
+info:    extension supported                    : 1
+info:  Queue families:
+info:    Graphics : 0
+info:    Transfer : 0
+info:    Sparse   : n/a
+info:  DXVK: Read 2 valid state cache entries
+info:  DXVK: Graphics pipeline libraries supported
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_IMMEDIATE_KHR (dynamic: yes)
+info:    Buffer size:  1084x686
+info:    Image count:  4
+info:    Exclusive FS: 2
+AIODIAG [23:36:42.023] host: D3D11
+AIODIAG [23:36:42.192] ImGui context + fonts loaded
+AIODIAG [23:36:42.193] theme applied; bench history load: begin
+AIODIAG [23:36:42.201] bench history load: end (0 runs)
+AIODIAG [23:36:42.201] disk history load: begin
+AIODIAG [23:36:42.206] disk history load: end (0 runs)
+AIODIAG [23:36:42.268] ImGui Win32 + DX11 backends init; entering main loop
+AIODIAG [23:36:42.287] first frame: begin
+info:  DXVK: Using 8 compiler threads
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: yes)
+info:    Buffer size:  1084x686
+info:    Image count:  4
+info:    Exclusive FS: 2
+err:   readMonitorEdidFromKey: Failed to get EDID reg key size
+err:   DXGI: Failed to parse display metadata + colorimetry info, using blank.
+AIODIAG [23:36:42.935] first frame: presented OK
+Unhandled intrinsic abort
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+0120:err:vulkan:vkCreateGraphicsPipelines Exception 0xc0000005 in Unix call.

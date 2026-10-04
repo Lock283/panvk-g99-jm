@@ -1,0 +1,464 @@
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a1r5g5b5_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4b4g4r4_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a4r4g4b4_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.a8b8g8r8_srgb.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.b10g11r11_ufloat.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.e5b9g9r9_ufloat.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic_mipmap_linear	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic_mipmap_linear_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic_mipmap_nearest	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r10x6g10x6b10x6a10x6_unorm.cubic_mipmap_nearest_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r16g16b16a16_sfloat.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r4g4b4a4_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic_mipmap_linear	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic_mipmap_linear_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic_mipmap_nearest	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g5b5a1_unorm.cubic_mipmap_nearest_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r5g6b5_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_snorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.formats.r8g8b8a8_unorm.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.127x99.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.128x128.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.31x55.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.32x64.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.3x7.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic_mipmap_linear	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic_mipmap_linear_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic_mipmap_nearest	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.sizes.4x8.cubic_mipmap_nearest_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.linear.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic.nearest.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.linear.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_linear.nearest.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.linear.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.cubic_mipmap_nearest.nearest.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_linear.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.linear_mipmap_nearest.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_linear.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.clamp_to_border.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.clamp_to_border.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.mirror_clamp_to_edge.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.mirror_clamp_to_edge.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.mirrored_repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.mirrored_repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.repeat.clamp_to_border	Fail	Image verification failed
+dEQP-VK.texture.filtering.2d.combinations.nearest_mipmap_nearest.cubic.repeat.mirror_clamp_to_edge_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.a1r5g5b5_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.a1r5g5b5_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.a4b4g4r4_unorm.cubic	Pass	Pass
+dEQP-VK.texture.filtering.unnormal.formats.a4b4g4r4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.a4r4g4b4_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.a4r4g4b4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.a8b8g8r8_srgb.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.a8b8g8r8_srgb.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.b10g11r11_ufloat.cubic	Pass	Pass
+dEQP-VK.texture.filtering.unnormal.formats.b10g11r11_ufloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.e5b9g9r9_ufloat.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.e5b9g9r9_ufloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.r10x6g10x6b10x6a10x6_unorm.cubic	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.unnormal.formats.r10x6g10x6b10x6a10x6_unorm.cubic_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.unnormal.formats.r16g16b16a16_sfloat.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.r16g16b16a16_sfloat.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.r4g4b4a4_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.r4g4b4a4_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.r5g5b5a1_unorm.cubic	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.unnormal.formats.r5g5b5a1_unorm.cubic_compute	NotSupported	Image format not supported at vktTextureFilteringTests.cpp:94
+dEQP-VK.texture.filtering.unnormal.formats.r5g6b5_unorm.cubic	Pass	Pass
+dEQP-VK.texture.filtering.unnormal.formats.r5g6b5_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.r8g8b8a8_snorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.r8g8b8a8_snorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.formats.r8g8b8a8_unorm.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.formats.r8g8b8a8_unorm.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.127x99.cubic	Pass	Pass
+dEQP-VK.texture.filtering.unnormal.sizes.127x99.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.128x128.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.sizes.128x128.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.31x55.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.sizes.31x55.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.32x64.cubic	Pass	Pass
+dEQP-VK.texture.filtering.unnormal.sizes.32x64.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.3x7.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.sizes.3x7.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.texture.filtering.unnormal.sizes.4x8.cubic	Fail	Image verification failed
+dEQP-VK.texture.filtering.unnormal.sizes.4x8.cubic_compute	NotSupported	Exclusive compute queue not supported. at vktTextureTestUtil.cpp:766
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_subregions.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_subregions.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_subregions.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_x.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_x.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_x.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_xy.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_xy.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_xy.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_y.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_y.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.mirror_y.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_and_offset.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_and_offset.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_and_offset.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole1.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole1.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole1.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole2.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole2.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.scaling_whole2.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.whole.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.whole.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.whole.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.without_scaling_partial.b8g8r8a8_unorm_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.without_scaling_partial.cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.simple_tests.without_scaling_partial.r32_sfloat_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a1b5g5r5_unorm_pack16.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a1r5g5b5_unorm_pack16.r8g8b8a8_unorm.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a2b10g10r10_snorm_pack32.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a2r10g10b10_snorm_pack32.r8g8b8a8_unorm.general_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a2r10g10b10_unorm_pack32.r8g8b8a8_unorm.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a4b4g4r4_unorm_pack16.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a8_unorm.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a8b8g8r8_snorm_pack32.r8g8b8a8_unorm.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.a8b8g8r8_unorm_pack32.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_10x5_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_10x6_unorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_10x8_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_12x12_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_4x4_unorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_5x4_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_6x5_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_6x6_unorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_8x5_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.astc_8x8_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b10g11r11_ufloat_pack32.r8g8b8a8_unorm.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b4g4r4a4_unorm_pack16.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b5g6r5_unorm_pack16.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b8g8r8_snorm.r8g8b8a8_unorm.linear_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b8g8r8_unorm.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.b8g8r8a8_unorm.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc1_rgb_unorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc1_rgba_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc3_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc4_snorm_block.r8g8b8a8_unorm.linear_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc4_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc5_unorm_block.r8g8b8a8_unorm.general_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc6h_sfloat_block.r8g8b8a8_unorm.linear_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.bc6h_ufloat_block.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.e5b9g9r9_ufloat_pack32.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.eac_r11_snorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.eac_r11_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.eac_r11g11_unorm_block.r8g8b8a8_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8_unorm_block.r8g8b8a8_unorm.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a1_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.a1r5g5b5_unorm_pack16.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.a2b10g10r10_unorm_pack32.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.a2r10g10b10_unorm_pack32.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.a8b8g8r8_snorm_pack32.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.b10g11r11_ufloat_pack32.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.b5g5r5a1_unorm_pack16.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.b8g8r8_snorm.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.b8g8r8a8_snorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.e5b9g9r9_ufloat_pack32.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16_sfloat.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16g16_snorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16g16b16_sfloat.general_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16g16b16_snorm.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16g16b16a16_sfloat.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r16g16b16a16_unorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r32_sfloat.linear_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r32g32b32_sfloat.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r32g32b32a32_sfloat.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r4g4b4a4_unorm_pack16.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r5g5b5a1_unorm_pack16.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r8_snorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r8g8_snorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r8g8b8_snorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r8g8b8a8_snorm.general_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.etc2_r8g8b8a8_unorm_block.r8g8b8a8_unorm.optimal_general_cubic	Fail	Result image is incorrect
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r10x6g10x6_unorm_2pack16.r8g8b8a8_unorm.general_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r10x6g10x6b10x6a10x6_unorm_4pack16.r8g8b8a8_unorm.linear_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r12x4_unorm_pack16.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16_sfloat.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16_sfloat.r8g8b8a8_unorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16_unorm.r8g8b8a8_unorm.general_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16_sfloat.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16_snorm.r8g8b8a8_unorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16_sfloat.r8g8b8a8_unorm.general_linear_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16_snorm.r8g8b8a8_unorm.general_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16_unorm.r8g8b8a8_unorm.general_optimal_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16a16_sfloat.r8g8b8a8_unorm.general_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16a16_snorm.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r16g16b16a16_unorm.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r32_sfloat.r8g8b8a8_unorm.linear_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r32g32_sfloat.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r32g32b32_sfloat.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r32g32b32a32_sfloat.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r4g4_unorm_pack8.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r4g4b4a4_unorm_pack16.r8g8b8a8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r5g5b5a1_unorm_pack16.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r64_sfloat.r8g8b8a8_unorm.general_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r64_sfloat.r8g8b8a8_unorm.optimal_optimal_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r64g64_sfloat.r8g8b8a8_unorm.optimal_linear_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r64g64b64_sfloat.r8g8b8a8_unorm.optimal_general_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r64g64b64a64_sfloat.r8g8b8a8_unorm.linear_optimal_cubic	NotSupported	Source format not supported at vktApiBlittingTests.cpp:1438
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8_snorm.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8_snorm.r8g8b8a8_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8_unorm.r8g8b8a8_unorm.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8_snorm.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8_unorm.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_snorm.r8g8b8a8_unorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a1r5g5b5_unorm_pack16.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a2b10g10r10_snorm_pack32.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a2b10g10r10_unorm_pack32.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a2r10g10b10_unorm_pack32.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.a8b8g8r8_snorm_pack32.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b10g11r11_ufloat_pack32.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b4g4r4a4_unorm_pack16.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b5g5r5a1_unorm_pack16.optimal_optimal_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b8g8r8_snorm.general_linear_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b8g8r8_unorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.b8g8r8a8_snorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.e5b9g9r9_ufloat_pack32.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16_sfloat.linear_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16_snorm.general_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16_unorm.optimal_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16_snorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16_unorm.general_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16_sfloat.linear_linear_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16_snorm.optimal_general_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16_unorm.linear_optimal_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16a16_sfloat.optimal_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16a16_unorm.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r16g16b16a16_unorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r32_sfloat.optimal_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r32g32b32_sfloat.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r32g32b32_sfloat.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r4g4_unorm_pack8.general_linear_cubic	NotSupported	Destination format not supported at vktApiBlittingTests.cpp:1444
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r4g4b4a4_unorm_pack16.general_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r4g4b4a4_unorm_pack16.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r5g6b5_unorm_pack16.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8_snorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8_unorm.optimal_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8g8_unorm.general_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8g8b8_snorm.optimal_general_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8g8b8_unorm.linear_optimal_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8g8b8a8_snorm.optimal_linear_cubic	Pass	Pass
+dEQP-VK.api.copy_and_blit.core.blit_image.all_formats.color.2d.r8g8b8a8_unorm.r8g8b8a8_unorm.optimal_general_cubic	Pass	Pass

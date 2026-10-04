@@ -1,0 +1,48 @@
+diff --git a/include/android_stub/cutils/native_handle.h b/include/android_stub/cutils/native_handle.h
+--- a/include/android_stub/cutils/native_handle.h
++++ b/include/android_stub/cutils/native_handle.h
+@@ -46,7 +46,7 @@
+ #endif
+ } native_handle_t;
+ 
+-typedef const native_handle_t* buffer_handle_t;
++typedef void* buffer_handle_t;
+ 
+ /*
+  * Closes the file descriptors contained in this native_handle_t, which may
+diff --git a/src/util/u_gralloc/u_gralloc_fallback.c b/src/util/u_gralloc/u_gralloc_fallback.c
+--- a/src/util/u_gralloc/u_gralloc_fallback.c
++++ b/src/util/u_gralloc/u_gralloc_fallback.c
+@@ -62,7 +62,7 @@
+    }
+ 
+    memset(&ycbcr, 0, sizeof(ycbcr));
+-   ret = gr_mod->lock_ycbcr(gr_mod, hnd->handle, 0, 0, 0, 0, 0, &ycbcr);
++   ret = gr_mod->lock_ycbcr(gr_mod, (void *)hnd->handle, 0, 0, 0, 0, 0, &ycbcr);
+    if (ret) {
+       /* HACK: See native_window_buffer_get_buffer_info() and
+        * https://issuetracker.google.com/32077885.*/
+@@ -72,7 +72,7 @@
+       mesa_logw("gralloc->lock_ycbcr failed: %d", ret);
+       return -EINVAL;
+    }
+-   gr_mod->unlock(gr_mod, hnd->handle);
++   gr_mod->unlock(gr_mod, (void *)hnd->handle);
+ 
+    ret = bufferinfo_from_ycbcr(&ycbcr, hnd, out);
+    if (ret)
+diff --git a/src/vulkan/runtime/vk_android.c b/src/vulkan/runtime/vk_android.c
+--- a/src/vulkan/runtime/vk_android.c
++++ b/src/vulkan/runtime/vk_android.c
+@@ -195,9 +195,9 @@
+                              const VkNativeBufferANDROID *anb,
+                              const VkAllocationCallbacks *alloc)
+ {
+-   assert(anb && anb->handle && anb->handle->numFds > 0);
++   assert(anb && anb->handle && ((const native_handle_t *)anb->handle)->numFds > 0);
+ 
+-   int dma_buf_fd = anb->handle->data[0];
++   int dma_buf_fd = ((const native_handle_t *)anb->handle)->data[0];
+ 
+    /* Query image memory requirements for size and supported memory types */
+    VkMemoryRequirements mem_reqs;

@@ -1,0 +1,28 @@
+dEQP-VK.api.external.fence.sync_fd.dup2_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.dup3_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.dup_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.export_multiple_times_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.import_multiple_times_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.import_signaled_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.import_twice_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.info	Pass	Pass
+dEQP-VK.api.external.fence.sync_fd.reimport_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.reset_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.send_over_socket_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.signal_export_import_wait_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.signal_import_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.fence.sync_fd.transference_temporary	NotSupported	Fence doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4250
+dEQP-VK.api.external.semaphore.sync_fd.dup2_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.dup3_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.dup_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.export_multiple_times_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.import_multiple_times_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.import_signaled_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.import_twice_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.info_binary	Pass	Pass
+dEQP-VK.api.external.semaphore.sync_fd.info_timeline	Pass	Pass
+dEQP-VK.api.external.semaphore.sync_fd.reimport_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.send_over_socket_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.signal_export_import_wait_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.signal_import_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234
+dEQP-VK.api.external.semaphore.sync_fd.transference_temporary	NotSupported	Semaphore doesn't support exporting in external type at vktApiExternalMemoryTests.cpp:4234

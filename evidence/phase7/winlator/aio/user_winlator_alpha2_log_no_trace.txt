@@ -1,0 +1,904 @@
+_r_debug not found in ld.so
+esync: shm initialized, fd=3 size=4096 pagesize=4096
+esync: up and running.
+Failed to open /etc/machine-id, error No such file or directory.
+_r_debug not found in ld.so
+_r_debug not found in ld.so
+_r_debug not found in ld.so
+_r_debug not found in ld.so
+_r_debug not found in ld.so
+0088:fixme:xinput:pdo_pnp code 0xc, not implemented!
+0088:fixme:xinput:pdo_pnp code 0xc, not implemented!
+0070:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c00000e5
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1359
+_r_debug not found in ld.so
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: warning: Gralloc doesn't support lock_ycbcr (video buffers won't be supported)
+MESA: info: Using fallback gralloc implementation
+_r_debug not found in ld.so
+00b8:err:ole:start_rpcss Failed to start RpcSs service
+00cc:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d0,0x21c510,0x00000004) stub
+00cc:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d1,0x21c538,0x00000008) stub
+00cc:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d0,0x21c5a0,0x00000004) stub
+_r_debug not found in ld.so
+_r_debug not found in ld.so
+00e8:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d0,0x21c510,0x00000004) stub
+00e8:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d1,0x21c538,0x00000008) stub
+00e8:fixme:process:NtSetInformationProcess (0xffffffffffffffff,0x000007d0,0x21c5a0,0x00000004) stub
+00dc:fixme:oleacc:find_class_data unhandled window class: L"#32769"
+00dc:fixme:uiautomation:uia_get_providers_for_hwnd Override provider callback currently unimplemented.
+00dc:fixme:uiautomation:default_uia_provider_callback Default ProviderType_NonClientArea provider unimplemented.
+00dc:fixme:oleacc:find_class_data unhandled window class: L"#32769"
+00dc:fixme:uiautomation:base_hwnd_fragment_get_FragmentRoot 00000000006CEF38, 000000000011FC08: stub!
+00dc:fixme:uiautomation:base_hwnd_fragment_GetEmbeddedFragmentRoots 00000000006CEF38, 000000000011FBF8: stub!
+info:  Game: AIO-Graphics-Test-64bit.exe
+info:  DXVK: v2.3.1
+info:  Found config file: /data/user/0/com.ludashi.benchmark/files/imagefs/home/xuser/.config/dxvk.conf
+info:  Effective configuration:
+info:    dxvk.memoryTrack = True
+info:    dxvk.numCompilerThreads = 4
+info:    dxgi.nvapiHack = False
+info:    d3d11.ignoreGraphicsBarriers = True
+info:    d3d11.relaxedBarriers = True
+info:    dxvk.useEarlyDiscard = True
+info:    d3d11.allowMapFlagNoWait = True
+info:    dxvk.shrinkBindingSlots = True
+info:    d3d11.maxQueuedFrames = 1
+info:  Vulkan: Found vkGetInstanceProcAddr in winevulkan.dll @ 0x7fdb9e0cc0
+info:  Built-in extension providers:
+info:    Win32 WSI
+info:    OpenVR
+info:    OpenXR
+info:  OpenVR: could not open registry key, status 2
+info:  OpenVR: Failed to locate module
+info:  Enabled instance extensions:
+info:    VK_EXT_surface_maintenance1
+info:    VK_KHR_get_surface_capabilities2
+info:    VK_KHR_surface
+info:    VK_KHR_win32_surface
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: warning: Gralloc doesn't support lock_ycbcr (video buffers won't be supported)
+MESA: info: Using fallback gralloc implementation
+info:  Apex(Mali-G57 MC2):
+info:    Driver : Apex 26.2.99
+info:    Memory Heap[0]: 
+info:      Size: 5765 MiB
+info:      Flags: 0x1
+info:      Memory Type[0]: Property Flags = 0x1
+info:      Memory Type[1]: Property Flags = 0xb
+info:      Memory Type[2]: Property Flags = 0x7
+info:  D3D11InternalCreateDevice: Maximum supported feature level: D3D_FEATURE_LEVEL_10_1
+info:  D3D11InternalCreateDevice: Using feature level D3D_FEATURE_LEVEL_10_1
+info:  Device properties:
+info:    Device : Apex(Mali-G57 MC2)
+info:    Driver : Apex 26.2.99
+info:  Enabled device extensions:
+info:    VK_EXT_attachment_feedback_loop_layout
+info:    VK_EXT_custom_border_color
+info:    VK_EXT_depth_bias_control
+info:    VK_EXT_depth_clip_enable
+info:    VK_EXT_extended_dynamic_state3
+info:    VK_EXT_graphics_pipeline_library
+info:    VK_EXT_non_seamless_cube_map
+info:    VK_EXT_robustness2
+info:    VK_EXT_shader_module_identifier
+info:    VK_EXT_shader_stencil_export
+info:    VK_EXT_swapchain_maintenance1
+info:    VK_EXT_vertex_attribute_divisor
+info:    VK_KHR_external_memory_win32
+info:    VK_KHR_external_semaphore_win32
+info:    VK_KHR_maintenance5
+info:    VK_KHR_pipeline_library
+info:    VK_KHR_present_id
+info:    VK_KHR_present_wait
+info:    VK_KHR_swapchain
+info:    VK_KHR_win32_keyed_mutex
+info:  Device features:
+info:    robustBufferAccess                     : 1
+info:    fullDrawIndexUint32                    : 1
+info:    imageCubeArray                         : 1
+info:    independentBlend                       : 1
+info:    geometryShader                         : 0
+info:    tessellationShader                     : 0
+info:    sampleRateShading                      : 1
+info:    dualSrcBlend                           : 1
+info:    logicOp                                : 1
+info:    multiDrawIndirect                      : 1
+info:    drawIndirectFirstInstance              : 1
+info:    depthClamp                             : 1
+info:    depthBiasClamp                         : 1
+info:    fillModeNonSolid                       : 1
+info:    depthBounds                            : 0
+info:    wideLines                              : 1
+info:    multiViewport                          : 1
+info:    samplerAnisotropy                      : 1
+info:    textureCompressionBC                   : 1
+info:    occlusionQueryPrecise                  : 1
+info:    pipelineStatisticsQuery                : 0
+info:    vertexPipelineStoresAndAtomics         : 0
+info:    fragmentStoresAndAtomics               : 1
+info:    shaderImageGatherExtended              : 1
+info:    shaderClipDistance                     : 1
+info:    shaderCullDistance                     : 1
+info:    shaderFloat64                          : 0
+info:    shaderInt64                            : 1
+info:    variableMultisampleRate                : 0
+info:    shaderResourceResidency                : 0
+info:    shaderResourceMinLod                   : 0
+info:    sparseBinding                          : 0
+info:    sparseResidencyBuffer                  : 0
+info:    sparseResidencyImage2D                 : 0
+info:    sparseResidencyImage3D                 : 0
+info:    sparseResidency2Samples                : 0
+info:    sparseResidency4Samples                : 0
+info:    sparseResidency8Samples                : 0
+info:    sparseResidency16Samples               : 0
+info:    sparseResidencyAliased                 : 0
+info:  Vulkan 1.1
+info:    shaderDrawParameters                   : 1
+info:  Vulkan 1.2
+info:    samplerMirrorClampToEdge               : 1
+info:    drawIndirectCount                      : 1
+info:    samplerFilterMinmax                    : 0
+info:    hostQueryReset                         : 1
+info:    timelineSemaphore                      : 1
+info:    bufferDeviceAddress                    : 0
+info:    shaderOutputViewportIndex              : 0
+info:    shaderOutputLayer                      : 0
+info:    vulkanMemoryModel                      : 1
+info:  Vulkan 1.3
+info:    robustImageAccess                      : 1
+info:    pipelineCreationCacheControl           : 1
+info:    shaderDemoteToHelperInvocation         : 1
+info:    shaderZeroInitializeWorkgroupMemory    : 0
+info:    synchronization2                       : 1
+info:    dynamicRendering                       : 1
+info:  VK_AMD_shader_fragment_mask
+info:    extension supported                    : 0
+info:  VK_EXT_attachment_feedback_loop_layout
+info:    attachmentFeedbackLoopLayout           : 0
+info:  VK_EXT_conservative_rasterization
+info:    extension supported                    : 0
+info:  VK_EXT_custom_border_color
+info:    customBorderColors                     : 1
+info:    customBorderColorWithoutFormat         : 1
+info:  VK_EXT_depth_clip_enable
+info:    depthClipEnable                        : 1
+info:  VK_EXT_depth_bias_control
+info:    depthBiasControl                       : 1
+info:    leastRepresentableValueForceUnormRepresentation : 0
+info:    floatRepresentation                    : 0
+info:    depthBiasExact                         : 1
+info:  VK_EXT_extended_dynamic_state3
+info:    extDynamicState3AlphaToCoverageEnable  : 1
+info:    extDynamicState3DepthClipEnable        : 1
+info:    extDynamicState3RasterizationSamples   : 1
+info:    extDynamicState3SampleMask             : 1
+info:    extDynamicState3LineRasterizationMode  : 1
+info:  VK_EXT_fragment_shader_interlock
+info:    fragmentShaderSampleInterlock          : 0
+info:    fragmentShaderPixelInterlock           : 0
+info:  VK_EXT_full_screen_exclusive
+info:    extension supported                    : 0
+info:  VK_EXT_graphics_pipeline_library
+info:    graphicsPipelineLibrary                : 1
+info:  VK_EXT_line_rasterization
+info:    rectangularLines                       : 1
+info:    smoothLines                            : 0
+info:  VK_EXT_memory_budget
+info:    extension supported                    : 1
+info:  VK_EXT_memory_priority
+info:    memoryPriority                         : 0
+info:  VK_EXT_non_seamless_cube_map
+info:    nonSeamlessCubeMap                     : 0
+info:  VK_EXT_robustness2
+info:    robustBufferAccess2                    : 0
+info:    robustImageAccess2                     : 0
+info:    nullDescriptor                         : 1
+info:  VK_EXT_shader_module_identifier
+info:    shaderModuleIdentifier                 : 1
+info:  VK_EXT_shader_stencil_export
+info:    extension supported                    : 1
+info:  VK_EXT_swapchain_colorspace
+info:    extension supported                    : 0
+info:  VK_EXT_swapchain_maintenance1
+info:    swapchainMaintenance1                  : 1
+info:  VK_EXT_hdr_metadata
+info:    extension supported                    : 0
+info:  VK_EXT_transform_feedback
+info:    transformFeedback                      : 0
+info:    geometryStreams                        : 0
+info:  VK_EXT_vertex_attribute_divisor
+info:    vertexAttributeInstanceRateDivisor     : 1
+info:    vertexAttributeInstanceRateZeroDivisor : 1
+info:  VK_KHR_external_memory_win32
+info:    extension supported                    : 1
+info:  VK_KHR_external_semaphore_win32
+info:    extension supported                    : 1
+info:  VK_KHR_maintenance5
+info:    maintenance5                           : 1
+info:  VK_KHR_present_id
+info:    presentId                              : 1
+info:  VK_KHR_present_wait
+info:    presentWait                            : 1
+info:  VK_NV_raw_access_chains
+info:    shaderRawAccessChains                  : 0
+info:  VK_NVX_binary_import
+info:    extension supported                    : 0
+info:  VK_NVX_image_view_handle
+info:    extension supported                    : 0
+info:  VK_KHR_win32_keyed_mutex
+info:    extension supported                    : 1
+info:  Queue families:
+info:    Graphics : 0
+info:    Transfer : 0
+info:    Sparse   : n/a
+[info]: Enabling storageBuffer8BitAccess
+[info]: Enabling storageBuffer16BitAccess
+[info]: Enabling shaderFloat16 and shaderInt8
+[info]: create_bcn_compute_pipelines took 18 ms
+[info]: Detected MediaTek Helio G-series / Mali GPU: Apex(Mali-G57 MC2). Enabling Helio G optimized compute path.
+info:  DXVK: Read 0 valid state cache entries
+info:  DXVK: Graphics pipeline libraries supported
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_IMMEDIATE_KHR (dynamic: yes)
+info:    Buffer size:  1172x694
+info:    Image count:  4
+info:    Exclusive FS: 2
+00f4:fixme:oleacc:find_class_data unhandled window class: L"Button"
+info:  DXVK: Using 4 compiler threads
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: yes)
+info:    Buffer size:  1172x694
+info:    Image count:  4
+info:    Exclusive FS: 2
+err:   readMonitorEdidFromKey: Failed to get EDID reg key size
+err:   DXGI: Failed to parse display metadata + colorimetry info, using blank.
+00f4:fixme:uiautomation:msaa_provider_GetPatternProvider Unimplemented patternId 10002
+00f4:fixme:uiautomation:base_hwnd_provider_GetPatternProvider 0000000000722C90, 10002, 000000000101F980: stub
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: yes)
+info:    Buffer size:  1280x702
+info:    Image count:  4
+info:    Exclusive FS: 2
+00e8:err:opengl:fs_hack_setup_gamma_shader Linking gamma shader failed: Link failed because of missing vertex shader.
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+[info]: Enabling storageBuffer8BitAccess
+[info]: Enabling storageBuffer16BitAccess
+[info]: Enabling shaderFloat16 and shaderInt8
+[info]: create_bcn_compute_pipelines took 21 ms
+[info]: Detected MediaTek Helio G-series / Mali GPU: Apex(Mali-G57 MC2). Enabling Helio G optimized compute path.
+info:  Apex(Mali-G57 MC2):
+info:    Driver : Apex 26.2.99
+info:    Memory Heap[0]: 
+info:      Size: 5765 MiB
+info:      Flags: 0x1
+info:      Memory Type[0]: Property Flags = 0x1
+info:      Memory Type[1]: Property Flags = 0xb
+info:      Memory Type[2]: Property Flags = 0x7
+info:  D3D11InternalCreateDevice: Maximum supported feature level: D3D_FEATURE_LEVEL_10_1
+info:  D3D11InternalCreateDevice: Using feature level D3D_FEATURE_LEVEL_10_0
+info:  Device properties:
+info:    Device : Apex(Mali-G57 MC2)
+info:    Driver : Apex 26.2.99
+info:  Enabled device extensions:
+info:    VK_EXT_attachment_feedback_loop_layout
+info:    VK_EXT_custom_border_color
+info:    VK_EXT_depth_bias_control
+info:    VK_EXT_depth_clip_enable
+info:    VK_EXT_extended_dynamic_state3
+info:    VK_EXT_graphics_pipeline_library
+info:    VK_EXT_non_seamless_cube_map
+info:    VK_EXT_robustness2
+info:    VK_EXT_shader_module_identifier
+info:    VK_EXT_shader_stencil_export
+info:    VK_EXT_swapchain_maintenance1
+info:    VK_EXT_vertex_attribute_divisor
+info:    VK_KHR_external_memory_win32
+info:    VK_KHR_external_semaphore_win32
+info:    VK_KHR_maintenance5
+info:    VK_KHR_pipeline_library
+info:    VK_KHR_present_id
+info:    VK_KHR_present_wait
+info:    VK_KHR_swapchain
+info:    VK_KHR_win32_keyed_mutex
+info:  Device features:
+info:    robustBufferAccess                     : 1
+info:    fullDrawIndexUint32                    : 1
+info:    imageCubeArray                         : 1
+info:    independentBlend                       : 1
+info:    geometryShader                         : 0
+info:    tessellationShader                     : 0
+info:    sampleRateShading                      : 1
+info:    dualSrcBlend                           : 1
+info:    logicOp                                : 1
+info:    multiDrawIndirect                      : 1
+info:    drawIndirectFirstInstance              : 1
+info:    depthClamp                             : 1
+info:    depthBiasClamp                         : 1
+info:    fillModeNonSolid                       : 1
+info:    depthBounds                            : 0
+info:    wideLines                              : 1
+info:    multiViewport                          : 1
+info:    samplerAnisotropy                      : 1
+info:    textureCompressionBC                   : 1
+info:    occlusionQueryPrecise                  : 1
+info:    pipelineStatisticsQuery                : 0
+info:    vertexPipelineStoresAndAtomics         : 0
+info:    fragmentStoresAndAtomics               : 1
+info:    shaderImageGatherExtended              : 1
+info:    shaderClipDistance                     : 1
+info:    shaderCullDistance                     : 1
+info:    shaderFloat64                          : 0
+info:    shaderInt64                            : 1
+info:    variableMultisampleRate                : 0
+info:    shaderResourceResidency                : 0
+info:    shaderResourceMinLod                   : 0
+info:    sparseBinding                          : 0
+info:    sparseResidencyBuffer                  : 0
+info:    sparseResidencyImage2D                 : 0
+info:    sparseResidencyImage3D                 : 0
+info:    sparseResidency2Samples                : 0
+info:    sparseResidency4Samples                : 0
+info:    sparseResidency8Samples                : 0
+info:    sparseResidency16Samples               : 0
+info:    sparseResidencyAliased                 : 0
+info:  Vulkan 1.1
+info:    shaderDrawParameters                   : 1
+info:  Vulkan 1.2
+info:    samplerMirrorClampToEdge               : 1
+info:    drawIndirectCount                      : 1
+info:    samplerFilterMinmax                    : 0
+info:    hostQueryReset                         : 1
+info:    timelineSemaphore                      : 1
+info:    bufferDeviceAddress                    : 0
+info:    shaderOutputViewportIndex              : 0
+info:    shaderOutputLayer                      : 0
+info:    vulkanMemoryModel                      : 1
+info:  Vulkan 1.3
+info:    robustImageAccess                      : 1
+info:    pipelineCreationCacheControl           : 1
+info:    shaderDemoteToHelperInvocation         : 1
+info:    shaderZeroInitializeWorkgroupMemory    : 0
+info:    synchronization2                       : 1
+info:    dynamicRendering                       : 1
+info:  VK_AMD_shader_fragment_mask
+info:    extension supported                    : 0
+info:  VK_EXT_attachment_feedback_loop_layout
+info:    attachmentFeedbackLoopLayout           : 0
+info:  VK_EXT_conservative_rasterization
+info:    extension supported                    : 0
+info:  VK_EXT_custom_border_color
+info:    customBorderColors                     : 1
+info:    customBorderColorWithoutFormat         : 1
+info:  VK_EXT_depth_clip_enable
+info:    depthClipEnable                        : 1
+info:  VK_EXT_depth_bias_control
+info:    depthBiasControl                       : 1
+info:    leastRepresentableValueForceUnormRepresentation : 0
+info:    floatRepresentation                    : 0
+info:    depthBiasExact                         : 1
+info:  VK_EXT_extended_dynamic_state3
+info:    extDynamicState3AlphaToCoverageEnable  : 1
+info:    extDynamicState3DepthClipEnable        : 1
+info:    extDynamicState3RasterizationSamples   : 1
+info:    extDynamicState3SampleMask             : 1
+info:    extDynamicState3LineRasterizationMode  : 1
+info:  VK_EXT_fragment_shader_interlock
+info:    fragmentShaderSampleInterlock          : 0
+info:    fragmentShaderPixelInterlock           : 0
+info:  VK_EXT_full_screen_exclusive
+info:    extension supported                    : 0
+info:  VK_EXT_graphics_pipeline_library
+info:    graphicsPipelineLibrary                : 1
+info:  VK_EXT_line_rasterization
+info:    rectangularLines                       : 1
+info:    smoothLines                            : 0
+info:  VK_EXT_memory_budget
+info:    extension supported                    : 1
+info:  VK_EXT_memory_priority
+info:    memoryPriority                         : 0
+info:  VK_EXT_non_seamless_cube_map
+info:    nonSeamlessCubeMap                     : 0
+info:  VK_EXT_robustness2
+info:    robustBufferAccess2                    : 0
+info:    robustImageAccess2                     : 0
+info:    nullDescriptor                         : 1
+info:  VK_EXT_shader_module_identifier
+info:    shaderModuleIdentifier                 : 1
+info:  VK_EXT_shader_stencil_export
+info:    extension supported                    : 1
+info:  VK_EXT_swapchain_colorspace
+info:    extension supported                    : 0
+info:  VK_EXT_swapchain_maintenance1
+info:    swapchainMaintenance1                  : 1
+info:  VK_EXT_hdr_metadata
+info:    extension supported                    : 0
+info:  VK_EXT_transform_feedback
+info:    transformFeedback                      : 0
+info:    geometryStreams                        : 0
+info:  VK_EXT_vertex_attribute_divisor
+info:    vertexAttributeInstanceRateDivisor     : 1
+info:    vertexAttributeInstanceRateZeroDivisor : 1
+info:  VK_KHR_external_memory_win32
+info:    extension supported                    : 1
+info:  VK_KHR_external_semaphore_win32
+info:    extension supported                    : 1
+info:  VK_KHR_maintenance5
+info:    maintenance5                           : 1
+info:  VK_KHR_present_id
+info:    presentId                              : 1
+info:  VK_KHR_present_wait
+info:    presentWait                            : 1
+info:  VK_NV_raw_access_chains
+info:    shaderRawAccessChains                  : 0
+info:  VK_NVX_binary_import
+info:    extension supported                    : 0
+info:  VK_NVX_image_view_handle
+info:    extension supported                    : 0
+info:  VK_KHR_win32_keyed_mutex
+info:    extension supported                    : 1
+info:  Queue families:
+info:    Graphics : 0
+info:    Transfer : 0
+info:    Sparse   : n/a
+[info]: Enabling storageBuffer8BitAccess
+[info]: Enabling storageBuffer16BitAccess
+[info]: Enabling shaderFloat16 and shaderInt8
+[info]: create_bcn_compute_pipelines took 30 ms
+[info]: Detected MediaTek Helio G-series / Mali GPU: Apex(Mali-G57 MC2). Enabling Helio G optimized compute path.
+info:  DXVK: Read 0 valid state cache entries
+info:  DXVK: Graphics pipeline libraries supported
+info:  DXVK: Using 4 compiler threads
+info:  Game: AIO-Graphics-Test-64bit.exe
+info:  DXVK: v2.3.1
+info:  Found config file: /data/user/0/com.ludashi.benchmark/files/imagefs/home/xuser/.config/dxvk.conf
+info:  Effective configuration:
+info:    dxvk.memoryTrack = True
+info:    dxvk.numCompilerThreads = 4
+info:    dxgi.nvapiHack = False
+info:    d3d11.ignoreGraphicsBarriers = True
+info:    d3d11.relaxedBarriers = True
+info:    dxvk.useEarlyDiscard = True
+info:    d3d11.allowMapFlagNoWait = True
+info:    dxvk.shrinkBindingSlots = True
+info:    d3d11.maxQueuedFrames = 1
+info:  Vulkan: Found vkGetInstanceProcAddr in winevulkan.dll @ 0x7fdb9e0cc0
+info:  Built-in extension providers:
+info:    Win32 WSI
+info:    OpenVR
+info:    OpenXR
+info:  OpenVR: could not open registry key, status 2
+info:  OpenVR: Failed to locate module
+info:  Enabled instance extensions:
+info:    VK_EXT_surface_maintenance1
+info:    VK_KHR_get_surface_capabilities2
+info:    VK_KHR_surface
+info:    VK_KHR_win32_surface
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+info:  D3D9: VK_FORMAT_D16_UNORM_S8_UINT -> VK_FORMAT_D24_UNORM_S8_UINT
+info:  Apex(Mali-G57 MC2):
+info:    Driver : Apex 26.2.99
+info:    Memory Heap[0]: 
+info:      Size: 5765 MiB
+info:      Flags: 0x1
+info:      Memory Type[0]: Property Flags = 0x1
+info:      Memory Type[1]: Property Flags = 0xb
+info:      Memory Type[2]: Property Flags = 0x7
+info:  Process set as DPI aware
+info:  Device properties:
+info:    Device : Apex(Mali-G57 MC2)
+info:    Driver : Apex 26.2.99
+info:  Enabled device extensions:
+info:    VK_EXT_attachment_feedback_loop_layout
+info:    VK_EXT_custom_border_color
+info:    VK_EXT_depth_bias_control
+info:    VK_EXT_depth_clip_enable
+info:    VK_EXT_extended_dynamic_state3
+info:    VK_EXT_graphics_pipeline_library
+info:    VK_EXT_non_seamless_cube_map
+info:    VK_EXT_robustness2
+info:    VK_EXT_shader_module_identifier
+info:    VK_EXT_shader_stencil_export
+info:    VK_EXT_swapchain_maintenance1
+info:    VK_EXT_vertex_attribute_divisor
+info:    VK_KHR_external_memory_win32
+info:    VK_KHR_external_semaphore_win32
+info:    VK_KHR_maintenance5
+info:    VK_KHR_pipeline_library
+info:    VK_KHR_present_id
+info:    VK_KHR_present_wait
+info:    VK_KHR_swapchain
+info:    VK_KHR_win32_keyed_mutex
+info:  Device features:
+info:    robustBufferAccess                     : 1
+info:    fullDrawIndexUint32                    : 1
+info:    imageCubeArray                         : 1
+info:    independentBlend                       : 1
+info:    geometryShader                         : 0
+info:    tessellationShader                     : 0
+info:    sampleRateShading                      : 1
+info:    dualSrcBlend                           : 0
+info:    logicOp                                : 0
+info:    multiDrawIndirect                      : 0
+info:    drawIndirectFirstInstance              : 0
+info:    depthClamp                             : 1
+info:    depthBiasClamp                         : 1
+info:    fillModeNonSolid                       : 1
+info:    depthBounds                            : 0
+info:    wideLines                              : 1
+info:    multiViewport                          : 1
+info:    samplerAnisotropy                      : 1
+info:    textureCompressionBC                   : 1
+info:    occlusionQueryPrecise                  : 1
+info:    pipelineStatisticsQuery                : 0
+info:    vertexPipelineStoresAndAtomics         : 0
+info:    fragmentStoresAndAtomics               : 0
+info:    shaderImageGatherExtended              : 0
+info:    shaderClipDistance                     : 1
+info:    shaderCullDistance                     : 1
+info:    shaderFloat64                          : 0
+info:    shaderInt64                            : 0
+info:    variableMultisampleRate                : 0
+info:    shaderResourceResidency                : 0
+info:    shaderResourceMinLod                   : 0
+info:    sparseBinding                          : 0
+info:    sparseResidencyBuffer                  : 0
+info:    sparseResidencyImage2D                 : 0
+info:    sparseResidencyImage3D                 : 0
+info:    sparseResidency2Samples                : 0
+info:    sparseResidency4Samples                : 0
+info:    sparseResidency8Samples                : 0
+info:    sparseResidency16Samples               : 0
+info:    sparseResidencyAliased                 : 0
+info:  Vulkan 1.1
+info:    shaderDrawParameters                   : 0
+info:  Vulkan 1.2
+info:    samplerMirrorClampToEdge               : 1
+info:    drawIndirectCount                      : 1
+info:    samplerFilterMinmax                    : 0
+info:    hostQueryReset                         : 1
+info:    timelineSemaphore                      : 1
+info:    bufferDeviceAddress                    : 0
+info:    shaderOutputViewportIndex              : 0
+info:    shaderOutputLayer                      : 0
+info:    vulkanMemoryModel                      : 1
+info:  Vulkan 1.3
+info:    robustImageAccess                      : 1
+info:    pipelineCreationCacheControl           : 1
+info:    shaderDemoteToHelperInvocation         : 1
+info:    shaderZeroInitializeWorkgroupMemory    : 0
+info:    synchronization2                       : 1
+info:    dynamicRendering                       : 1
+info:  VK_AMD_shader_fragment_mask
+info:    extension supported                    : 0
+info:  VK_EXT_attachment_feedback_loop_layout
+info:    attachmentFeedbackLoopLayout           : 1
+info:  VK_EXT_conservative_rasterization
+info:    extension supported                    : 0
+info:  VK_EXT_custom_border_color
+info:    customBorderColors                     : 1
+info:    customBorderColorWithoutFormat         : 1
+info:  VK_EXT_depth_clip_enable
+info:    depthClipEnable                        : 1
+info:  VK_EXT_depth_bias_control
+info:    depthBiasControl                       : 1
+info:    leastRepresentableValueForceUnormRepresentation : 0
+info:    floatRepresentation                    : 0
+info:    depthBiasExact                         : 1
+info:  VK_EXT_extended_dynamic_state3
+info:    extDynamicState3AlphaToCoverageEnable  : 1
+info:    extDynamicState3DepthClipEnable        : 1
+info:    extDynamicState3RasterizationSamples   : 1
+info:    extDynamicState3SampleMask             : 1
+info:    extDynamicState3LineRasterizationMode  : 1
+info:  VK_EXT_fragment_shader_interlock
+info:    fragmentShaderSampleInterlock          : 0
+info:    fragmentShaderPixelInterlock           : 0
+info:  VK_EXT_full_screen_exclusive
+info:    extension supported                    : 0
+info:  VK_EXT_graphics_pipeline_library
+info:    graphicsPipelineLibrary                : 1
+info:  VK_EXT_line_rasterization
+info:    rectangularLines                       : 1
+info:    smoothLines                            : 0
+info:  VK_EXT_memory_budget
+info:    extension supported                    : 1
+info:  VK_EXT_memory_priority
+info:    memoryPriority                         : 0
+info:  VK_EXT_non_seamless_cube_map
+info:    nonSeamlessCubeMap                     : 1
+info:  VK_EXT_robustness2
+info:    robustBufferAccess2                    : 0
+info:    robustImageAccess2                     : 0
+info:    nullDescriptor                         : 1
+info:  VK_EXT_shader_module_identifier
+info:    shaderModuleIdentifier                 : 1
+info:  VK_EXT_shader_stencil_export
+info:    extension supported                    : 1
+info:  VK_EXT_swapchain_colorspace
+info:    extension supported                    : 0
+info:  VK_EXT_swapchain_maintenance1
+info:    swapchainMaintenance1                  : 1
+info:  VK_EXT_hdr_metadata
+info:    extension supported                    : 0
+info:  VK_EXT_transform_feedback
+info:    transformFeedback                      : 0
+info:    geometryStreams                        : 0
+info:  VK_EXT_vertex_attribute_divisor
+info:    vertexAttributeInstanceRateDivisor     : 1
+info:    vertexAttributeInstanceRateZeroDivisor : 1
+info:  VK_KHR_external_memory_win32
+info:    extension supported                    : 1
+info:  VK_KHR_external_semaphore_win32
+info:    extension supported                    : 1
+info:  VK_KHR_maintenance5
+info:    maintenance5                           : 1
+info:  VK_KHR_present_id
+info:    presentId                              : 1
+info:  VK_KHR_present_wait
+info:    presentWait                            : 1
+info:  VK_NV_raw_access_chains
+info:    shaderRawAccessChains                  : 0
+info:  VK_NVX_binary_import
+info:    extension supported                    : 0
+info:  VK_NVX_image_view_handle
+info:    extension supported                    : 0
+info:  VK_KHR_win32_keyed_mutex
+info:    extension supported                    : 1
+info:  Queue families:
+info:    Graphics : 0
+info:    Transfer : 0
+info:    Sparse   : n/a
+[info]: Enabling storageBuffer8BitAccess
+[info]: Enabling storageBuffer16BitAccess
+[info]: Enabling shaderFloat16 and shaderInt8
+[info]: create_bcn_compute_pipelines took 8 ms
+[info]: Detected MediaTek Helio G-series / Mali GPU: Apex(Mali-G57 MC2). Enabling Helio G optimized compute path.
+info:  DXVK: Read 0 valid state cache entries
+info:  DXVK: Graphics pipeline libraries supported
+info:  D3D9DeviceEx::ResetSwapChain:
+info:    Requested Presentation Parameters
+info:      - Width:              960
+info:      - Height:             594
+info:      - Format:             D3D9Format::X8R8G8B8
+info:      - Auto Depth Stencil: true
+info:                  ^ Format: D3D9Format::D24S8
+info:      - Windowed:           true
+info:      - Swap effect:        1
+info:  Presenter: Actual swap chain properties:
+info:    Format:       VK_FORMAT_B8G8R8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_IMMEDIATE_KHR (dynamic: yes)
+info:    Buffer size:  960x594
+info:    Image count:  4
+info:    Exclusive FS: 0
+info:  DXVK: Using 4 compiler threads
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+00e8:err:opengl:fs_hack_setup_gamma_shader Linking gamma shader failed: Link failed because of missing vertex shader.
+00e8:err:opengl:fs_hack_setup_gamma_shader Linking gamma shader failed: Link failed because of missing vertex shader.
+00e8:warn:d3d:wined3d_adapter_init_gl_caps Disabling ARB_texture_multisample because immutable storage is not supported.
+00e8:fixme:d3d:wined3d_adapter_init_limits OpenGL implementation supports 16 vertex samplers and 8 total samplers.
+00e8:fixme:d3d:wined3d_adapter_init_limits Expected vertex samplers + WINED3D_MAX_FFP_TEXTURES(=8) > combined_samplers.
+00e8:warn:d3d:wined3d_adapter_init_limits Graphics pipeline sampler count 56 is greater than combined sampler count 8.
+00e8:fixme:d3d:wined3d_guess_gl_vendor Received unrecognized GL_VENDOR "ARM". Returning GL_VENDOR_UNKNOWN.
+00e8:fixme:d3d:wined3d_guess_card_vendor Received unrecognized GL_VENDOR "ARM". Returning HW_VENDOR_NVIDIA.
+00e8:fixme:d3d:select_card_handler Couldn't find a suitable card selector for GL vendor 0000 (using GL_RENDERER "Gladio")
+00e8:fixme:d3d:wined3d_caps_gl_ctx_test_filling_convention Unexpected filling convention test result.
+00e8:fixme:d3d:wined3d_caps_gl_ctx_test_filling_convention Unexpected filling convention test result.
+00e8:fixme:d3d:wined3d_adapter_find_fill_offset Did not find a way to get the filling convention we want.
+00e8:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G5R5X1_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B10G10R10A2_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_L8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32A32_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32B32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16B16A16_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32G32_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R10G10B10A2_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R10G10B10A2_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R11G11B10_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8B8A8_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16G16_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R32_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8G8_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_FLOAT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R16_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_UINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_R8_SINT with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_A8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B5G6R5_UNORM rtInternal format is not supported as FBO color attachment, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8A8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8A8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 0.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 1.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 2.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 3.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 4.
+00e8:warn:d3d:init_format_fbo_compat_info Format WINED3DFMT_B8G8R8X8_UNORM_SRGB with rendertarget flag is not supported as FBO color attachment and no fallback specified, resource type 5.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+00e8:err:d3d:wined3d_adapter_find_polyoffset_scale PolygonOffset scale factor detection failed, using fallback value 2^23.
+0178:err:opengl:fs_hack_setup_gamma_shader Linking gamma shader failed: Link failed because of missing vertex shader.
+00e8:fixme:d3d:debug_d3dusage Unrecognized usage flag(s) 0x800000.
+0178:warn:d3d:wined3d_texture_load_location Operation requires 0x2 access, but texture only has 0x1.
+00e8:warn:d3d:wined3d_device_apply_stateblock token: 0xbaadcafe.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 216.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 217.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 218.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 219.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 221.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 222.
+0178:err:d3d:context_invalidate_state Invalidating representative 0, state_id 227.
+0178:err:d3d:state_undefined Undefined state UNKNOWN_STATE(0) (0).
+0178:fixme:d3d:state_linepattern_w Setting line patterns is not supported in OpenGL core contexts.
+0178:warn:d3d:state_uav_warn ARB_shader_image_load_store is not supported by this OpenGL implementation.
+0178:warn:d3d:state_sample_mask_w Unsupported in local OpenGL implementation: glSampleMaski.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:warn:d3d:wined3d_context_gl_bind_shader_resources No resource view bound at index 0.
+0178:err:opengl:fs_hack_setup_gamma_shader Linking gamma shader failed: Link failed because of missing vertex shader.
+Unhandled intrinsic abort
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+Unhandled intrinsic accept_ray_intersection
+Unhandled intrinsic load_deref
+0104:err:vulkan:vkCreateGraphicsPipelines Exception 0xc0000005 in Unix call.
+libc++abi: terminating
+0104:err:seh:call_seh_handlers invalid frame 1006ff390 (00000000014F2000-00000000015F0000)
+0104:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+00f4:fixme:oleacc:find_class_data unhandled window class: L"#32769"
+00f4:fixme:oleacc:find_class_data unhandled window class: L"#32769"
+XIO:  fatal IO error 61 (No data available) on X server ":0"
+      after 9 requests (9 known processed) with 0 events remaining.
+X connection to :0 broken (explicit kill or server shutdown).
+X connection to :0 broken (explicit kill or server shutdown).
+X connection to :0 broken (explicit kill or server shutdown).
+X connection to :0 broken (explicit kill or server shutdown).

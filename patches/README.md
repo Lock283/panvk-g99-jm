@@ -40,6 +40,17 @@ not a guess:
 | `0044-v9-EXPERIMENTAL-multi-draw-indirect-count` | ✅ yes | 🧪 **EXPERIMENTAL**. Exposes `multiDrawIndirect` and `VK_KHR_draw_indirect_count` on v9 (upstream: v10+). Draws are unrolled one job per draw, `gl_DrawID` becomes a sysval, the helper kernel NULLs draws past the GPU-side count. `maxDrawIndirectCount` 65535. Controls `PANVK_MDI_NO_COUNT=1`, `PANVK_MDI_NO_DRAWID=1`. See [`../docs/v9-experimental-features.md`](../docs/v9-experimental-features.md). |
 | `0045-v9-EXPERIMENTAL-robustness2-null-descriptor` | ✅ yes | 🧪 **EXPERIMENTAL**. Exposes `VK_EXT/KHR_robustness2` with `nullDescriptor` on v9. `robustBufferAccess2` only with `PANVK_V9_RBA2=1` (texel buffers fail). Control `PANVK_NULLDESC_POISON=1`. |
 | `0046-v9-EXPERIMENTAL-sampler-minmax-emulation` | ✅ yes | 🧪 **EXPERIMENTAL**. `samplerFilterMinmax` on v9 by shader emulation: mode in sampler word 3, new NIR pass `panvk_v9_nir_lower_minmax.h`. **Cube maps broken**, adds a descriptor load and a branch to every float texture sample. Control `PANVK_V9_NO_MINMAX=1` (compile time). |
+| `0047-v9-EXPERIMENTAL-sampler-minmax-cube` | ✅ on `0046` state | 🧪 **EXPERIMENTAL**. Cube / cube-array support for the `0046` min/max emulation. CTS cube subset 72P/72NS 3x, control 36 fail. |
+| `0048-v9-layered-rendering-per-layer-draws` | ✅ on `0046` state | **current**, bug fix. v9 layered rendering: one draw per layer with `layer_id` sysval and `layer_offset`; frame-shader DCD per-layer offset only below v9. CTS layers 62/62 3x, control `PANVK_V9_LAYER0_ONLY=1` 17 fail. |
+| `0049-v9-EXPERIMENTAL-cubic-filter-emulation` | ✅ on `0046` state | 🧪 **EXPERIMENTAL**. `VK_EXT_filter_cubic` by Catmull-Rom emulation in the shader. CTS 272P/192NS 3x, control 175 fail. |
+| `0050-v9-EXPERIMENTAL-sampler-emulation-opt-in` | ✅ on `0046` state | 🧪 **EXPERIMENTAL**. Sampler emulation (`0046`/`0047`/`0049`) is off by default; `PANVK_V9_EMULATE_SAMPLER=1` turns it on. Shader-cache key includes the mode. |
+| `0051-v9-trace-gate-and-job-chain-error` | ✅ on `0046` state | **current**. Debug prints behind `PANVK_V9_TRACE=1` (`src/panfrost/lib/pan_v9_trace.h`, new file); one `mesa_loge` line when a job chain fails. |
+| `0052-android-hal-build-compat` | ✅ on `0046` state | **current**. Builds the Android HAL (`-Dplatforms=android -Dandroid-stub=true`) for Winlator. |
+| `0053-android-v9-no-env-gate` | ✅ on `0046` state | **current**. Android builds expose v9 without `PAN_I_WANT_A_BROKEN_VULKAN_DRIVER` (the Winlator launcher queries the driver without the container env). Control `PANVK_V9_REQUIRE_OPTIN=1`. |
+| `0054-android-mtk-gralloc-dmabuf-fd-ahb-linear` | ✅ on `0046` state | **current**. MediaTek gralloc handle: dma-buf is fd[1], not fd[0]. AHB allocations linear when the fallback gralloc cannot report the modifier. Controls `PANVK_GRALLOC_FD0=1`, `PANVK_AHB_NO_LINEAR_FIX=1`. |
+| `0055-kbase-sync-fd-import-export` | ✅ on `0046` state | **current**. `SYNC_FD` import/export for kbase CPU sync, runtime NULL sync-type guards. CTS 26P/2NS 3x, control `PANVK_KBASE_NO_SYNCFD=1`. |
+| `0056-v9-jm-kbase-vkevent` | ✅ on `0046` state | **current**. JM kbase `VkEvent` as an atomic flag. CTS 19P/13NS 3x, control `PANVK_KBASE_EVENT_NO_SET=1` 3 fail. |
+| `0057-v9-EXPERIMENTAL-reject-tess-gs-pipelines` | ✅ on `0046` state | 🧪 **EXPERIMENTAL**. v9 refuses pipelines with tessellation/geometry stages, and the runtime refuses links with a `VK_NULL_HANDLE` library. Fixes the AIO-Graphics-Test "GS Exploder" crash (3/3, controls crash). Control `PANVK_V9_ALLOW_TESS_GS=1`. |
 | `9001-termux-android-detection-fixes.UPSTREAM-THIRDPARTY` | ✅ yes | third-party, from LukeValen/panvk-mali-g52 |
 
 ## The set that actually reproduces the current driver
@@ -73,6 +84,15 @@ conflict or double-apply. `0001`/`0002`/`0003` do not apply at all.
 `0020` is already inside `0010`.
 
 Never use a `patches/*.patch` glob — it sweeps in the historical ones.
+
+## Patches 0047-0057: a real stack
+
+Unlike the earlier working-tree extracts, `0047`-`0057` were generated
+per change from timestamped backups and **stack in order** on the tree that
+`0041`-`0046` describe (the driver state of commit `c080268`). Checked: that
+state plus `0047`..`0057` applied in order equals the live driver tree,
+`identical: 44  differing: 0  (of 44)`. Generator:
+[`../tools/winlator/mkstagepatches.py`](../tools/winlator/mkstagepatches.py).
 
 ## Reproducing the FAU A/B experiment
 

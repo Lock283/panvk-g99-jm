@@ -1,0 +1,289 @@
+diff --git a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+--- a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
++++ b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+@@ -16,9 +16,16 @@
+  *    mode with a non-zero fraction both levels are reduced together.
+  *  - Otherwise the original hardware sample is used unchanged.
+  *
++ * Cube and cube array views: the direction picks a face (Vulkan face
++ * selection table), the footprint is taken on that face, and with LINEAR
++ * filtering texels past an edge come from the adjacent face (seamless cube
++ * map edge handling). At a cube corner one of the three corner texels is
++ * used. Texels are read with a cube sample at the texel centre (see
++ * mm_cube_texel(): TEX_FETCH cannot select a cube face on v9).
++ *
+  * Not handled (the hardware weighted average is returned, i.e. wrong for a
+- * MIN/MAX sampler): cube maps, depth compare, explicit gradients (txd),
+- * non-32-bit results.
++ * MIN/MAX sampler): depth compare, explicit gradients (txd), non-32-bit
++ * results.
+  *
+  * Runs right before pan_postprocess_nir(), so the raw descriptor loads take
+  * the same path as the ones va_lower_lod() emits.
+@@ -72,6 +79,7 @@
+    case GLSL_SAMPLER_DIM_1D: return 1;
+    case GLSL_SAMPLER_DIM_2D: return 2;
+    case GLSL_SAMPLER_DIM_3D: return 3;
++   case GLSL_SAMPLER_DIM_CUBE: return 2; /* footprint is on one face */
+    default: return 0;
+    }
+ }
+@@ -129,8 +137,74 @@
+    return res;
+ }
+ 
++/* Vulkan cube face selection. Works on float directions and on the integer
++ * texel-centre vectors used for edge remapping. Ties pick X, then Y, then Z. */
++static void
++mm_cube_select(nir_builder *b, bool is_int, nir_def *x, nir_def *y,
++               nir_def *z, nir_def **face, nir_def **sc, nir_def **tc)
++{
++#define MM_ABS(v) (is_int ? nir_iabs(b, v) : nir_fabs(b, v))
++#define MM_GE(u, v) (is_int ? nir_ige(b, u, v) : nir_fge(b, u, v))
++#define MM_NEG(v) (is_int ? nir_ineg(b, v) : nir_fneg(b, v))
++   nir_def *zero = is_int ? nir_imm_int(b, 0) : nir_imm_float(b, 0);
++   nir_def *ax = MM_ABS(x), *ay = MM_ABS(y), *az = MM_ABS(z);
++   nir_def *is_x = nir_iand(b, MM_GE(ax, ay), MM_GE(ax, az));
++   nir_def *is_y = nir_iand(b, nir_inot(b, is_x), MM_GE(ay, az));
++   nir_def *px = MM_GE(x, zero), *py = MM_GE(y, zero), *pz = MM_GE(z, zero);
++
++   *face = nir_bcsel(b, is_x, nir_bcsel(b, px, nir_imm_int(b, 0), nir_imm_int(b, 1)),
++           nir_bcsel(b, is_y, nir_bcsel(b, py, nir_imm_int(b, 2), nir_imm_int(b, 3)),
++                     nir_bcsel(b, pz, nir_imm_int(b, 4), nir_imm_int(b, 5))));
++   /* +X: (-z,-y)  -X: (z,-y)  +Y: (x,z)  -Y: (x,-z)  +Z: (x,-y)  -Z: (-x,-y) */
++   *sc = nir_bcsel(b, is_x, nir_bcsel(b, px, MM_NEG(z), z),
++         nir_bcsel(b, is_y, x, nir_bcsel(b, pz, x, MM_NEG(x))));
++   *tc = nir_bcsel(b, is_y, nir_bcsel(b, py, z, MM_NEG(z)), MM_NEG(y));
++   if (!is_int) {
++      nir_def *ma = nir_bcsel(b, is_x, ax, nir_bcsel(b, is_y, ay, az));
++      nir_def *half_inv = nir_fdiv(b, nir_imm_float(b, 0.5), ma);
++      *sc = nir_fsat(b, nir_ffma(b, *sc, half_inv, nir_imm_float(b, 0.5)));
++      *tc = nir_fsat(b, nir_ffma(b, *tc, half_inv, nir_imm_float(b, 0.5)));
++   }
++#undef MM_ABS
++#undef MM_GE
++#undef MM_NEG
++}
++
++/* Seamless edge handling: texel (i, j) of face `face` (size n), where i or j
++ * may be one texel outside the face. The texel centre is turned into an
++ * integer 3D vector in half-texel units (the face spans [-n, n]), the face
++ * is selected again from that vector, and the coordinates on the new face
++ * are mapped back to texels. A coordinate that was in range keeps its texel
++ * exactly; the old major axis lands on the edge texel. */
++static void
++mm_cube_remap(nir_builder *b, nir_def *face, nir_def *i, nir_def *j,
++              nir_def *n, nir_def **of, nir_def **oi, nir_def **oj)
++{
++   nir_def *sc = nir_isub(b, nir_iadd_imm(b, nir_ishl_imm(b, i, 1), 1), n);
++   nir_def *tc = nir_isub(b, nir_iadd_imm(b, nir_ishl_imm(b, j, 1), 1), n);
++   nir_def *nn = nir_ineg(b, n);
++   nir_def *f[6];
++   for (unsigned k = 0; k < 6; k++)
++      f[k] = nir_ieq_imm(b, face, k);
++
++   nir_def *x = nir_bcsel(b, f[0], n, nir_bcsel(b, f[1], nn,
++                nir_bcsel(b, f[5], nir_ineg(b, sc), sc)));
++   nir_def *y = nir_bcsel(b, f[2], n, nir_bcsel(b, f[3], nn, nir_ineg(b, tc)));
++   nir_def *z = nir_bcsel(b, f[4], n, nir_bcsel(b, f[5], nn,
++                nir_bcsel(b, f[0], nir_ineg(b, sc), nir_bcsel(b, f[1], sc,
++                nir_bcsel(b, f[2], tc, nir_ineg(b, tc))))));
++
++   nir_def *sc2, *tc2;
++   mm_cube_select(b, true, x, y, z, of, &sc2, &tc2);
++   nir_def *nm1 = nir_iadd_imm(b, n, -1), *zero = nir_imm_int(b, 0);
++   *oi = nir_imin(b, nir_imax(b, nir_ishr_imm(b, nir_iadd(b, sc2, nm1), 1), zero), nm1);
++   *oj = nir_imin(b, nir_imax(b, nir_ishr_imm(b, nir_iadd(b, tc2, nm1), 1), zero), nm1);
++}
++
+ struct mm_state {
+    nir_tex_instr *tex;
++   bool cube;
++   nir_def *face, *cube_index, *lod_bias; /* cube only */
+    nir_def *coord, *offset, *size0, *border_color;
+    nir_def *wrap[3];
+    nir_def *normalized, *linear, *is_min;
+@@ -143,6 +217,62 @@
+    return nir_bcsel(b, is_min, nir_fmin(b, a, c), nir_fmax(b, a, c));
+ }
+ 
++/* Texel (face, i, j) of level lvl of a cube.
++ *
++ * TEX_FETCH cannot reach cube faces on v9: on a cube descriptor its array
++ * index selects the cube and the face is always +X (measured: index 1 of a
++ * two-cube array returns cube 1 face 0, index 2 is out of bounds, and a
++ * cube-dimension TEX_FETCH returns zero). So the texel is read with a
++ * filtered cube sample aimed at the texel centre, at explicit LOD lvl:
++ *  - the direction is built with a major axis of exactly 1, so the hardware
++ *    face coordinate is sc * 0.5 + 0.5 with no division error, and the
++ *    face is unambiguous (|sc|, |tc| < 1);
++ *  - at a texel centre the bilinear weights are 1, 0, 0, 0 (exact for
++ *    power-of-two sizes; otherwise the error is within float rounding of
++ *    the centre);
++ *  - the sampler LOD bias is subtracted, so the hardware sees lvl again.
++ * The sampler min/max LOD still clamps the explicit LOD: with LINEAR
++ * mipmapping and a fractional minLod or maxLod the hardware can blend two
++ * levels here. That case is a known limitation. */
++static nir_def *
++mm_cube_texel(nir_builder *b, struct mm_state *s, nir_def *face, nir_def *i,
++              nir_def *j, nir_def *n, nir_def *lvl)
++{
++   nir_def *rn = nir_frcp(b, nir_i2f32(b, n));
++   nir_def *sc = nir_fadd_imm(b, nir_fmul(b, nir_i2f32(b,
++                    nir_iadd_imm(b, nir_ishl_imm(b, i, 1), 1)), rn), -1.0);
++   nir_def *tc = nir_fadd_imm(b, nir_fmul(b, nir_i2f32(b,
++                    nir_iadd_imm(b, nir_ishl_imm(b, j, 1), 1)), rn), -1.0);
++   nir_def *one = nir_imm_float(b, 1.0), *mone = nir_imm_float(b, -1.0);
++   nir_def *f[6];
++   for (unsigned k = 0; k < 6; k++)
++      f[k] = nir_ieq_imm(b, face, k);
++   /* +X: (1,-tc,-sc) -X: (-1,-tc,sc) +Y: (sc,1,tc) -Y: (sc,-1,-tc)
++    * +Z: (sc,-tc,1)  -Z: (-sc,-tc,-1) */
++   nir_def *x = nir_bcsel(b, f[0], one, nir_bcsel(b, f[1], mone,
++                nir_bcsel(b, f[5], nir_fneg(b, sc), sc)));
++   nir_def *y = nir_bcsel(b, f[2], one, nir_bcsel(b, f[3], mone,
++                nir_fneg(b, tc)));
++   nir_def *z = nir_bcsel(b, f[4], one, nir_bcsel(b, f[5], mone,
++                nir_bcsel(b, f[0], nir_fneg(b, sc), nir_bcsel(b, f[1], sc,
++                nir_bcsel(b, f[2], tc, nir_fneg(b, tc))))));
++
++   nir_def *comps[4] = { x, y, z, NULL };
++   unsigned nc = 3;
++   if (s->tex->is_array)
++      comps[nc++] = nir_i2f32(b, s->cube_index);
++
++   unsigned k;
++   nir_tex_instr *t = mm_new_tex(b, s->tex, nir_texop_txl, 2, &k);
++   t->coord_components = nc;
++   t->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord, nir_vec(b, comps, nc));
++   t->src[k + 1] = nir_tex_src_for_ssa(nir_tex_src_lod,
++                                       nir_fsub(b, lvl, s->lod_bias));
++   nir_def_init(&t->instr, &t->def, 4, 32);
++   nir_builder_instr_insert(b, &t->instr);
++   return &t->def;
++}
++
+ /* Reduce the filter footprint at integer level lvl (float). */
+ static nir_def *
+ mm_level(nir_builder *b, struct mm_state *s, nir_def *lvl)
+@@ -167,7 +297,7 @@
+    }
+ 
+    nir_def *layer = NULL;
+-   if (s->tex->is_array) {
++   if (!s->cube && s->tex->is_array) {
+       nir_def *nl = nir_channel(b, s->size0, s->dims);
+       layer = nir_f2i32(b, nir_ffloor(b, nir_fadd_imm(b,
+                     nir_channel(b, s->coord, s->dims), 0.5)));
+@@ -189,24 +319,45 @@
+       nir_break_if(b, nir_uge_imm(b, corner, 1u << s->dims));
+ 
+       nir_def *border = nir_imm_false(b);
+-      nir_def *c[4];
+-      for (unsigned d = 0; d < s->dims; d++) {
+-         nir_def *pick_hi = nir_test_mask(b, corner, 1u << d);
+-         c[d] = mm_wrap(b, nir_bcsel(b, pick_hi, hi[d], lo[d]), sz[d],
+-                        s->wrap[d], &border);
+-      }
++      nir_def *c[4], *cube_face = NULL;
+       unsigned nc = s->dims;
+-      if (layer)
+-         c[nc++] = layer;
++      if (s->cube) {
++         /* Address modes are ignored for cubes: NEAREST clamps to the edge,
++          * LINEAR crosses into the adjacent face. */
++         nir_def *nm1 = nir_iadd_imm(b, sz[0], -1), *zero = nir_imm_int(b, 0);
++         nir_def *ij[2], *fc;
++         for (unsigned d = 0; d < 2; d++) {
++            nir_def *v = nir_bcsel(b, nir_test_mask(b, corner, 1u << d),
++                                   hi[d], lo[d]);
++            ij[d] = nir_bcsel(b, s->linear, v,
++                              nir_imin(b, nir_imax(b, v, zero), nm1));
++         }
++         mm_cube_remap(b, s->face, ij[0], ij[1], sz[0], &fc, &c[0], &c[1]);
++         cube_face = fc;
++      } else {
++         for (unsigned d = 0; d < s->dims; d++) {
++            nir_def *pick_hi = nir_test_mask(b, corner, 1u << d);
++            c[d] = mm_wrap(b, nir_bcsel(b, pick_hi, hi[d], lo[d]), sz[d],
++                           s->wrap[d], &border);
++         }
++         if (layer)
++            c[nc++] = layer;
++      }
+ 
+-      unsigned k;
+-      nir_tex_instr *f = mm_new_tex(b, s->tex, nir_texop_txf, 2, &k);
+-      f->coord_components = nc;
+-      f->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord, nir_vec(b, c, nc));
+-      f->src[k + 1] = nir_tex_src_for_ssa(nir_tex_src_lod, li);
+-      nir_def_init(&f->instr, &f->def, 4, 32);
+-      nir_builder_instr_insert(b, &f->instr);
+-      nir_def *texel = nir_bcsel(b, border, s->border_color, &f->def);
++      nir_def *fetched;
++      if (s->cube) {
++         fetched = mm_cube_texel(b, s, cube_face, c[0], c[1], sz[0], lvl);
++      } else {
++         unsigned k;
++         nir_tex_instr *f = mm_new_tex(b, s->tex, nir_texop_txf, 2, &k);
++         f->coord_components = nc;
++         f->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord, nir_vec(b, c, nc));
++         f->src[k + 1] = nir_tex_src_for_ssa(nir_tex_src_lod, li);
++         nir_def_init(&f->instr, &f->def, 4, 32);
++         nir_builder_instr_insert(b, &f->instr);
++         fetched = &f->def;
++      }
++      nir_def *texel = nir_bcsel(b, border, s->border_color, fetched);
+ 
+       nir_def *acc = nir_load_var(b, acc_var);
+       acc = nir_bcsel(b, nir_ieq_imm(b, corner, 0), texel,
+@@ -236,7 +387,9 @@
+    nir_def *cond = nir_test_mask(b, w3, PANVK_V9_MINMAX_TAG);
+    nir_if *nif = nir_push_if(b, cond);
+ 
+-   struct mm_state s = { .tex = tex, .dims = mm_spatial_dims(tex->sampler_dim) };
++   struct mm_state s = { .tex = tex, .dims = mm_spatial_dims(tex->sampler_dim),
++                         .cube = tex->sampler_dim == GLSL_SAMPLER_DIM_CUBE };
++   const unsigned lod_dims = s.cube ? 3 : s.dims;
+    nir_def *sw = pan_nir_load_va_desc(b, 3, 32, samp_h, 0);
+    nir_def *w0 = nir_channel(b, sw, 0), *w1 = nir_channel(b, sw, 1),
+            *w2 = nir_channel(b, sw, 2);
+@@ -256,10 +409,10 @@
+       unsigned k;
+       nir_tex_instr *q = mm_new_tex(b, tex, nir_texop_lod, 1, &k);
+       q->is_array = false;
+-      q->coord_components = s.dims;
++      q->coord_components = lod_dims;
+       q->dest_type = nir_type_float32;
+       q->src[k] = nir_tex_src_for_ssa(nir_tex_src_coord,
+-                     nir_trim_vector(b, s.coord, s.dims));
++                     nir_trim_vector(b, s.coord, lod_dims));
+       nir_def_init(&q->instr, &q->def, 2, 32);
+       nir_builder_instr_insert(b, &q->instr);
+       lam = nir_channel(b, &q->def, 1);
+@@ -300,6 +453,25 @@
+    s.wrap[2] = nir_ubitfield_extract_imm(b, w0, 8, 4);  /* R */
+    s.size0 = pan_nir_load_va_tex_size(b, tex_h, tex->sampler_dim,
+                                       tex->is_array);
++   if (s.cube) {
++      /* Face and face coordinates from the direction. Cubes always use
++       * normalized coordinates. The array size counts cubes. */
++      nir_def *fs, *ft;
++      mm_cube_select(b, false, nir_channel(b, s.coord, 0),
++                     nir_channel(b, s.coord, 1), nir_channel(b, s.coord, 2),
++                     &s.face, &fs, &ft);
++      s.cube_index = NULL;
++      if (tex->is_array) {
++         nir_def *cube = nir_f2i32(b, nir_ffloor(b, nir_fadd_imm(b,
++                            nir_channel(b, s.coord, 3), 0.5)));
++         s.cube_index = nir_imin(b, nir_imax(b, cube, nir_imm_int(b, 0)),
++                                 nir_iadd_imm(b, nir_channel(b, s.size0, 2), -1));
++      }
++      s.lod_bias = nir_fmul_imm(b, nir_i2f32(b,
++                      nir_ibitfield_extract_imm(b, w2, 0, 16)), 1.0 / 256.0);
++      s.coord = nir_vec2(b, fs, ft);
++      s.normalized = nir_imm_true(b);
++   }
+    s.border_color = pan_nir_load_va_desc(b, 4, 32, samp_h, 16);
+ 
+    nir_def *r0 = mm_level(b, &s, l0);

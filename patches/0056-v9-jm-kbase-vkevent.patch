@@ -1,0 +1,146 @@
+diff --git a/src/panfrost/vulkan/jm/panvk_event.h b/src/panfrost/vulkan/jm/panvk_event.h
+--- a/src/panfrost/vulkan/jm/panvk_event.h
++++ b/src/panfrost/vulkan/jm/panvk_event.h
+@@ -6,6 +6,7 @@
+ #ifndef PANVK_EVENT_H
+ #define PANVK_EVENT_H
+ 
++#include <stdbool.h>
+ #include <stdint.h>
+ 
+ #include "vk_object.h"
+@@ -13,6 +14,11 @@
+ struct panvk_event {
+    struct vk_object_base base;
+    uint32_t syncobj;
++   /* kbase has no DRM syncobjs. Every kbase submission completes before
++    * vkQueueSubmit returns, so the event state is a plain flag that the
++    * host and the queue (after a batch finished) update in order. */
++   bool kbase;
++   uint32_t kbase_set;
+ };
+ 
+ VK_DEFINE_NONDISP_HANDLE_CASTS(panvk_event, base, VkEvent, VK_OBJECT_TYPE_EVENT)
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_event.c b/src/panfrost/vulkan/jm/panvk_vX_event.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_event.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_event.c
+@@ -8,6 +8,20 @@
+ #include "panvk_event.h"
+ 
+ #include "vk_log.h"
++#include "panvk_physical_device.h"
++
++#include "util/u_atomic.h"
++
++static inline bool
++panvk_event_dev_is_kbase(const struct panvk_device *device)
++{
++#ifdef HAVE_PAN_KMOD_KBASE
++   return to_panvk_physical_device(device->vk.physical)->kbase_node_path[0] !=
++          '\0';
++#else
++   return false;
++#endif
++}
+ 
+ VKAPI_ATTR VkResult VKAPI_CALL
+ panvk_per_arch(CreateEvent)(VkDevice _device,
+@@ -21,6 +35,13 @@
+    if (!event)
+       return panvk_error(device, VK_ERROR_OUT_OF_HOST_MEMORY);
+ 
++   if (panvk_event_dev_is_kbase(device)) {
++      event->kbase = true;
++      p_atomic_set(&event->kbase_set, 0);
++      *pEvent = panvk_event_to_handle(event);
++      return VK_SUCCESS;
++   }
++
+    struct drm_syncobj_create create = {
+       .flags = 0,
+    };
+@@ -46,8 +67,10 @@
+    if (!event)
+       return;
+ 
+-   struct drm_syncobj_destroy destroy = {.handle = event->syncobj};
+-   pan_kmod_ioctl(device->drm_fd, DRM_IOCTL_SYNCOBJ_DESTROY, &destroy);
++   if (!event->kbase) {
++      struct drm_syncobj_destroy destroy = {.handle = event->syncobj};
++      pan_kmod_ioctl(device->drm_fd, DRM_IOCTL_SYNCOBJ_DESTROY, &destroy);
++   }
+ 
+    vk_object_free(&device->vk, pAllocator, event);
+ }
+@@ -59,6 +82,9 @@
+    VK_FROM_HANDLE(panvk_event, event, _event);
+    bool signaled;
+ 
++   if (event->kbase)
++      return p_atomic_read(&event->kbase_set) ? VK_EVENT_SET : VK_EVENT_RESET;
++
+    struct drm_syncobj_wait wait = {
+       .handles = (uintptr_t)&event->syncobj,
+       .count_handles = 1,
+@@ -86,6 +112,11 @@
+    VK_FROM_HANDLE(panvk_device, device, _device);
+    VK_FROM_HANDLE(panvk_event, event, _event);
+ 
++   if (event->kbase) {
++      p_atomic_set(&event->kbase_set, 1);
++      return VK_SUCCESS;
++   }
++
+    struct drm_syncobj_array objs = {
+       .handles = (uint64_t)(uintptr_t)&event->syncobj,
+       .count_handles = 1};
+@@ -108,6 +139,11 @@
+    VK_FROM_HANDLE(panvk_device, device, _device);
+    VK_FROM_HANDLE(panvk_event, event, _event);
+ 
++   if (event->kbase) {
++      p_atomic_set(&event->kbase_set, 0);
++      return VK_SUCCESS;
++   }
++
+    struct drm_syncobj_array objs = {
+       .handles = (uint64_t)(uintptr_t)&event->syncobj,
+       .count_handles = 1};
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c b/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_gpu_queue.c
+@@ -431,7 +431,10 @@
+          /* Nothing to do yet */
+          break;
+       case PANVK_EVENT_OP_WAIT:
+-         in_fences[(*nr_in_fences)++] = op->event->syncobj;
++         /* kbase: the set happened in an earlier, already finished batch
++          * or on the host before submission (required by the spec). */
++         if (!op->event->kbase)
++            in_fences[(*nr_in_fences)++] = op->event->syncobj;
+          break;
+       default:
+          UNREACHABLE("bad panvk_cmd_event_op type\n");
+@@ -448,11 +451,22 @@
+    util_dynarray_foreach(&batch->event_ops, struct panvk_cmd_event_op, op) {
+       switch (op->type) {
+       case PANVK_EVENT_OP_SET: {
++         if (op->event->kbase) {
++            /* The batch has completed (synchronous kbase submit).
++             * PANVK_KBASE_EVENT_NO_SET=1: negative control, drop the set. */
++            if (!getenv("PANVK_KBASE_EVENT_NO_SET"))
++               p_atomic_set(&op->event->kbase_set, 1);
++            break;
++         }
+          panvk_queue_transfer_sync(queue, op->event->syncobj);
+          break;
+       }
+       case PANVK_EVENT_OP_RESET: {
+          struct panvk_event *event = op->event;
++         if (event->kbase) {
++            p_atomic_set(&event->kbase_set, 0);
++            break;
++         }
+ 
+          struct drm_syncobj_array objs = {
+             .handles = (uint64_t)(uintptr_t)&event->syncobj,

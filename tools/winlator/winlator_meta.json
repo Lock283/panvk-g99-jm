@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "name": "panvk-g57-jm-alpha2",
+  "description": "EXPERIMENTAL Mesa PanVK for Mali-G57 MC2 (Valhall v9, Job Manager, kbase). Not conformant. Test build.",
+  "author": "panvk-g99-jm",
+  "packageVersion": "2",
+  "vendor": "mesa",
+  "driverVersion": "26.3.0-devel-g99jm-alpha2",
+  "minApi": 29,
+  "libraryName": "libvulkan_panfrost.so"
+}

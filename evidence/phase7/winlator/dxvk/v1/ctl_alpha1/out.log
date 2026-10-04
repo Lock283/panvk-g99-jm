@@ -1,0 +1,17 @@
+starting FEX (Hangover 11.16) based libarm64ecfex.dll
+Fontconfig error: Cannot load default config file: No such file: (null)
+info:  Game: d3d11_tri.exe
+info:  DXVK-Sarek: v1.12.0
+info:  Built-in extension providers:
+info:    Win32 WSI
+info:    OpenVR
+info:    OpenXR
+info:  OpenVR: could not open registry key, status 2
+info:  OpenVR: Failed to locate module
+info:  Enabled instance extensions:
+info:    VK_KHR_get_surface_capabilities2
+info:    VK_KHR_surface
+info:    VK_KHR_win32_surface
+err:   DxvkInstance::createInstance: Failed to create Vulkan 1.1 instance
+err:   D3D11CreateDevice: Failed to create a DXGI factory
+FAILED: D3D11CreateDeviceAndSwapChain hr=0x80004005

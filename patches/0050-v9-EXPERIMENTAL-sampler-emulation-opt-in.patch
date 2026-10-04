@@ -1,0 +1,170 @@
+diff --git a/src/panfrost/vulkan/panvk_physical_device.c b/src/panfrost/vulkan/panvk_physical_device.c
+--- a/src/panfrost/vulkan/panvk_physical_device.c
++++ b/src/panfrost/vulkan/panvk_physical_device.c
+@@ -1487,18 +1487,19 @@
+                   VK_FORMAT_FEATURE_2_TRANSFER_DST_BIT |
+                   VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT;
+ 
+-      /* v9: EXPERIMENTAL, min/max reduction is emulated in the shader
+-       * (panvk_v9_nir_lower_minmax.h). */
+-      if (arch >= 9)
++      /* v9: EXPERIMENTAL, opt-in: min/max reduction is emulated in the
++       * shader (panvk_v9_nir_lower_minmax.h). */
++      if (arch >= 10 || panvk_v9_sampler_emulation_exposed(arch))
+          features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT;
+ 
+       /* Integer formats only support nearest filtering */
+       if (!util_format_is_scaled(pfmt) && !util_format_is_pure_integer(pfmt)) {
+          features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT;
+ 
+-         /* v9: EXPERIMENTAL cubic filter emulation, colour formats only
+-          * (the emulation does not handle depth compare). */
+-         if (arch == 9 && !util_format_is_depth_or_stencil(pfmt))
++         /* v9: EXPERIMENTAL cubic filter emulation, opt-in, colour formats
++          * only (the emulation does not handle depth compare). */
++         if (panvk_v9_sampler_emulation_exposed(arch) &&
++             !util_format_is_depth_or_stencil(pfmt))
+             features |= VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT;
+       }
+ 
+diff --git a/src/panfrost/vulkan/panvk_physical_device.h b/src/panfrost/vulkan/panvk_physical_device.h
+--- a/src/panfrost/vulkan/panvk_physical_device.h
++++ b/src/panfrost/vulkan/panvk_physical_device.h
+@@ -6,6 +6,7 @@
+ #ifndef PANVK_PHYSICAL_DEVICE_H
+ #define PANVK_PHYSICAL_DEVICE_H
+ 
++#include "util/u_debug.h"
+ #include <stdint.h>
+ #include <sys/types.h>
+ 
+@@ -147,4 +148,17 @@
+    struct vk_properties *properties);
+ #endif
+ 
++/* EXPERIMENTAL v9: sampler min/max reduction (samplerFilterMinmax) and
++ * cubic filtering (VK_EXT_filter_cubic) are emulated in the shader
++ * (panvk_v9_nir_lower_minmax.h). Off by default: once active, every float
++ * texture sample of every shader carries the emulation code (a one-sample
++ * fragment shader grew from 256 to 7552 bytes). PANVK_V9_EMULATE_SAMPLER=1
++ * exposes the features; the pass then only runs on devices that enable
++ * them. */
++static inline bool
++panvk_v9_sampler_emulation_exposed(unsigned arch)
++{
++   return arch == 9 && debug_get_bool_option("PANVK_V9_EMULATE_SAMPLER", false);
++}
++
+ #endif
+diff --git a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+--- a/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
++++ b/src/panfrost/vulkan/panvk_v9_nir_lower_minmax.h
+@@ -42,6 +42,18 @@
+ #include "panvk_sampler.h"
+ #include "util/ralloc.h"
+ 
++/* The pass runs only when the emulation is opted in and the device enabled
++ * a feature that needs it. Hashed into the shader cache key
++ * (panvk_hash_state) so cached shaders compiled without it are not reused. */
++static inline bool
++panvk_v9_sampler_emulation_active(const struct vk_device *dev)
++{
++   return panvk_v9_sampler_emulation_exposed(9) &&
++          (dev->enabled_features.samplerFilterMinmax ||
++           dev->enabled_extensions.EXT_sampler_filter_minmax ||
++           dev->enabled_extensions.EXT_filter_cubic);
++}
++
+ static nir_def *
+ mm_handle(nir_builder *b, nir_tex_instr *tex, nir_tex_src_type off_type,
+           uint32_t index)
+diff --git a/src/panfrost/vulkan/panvk_vX_physical_device.c b/src/panfrost/vulkan/panvk_vX_physical_device.c
+--- a/src/panfrost/vulkan/panvk_vX_physical_device.c
++++ b/src/panfrost/vulkan/panvk_vX_physical_device.c
+@@ -176,9 +176,9 @@
+       .EXT_image_robustness = true,
+       .EXT_image_sliced_view_of_3d = true,
+       .EXT_image_view_min_lod = true,
+-      /* v9: EXPERIMENTAL, cubic filtering is emulated in the shader
+-       * (panvk_v9_nir_lower_minmax.h); no Mali has a cubic filter. */
+-      .EXT_filter_cubic = PAN_ARCH == 9,
++      /* v9: EXPERIMENTAL, opt-in (PANVK_V9_EMULATE_SAMPLER=1); cubic
++       * filtering is emulated in the shader, no Mali has a cubic filter. */
++      .EXT_filter_cubic = panvk_v9_sampler_emulation_exposed(PAN_ARCH),
+       .EXT_index_type_uint8 = true,
+       .EXT_legacy_dithering = true,
+       .EXT_line_rasterization = true,
+@@ -204,7 +204,9 @@
+       .EXT_rasterization_order_attachment_access = PAN_ARCH >= 10,
+       .EXT_rgba10x6_formats = PAN_ARCH >= 11,
+       .EXT_robustness2 = PAN_ARCH >= 9,
+-      .EXT_sampler_filter_minmax = PAN_ARCH >= 9, /* v9: EXPERIMENTAL shader emulation */
++      /* v9: EXPERIMENTAL shader emulation, opt-in */
++      .EXT_sampler_filter_minmax =
++         PAN_ARCH >= 10 || panvk_v9_sampler_emulation_exposed(PAN_ARCH),
+       .EXT_scalar_block_layout = true,
+       .EXT_separate_stencil_usage = true,
+       .EXT_shader_atomic_float = true,
+@@ -420,7 +422,9 @@
+       .descriptorBindingPartiallyBound = PAN_ARCH >= 9,
+       .descriptorBindingVariableDescriptorCount = true,
+       .runtimeDescriptorArray = true,
+-      .samplerFilterMinmax = PAN_ARCH >= 9, /* v9: EXPERIMENTAL shader emulation */
++      /* v9: EXPERIMENTAL shader emulation, opt-in */
++      .samplerFilterMinmax =
++         PAN_ARCH >= 10 || panvk_v9_sampler_emulation_exposed(PAN_ARCH),
+       .scalarBlockLayout = true,
+       .imagelessFramebuffer = true,
+       .uniformBufferStandardLayout = true,
+@@ -1148,8 +1152,10 @@
+                                       VK_RESOLVE_MODE_MAX_BIT,
+       .independentResolveNone = true,
+       .independentResolve = true,
+-      .filterMinmaxSingleComponentFormats = PAN_ARCH >= 9,
+-      .filterMinmaxImageComponentMapping = PAN_ARCH >= 9,
++      .filterMinmaxSingleComponentFormats =
++         PAN_ARCH >= 10 || panvk_v9_sampler_emulation_exposed(PAN_ARCH),
++      .filterMinmaxImageComponentMapping =
++         PAN_ARCH >= 10 || panvk_v9_sampler_emulation_exposed(PAN_ARCH),
+       .maxTimelineSemaphoreValueDifference = INT64_MAX,
+       .framebufferIntegerColorSampleCounts = sample_counts,
+ 
+diff --git a/src/panfrost/vulkan/panvk_vX_shader.c b/src/panfrost/vulkan/panvk_vX_shader.c
+--- a/src/panfrost/vulkan/panvk_vX_shader.c
++++ b/src/panfrost/vulkan/panvk_vX_shader.c
+@@ -617,6 +617,19 @@
+          _mesa_blake3_update(&blake3_ctx, state->ial, sizeof(*state->ial));
+    }
+ 
++#if PAN_ARCH == 9
++   /* Whether the EXPERIMENTAL sampler emulation pass runs depends on the
++    * device's enabled features, so it is part of the cache key. Both
++    * runtime callers pass &vk_device::enabled_features.
++    * PANVK_V9_EMU_NO_HASH=1 leaves it out (negative control). */
++   if (!getenv("PANVK_V9_EMU_NO_HASH")) {
++      const struct vk_device *vkdev =
++         container_of(enabled_features, struct vk_device, enabled_features);
++      const bool emu = panvk_v9_sampler_emulation_active(vkdev);
++      _mesa_blake3_update(&blake3_ctx, &emu, sizeof(emu));
++   }
++#endif
++
+    _mesa_blake3_final(&blake3_ctx, blake3_out);
+ }
+ 
+@@ -1083,10 +1096,11 @@
+                nir_metadata_control_flow, &input.no_idvs);
+ 
+ #if PAN_ARCH == 9
+-   /* EXPERIMENTAL: emulated sampler min/max reduction. PANVK_V9_NO_MINMAX=1
+-    * skips it (negative control; compile time, needs
+-    * MESA_SHADER_CACHE_DISABLE=true). */
+-   if (!getenv("PANVK_V9_NO_MINMAX"))
++   /* EXPERIMENTAL, opt-in: emulated sampler min/max reduction and cubic
++    * filtering. PANVK_V9_NO_MINMAX=1 skips it (negative control; compile
++    * time, needs MESA_SHADER_CACHE_DISABLE=true). */
++   if (panvk_v9_sampler_emulation_active(&dev->vk) &&
++       !getenv("PANVK_V9_NO_MINMAX"))
+       NIR_PASS(_, nir, panvk_v9_lower_sampler_minmax);
+ #endif
+ 

@@ -1,0 +1,144 @@
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d16_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.d32_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Depth/stencil formats are not supported on compute queue at vktPipelineImageSamplingInstance.cpp:233
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r16_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r32_sfloat.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min	Fail	Image mismatch
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.mag_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.average_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.max_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min	Pass	Result image matches reference
+dEQP-VK.pipeline.monolithic.sampler.view_type.cube_array.format.r8g8b8a8_unorm.min_reduce.comp_identity_zero_zero_zero.min_compute	NotSupported	Exclusive compute queue not supported. at vktTestCase.cpp:980

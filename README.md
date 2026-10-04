@@ -10,11 +10,12 @@ Most public PanVK testing/builds so far target **CSF** chips (G610/G615/G710/G72
 
 ---
 
-## Status (2026-10-04): graphics, texturing, WSI and a spinning cube on v9. Plus EXPERIMENTAL v9-only features.
+## Status (2026-10-04): graphics, texturing, WSI and a spinning cube on v9, EXPERIMENTAL v9-only features, and real DXVK through the Winlator stack.
 
 **Full labelled status: [`docs/STATUS.md`](docs/STATUS.md)** (up to 2026-09-17). Newer work:
 [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md), [`docs/phase5-7.md`](docs/phase5-7.md),
-[`docs/v9-experimental-features.md`](docs/v9-experimental-features.md).
+[`docs/v9-experimental-features.md`](docs/v9-experimental-features.md),
+[`docs/phase7-winlator-dxvk.md`](docs/phase7-winlator-dxvk.md).
 
 | Area | State |
 |---|---|
@@ -28,8 +29,11 @@ Most public PanVK testing/builds so far target **CSF** chips (G610/G615/G710/G72
 | `multiDrawIndirect`, `drawIndirectCount` on v9 | 🧪 **EXPERIMENTAL** (patch `0044`, CTS subset passes) |
 | `VK_EXT_robustness2` `nullDescriptor` on v9 | 🧪 **EXPERIMENTAL** (patch `0045`, CTS subset passes). `robustBufferAccess2` opt-in only, texel buffers fail |
 | Sampler min/max reduction on v9 (emulated in the shader) | 🧪 **EXPERIMENTAL** (patch `0046`). 1D/2D/3D pass in CTS, **cube maps broken** |
-| DXVK | ❌ will not create a device: `geometryShader`, `multiViewport`, clip/cull distance, `textureCompressionBC`, `transformFeedback` missing |
-| Android native surface, game / application support, conformance | ❌ **NOT IMPLEMENTED** |
+| Sampler min/max on cube maps, cubic filtering (opt-in `PANVK_V9_EMULATE_SAMPLER=1`) | 🧪 **EXPERIMENTAL** (patches `0047`, `0049`, `0050`), CTS subsets pass 3x |
+| Winlator: adrenotools import, launcher query, Wrapper device, AHB swapchain | ✅ **VERIFIED-HW** with the APK's own libraries (patches `0052`-`0056`), not inside the app |
+| DXVK (real DLLs from Winlator, Wine 11.16) | ✅ **VERIFIED-HW** for a D3D11 test program: 1.12.1-sarek FL 11_1, v2.3.1 FL 10_1. 1.10.3 / 1.11 need `geometryShader` and do not start |
+| Geometry shaders, tessellation, transform feedback on v9 | ❌ missing. 🧪 such pipelines are refused instead of crashing (patch `0057`) |
+| Game / application support, conformance | ❌ **NOT CLAIMED** (no game tested) |
 
 > 🧪 **EXPERIMENTAL** means the feature is exposed on v9 although upstream panvk
 > only exposes it on v10+, and it works by emulation in the driver. It is
@@ -122,6 +126,7 @@ attribution: [`docs/fau-root-cause.md`](docs/fau-root-cause.md).
 | [`docs/phase4-open-questions.md`](docs/phase4-open-questions.md) | Phase 4 self-audit and open questions |
 | [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md) | CTS on device, fixes 0041-0043, spinning cube over X11, texture sampling |
 | [`docs/phase5-7.md`](docs/phase5-7.md) | stencil, blending, CTS subsets, sustained WSI, DXVK gap |
+| [`docs/phase7-winlator-dxvk.md`](docs/phase7-winlator-dxvk.md) | Winlator import/launcher/Wrapper fixes, real DXVK, AIO-Graphics-Test crash fix |
 | [`docs/v9-experimental-features.md`](docs/v9-experimental-features.md) | 🧪 **EXPERIMENTAL** v9-only features (0044-0046) and what is broken |
 
 Earlier sections §1–§7 below are the original chronological investigation log and
@@ -276,8 +281,9 @@ Modeled on wonderkast02's PoC-milestone structure — small, independently check
 - [x] **Phase 6 — WSI / swapchain.** Termux:X11 or native Android surface, vkcube-equivalent, sustained frame test.
   - **Spinning cube presented on Termux:X11 through `VK_KHR_xcb_surface` + `VK_KHR_swapchain`**, 49-56 fps, on-screen pixels read back from the X server and matched to a CPU rasterizer (0 bad, 3x, negative control fails). See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md#3-spinning-cube).
   - **Sustained run and swapchain recreation: done.** 30,000 frames with a window resize and swapchain recreate every 500 frames (60 swapchains), 3x, on-screen check 0 bad, RSS flat. X11 only; Android native surface untested. See [`docs/phase5-7.md`](docs/phase5-7.md#4-sustained-wsi-and-swapchain-recreation-phase-6-verified-hw).
-- [ ] **Phase 7 — Wine/Box64/DXVK bring-up (optional, stretch).** Only after Phase 4 is solid — wonderkast02's G720 LAB findings on missing features (`geometryShader`, `textureCompressionBC`, etc.) likely apply here too and are worth re-checking against this hardware's real feature bits rather than assumed.
+- [x] **Phase 7 — Wine/Box64/DXVK bring-up (optional, stretch).** Only after Phase 4 is solid — wonderkast02's G720 LAB findings on missing features (`geometryShader`, `textureCompressionBC`, etc.) likely apply here too and are worth re-checking against this hardware's real feature bits rather than assumed.
   - **Gap analysis done, bring-up not attempted.** Against DXVK master's required-feature list this driver is missing `geometryShader`, `multiDrawIndirect`, `multiViewport`, `shaderClipDistance`, `shaderCullDistance`, `textureCompressionBC` and `VK_EXT_robustness2`, so DXVK will not create a device. See [`docs/phase5-7.md`](docs/phase5-7.md#5-dxvk-requirement-gap-phase-7-verified-src--reported-features).
+  - **Bring-up done for D3D11 (2026-10-04).** `multiDrawIndirect` and `robustness2` came from `0044`/`0045`, clip/cull distance and BC are handled by the Winlator Wrapper. Real DXVK 1.12.1-sarek (FL 11_1) and 2.3.1 (FL 10_1) render a D3D11 test program through Wine 11.16 + Winlator Wrapper + adrenotools, 3x with readback and controls. Winlator test builds: `FourFectVK-G57-alpha3`. Still missing: geometry shaders, tessellation, transform feedback. See [`docs/phase7-winlator-dxvk.md`](docs/phase7-winlator-dxvk.md).
   - **🧪 EXPERIMENTAL v9 feature work started** to close that gap from the driver side: `multiDrawIndirect`/`drawIndirectCount` (`0044`), `nullDescriptor` (`0045`), sampler min/max by shader emulation (`0046`, cube maps broken). See [`docs/v9-experimental-features.md`](docs/v9-experimental-features.md).
 
 No phase here claims Vulkan conformance or "games will run". CTS now runs on the device, but only on a few small groups (see the CTS table in the status section), and it found three driver bugs (patches 0041-0043) that this project's own tests had missed. See [`docs/cts-wsi-texture.md`](docs/cts-wsi-texture.md).

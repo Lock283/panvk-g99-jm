@@ -1,0 +1,3 @@
+     36 Fail
+     72 NotSupported
+     36 Pass

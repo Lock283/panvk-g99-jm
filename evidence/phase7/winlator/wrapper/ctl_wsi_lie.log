@@ -1,0 +1,15 @@
+=== wsi cube: frames=60 step=1.0 dim=600 present=fifo check every 30 NEGATIVE CONTROL: model angle +3 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: warning: Gralloc doesn't support lock_ycbcr (video buffers won't be supported)
+MESA: info: Using fallback gralloc implementation
+surface     : supported=1 images 3..0 extent 600x600 usage 0x8009f
+formats     : 44 50
+presentmodes: 0 1 2 3
+swapchain   : #0 600x600, 4 images, format 44 (frame 0)
+WSIFP frame=0000 deg=    0.0 img=0 screen_bad=3902 edge=1299 fps=0.0 shown=frame-3 first=(170,170) screen=255,255,0 model=32,32,40
+WSIFP frame=0030 deg=   30.0 img=2 screen_bad=5469 edge=2120 fps=45.9 shown=frame-3 first=(273,171) screen=32,32,40 model=255,0,255
+
+--- result ---
+frames=60 in 1.4 s = 43.2 fps (incl. checks), checked=2 bad_frames=2 screen_bad=9371
+WSISUM present=fifo format=BGRA8 frames=60 checked=2 bad_frames=2 bad=9371 swapchains=1 out_of_date=0 verdict=FAIL
+DONE

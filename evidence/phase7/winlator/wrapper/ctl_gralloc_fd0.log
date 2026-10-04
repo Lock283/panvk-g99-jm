@@ -1,0 +1,10 @@
+=== wsi cube: frames=60 step=1.0 dim=600 present=fifo check every 30 ===
+WARNING: panvk is not a conformant Vulkan implementation, testing use only.
+MESA: warning: Gralloc doesn't support lock_ycbcr (video buffers won't be supported)
+MESA: info: Using fallback gralloc implementation
+MESA: error: invalid dmabuf size
+MESA: error: invalid dmabuf size
+surface     : supported=1 images 3..0 extent 600x600 usage 0x8009f
+formats     : 44 50
+presentmodes: 0 1 2 3
+FAILED: vkCreateSwapchainKHR (VkResult=-1000072003)
