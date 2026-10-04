@@ -1,0 +1,3 @@
+group p4_occl_discard_ctl: 28 cases, 1 process run(s)
+  Fail                   28
+  pass rate of supported: 0/28 = 0.0%

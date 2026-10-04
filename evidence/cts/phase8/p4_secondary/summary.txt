@@ -1,0 +1,5 @@
+group p4_secondary: 19 cases, 1 process run(s)
+  Pass                   16
+  Fail                   1
+  NotSupported           2
+  pass rate of supported: 16/17 = 94.1%

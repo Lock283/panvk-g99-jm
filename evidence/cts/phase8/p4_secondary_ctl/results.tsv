@@ -1,0 +1,1 @@
+dEQP-VK.api.command_buffers.record_many_draws_secondary_2	Fail	Mismatched output and reference color or stencil; please check test log -- at vktApiCommandBuffersTests.cpp:5370

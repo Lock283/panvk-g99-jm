@@ -1,0 +1,6 @@
+group p4_occlusion: 441 cases, 19 process run(s)
+  Pass                   388
+  Fail                   28
+  NotSupported           7
+  Crash                  18
+  pass rate of supported: 388/434 = 89.4%

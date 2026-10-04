@@ -1,0 +1,4 @@
+group r58_topology: 198 cases, 1 process run(s)
+  Pass                   111
+  NotSupported           87
+  pass rate of supported: 111/111 = 100.0%

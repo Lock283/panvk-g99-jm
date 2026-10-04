@@ -1,0 +1,184 @@
+diff --git a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+--- a/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
++++ b/src/panfrost/vulkan/jm/panvk_vX_cmd_draw.c
+@@ -2360,6 +2360,45 @@
+           ds->depth.write_enable && ds->depth.compare_op != VK_COMPARE_OP_NEVER;
+ }
+ 
++/* Copies of the Bifrost writes_stencil() / ds_test_always_passes() above,
++ * needed by the v9 early-ZS selection in panvk_emit_fs_draw_v9(). */
++static bool
++writes_stencil_v9(struct panvk_cmd_buffer *cmdbuf)
++{
++   const struct vk_depth_stencil_state *ds =
++      &cmdbuf->vk.dynamic_graphics_state.ds;
++
++   return has_stencil_att_v9(cmdbuf) && ds->stencil.test_enable &&
++          ((ds->stencil.front.write_mask &&
++            (ds->stencil.front.op.fail != VK_STENCIL_OP_KEEP ||
++             ds->stencil.front.op.pass != VK_STENCIL_OP_KEEP ||
++             ds->stencil.front.op.depth_fail != VK_STENCIL_OP_KEEP)) ||
++           (ds->stencil.back.write_mask &&
++            (ds->stencil.back.op.fail != VK_STENCIL_OP_KEEP ||
++             ds->stencil.back.op.pass != VK_STENCIL_OP_KEEP ||
++             ds->stencil.back.op.depth_fail != VK_STENCIL_OP_KEEP)));
++}
++
++static bool
++ds_test_always_passes_v9(struct panvk_cmd_buffer *cmdbuf)
++{
++   const struct vk_depth_stencil_state *ds =
++      &cmdbuf->vk.dynamic_graphics_state.ds;
++
++   if (!has_depth_att_v9(cmdbuf))
++      return true;
++
++   if (ds->depth.test_enable && ds->depth.compare_op != VK_COMPARE_OP_ALWAYS)
++      return false;
++
++   if (ds->stencil.test_enable &&
++       (ds->stencil.front.op.compare != VK_COMPARE_OP_ALWAYS ||
++        ds->stencil.back.op.compare != VK_COMPARE_OP_ALWAYS))
++      return false;
++
++   return true;
++}
++
+ static inline enum mali_func
+ translate_compare_func_v9(VkCompareOp comp)
+ {
+@@ -2397,6 +2436,9 @@
+                       struct mali_draw_packed *dcd)
+ {
+    struct panvk_shader_desc_state *fs_desc_state = &cmdbuf->state.gfx.fs.desc;
++   /* NULL when no fragment shader is needed (get_fs() / fs_required()). */
++   const struct panvk_shader_variant *fs =
++      panvk_shader_only_variant(get_fs(cmdbuf));
+    const struct vk_rasterization_state *rs =
+       &cmdbuf->vk.dynamic_graphics_state.rs;
+    const struct vk_depth_stencil_state *ds =
+@@ -2484,6 +2526,55 @@
+ 
+       cfg.occlusion = cmdbuf->state.gfx.occlusion_query.ptr;
+ 
++      /* PATCH v9 Draw.flags_0 early-ZS: these were never set on v9, so the
++       * hardware ran every draw as FORCE_EARLY (enum value 0): depth/stencil
++       * update and occlusion counting happened before the fragment shader,
++       * so samples killed by `discard` were still counted (CTS
++       * occlusion_query.*precise*discard). Same selection as CSF
++       * build_dcd_flags() and gallium jm_emit_draw(). FPK bits stay false
++       * (conservative). PANVK_V9_DCD_NO_EARLYZS=1 restores the old flags
++       * (negative control). */
++      if (fs) {
++         static int no_earlyzs = -1;
++         if (no_earlyzs < 0)
++            no_earlyzs = getenv("PANVK_V9_DCD_NO_EARLYZS") != NULL;
++
++         const struct vk_dynamic_graphics_state *dyns =
++            &cmdbuf->vk.dynamic_graphics_state;
++         bool alpha_to_coverage = dyns->ms.alpha_to_coverage_enable;
++
++         if (!no_earlyzs) {
++            enum pan_earlyzs_zs_tilebuf_read zs_read =
++               (z_attachment_read(fs, &dyns->ial) ||
++                s_attachment_read(fs, &dyns->ial))
++                  ? PAN_EARLYZS_ZS_TILEBUF_READ_NO_OPT
++                  : PAN_EARLYZS_ZS_TILEBUF_NOT_READ;
++            bool oq = cmdbuf->state.gfx.occlusion_query.mode !=
++                      MALI_OCCLUSION_MODE_DISABLED;
++            struct pan_earlyzs_state earlyzs = pan_earlyzs_get(
++               fs->fs.earlyzs_lut,
++               writes_z || writes_stencil_v9(cmdbuf) || oq, alpha_to_coverage,
++               ds_test_always_passes_v9(cmdbuf), zs_read);
++
++            cfg.flags_0.pixel_kill_operation = (enum mali_pixel_kill)earlyzs.kill;
++            cfg.flags_0.zs_update_operation =
++               (enum mali_pixel_kill)earlyzs.update;
++            cfg.flags_0.shader_modifies_coverage =
++               fs->info.fs.writes_coverage || fs->info.fs.can_discard ||
++               alpha_to_coverage;
++         }
++      } else {
++         /* PATCH v9: no fragment shader (no colour attachment written and no
++          * other FS side effect, e.g. depth-only passes). Same as gallium
++          * jm_emit_draw() and CSF build_dcd_flags(). */
++         cfg.flags_0.pixel_kill_operation = MALI_PIXEL_KILL_FORCE_EARLY;
++         cfg.flags_0.zs_update_operation = MALI_PIXEL_KILL_FORCE_EARLY;
++         cfg.flags_0.allow_forward_pixel_to_kill = true;
++         cfg.flags_0.allow_forward_pixel_to_be_killed = true;
++         cfg.flags_0.overdraw_alpha0 = true;
++         cfg.flags_0.overdraw_alpha1 = true;
++      }
++
+       /* PATCH v9 Draw.flags_1: TIDAK ADA referensi Bifrost/GL langsung
+        * (field ini spesifik Valhall, nol pemakaian di tree Mesa manapun).
+        * Nilai dipetakan by-analogy dari konsep yang sama yang dipakai
+@@ -2526,13 +2617,21 @@
+       cfg.blend_count = bd_count;
+       cfg.blend = blend_ptr.gpu;
+ 
+-      cfg.shader.resources = fs_desc_state->res_table;
+-      cfg.shader.shader = panvk_priv_mem_dev_addr(
+-         panvk_shader_only_variant(get_fs(cmdbuf))->spd);
+-      cfg.shader.thread_storage = draw->tls;
+-      cfg.shader.fau = cmdbuf->state.gfx.fs.push_uniforms;
+-      cfg.shader.fau_count =
+-         panvk_shader_only_variant(get_fs(cmdbuf))->fau.total_count;
++      /* PATCH v9: without a fragment shader there is no shader to point at
++       * (get_fs() returned NULL and this dereferenced it: SIGSEGV in CTS
++       * occlusion_query.no_attachments* / *no_color_attachments). Like
++       * gallium jm_emit_draw(): no shader, no blend, no colour target. */
++      if (fs) {
++         cfg.shader.resources = fs_desc_state->res_table;
++         cfg.shader.shader = panvk_priv_mem_dev_addr(fs->spd);
++         cfg.shader.thread_storage = draw->tls;
++         cfg.shader.fau = cmdbuf->state.gfx.fs.push_uniforms;
++         cfg.shader.fau_count = fs->fau.total_count;
++      } else {
++         cfg.blend_count = 0;
++         cfg.blend = 0;
++         cfg.flags_1.render_target_mask = 0;
++      }
+    }
+ 
+    return VK_SUCCESS;
+@@ -2823,9 +2922,15 @@
+    VkResult result;
+ 
+    /* Same job-index guard as the Bifrost path, minus the copy-descriptor
+-    * pilot job: v9 has none, and one draw is a single MALLOC_VERTEX job. */
++    * pilot job: v9 has none, and one draw is a single MALLOC_VERTEX job.
++    * PANVK_V9_SPLIT_AT=<n> lowers the limit (test knob: forces batch splits
++    * inside a render pass, so the spill/reload path can be checked with
++    * small tests). */
++   static int split_at = -1;
++   if (split_at < 0)
++      split_at = getenv("PANVK_V9_SPLIT_AT") ? atoi(getenv("PANVK_V9_SPLIT_AT")) : UINT16_MAX;
+    if (batch->vtc_jc.job_index + cmdbuf->state.gfx.render.layer_count >=
+-       UINT16_MAX) {
++       (unsigned)split_at) {
+       panvk_per_arch(cmd_close_batch)(cmdbuf);
+       batch = panvk_per_arch(cmd_open_batch)(cmdbuf);
+    }
+@@ -3023,6 +3128,21 @@
+    if (prepare_draw_v9(cmdbuf, draw) != VK_SUCCESS)
+       return;
+ 
++   /* PATCH v9: prepare_draw_v9() closes the batch and opens a new one when
++    * the 16-bit job index would overflow. The pointer read at the top of this
++    * function is then the closed batch, and the job was chained into its
++    * vertex/tiler chain while using the new batch's tiler context: every
++    * draw after the split got lost (CTS
++    * api.command_buffers.record_many_draws_secondary_2, 65k+ jobs in one
++    * render pass). The Bifrost path reads cur_batch after prepare_draw() for
++    * the same reason. PANVK_V9_STALE_BATCH=1 restores the old behaviour
++    * (negative control). */
++   static int stale_batch = -1;
++   if (stale_batch < 0)
++      stale_batch = getenv("PANVK_V9_STALE_BATCH") != NULL;
++   if (!stale_batch)
++      batch = cmdbuf->cur_batch;
++
+    /* Indirect draws: the counts are not known at record time, so the job is
+     * built with placeholders, parked as NOT_STARTED so the hardware cannot run
+     * it yet, and a helper kernel then overwrites the count fields from the
