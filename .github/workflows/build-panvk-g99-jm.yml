@@ -44,11 +44,11 @@ jobs:
           echo "ANDROID_NDK=$PWD/android-ndk-r29" >> "$GITHUB_ENV"
 
       - name: Clone Mesa
-        run: |
-          git clone https://gitlab.freedesktop.org/mesa/mesa.git mesa
-          cd mesa
-          git checkout 6598829019c0746aa8e473b4ae1c980cbfa6ea4b
-
+  run: |
+    git clone --depth 1 https://gitlab.freedesktop.org/mesa/mesa.git mesa
+    cd mesa
+    git fetch --depth 1 origin 6598829019c0746aa8e473b4ae1c980cbfa6ea4b
+    git checkout 6598829019c0746aa8e473b4ae1c980cbfa6ea4b
       - name: Apply PanVK G99 JM patches
         run: |
           cd mesa
