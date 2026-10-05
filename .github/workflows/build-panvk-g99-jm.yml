@@ -1,0 +1,112 @@
+name: Build PanVK G99 JM ARM64
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            meson \
+            ninja-build \
+            pkg-config \
+            python3-mako \
+            python3-ply \
+            python3-pip \
+            bison \
+            flex \
+            libdrm-dev \
+            libexpat1-dev \
+            libwayland-dev \
+            wayland-protocols \
+            libx11-xcb-dev \
+            libxcb-dri2-0-dev \
+            libxcb-dri3-dev \
+            libxcb-present-dev \
+            libxcb-randr0-dev \
+            libxcb-sync-dev \
+            libxcb-xfixes0-dev \
+            libxshmfence-dev
+
+      - name: Download Android NDK
+        run: |
+          wget -q https://dl.google.com/android/repository/android-ndk-r29-linux.zip
+          unzip -q android-ndk-r29-linux.zip
+          echo "ANDROID_NDK=$PWD/android-ndk-r29" >> "$GITHUB_ENV"
+
+      - name: Clone Mesa
+        run: |
+          git clone https://gitlab.freedesktop.org/mesa/mesa.git mesa
+          cd mesa
+          git checkout 6598829019c0746aa8e473b4ae1c980cbfa6ea4b
+
+      - name: Apply PanVK G99 JM patches
+        run: |
+          cd mesa
+
+          git apply ../patches/0015-*.patch
+          git apply ../patches/0014-*.patch
+          git apply ../patches/0013-*.patch
+          git apply ../patches/0011-*.patch
+          git apply ../patches/0012-*.patch
+          git apply ../patches/0010-*.patch
+
+      - name: Configure ARM64 Android build
+        run: |
+          cat > android-arm64.ini <<EOF
+          [binaries]
+          c = '$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang'
+          cpp = '$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang++'
+          ar = '$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar'
+          strip = '$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip'
+          pkgconfig = 'pkg-config'
+
+          [host_machine]
+          system = 'android'
+          cpu_family = 'aarch64'
+          cpu = 'armv8-a'
+          endian = 'little'
+          EOF
+
+          cd mesa
+
+          meson setup build \
+            --cross-file ../android-arm64.ini \
+            -Dbuildtype=release \
+            -Dplatforms=android \
+            -Dandroid-stub=true \
+            -Dvulkan-drivers=panfrost \
+            -Dpanfrost-kmds=kbase \
+            -Dllvm=disabled \
+            -Dgallium-drivers= \
+            -Dvideo-codecs= \
+            -Dprefix=/usr
+
+      - name: Compile libvulkan_panfrost.so
+        run: |
+          cd mesa
+          ninja -C build src/panfrost/vulkan/libvulkan_panfrost.so
+
+      - name: Package driver
+        run: |
+          mkdir -p PanVK-G99-JM-ARM64
+          cp mesa/build/src/panfrost/vulkan/libvulkan_panfrost.so \
+            PanVK-G99-JM-ARM64/
+
+          cd PanVK-G99-JM-ARM64
+          zip -r ../PanVK-G99-JM-ARM64.zip .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PanVK-G99-JM-ARM64
+          path: PanVK-G99-JM-ARM64.zip
